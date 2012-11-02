@@ -1,0 +1,37 @@
+# Metadata
+wiki-name: "Exfe Wiki"
+#google-analytics: UA-XXXXXX-X
+
+# Directories
+hide-prefix: "."
+wiki-dir: "wiki"
+static-dir: "static"
+html-dir: ".html"
+template-dir: ".templates"
+temp-dir: ".tmp"
+cvs-exclude: true
+
+# Building
+document-extensions: [.md, .mdown, .markdown, .wiki, .text]
+generate-listing: always
+listing-filename: "_list.html"
+use-default-static: true
+use-default-templates: true
+
+# Rendering
+markdown:
+  safe-mode: false
+  output-format: html
+  extensions: [codehilite, def_list]
+  extension-configs:
+    codehilite:
+      force_linenos: true
+
+# Serving
+server:
+  bind: '127.0.0.1'
+  port: 8008
+  num-threads: 10
+  name: 'wiki.0d0f.com'
+  request-queue-size: 10
+  timeout: 10
