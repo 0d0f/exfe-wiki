@@ -1,7 +1,7 @@
 ## Git User:
   * user: git
   * group: git
-  * password: 246wrysfh
+  * password: 2--w--s--
 
 ## install [gitolite](https://github.com/sitaramc/gitolite):
 
