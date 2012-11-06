@@ -34,13 +34,13 @@ func <span id="NewConversation">NewConversation</span>
 
     func NewConversation(localTemplate *formatter.LocalTemplate, config *model.Config) *Conversation
 
-    func (c *Conversation) Update(meta *gobus.HTTPMeta, updates args.ConversationUpdateArg, i *int) error
+    func (c *Conversation) Update(meta *gobus.HTTPMeta, updates model.ConversationUpdates, i *int) error
         发送Conversation的更新消息updates
 
         例子：
 
         > curl 'http://127.0.0.1:23333/Conversation?method=Update' -d
-        '[{"recipient":{"identity_id":11,"user_id":1,"name":"email1
+        '[{"to":{"identity_id":33,"user_id":3,"name":"email1
         name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"sender1@gmail.com","external_username":"sender1@gmail.com"},"cross":{"id":123,"by_identity":{"id":11,"name":"email1
         name","nickname":"email1 nick","bio":"email1
         bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"sender1@gmail.com","external_username":"sender1@gmail.com"},"title":"Test
@@ -49,7 +49,7 @@ func <span id="NewConversation">NewConversation</span>
         name","nickname":"email1 nick","bio":"email1
         bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"sender1@gmail.com","external_username":"sender1@gmail.com"},"content":"email1
         post sth","via":"abc","created_at":"2012-10-24
-        16:31:00"}},{"recipient":{"identity_id":11,"user_id":1,"name":"email1
+        16:31:00"}},{"to":{"identity_id":33,"user_id":3,"name":"email1
         name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"sender1@gmail.com","external_username":"sender1@gmail.com"},"cross":{"id":123,"by_identity":{"id":11,"name":"email1
         name","nickname":"email1 nick","bio":"email1
         bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"sender1@gmail.com","external_username":"sender1@gmail.com"},"title":"Test
@@ -58,6 +58,105 @@ func <span id="NewConversation">NewConversation</span>
         name","nickname":"twitter3 nick","bio":"twitter3
         bio","timezone":"+0800","connected_user_id":3,"avatar_filename":"http://path/to/twitter3.avatar","provider":"twitter","external_id":"twitter3@domain.com","external_username":"twitter3@domain.com"},"content":"twitter3
         post sth","via":"abc","created_at":"2012-10-24 16:40:00"}}]'
+
+type <span id="Cross">Cross</span>
+
+    type Cross struct {
+        // contains filtered or unexported fields
+    }
+
+func <span id="NewCross">NewCross</span>
+
+    func NewCross(localTemplate *formatter.LocalTemplate, config *model.Config) *Cross
+
+    func (c *Cross) Invite(meta *gobus.HTTPMeta, invitations model.CrossInvitations, i *int) error
+        发送Cross的邀请消息invitations
+
+        例子：
+
+        > curl 'http://127.0.0.1:23333/Cross?method=Invite' -d
+        '[{"to":{"identity_id":11,"user_id":1,"name":"email1
+        name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"cross":{"id":123,"by_identity":{"id":11,"name":"email1
+        name","nickname":"email1 nick","bio":"email1
+        bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"title":"Test
+        Cross","description":"test cross
+        description","time":{"begin_at":{"date_word":"","date":"2012-10-23","time_word":"","time":"08:45:00","timezone":"+0800"},"origin":"2012-10-23
+        16:45:00","output_format":0},"place":{"id":0,"title":"","description":"","lng":"","lat":"","provider":"","external_id":""},"exfee":{"id":123,"name":"","invitations":[{"id":11,"host":true,"mates":2,"identity":{"id":11,"name":"email1
+        name","nickname":"email1 nick","bio":"email1
+        bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"rsvp_status":"NORESPONSE","by_identity":{"id":11,"name":"email1
+        name","nickname":"email1 nick","bio":"email1
+        bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"via":""},{"id":22,"host":false,"mates":0,"identity":{"id":12,"name":"email2
+        name","nickname":"email2 nick","bio":"email2
+        bio","timezone":"+0800","connected_user_id":2,"avatar_filename":"http://path/to/email2.avatar","provider":"email","external_id":"email2@domain.com","external_username":"email2@domain.com"},"rsvp_status":"NORESPONSE","by_identity":{"id":11,"name":"email1
+        name","nickname":"email1 nick","bio":"email1
+        bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"via":""},{"id":33,"host":false,"mates":0,"identity":{"id":22,"name":"twitter3
+        name","nickname":"twitter3 nick","bio":"twitter3
+        bio","timezone":"+0800","connected_user_id":3,"avatar_filename":"http://path/to/twitter3.avatar","provider":"twitter","external_id":"twitter3@domain.com","external_username":"twitter3@domain.com"},"rsvp_status":"NORESPONSE","by_identity":{"id":11,"name":"email1
+        name","nickname":"email1 nick","bio":"email1
+        bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"via":""},{"id":44,"host":false,"mates":0,"identity":{"id":32,"name":"facebook4
+        name","nickname":"facebook4 nick","bio":"facebook4
+        bio","timezone":"+0800","connected_user_id":4,"avatar_filename":"http://path/to/facebook4.avatar","provider":"facebook","external_id":"facebook4@domain.com","external_username":"facebook4@domain.com"},"rsvp_status":"NORESPONSE","by_identity":{"id":22,"name":"twitter3
+        name","nickname":"twitter3 nick","bio":"twitter3
+        bio","timezone":"+0800","connected_user_id":3,"avatar_filename":"http://path/to/twitter3.avatar","provider":"twitter","external_id":"twitter3@domain.com","external_username":"twitter3@domain.com"},"via":""}]}}}]'
+
+    func (c *Cross) Summary(meta *gobus.HTTPMeta, updates model.CrossUpdates, i *int) error
+        发送Cross的更新汇总消息updates
+
+        例子：
+
+        > curl 'http://127.0.0.1:23333/Cross?method=Summary' -d
+        '[{"to":{"identity_id":11,"user_id":1,"name":"email1
+        name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"old_cross":{"id":123,"by_identity":{"id":11,"name":"email1
+        name","nickname":"email1 nick","bio":"email1
+        bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"title":"Test
+        Cross","description":"test cross
+        description","time":{"begin_at":{"date_word":"","date":"","time_word":"","time":"","timezone":"+0800"},"origin":"","output_format":0},"place":{"id":0,"title":"","description":"","lng":"","lat":"","provider":"","external_id":""},"exfee":{"id":123,"name":"","invitations":[{"id":11,"host":true,"mates":2,"identity":{"id":11,"name":"email1
+        name","nickname":"email1 nick","bio":"email1
+        bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"rsvp_status":"NORESPONSE","by_identity":{"id":11,"name":"email1
+        name","nickname":"email1 nick","bio":"email1
+        bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"via":""},{"id":22,"host":false,"mates":0,"identity":{"id":12,"name":"email2
+        name","nickname":"email2 nick","bio":"email2
+        bio","timezone":"+0800","connected_user_id":2,"avatar_filename":"http://path/to/email2.avatar","provider":"email","external_id":"email2@domain.com","external_username":"email2@domain.com"},"rsvp_status":"NORESPONSE","by_identity":{"id":11,"name":"email1
+        name","nickname":"email1 nick","bio":"email1
+        bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"via":""},{"id":33,"host":false,"mates":0,"identity":{"id":22,"name":"twitter3
+        name","nickname":"twitter3 nick","bio":"twitter3
+        bio","timezone":"+0800","connected_user_id":3,"avatar_filename":"http://path/to/twitter3.avatar","provider":"twitter","external_id":"twitter3@domain.com","external_username":"twitter3@domain.com"},"rsvp_status":"NORESPONSE","by_identity":{"id":11,"name":"email1
+        name","nickname":"email1 nick","bio":"email1
+        bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"via":""},{"id":44,"host":false,"mates":0,"identity":{"id":32,"name":"facebook4
+        name","nickname":"facebook4 nick","bio":"facebook4
+        bio","timezone":"+0800","connected_user_id":4,"avatar_filename":"http://path/to/facebook4.avatar","provider":"facebook","external_id":"facebook4@domain.com","external_username":"facebook4@domain.com"},"rsvp_status":"ACCEPTED","by_identity":{"id":22,"name":"twitter3
+        name","nickname":"twitter3 nick","bio":"twitter3
+        bio","timezone":"+0800","connected_user_id":3,"avatar_filename":"http://path/to/twitter3.avatar","provider":"twitter","external_id":"twitter3@domain.com","external_username":"twitter3@domain.com"},"via":""},{"id":77,"host":false,"mates":0,"identity":{"id":34,"name":"facebook6
+        name","nickname":"facebook6 nick","bio":"facebook6
+        bio","timezone":"+0800","connected_user_id":6,"avatar_filename":"http://path/to/facebook6.avatar","provider":"facebook","external_id":"facebook6@domain.com","external_username":"facebook6@domain.com"},"rsvp_status":"NORESPONSE","by_identity":{"id":32,"name":"facebook4
+        name","nickname":"facebook4 nick","bio":"facebook4
+        bio","timezone":"+0800","connected_user_id":4,"avatar_filename":"http://path/to/facebook4.avatar","provider":"facebook","external_id":"facebook4@domain.com","external_username":"facebook4@domain.com"},"via":""}]}},"cross":{"id":123,"by_identity":{"id":11,"name":"email1
+        name","nickname":"email1 nick","bio":"email1
+        bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"title":"Test
+        Cross","description":"test cross
+        description","time":{"begin_at":{"date_word":"","date":"","time_word":"","time":"","timezone":"+0800"},"origin":"","output_format":0},"place":{"id":0,"title":"","description":"","lng":"","lat":"","provider":"","external_id":""},"exfee":{"id":123,"name":"","invitations":[{"id":22,"host":false,"mates":0,"identity":{"id":12,"name":"email2
+        name","nickname":"email2 nick","bio":"email2
+        bio","timezone":"+0800","connected_user_id":2,"avatar_filename":"http://path/to/email2.avatar","provider":"email","external_id":"email2@domain.com","external_username":"email2@domain.com"},"rsvp_status":"ACCEPTED","by_identity":{"id":11,"name":"email1
+        name","nickname":"email1 nick","bio":"email1
+        bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"via":""},{"id":33,"host":false,"mates":0,"identity":{"id":22,"name":"twitter3
+        name","nickname":"twitter3 nick","bio":"twitter3
+        bio","timezone":"+0800","connected_user_id":3,"avatar_filename":"http://path/to/twitter3.avatar","provider":"twitter","external_id":"twitter3@domain.com","external_username":"twitter3@domain.com"},"rsvp_status":"DECLINED","by_identity":{"id":11,"name":"email1
+        name","nickname":"email1 nick","bio":"email1
+        bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"via":""},{"id":44,"host":false,"mates":0,"identity":{"id":32,"name":"facebook4
+        name","nickname":"facebook4 nick","bio":"facebook4
+        bio","timezone":"+0800","connected_user_id":4,"avatar_filename":"http://path/to/facebook4.avatar","provider":"facebook","external_id":"facebook4@domain.com","external_username":"facebook4@domain.com"},"rsvp_status":"ACCEPTED","by_identity":{"id":22,"name":"twitter3
+        name","nickname":"twitter3 nick","bio":"twitter3
+        bio","timezone":"+0800","connected_user_id":3,"avatar_filename":"http://path/to/twitter3.avatar","provider":"twitter","external_id":"twitter3@domain.com","external_username":"twitter3@domain.com"},"via":""},{"id":55,"host":true,"mates":2,"identity":{"id":21,"name":"twitter1
+        name","nickname":"twitter1 nick","bio":"twitter1
+        bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/twitter1.avatar","provider":"twitter","external_id":"twitter1@domain.com","external_username":"twitter1@domain.com"},"rsvp_status":"NORESPONSE","by_identity":{"id":11,"name":"email1
+        name","nickname":"email1 nick","bio":"email1
+        bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"via":""},{"id":66,"host":false,"mates":2,"identity":{"id":33,"name":"facebook5
+        name","nickname":"facebook5 nick","bio":"facebook5
+        bio","timezone":"+0800","connected_user_id":5,"avatar_filename":"http://path/to/facebook5.avatar","provider":"facebook","external_id":"facebook5@domain.com","external_username":"facebook5@domain.com"},"rsvp_status":"ACCEPTED","by_identity":{"id":32,"name":"facebook4
+        name","nickname":"facebook4 nick","bio":"facebook4
+        bio","timezone":"+0800","connected_user_id":4,"avatar_filename":"http://path/to/facebook4.avatar","provider":"facebook","external_id":"facebook4@domain.com","external_username":"facebook4@domain.com"},"via":""}]}},"by":{"id":32,"name":"facebook4
+        name","nickname":"facebook4 nick","bio":"facebook4
+        bio","timezone":"+0800","connected_user_id":4,"avatar_filename":"http://path/to/facebook4.avatar","provider":"facebook","external_id":"facebook4@domain.com","external_username":"facebook4@domain.com"}}]'
 
 type <span id="DBRepository">DBRepository</span>
 
@@ -122,12 +221,12 @@ func <span id="NewThirdpart">NewThirdpart</span>
 
     func NewThirdpart(config *model.Config) (*Thirdpart, error)
 
-    func (t *Thirdpart) Send(meta *gobus.HTTPMeta, arg *args.SendArg, id *string) error
+    func (t *Thirdpart) Send(meta *gobus.HTTPMeta, arg model.ThirdpartSend, id *string) error
         发信息给to，如果是私人信息，就发送private的内容，如果是公开信息，就发送public的内容。info内是相关的应用信息。
 
         例子：
 
-	> curl http://127.0.0.1:23333/Thirdpart?method=Send -d '{"to":{"external_id":"123","external_username":"name","auth_data":"","provider":"twitter","identity_id":789,"user_id":1},"public":"public","private":"private","info":{"cross_id":234,"type":"u"}}'
+	> curl http://127.0.0.1:23333/Thirdpart?method=Send -d '{"to":{"external_id":"123","external_username":"name","auth_data":"","provider":"twitter","identity_id":789,"user_id":1},"private":"private","public":"public","info":null}'
 
     func (t *Thirdpart) UpdateFriends(meta *gobus.HTTPMeta, to *model.Recipient, i *int) error
         同步更新to在第三方网站的好友信息
@@ -289,8 +388,42 @@ type <span id="TokenVerifyReply">TokenVerifyReply</span>
         Token   *tokenmanager.Token `json:"token,omitempty"`
     }
 
-SUBDIRECTORIES
--------
+type <span id="User">User</span>
 
-	args
+    type User struct {
+        // contains filtered or unexported fields
+    }
+
+func <span id="NewUser">NewUser</span>
+
+    func NewUser(localTemplate *formatter.LocalTemplate, config *model.Config) *User
+
+    func (u *User) Confirm(meta *gobus.HTTPMeta, confirmations model.UserConfirms, i *int) error
+        发送给用户的确认请求
+
+        例子：
+
+        > curl 'http://127.0.0.1:23333/User?method=Confirm' -d
+        '[{"to":{"identity_id":11,"user_id":1,"name":"email1
+        name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"by":{"id":12,"name":"email2
+        name","nickname":"email2 nick","bio":"email2
+        bio","timezone":"+0800","connected_user_id":2,"avatar_filename":"http://path/to/email2.avatar","provider":"email","external_id":"email2@domain.com","external_username":"email2@domain.com"}}]'
+
+    func (u *User) ResetPassword(meta *gobus.HTTPMeta, tos model.ThirdpartTos, i *int) error
+        发送给用户的重置密码请求
+
+        例子：
+
+        > curl 'http://127.0.0.1:23333/User?method=ResetPassword' -d
+        '[{"to":{"identity_id":11,"user_id":1,"name":"email1
+        name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"}}]'
+
+    func (u *User) Welcome(meta *gobus.HTTPMeta, welcomes model.UserWelcomes, i *int) error
+        发送给用户的邀请
+
+        例子：
+
+        > curl 'http://127.0.0.1:23333/User?method=Welcome' -d
+        '[{"to":{"identity_id":11,"user_id":1,"name":"email1
+        name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"need_verify":true}]'
 

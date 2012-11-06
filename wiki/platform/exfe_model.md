@@ -18,7 +18,7 @@ CONSTANTS
 FUNCTIONS
 -------
 
-func <span id="Load">Load</span>
+func <span id="LoadLocation">LoadLocation</span>
 
     func LoadLocation(zone string) (*time.Location, error)
 
@@ -89,16 +89,22 @@ type <span id="Config">Config</span>
             } `json:"gcm"`
         } `json:"thirdpart"`
 
-        Log *logger.Logger
+        Log *logger.Logger `json:"-"`
     }
 
-type <span id="Conversation">Conversation</span>
+type <span id="ConversationUpdate">ConversationUpdate</span>
 
     type ConversationUpdate struct {
-        To    Recipient `json:"recipient"`
+        To    Recipient `json:"to"`
         Cross Cross     `json:"cross"`
         Post  Post      `json:"post"`
     }
+
+type <span id="ConversationUpdates">ConversationUpdates</span>
+
+    type ConversationUpdates []ConversationUpdate
+
+    func (u ConversationUpdates) String() string
 
 type <span id="Cross">Cross</span>
 
@@ -116,7 +122,38 @@ type <span id="Cross">Cross</span>
 
     func (c Cross) String() string
 
-type <span id="Cross">Cross</span>
+type <span id="CrossInvitation">CrossInvitation</span>
+
+    type CrossInvitation struct {
+        To    Recipient `json:"to"`
+        Cross Cross     `json:"cross"`
+
+        Config *Config `json:"-"`
+    }
+
+    func (a CrossInvitation) IsCreator() bool
+
+    func (a CrossInvitation) Link() string
+
+    func (a CrossInvitation) ListInvitations() string
+
+    func (a CrossInvitation) LongDescription() bool
+
+    func (a *CrossInvitation) Parse(config *Config) (err error)
+
+    func (a CrossInvitation) String() string
+
+    func (a CrossInvitation) Timezone() string
+
+    func (a CrossInvitation) ToIn(invitations []Invitation) bool
+
+type <span id="CrossInvitations">CrossInvitations</span>
+
+    type CrossInvitations []CrossInvitation
+
+    func (c CrossInvitations) String() string
+
+type <span id="CrossTime">CrossTime</span>
 
     type CrossTime struct {
         BeginAt      EFTime       `json:"begin_at"`
@@ -126,7 +163,7 @@ type <span id="Cross">Cross</span>
 
     func (t CrossTime) StringInZone(targetZone string) (string, error)
 
-type <span id="Cross">Cross</span>
+type <span id="CrossUpdate">CrossUpdate</span>
 
     type CrossUpdate struct {
         To       Recipient `json:"to"`
@@ -135,7 +172,26 @@ type <span id="Cross">Cross</span>
         By       Identity  `json:"by"`
     }
 
-type <span id="E">E</span>
+type <span id="CrossUpdates">CrossUpdates</span>
+
+    type CrossUpdates []CrossUpdate
+
+    func (u CrossUpdates) String() string
+
+type <span id="DataType">DataType</span>
+
+    type DataType string
+
+    const (
+        TypeCrossInvitation DataType = "i"
+        TypeCrossUpdate              = "u"
+        TypeCrossRemove              = "r"
+        TypeConversation             = "c"
+    )
+
+    func (t DataType) String() string
+
+type <span id="EFTime">EFTime</span>
 
     type EFTime struct {
         DateWord string `json:"date_word"`
@@ -162,21 +218,21 @@ type <span id="Exfee">Exfee</span>
         Pending    []Invitation `json:"-"`
     }
 
+    func (e Exfee) CountPeople(invitations []Invitation) int
+
     func (e Exfee) Equal(other *Exfee) bool
 
     func (e *Exfee) Parse()
 
-    func (e Exfee) TotalAccepted() int
-
 type <span id="Identity">Identity</span>
 
     type Identity struct {
-        ID       int64  `json:"id,omitempty"`
+        ID       uint64 `json:"id,omitempty"`
         Name     string `json:"name,omitempty"`
         Nickname string `json:"nickname,omitempty"`
         Bio      string `json:"bio,omitempty"`
         Timezone string `json:"timezone,omitempty"`
-        UserID   uint64 `json:"connected_user_id,omitempty"`
+        UserID   int64  `json:"connected_user_id,omitempty"`
         Avatar   string `json:"avatar_filename,omitempty"`
 
         Provider         string `json:"provider,omitempty"`
@@ -190,6 +246,15 @@ type <span id="Identity">Identity</span>
     func (i Identity) SameUser(other Identity) bool
 
     func (i Identity) String() string
+
+type <span id="InfoData">InfoData</span>
+
+    type InfoData struct {
+        CrossID uint64   `json:"cross_id"`
+        Type    DataType `json:"type"`
+    }
+
+    func (i InfoData) String() string
 
 type <span id="Invitation">Invitation</span>
 
@@ -207,7 +272,7 @@ type <span id="Invitation">Invitation</span>
 
     func (i *Invitation) String() string
 
-type <span id="Output">Output</span>
+type <span id="OutputFormat">OutputFormat</span>
 
     type OutputFormat uint
 
@@ -244,11 +309,23 @@ type <span id="Post">Post</span>
 
     func (p *Post) CreatedAtInZone(timezone string) (string, error)
 
+type <span id="QueuePush">QueuePush</span>
+
+    type QueuePush struct {
+        Service  string      `json:"service"`
+        Method   string      `json:"method"`
+        MergeKey string      `json:"merge_key"`
+        Tos      []Recipient `json:"tos"` // it will expand and overwrite "to" field in data
+        Data     interface{} `json:"data"`
+    }
+
+    func (a QueuePush) String() string
+
 type <span id="Recipient">Recipient</span>
 
     type Recipient struct {
-        IdentityID       int64  `json:"identity_id"`
-        UserID           uint64 `json:"user_id"`
+        IdentityID       uint64 `json:"identity_id"`
+        UserID           int64  `json:"user_id"`
         Name             string `json:"name"`
         AuthData         string `json:"auth_data"`
         Timezone         string `json:"timezone"`
@@ -261,11 +338,13 @@ type <span id="Recipient">Recipient</span>
 
     func (r Recipient) Equal(other *Recipient) bool
 
+    func (r Recipient) ID() string
+
     func (r Recipient) SameUser(other *Identity) bool
 
     func (r Recipient) String() string
 
-type <span id="Rsvp">Rsvp</span>
+type <span id="RsvpType">RsvpType</span>
 
     type RsvpType string
 
@@ -277,4 +356,85 @@ type <span id="Rsvp">Rsvp</span>
         RsvpRemoved               = "REMOVED"
         RsvpNotification          = "NOTIFICATION"
     )
+
+type <span id="ThirdpartSend">ThirdpartSend</span>
+
+    type ThirdpartSend struct {
+        To             Recipient `json:"to"`
+        PrivateMessage string    `json:"private"`
+        PublicMessage  string    `json:"public"`
+        Info           *InfoData `json:"info"`
+
+        Config *Config `json:"-"`
+    }
+
+    func (a ThirdpartSend) String() string
+
+type <span id="ThirdpartTo">ThirdpartTo</span>
+
+    type ThirdpartTo struct {
+        To Recipient `json:"to"`
+
+        Config *Config `json:"-"`
+    }
+
+    func (a ThirdpartTo) Link() string
+
+    func (a *ThirdpartTo) Parse(config *Config) (err error)
+
+    func (a ThirdpartTo) String() string
+
+    func (a ThirdpartTo) ToIn(invitations []Invitation) bool
+
+    func (a ThirdpartTo) ToRecipient() Recipient
+
+type <span id="ThirdpartTos">ThirdpartTos</span>
+
+    type ThirdpartTos []ThirdpartTo
+
+    func (t ThirdpartTos) String() string
+
+type <span id="UserConfirm">UserConfirm</span>
+
+    type UserConfirm struct {
+        To Recipient `json:"to"`
+        By Identity  `json:"by"`
+
+        Config *Config `json:"-"`
+    }
+
+    func (c UserConfirm) Link() string
+
+    func (a UserConfirm) NeedShowBy() bool
+
+    func (c *UserConfirm) Parse(config *Config) (err error)
+
+    func (c UserConfirm) String() string
+
+type <span id="UserConfirms">UserConfirms</span>
+
+    type UserConfirms []UserConfirm
+
+    func (u UserConfirms) String() string
+
+type <span id="UserWelcome">UserWelcome</span>
+
+    type UserWelcome struct {
+        To         Recipient `json:"to"`
+        NeedVerify bool      `json:"need_verify"`
+
+        Config *Config `json:"-"`
+    }
+
+    func (w UserWelcome) Link() string
+
+    func (w *UserWelcome) Parse(config *Config) (err error)
+
+    func (w UserWelcome) String() string
+
+type <span id="UserWelcomes">UserWelcomes</span>
+
+    type UserWelcomes []UserWelcome
+
+    func (w UserWelcomes) String() string
 
