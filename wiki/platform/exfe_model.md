@@ -227,7 +227,7 @@ type <span id="Exfee">Exfee</span>
 type <span id="Identity">Identity</span>
 
     type Identity struct {
-        ID       uint64 `json:"id,omitempty"`
+        ID       int64  `json:"id,omitempty"`
         Name     string `json:"name,omitempty"`
         Nickname string `json:"nickname,omitempty"`
         Bio      string `json:"bio,omitempty"`
@@ -324,7 +324,7 @@ type <span id="QueuePush">QueuePush</span>
 type <span id="Recipient">Recipient</span>
 
     type Recipient struct {
-        IdentityID       uint64 `json:"identity_id"`
+        IdentityID       int64  `json:"identity_id"`
         UserID           int64  `json:"user_id"`
         Name             string `json:"name"`
         AuthData         string `json:"auth_data"`
@@ -394,28 +394,28 @@ type <span id="ThirdpartTos">ThirdpartTos</span>
 
     func (t ThirdpartTos) String() string
 
-type <span id="UserConfirm">UserConfirm</span>
+type <span id="UserVerify">UserVerify</span>
 
-    type UserConfirm struct {
+    type UserVerify struct {
         To Recipient `json:"to"`
         By Identity  `json:"by"`
 
         Config *Config `json:"-"`
     }
 
-    func (c UserConfirm) Link() string
+    func (c UserVerify) Link() string
 
-    func (a UserConfirm) NeedShowBy() bool
+    func (a UserVerify) NeedShowBy() bool
 
-    func (c *UserConfirm) Parse(config *Config) (err error)
+    func (c *UserVerify) Parse(config *Config) (err error)
 
-    func (c UserConfirm) String() string
+    func (c UserVerify) String() string
 
-type <span id="UserConfirms">UserConfirms</span>
+type <span id="UserVerifys">UserVerifys</span>
 
-    type UserConfirms []UserConfirm
+    type UserVerifys []UserVerify
 
-    func (u UserConfirms) String() string
+    func (u UserVerifys) String() string
 
 type <span id="UserWelcome">UserWelcome</span>
 
