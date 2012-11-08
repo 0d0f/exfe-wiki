@@ -29,51 +29,81 @@ Server: lighttpd/1.4.31
 {
     "meta": {
         "code": 200
-    }, 
+    },
     "response": {
         "mergeable_user": {
-            "avatar_filename": "http://api.local.exfe.com/v2/avatar/default?name=yyy", 
-            "bio": "", 
+            "avatar_filename": "http://api.local.exfe.com/v2/avatar/default?name=yyy",
+            "bio": "",
             "default_identity": {
-                "avatar_filename": "http://api.local.exfe.com/v2/avatar/default?name=yyy", 
-                "bio": "", 
-                "connected_user_id": 305, 
-                "created_at": "2012-09-19 09:23:08 +0000", 
-                "external_id": "yyy@leaskh.com", 
-                "external_username": "yyy@leaskh.com", 
-                "id": 499, 
-                "name": "yyy", 
-                "nickname": "", 
-                "provider": "email", 
-                "status": "CONNECTED", 
-                "type": "identity", 
+                "avatar_filename": "http://api.local.exfe.com/v2/avatar/default?name=yyy",
+                "bio": "",
+                "connected_user_id": 305,
+                "created_at": "2012-09-19 09:23:08 +0000",
+                "external_id": "yyy@leaskh.com",
+                "external_username": "yyy@leaskh.com",
+                "id": 499,
+                "name": "yyy",
+                "nickname": "",
+                "provider": "email",
+                "status": "CONNECTED",
+                "type": "identity",
                 "updated_at": "2012-09-19 09:23:08 +0000"
-            }, 
-            "id": 305, 
+            },
+            "id": 305,
             "identities": [
                 {
-                    "avatar_filename": "http://api.local.exfe.com/v2/avatar/default?name=e", 
-                    "bio": "", 
-                    "connected_user_id": 305, 
-                    "created_at": "2012-07-25 09:53:25 +0000", 
-                    "external_id": "e@leaskh.com", 
-                    "external_username": "e@leaskh.com", 
-                    "id": 364, 
-                    "name": "e", 
-                    "nickname": "", 
-                    "provider": "email", 
-                    "status": "CONNECTED", 
-                    "type": "identity", 
+                    "avatar_filename": "http://api.local.exfe.com/v2/avatar/default?name=e",
+                    "bio": "",
+                    "connected_user_id": 305,
+                    "created_at": "2012-07-25 09:53:25 +0000",
+                    "external_id": "e@leaskh.com",
+                    "external_username": "e@leaskh.com",
+                    "id": 364,
+                    "name": "e",
+                    "nickname": "",
+                    "provider": "email",
+                    "status": "CONNECTED",
+                    "type": "identity",
                     "updated_at": "2012-07-25 09:53:25 +0000"
                 }
-            ], 
-            "name": "Syxnx", 
-            "timezone": "+08:00", 
+            ],
+            "name": "Syxnx",
+            "timezone": "+08:00",
             "type": "user"
-        }, 
+        },
         "status": {
-            "499": true, 
-            "500": true
+            "499": {
+                "avatar_filename": "http://api.local.exfe.com/v2/avatar/default?name=Leask",
+                "bio": "",
+                "connected_user_id": -540,
+                "created_at": "0000-00-00 00:00:00 +0000",
+                "external_id": "aa@leaskh.com",
+                "external_username": "aa@leaskh.com",
+                "id": 540,
+                "name": "Leask",
+                "nickname": "",
+                "order": 0,
+                "provider": "email",
+                "status": "VERIFYING",
+                "type": "identity",
+                "updated_at": "0000-00-00 00:00:00 +0000"
+            },
+            "500": {
+                "avatar_filename": "http://api.local.exfe.com/v2/avatar/default?name=Leask",
+                "bio": "",
+                "connected_user_id": -540,
+                "created_at": "0000-00-00 00:00:00 +0000",
+                "external_id": "aa@leaskh.com",
+                "external_username": "aa@leaskh.com",
+                "id": 540,
+                "name": "Leask",
+                "nickname": "",
+                "order": 0,
+                "provider": "email",
+                "status": "VERIFYING",
+                "type": "identity",
+                "updated_at": "0000-00-00 00:00:00 +0000"
+            }
         }
     }
 }
