@@ -7,6 +7,8 @@ args/get:
 args/post:
     external_username : string
     provider : string
+    device : string
+    device_callback : string / url
 return:
     identity : object
 
