@@ -1,5 +1,7 @@
-h1. Object place
+Object place
+----------
 
+<pre>
 id
 title
 description
@@ -8,10 +10,10 @@ lat
 created_at
 updated_at
 
-----------
 [
 {
 provider
 external_id
 }
 ]
+</pre>
