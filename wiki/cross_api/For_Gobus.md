@@ -3,7 +3,7 @@ h1. For Gobus
 <pre>
 Identity Update:
 method: post,
-endpoint: api.local.exfe.com/v2/Gobus/UpdateIdentity
+endpoint: /v2/Gobus/UpdateIdentity
 args: id, provider, external_id, name, nickname, bio, avatar_filename, external_username
 return: http 200 / http 500
 </pre>
@@ -12,7 +12,7 @@ return: http 200 / http 500
 <pre>
 Post conversation:
 method: post,
-endpoint: api.local.exfe.com/v2/Gobus/PostConversation
+endpoint: /v2/Gobus/PostConversation
 args: per_user_hash, content, external_id, provider, time, cross_id
 example:
 
@@ -40,6 +40,32 @@ Content-Length: 0
 Date: Thu, 07 Jun 2012 07:06:31 GMT
 Server: lighttpd/1.4.30
 </pre>
+
+
+<pre>
+Notification Callback:
+method: post
+endpoint: /v2/Gobus/NotificationCallback
+args:
+    {
+        "recipient" : [object],
+        "error"     : [string]
+    }
+example:
+
+echo '{"recipient":{"external_username":"xxxxxxxasdfdfsadf","provider":"iOS"},"error":"asd"}' | http api.local.exfe.com/v2/Gobus/NotificationCallback
+HTTP/1.1 200 OK
+Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Content-Type: application/json; charset=UTF-8
+Date: Wed, 14 Nov 2012 13:34:38 GMT
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Pragma: no-cache
+Server: lighttpd/1.4.31
+Set-Cookie: PHPSESSID=q4a2u0src7pebh12hhn2f7b3h1; path=/; domain=.exfe.com
+Transfer-Encoding: chunked
+X-Powered-By: PHP/5.4.8
+</pre>
+
 
 Response:
 200: 正常

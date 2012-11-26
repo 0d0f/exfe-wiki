@@ -2,7 +2,7 @@
 
 Gather a Cross
 
-endpoint: http://API_ROOT/v2/crosses/add
+endpoint: http://API_ROOT/v2/crosses/gather
 method: POST
 
 Cross: a cross object in json format
