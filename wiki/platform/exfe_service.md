@@ -228,14 +228,14 @@ func <span id="NewThirdpart">NewThirdpart</span>
 
 	> curl http://127.0.0.1:23333/Thirdpart?method=Send -d '{"to":{"external_id":"123","external_username":"name","auth_data":"","provider":"twitter","identity_id":789,"user_id":1},"private":"private","public":"public","info":null}'
 
-    func (t *Thirdpart) UpdateFriends(meta *gobus.HTTPMeta, to *model.Recipient, i *int) error
+    func (t *Thirdpart) UpdateFriends(meta *gobus.HTTPMeta, tos model.ThirdpartTos, i *int) error
         同步更新to在第三方网站的好友信息
 
         例子：
 
 	> curl http://127.0.0.1:23333/Thirdpart?method=UpdateFriends -d '{"external_id":"123","external_username":"name","auth_data":"","provider":"twitter","identity_id":789,"user_id":1}'
 
-    func (t *Thirdpart) UpdateIdentity(meta *gobus.HTTPMeta, to *model.Recipient, i *int) error
+    func (t *Thirdpart) UpdateIdentity(meta *gobus.HTTPMeta, tos model.ThirdpartTos, i *int) error
         同步更新to在第三方网站的个人信息（头像，bio之类）
 
         例子：
@@ -414,9 +414,8 @@ func <span id="NewUser">NewUser</span>
 
         > curl 'http://127.0.0.1:23333/User?method=Verify' -d
         '[{"to":{"identity_id":11,"user_id":1,"name":"email1
-        name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"by":{"id":12,"name":"email2
-        name","nickname":"email2 nick","bio":"email2
-        bio","timezone":"+0800","connected_user_id":2,"avatar_filename":"http://path/to/email2.avatar","provider":"email","external_id":"email2@domain.com","external_username":"email2@domain.com"}}]'
+        name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"by_name":"by
+        user"}]'
 
     func (u *User) Welcome(meta *gobus.HTTPMeta, welcomes model.UserWelcomes, i *int) error
         发送给用户的邀请
