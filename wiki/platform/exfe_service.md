@@ -398,14 +398,15 @@ func <span id="NewUser">NewUser</span>
 
     func NewUser(localTemplate *formatter.LocalTemplate, config *model.Config) *User
 
-    func (u *User) ResetPassword(meta *gobus.HTTPMeta, tos model.ThirdpartTos, i *int) error
+    func (u *User) ResetPassword(meta *gobus.HTTPMeta, tos model.UserVerifys, i *int) error
         发送给用户的重置密码请求
 
         例子：
 
         > curl 'http://127.0.0.1:23333/User?method=ResetPassword' -d
         '[{"to":{"identity_id":11,"user_id":1,"name":"email1
-        name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"}}]'
+        name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"by_name":"by
+        user"}]'
 
     func (u *User) Verify(meta *gobus.HTTPMeta, confirmations model.UserVerifys, i *int) error
         发送给用户的验证请求

@@ -410,8 +410,8 @@ type <span id="ThirdpartTos">ThirdpartTos</span>
 type <span id="UserVerify">UserVerify</span>
 
     type UserVerify struct {
-        To     Recipient `json:"to"`
-        ByName string    `json:"by_name"`
+        To       Recipient `json:"to"`
+        UserName string    `json:"user_name"`
 
         Config *Config `json:"-"`
     }
