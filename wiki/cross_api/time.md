@@ -9,6 +9,24 @@ end point: api.exfe.com/v2/time/recognize
     * crosstime: object
   - example:
 
+time words:
+['Daybreak'],
+['Dawn'],
+['Breakfast'],
+['Morning'],
+['Brunch'],
+['Lunch'],
+['Noon'],
+['Afternoon'],
+['Tea-break', 'tea break', 'teabreak'],
+['Coffee-break', 'coffee break']
+['Off-work',  'off work',  'offwork'],
+['Dinner'],
+['Evening'],
+['Night'],
+['Midnight'],
+['Late-night', 'Late night'],
+
 <pre>
 leask@Flora:~/Documents/Working/exfe/exfeweb/exfeweb> http -f post api.local.exfe.com/v2/time/recognize time_string='tomorrow' timezone='+08:00 CST'
 HTTP/1.1 200 OK
