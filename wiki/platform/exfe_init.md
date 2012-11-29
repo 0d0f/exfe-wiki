@@ -36,11 +36,11 @@ go version 1（编译用）
 部署过程：
 --------
 
-－ 复制库
+- 复制库
 
 	> git clone git@dlol.us:exfebus.git
 
-－ 编译
+- 编译
 
 	exfebus> ./all.bash
 
