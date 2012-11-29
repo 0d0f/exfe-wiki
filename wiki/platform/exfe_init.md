@@ -38,13 +38,19 @@ deploy目录下文件：
 
 - 复制库
 
+执行：
+
     > git clone git@dlol.us:exfebus.git
 
 - 编译
 
+执行：
+
     exfebus> ./all.bash
 
 - 部署环境(以ubuntu为例，其余系统可能要单独安装monit和logrotate，并修改相关配置目录)
+
+执行：
 
     exfebus/deploy> ./init_env.bash
     exfebus/deploy> ./gen_launcher.bash /usr/local/etc/rc.d
@@ -56,6 +62,8 @@ deploy目录下文件：
 
 - 创建配置文件
 
+执行：
+
     exfebus> cp exfe.json.example /usr/local/etc/gobus/exfe.json
 
 之后根据环境配置/usr/local/gobus/exfe.json
@@ -65,5 +73,7 @@ deploy目录下文件：
     mysql> CREATE TABLE `tokens` (`id` SERIAL NOT NULL, `key` CHAR(32) NOT NULL, `rand` CHAR(32) NOT NULL, `created_at` DATETIME NOT NULL, `expire_at` DATETIME NOT NULL, `data` TEXT NOT NULL);
 
 - 部署并执行
+
+执行：
 
     exfebus> ./deploy/deploy.bash
