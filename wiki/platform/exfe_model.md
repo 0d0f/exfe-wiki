@@ -35,21 +35,24 @@ type <span id="Config">Config</span>
         TemplatePath string `json:"template_path"`
         DefaultLang  string `json:"default_lang"`
 
-        DB struct {
+        Test bool `json:"test"`
+        DB   struct {
             Addr     string `json:"addr"`
-            Port     int    `json:"port"`
+            Port     uint   `json:"port"`
             Username string `json:"username"`
             Password string `json:"password"`
             DbName   string `json:"db_name"`
         } `json:"db"`
         Redis struct {
-            Netaddr  string `json:"netaddr"`
-            Db       int    `json:"db"`
-            Password string `json:"password"`
+            Netaddr           string `json:"netaddr"`
+            Db                int    `json:"db"`
+            Password          string `json:"password"`
+            MaxConnections    uint   `json:"max_connections"`
+            HeartBeatInSecond uint   `json:"heart_beat_in_second"`
         } `json:"redis"`
         Email struct {
             Host     string `json:"host"`
-            Port     int    `json:"port"`
+            Port     uint   `json:"port"`
             Username string `json:"username"`
             Password string `json:"password"`
             Name     string `json:"name"`
@@ -58,19 +61,21 @@ type <span id="Config">Config</span>
 
         ExfeService struct {
             Addr string `json:"addr"`
-            Port int    `json:"port"`
+            Port uint   `json:"port"`
         } `json:"exfe_service"`
         ExfeQueue struct {
-            Addr string         `json:"addr"`
-            Port int            `json:"port"`
-            Head map[string]int `json:"head"`
+            Addr string          `json:"addr"`
+            Port uint            `json:"port"`
+            Head map[string]uint `json:"head"`
+            Tail map[string]uint `json:"tail"`
         } `json:"exfe_queue"`
 
         TokenManager struct {
             TableName string `json:"table_name"`
         } `json:"token_manager"`
         Thirdpart struct {
-            Twitter struct {
+            MaxStateCache uint `json:"max_state_cache"`
+            Twitter       struct {
                 ClientToken  string `json:"client_token"`
                 ClientSecret string `json:"client_secret"`
                 AccessToken  string `json:"access_token"`
@@ -88,6 +93,14 @@ type <span id="Config">Config</span>
                 Key string `json:"key"`
             } `json:"gcm"`
         } `json:"thirdpart"`
+        Bot struct {
+            Email struct {
+                IMAPHost        string `json:"imap_host"`
+                IMAPUser        string `json:"imap_user"`
+                IMAPPassword    string `json:"imap_password"`
+                TimeoutInSecond uint   `json:"timeout_in_second"`
+            } `json:"email"`
+        } `json:"bot"`
 
         Log *logger.Logger `json:"-"`
     }
@@ -397,15 +410,13 @@ type <span id="ThirdpartTos">ThirdpartTos</span>
 type <span id="UserVerify">UserVerify</span>
 
     type UserVerify struct {
-        To Recipient `json:"to"`
-        By Identity  `json:"by"`
+        To       Recipient `json:"to"`
+        UserName string    `json:"user_name"`
 
         Config *Config `json:"-"`
     }
 
     func (c UserVerify) Link() string
-
-    func (a UserVerify) NeedShowBy() bool
 
     func (c *UserVerify) Parse(config *Config) (err error)
 

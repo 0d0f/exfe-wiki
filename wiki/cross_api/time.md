@@ -1,7 +1,6 @@
 ## Time API:
-end point: api.exfe.com/v2/time
+end point: api.exfe.com/v2/time/recognize
 
-### recognize
   - method: post
   - args:
     * time_string: string
