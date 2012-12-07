@@ -46,6 +46,7 @@ t## Git User:
   * cd /home/git/repos && git clone git:wiki
 
 ## Thanks to:
+  * http://blog.countableset.ch/2012/04/29/ubuntu-12-dot-04-installing-gitolite-and-gitweb/
   * http://www.momo-lab.net/saru/
   * https://wiki.archlinux.org/index.php/Gitolite
   * http://www.linuxforu.com/2011/01/gitolite-specify-complex-access-controls-git-server/
