@@ -31,5 +31,6 @@
       Hostname git.0d0f.com
       #Hostname 192.168.1.88
       PreferredAuthentications publickey
-      IdentityFile ~/.ssh/xwhite/id_rsa # 注意这里你的私钥文件路径
+      #注意这里你的私钥文件路径
+      IdentityFile ~/.ssh/xwhite/id_rsa
     </pre>
