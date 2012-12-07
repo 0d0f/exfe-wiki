@@ -13,13 +13,6 @@ cd /usr/local/etc/openvpn/usvpn/;openvpn --config /usr/local/etc/openvpn/usvpn/h
 
 ### 服务器配置变化
 
-# 注意更新lighttpd.conf
-
-这次更新需要加入：
-
- "^/v2/([a-zA-Z]+)/(.*)$" => "apiindex.php?v=v2&class=$1&path=$2"
-  用来支持v2版API。
-
 ## URL
 
 [URL Rules](Url-rules)
