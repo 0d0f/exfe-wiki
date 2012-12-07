@@ -13,7 +13,6 @@
   * server: white.d0f0.com
     * user: git
     * group: git
-    * password: 2--w--s--
 
   * git-server: [Gitolite](http://sitaramc.github.com/gitolite)
   * wiki-system: [Markdoc](http://markdoc.org/)
