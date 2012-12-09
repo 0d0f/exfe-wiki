@@ -10,7 +10,7 @@
     </pre>
 
 ## 组件：
-  * server: white.d0f0.com
+  * server: panda.d0f0.com
     * user: git
     * group: git
 
