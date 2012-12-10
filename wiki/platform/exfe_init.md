@@ -36,6 +36,16 @@ deploy目录下文件：
 部署过程：
 --------
 
+- 安装golang
+
+添加源：
+
+    > sudo add-apt-repository ppa:gophers/go
+
+安装：
+
+    > sudo apt-get install golang-stable
+
 - 复制库
 
 执行：
