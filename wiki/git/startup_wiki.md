@@ -2,6 +2,6 @@
 
 ## Quickstart:
   * pip install markdoc
-  * /usr/local/share/python/markdoc init /exfe/exfewiki --vcs-ignore git
-  * Building: /usr/local/share/python/markdoc build or /usr/local/share/python/markdoc -c /Users/admin/repos/exfewiki build
-  * Serving: /usr/local/share/python/markdoc serve
+  * /usr/local/bin/markdoc init /home/git/repos/wiki --vcs-ignore git
+  * Building: /usr/local/bin/markdoc build or /usr/local/bin/markdoc -c /home/git/repos/wiki build
+  * Serving: /usr/local/bin/markdoc serve

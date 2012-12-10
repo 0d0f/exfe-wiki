@@ -10,10 +10,9 @@
     </pre>
 
 ## 组件：
-  * server: white.d0f0.com
+  * server: panda.d0f0.com
     * user: git
     * group: git
-    * password: 2--w--s--
 
   * git-server: [Gitolite](http://sitaramc.github.com/gitolite)
   * wiki-system: [Markdoc](http://markdoc.org/)
@@ -32,5 +31,6 @@
       Hostname git.0d0f.com
       #Hostname 192.168.1.88
       PreferredAuthentications publickey
-      IdentityFile ~/.ssh/xwhite/id_rsa # 注意这里你的私钥文件路径
+      #注意这里你的私钥文件路径
+      IdentityFile ~/.ssh/xwhite/id_rsa
     </pre>

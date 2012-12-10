@@ -1,7 +1,6 @@
-## Git User:
+t## Git User:
   * user: git
   * group: git
-  * password: 2--w--s--
 
 ## install [gitolite](https://github.com/sitaramc/gitolite):
 
@@ -37,17 +36,17 @@
   * git clone git@192.168.1.88:testing
 
 ### Add exfewiki repo and setup wiki system
-  * http://wiki.white.0d0f.com
-  * cd /Users/admin/repos/exfewiki
-  * /usr/local/share/python/markdoc init /Users/admin/repos/exfewiki --vcs-ignore git
-  * /usr/local/share/python/markdoc build
-  * /usr/local/share/python/markdoc serve
+  * http://wiki0d0f.com
+  * cd /home/git/repos/wiki
+  * /usr/local/bin/markdoc init /home/git/repos/wiki --vcs-ignore git
+  * /usr/local/bin/markdoc build
+  * /usr/local/bin/markdoc serve
   * git init
-  * git remote add origin exfegit:exfewiki
-  * cd /Users/git/repos && git clone exfegit:exfewiki
-  * ln -sf /Users/git/repos/exfewiki /exfe/exfewiki
+  * git remote add origin git:wiki
+  * cd /home/git/repos && git clone git:wiki
 
 ## Thanks to:
+  * http://blog.countableset.ch/2012/04/29/ubuntu-12-dot-04-installing-gitolite-and-gitweb/
   * http://www.momo-lab.net/saru/
   * https://wiki.archlinux.org/index.php/Gitolite
   * http://www.linuxforu.com/2011/01/gitolite-specify-complex-access-controls-git-server/
