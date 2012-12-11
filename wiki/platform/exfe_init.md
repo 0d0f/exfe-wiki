@@ -70,6 +70,8 @@ deploy目录下文件：
     exfebus/deploy> service monit restart
     exfebus/deploy> service rsyslog restart
 
+将deploy/crontab的配置写入crontab。
+
 - 创建配置文件
 
 执行：
