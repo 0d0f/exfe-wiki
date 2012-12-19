@@ -39,12 +39,6 @@ Time_word/Time/Date_word/Date 都是字符串，所以如果为空就是不存�
 如果计算过时区之后，比较年份，如果年份和当前不同，就显示年份。
 
 
-
-
-
-
- 
-
 测试用例：
 <pre>
   type EFTime struct {
