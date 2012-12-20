@@ -8,17 +8,20 @@ Conversation API
 
 	"@exfe@twitter look at this image http://instagr.am/xxxx\n cool!"
 	=>
-	"{{identity:exfe@twitter}} look at this image {{url:http://instagr.am/xxxx}}\n cool!"
+	"@exfe@twitter look at this image {{url:http://instagr.am/xxxx}}\n cool!"
+	relationship: [{"mention": "identity://123"}, {"url":"http://instagr.am/xxxx"}]
 
 特殊格式解析：
 
 	"@exfe@twitter look at this image {{image:http://instagr.am/xxxx}}\n cool!"
 	=>
-	"{{identity:exfe@twitter}} look at this image {{image:http://instagr.am/xxxx}}\n cool!"
+	"@exfe@twitter look at this image {{image:http://instagr.am/xxxx}}\n cool!"
+	relationship: [{"mention": "identity://123"}, {"image":"http://instagr.am/xxxx"}]
 
 	"@exfe@twitter look at this image {{webpage:http://instagr.am/xxxx}}\n cool!"
 	=>
-	"{{identity:exfe@twitter}} look at this image {{webpage:http://instagr.am/xxxx}}\n cool!"
+	"@exfe@twitter look at this image {{webpage:http://instagr.am/xxxx}}\n cool!"
+	relationship: [{"mention": "identity://123"}, {"webpage":"http://instagr.am/xxxx"}]
 
 对外接口
 =======
@@ -38,6 +41,8 @@ Conversation API
 		"created_at": "2012-12-21 23:59:00 +0800", // 可选，若没有默认为当前时间
 	}
 
+- reply：表示回复的某条post
+
 返回：
 
 	{
@@ -50,16 +55,28 @@ Conversation API
 		"content": "blablablabla",
 		"via": "web",
 		"created_at": "2012-12-21 23:59:00 +0800",
-		"relationship": [{
-			"relation": "mention",
-			"uri": "identity://external_username@provider",
-		}],
+		"relationship": [
+			{
+				"relation": "mention",
+				"uri": "identity://external_username@provider"
+			},
+			{
+				"relation": "reply",
+				"uri": "post://123"
+			}
+		],
 		"exfee_id": {EXFEE_ID}
 	}
 
 获得EXFEE_ID中的一些Posts：
 
-	GET http://API_ROOT/v2/exfee/{EXFEE_ID}/Conversation?clear=false&since=2011-12-21+23:59:00&until=2012-12-21+23:59:00&min_id=123&max_id=456
+	GET http://API_ROOT/v2/exfee/{EXFEE_ID}/Conversation?clear_user=123&since=2011-12-21+23:59:00&until=2012-12-21+23:59:00&min_id=123&max_id=456
+
+- clear_user：清掉对应的user在EXFEE_ID的unread count
+- since：返回此时间之后的posts
+- until：返回此时间之前的posts
+- min_id：返回post id大于此id的posts
+- max_id：返回post id于此id的posts
 
 返回：
 
@@ -76,7 +93,7 @@ Conversation API
 			"created_at": "2012-12-21 23:59:00 +0800",
 			"relationship": [{
 				"relation": "mention",
-				"uri": "identity://external_username@provider",
+				"uri": "identity://external_username@provider"
 			}],
 			"exfee_id": {EXFEE_ID}
 		},
@@ -104,7 +121,7 @@ Conversation API
 		"created_at": "2012-12-21 23:59:00 +0800",
 		"relationship": [{
 			"relation": "mention",
-			"uri": "identity://external_username@provider",
+			"uri": "identity://external_username@provider"
 		}],
 		"exfee_id": {EXFEE_ID}
 	}
