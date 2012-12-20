@@ -13,10 +13,10 @@ Conversation API
 
 特殊格式解析：
 
-	"@exfe@twitter look at this image {{image:http://instagr.am/xxxx}}\n cool!"
+	"@exfe@twitter look at this image {{image:http://instagr.am/xxxx.jpg}}\n cool!"
 	=>
-	"@exfe@twitter look at this image {{image:http://instagr.am/xxxx}}\n cool!"
-	relationship: [{"mention": "identity://123"}, {"image":"http://instagr.am/xxxx"}]
+	"@exfe@twitter look at this image {{image:http://instagr.am/xxxx.jpg}}\n cool!"
+	relationship: [{"mention": "identity://123"}, {"image":"http://instagr.am/xxxx.jpg"}]
 
 	"@exfe@twitter look at this image {{webpage:http://instagr.am/xxxx}}\n cool!"
 	=>
@@ -58,7 +58,7 @@ Conversation API
 		"relationship": [
 			{
 				"relation": "mention",
-				"uri": "identity://external_username@provider"
+				"uri": "identity://234"
 			},
 			{
 				"relation": "reply",
@@ -93,7 +93,7 @@ Conversation API
 			"created_at": "2012-12-21 23:59:00 +0800",
 			"relationship": [{
 				"relation": "mention",
-				"uri": "identity://external_username@provider"
+				"uri": "identity://234"
 			}],
 			"exfee_id": {EXFEE_ID}
 		},
@@ -121,7 +121,7 @@ Conversation API
 		"created_at": "2012-12-21 23:59:00 +0800",
 		"relationship": [{
 			"relation": "mention",
-			"uri": "identity://external_username@provider"
+			"uri": "identity://234"
 		}],
 		"exfee_id": {EXFEE_ID}
 	}
