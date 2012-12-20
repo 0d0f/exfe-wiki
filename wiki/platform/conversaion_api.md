@@ -1,12 +1,27 @@
 Conversation API
 ----------------
 
+特殊conversation内容：
+====================
+
+	"@hengdm@twitter look at this image http://instagr.am/xxxx\n cool!"
+	=> // 默认解析方式
+	"{identity:hengdm@twitter} look at this image {url:http://instagr.am/xxxx}\n cool!"
+
+	"@hengdm@twitter look at this image {image:http://instagr.am/xxxx}\n cool!"
+	=>
+	"{identity:hengdm@twitter} look at this image {image:http://instagr.am/xxxx}\n cool!"
+
+	"@hengdm@twitter look at this image {webpage:http://instagr.am/xxxx}\n cool!"
+	=>
+	"{identity:hengdm@twitter} look at this image {webpage:http://instagr.am/xxxx}\n cool!"
+
 对外接口
 =======
 
 发一条Post到EXFEE_ID：
 
-	POST http://API_ROOT/v2/exfee/{EXFEE_ID}/Conversation
+	POST http://API_ROOT/v2/exfee/{EXFEE_ID}/Conversation&reply=123
 	{
 		"by_identity": {
 			"id": 123,
