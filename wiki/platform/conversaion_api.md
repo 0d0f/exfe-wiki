@@ -1,8 +1,8 @@
 Conversation API
-----------------
+================
 
 特殊conversation内容：
-====================
+--------------------
 
 默认解析方式：
 
@@ -24,7 +24,7 @@ Conversation API
 	relationship: [{"mention": "identity://123"}, {"webpage":"http://instagr.am/xxxx"}]
 
 对外接口
-=======
+-------
 
 发一条Post到EXFEE_ID：
 
@@ -135,7 +135,7 @@ Conversation API
 	5
 
 对内结构
-=======
+-------
 
 Meta结构：
 
