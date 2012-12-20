@@ -1,6 +1,9 @@
 Conversation API
 ----------------
 
+对外接口
+=======
+
 发一条Post到EXFEE_ID：
 
 	POST http://API_ROOT/v2/exfee/{EXFEE_ID}/Conversation
@@ -94,3 +97,30 @@ Conversation API
 返回：
 
 	5
+
+对内结构
+=======
+
+Meta结构：
+
+	type Relationship struct {
+		URI      string `json:"uri"`
+		Relation string `json:"relation"`
+	}
+
+	type Meta struct {
+		ID           string         `json:"id"`
+		Type         string         `json:"type"`
+		CreatedAt    time.Time      `json:"created_at"`
+		By           Identity       `json:"by"`
+		Relationship []Relationship `json:"relationship"`
+	}
+
+Post结构：
+
+	type Post struct {
+		model.Meta
+		Content string `json:"content"`
+		Via     string `json:"via"`
+		ExfeeID uint64 `json:"exfee_id"`
+	}
