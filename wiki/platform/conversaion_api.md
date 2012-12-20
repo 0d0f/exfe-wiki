@@ -4,17 +4,17 @@ Conversation API
 特殊conversation内容：
 ====================
 
-	"@hengdm@twitter look at this image http://instagr.am/xxxx\n cool!"
+	"@exfe@twitter look at this image http://instagr.am/xxxx\n cool!"
 	=> // 默认解析方式
-	"{identity:hengdm@twitter} look at this image {url:http://instagr.am/xxxx}\n cool!"
+	"{identity:exfe@twitter} look at this image {url:http://instagr.am/xxxx}\n cool!"
 
-	"@hengdm@twitter look at this image {image:http://instagr.am/xxxx}\n cool!"
+	"@exfe@twitter look at this image {image:http://instagr.am/xxxx}\n cool!"
 	=>
-	"{identity:hengdm@twitter} look at this image {image:http://instagr.am/xxxx}\n cool!"
+	"{identity:exfe@twitter} look at this image {image:http://instagr.am/xxxx}\n cool!"
 
-	"@hengdm@twitter look at this image {webpage:http://instagr.am/xxxx}\n cool!"
+	"@exfe@twitter look at this image {webpage:http://instagr.am/xxxx}\n cool!"
 	=>
-	"{identity:hengdm@twitter} look at this image {webpage:http://instagr.am/xxxx}\n cool!"
+	"{identity:exfe@twitter} look at this image {webpage:http://instagr.am/xxxx}\n cool!"
 
 对外接口
 =======
