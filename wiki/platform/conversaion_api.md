@@ -20,20 +20,18 @@ Conversation API
 
 	{
 		"id": 456,
-		"via": "web",
-		"type": "post",
-		"created_at": "2012-12-21 23:59:00 +0800",
 		"by_identity": {
 			"id": 123,
 			"name": "steve exfee",
 			...
 		},
+		"content": "blablablabla",
+		"via": "web",
+		"created_at": "2012-12-21 23:59:00 +0800",
 		"relationship": [{
 			"relation": "mention",
 			"uri": "identity://external_username@provider",
 		}],
-		"content": "blablablabla",
-		"via": "web",
 		"exfee_id": {EXFEE_ID}
 	}
 
@@ -46,20 +44,18 @@ Conversation API
 	[
 		{
 			"id": 456,
-			"via": "web",
-			"type": "post",
-			"created_at": "2012-12-21 23:59:00 +0800",
 			"by_identity": {
 				"id": 123,
 				"name": "steve exfee",
 				...
 			},
+			"content": "blablablabla",
+			"via": "web",
+			"created_at": "2012-12-21 23:59:00 +0800",
 			"relationship": [{
 				"relation": "mention",
 				"uri": "identity://external_username@provider",
 			}],
-			"content": "blablablabla",
-			"via": "web",
 			"exfee_id": {EXFEE_ID}
 		},
 		{
@@ -76,20 +72,18 @@ Conversation API
 
 	{
 		"id": 456,
-		"via": "web",
-		"type": "post",
-		"created_at": "2012-12-21 23:59:00 +0800",
 		"by_identity": {
 			"id": 123,
 			"name": "steve exfee",
 			...
 		},
+		"content": "blablablabla",
+		"via": "web",
+		"created_at": "2012-12-21 23:59:00 +0800",
 		"relationship": [{
 			"relation": "mention",
 			"uri": "identity://external_username@provider",
 		}],
-		"content": "blablablabla",
-		"via": "web",
 		"exfee_id": {EXFEE_ID}
 	}
 
