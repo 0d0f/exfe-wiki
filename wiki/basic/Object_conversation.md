@@ -8,6 +8,8 @@ updated_at :最后更新时间
 clear：是否清空阅读状态，默认为true
 
 
+
+
 例: http://api.local.exfe.com/v2/conversation/100100
 
 <pre>
