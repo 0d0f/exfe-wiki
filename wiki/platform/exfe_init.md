@@ -36,6 +36,16 @@ deploy目录下文件：
 部署过程：
 --------
 
+- 安装golang
+
+添加源：
+
+    > sudo add-apt-repository ppa:gophers/go
+
+安装：
+
+    > sudo apt-get install golang-stable
+
 - 复制库
 
 执行：
@@ -59,6 +69,8 @@ deploy目录下文件：
     exfebus/deploy> cp syslog.conf /etc/rsyslog.d/30-exfe.conf
     exfebus/deploy> service monit restart
     exfebus/deploy> service rsyslog restart
+
+将deploy/crontab的配置写入crontab。
 
 - 创建配置文件
 
