@@ -39,6 +39,7 @@ echo '{"recipient":{"external_username":"xxxxxxxasdfdfsadf","provider":"iOS"},"e
 HTTP/1.1 200 OK
 </pre>
 
+
 <pre>
 Revoke Identity:
 method: post
@@ -54,6 +55,7 @@ echo '{"external_username":"leaskh","provider":"twitter"}' | http post local.exf
 HTTP/1.1 200 OK
 </pre>
 
+
 <pre>
 GetCrossById:
 method: get
@@ -65,6 +67,7 @@ example:
 http api.local.exfe.com/v2/Gobus/GetCrossById?id=100307
 HTTP/1.1 200 OK
 </pre>
+
 
 Response:
 200: 正常
