@@ -46,13 +46,15 @@ method: post
 endpoint: /v2/Gobus/RevokeIdentity
 args:
     {
+        "id"                : [integer],
         "external_username" : [string],
         "provider"          : [string]
     }
 example:
 
-echo '{"external_username":"leaskh","provider":"twitter"}' | http post local.exfe.com/v2/gobus/revokeIdentity
+echo '{"id":1,external_username":"leaskh","provider":"twitter"}' | http post local.exfe.com/v2/gobus/revokeIdentity
 HTTP/1.1 200 OK
+identity[json]
 </pre>
 
 
