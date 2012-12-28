@@ -11,14 +11,19 @@ CONSTANTS
 -------
 
     const (
-        CREATE                   = "INSERT INTO `%%table%%` VALUES (null, ?, ?, ?, ?, ?)"
-        STORE                    = "UPDATE `%%table%%` SET expire_at=?, data=? WHERE %%table%%.key=? AND %%table%%.rand=?"
-        FIND_BY_KEY              = "SELECT rand, created_at, expire_at, data FROM `%%table%%` WHERE %%table%%.key=?"
-        FIND_BY_TOKEN            = "SELECT created_at, expire_at, data FROM `%%table%%` WHERE %%table%%.key=? AND %%table%%.rand=?"
-        UPDATE_DATA_BY_TOKEN     = "UPDATE `%%table%%` SET %%table%%.data=? WHERE %%table%%.key=? AND %%table%%.rand=?"
-        UPDATE_EXPIREAT_BY_TOKEN = "UPDATE `%%table%%` SET %%table%%.expire_at=? WHERE %%table%%.key=? AND %%table%%.rand=?"
-        UPDATE_EXPIREAT_BY_KEY   = "UPDATE `%%table%%` SET %%table%%.expire_at=? WHERE %%table%%.key=?"
-        DELETE_BY_TOKEN          = "DELETE FROM `%%table%%` WHERE %%table%%.key=? AND %%table%%.rand=?"
+        POST_CREATE = "INSERT INTO `posts` (by_id, created_at, relationship, content, via, exfee_id, ref_uri) VALUES (?, ?, ?, ?, ?, ?, ?)"
+        POST_FIND   = "SELECT id, by_id, created_at, relationship, content, via, exfee_id, ref_uri FROM `posts` WHERE del=0 AND exfee_id=? AND ref_uri=?"
+        POST_DELETE = "UPDATE `posts` SET posts.del=1 WHERE id=? AND ref_uri=?"
+    )
+    const (
+        CREATE                   = "INSERT INTO `tokens` VALUES (null, ?, ?, ?, ?, ?)"
+        STORE                    = "UPDATE `tokens` SET expire_at=?, data=? WHERE tokens.key=? AND tokens.rand=?"
+        FIND_BY_KEY              = "SELECT rand, created_at, expire_at, data FROM `tokens` WHERE tokens.key=?"
+        FIND_BY_TOKEN            = "SELECT created_at, expire_at, data FROM `tokens` WHERE tokens.key=? AND tokens.rand=?"
+        UPDATE_DATA_BY_TOKEN     = "UPDATE `tokens` SET tokens.data=? WHERE tokens.key=? AND tokens.rand=?"
+        UPDATE_EXPIREAT_BY_TOKEN = "UPDATE `tokens` SET tokens.expire_at=? WHERE tokens.key=? AND tokens.rand=?"
+        UPDATE_EXPIREAT_BY_KEY   = "UPDATE `tokens` SET tokens.expire_at=? WHERE tokens.key=?"
+        DELETE_BY_TOKEN          = "DELETE FROM `tokens` WHERE tokens.key=? AND tokens.rand=?"
     )
 
 TYPES
@@ -32,7 +37,7 @@ type <span id="Conversation">Conversation</span>
 
 func <span id="NewConversation">NewConversation</span>
 
-    func NewConversation(localTemplate *formatter.LocalTemplate, config *model.Config) *Conversation
+    func NewConversation(localTemplate *formatter.LocalTemplate, config *model.Config, sender *broker.Sender) *Conversation
 
     func (c *Conversation) Update(meta *gobus.HTTPMeta, updates model.ConversationUpdates, i *int) error
         发送Conversation的更新消息updates
@@ -59,6 +64,80 @@ func <span id="NewConversation">NewConversation</span>
         bio","timezone":"+0800","connected_user_id":3,"avatar_filename":"http://path/to/twitter3.avatar","provider":"twitter","external_id":"twitter3@domain.com","external_username":"twitter3@domain.com"},"content":"twitter3
         post sth","via":"abc","created_at":"2012-10-24 16:40:00"}}]'
 
+type <span id="Conversation">Conversation</span>
+
+    type Conversation_ struct {
+        // contains filtered or unexported fields
+    }
+
+func <span id="NewConversation">NewConversation</span>
+
+    func NewConversation_(config *model.Config, db *broker.DBMultiplexer, redis *broker.RedisMultiplexer, dispatcher *gobus.Dispatcher) (*Conversation_, error)
+
+    func (c *Conversation_) DELETE(meta *gobus.HTTPMeta, arg string, reply *model.Post) error
+        删除一条Post
+
+        例子：
+
+	> curl "http://panda.0d0f.com:23333/cross/100354/Conversation/11?method=DELETE" -d '""'
+
+        返回：
+
+	{"id":11,"by_identity":{"id":572,"name":"Googol","connected_user_id":-572,"avatar_filename":"http://api.panda.0d0f.com/v2/avatar/default?name=Googol","provider":"email","external_id":"googollee@163.com","external_username":"googollee@163.com"},"content":"@googollee@twitter blablabla","via":"web","created_at":"2010-12-27 19:52:24 +0000","relationship":[{"uri":"identity://573","relation":"mention"}],"exfee_id":110220,"ref_uri":"cross://100354"}
+
+    func (c *Conversation_) GET(meta *gobus.HTTPMeta, arg string, reply *[]model.Post) error
+        查询Posts
+
+        例子：
+
+	> curl "http://panda.0d0f.com:23333/cross/100354/Conversation?method=GET&clear_user=378&since=2010-12-27+19:52:24&until=2010-12-27+19:52:24&min=11&max=11" -d '""'
+
+        返回：
+
+	[{"id":11,"by_identity":{"id":572,"name":"Googol","connected_user_id":-572,"avatar_filename":"http://api.panda.0d0f.com/v2/avatar/default?name=Googol","provider":"email","external_id":"googollee@163.com","external_username":"googollee@163.com"},"content":"@googollee@twitter blablabla","via":"web","created_at":"2010-12-27 19:52:24 +0000","relationship":[{"uri":"identity://573","relation":"mention"}],"exfee_id":110220,"ref_uri":"cross://100354"}]
+
+    func (c *Conversation_) POST(meta *gobus.HTTPMeta, arg model.Post, reply *model.Post) error
+        发一条新的Post到cross_id
+
+        例子：
+
+	> curl http://panda.0d0f.com:23333/cross/100354/Conversation?via=web&created_at=1293479544 -d '{"by_identity":{"id":572},"content":"@googollee@twitter blablabla"}'
+
+        返回：
+
+	{"id":11,"by_identity":{"id":572,"name":"Googol","connected_user_id":-572,"avatar_filename":"http://api.panda.0d0f.com/v2/avatar/default?name=Googol","provider":"email","external_id":"googollee@163.com","external_username":"googollee@163.com"},"content":"@googollee@twitter blablabla","via":"web","created_at":"2010-12-27 19:52:24 +0000","relationship":[{"uri":"identity://573","relation":"mention"}],"exfee_id":110220,"ref_uri":"cross://100354"}
+
+        content解析方式：
+
+        默认：
+
+	"@exfe@twitter look at this image http://instagr.am/xxxx\n cool!"
+	 =>
+	"@exfe@twitter look at this image {{url:http://instagr.am/xxxx}}\n cool!"
+	relationship: [{"mention": "identity://123"}, {"url":"http://instagr.am/xxxx"}]
+
+        特殊格式解析：
+
+	"@exfe@twitter look at this image {{image:http://instagr.am/xxxx.jpg}}\n cool!"
+	 =>
+	"@exfe@twitter look at this image {{image:http://instagr.am/xxxx.jpg}}\n cool!"
+	relationship: [{"mention": "identity://123"}, {"image":"http://instagr.am/xxxx.jpg"}]
+	"@exfe@twitter look at this image {{webpage:http://instagr.am/xxxx}}\n cool!"
+	 =>
+	"@exfe@twitter look at this image {{webpage:http://instagr.am/xxxx}}\n cool!"
+	relationship: [{"mention": "identity://123"}, {"webpage":"http://instagr.am/xxxx"}]
+
+    func (c *Conversation_) Unread(meta *gobus.HTTPMeta, arg string, reply *int) error
+        取得用户user_id未读的post条数
+
+        例子：
+
+	> curl "http://panda.0d0f.com:23333/cross/100354/user/-572/unread_count?method=Unread" -d '""'
+
+        返回：
+
+	1
+
 type <span id="Cross">Cross</span>
 
     type Cross struct {
@@ -67,9 +146,9 @@ type <span id="Cross">Cross</span>
 
 func <span id="NewCross">NewCross</span>
 
-    func NewCross(localTemplate *formatter.LocalTemplate, config *model.Config) *Cross
+    func NewCross(localTemplate *formatter.LocalTemplate, config *model.Config, sender *broker.Sender) *Cross
 
-    func (c *Cross) Invite(meta *gobus.HTTPMeta, invitations model.CrossInvitations, i *int) error
+    func (c *Cross) Invite(meta *gobus.HTTPMeta, invitation model.CrossInvitation, i *int) error
         发送Cross的邀请消息invitations
 
         例子：
@@ -158,19 +237,6 @@ func <span id="NewCross">NewCross</span>
         name","nickname":"facebook4 nick","bio":"facebook4
         bio","timezone":"+0800","connected_user_id":4,"avatar_filename":"http://path/to/facebook4.avatar","provider":"facebook","external_id":"facebook4@domain.com","external_username":"facebook4@domain.com"}}]'
 
-type <span id="DBRepository">DBRepository</span>
-
-    type DBRepository struct {
-        Config *model.Config
-        // contains filtered or unexported fields
-    }
-
-    func (r *DBRepository) Connect() error
-
-    func (r *DBRepository) Exec(sql string, v ...interface{}) (sql.Result, error)
-
-    func (r *DBRepository) Query(sql string, v ...interface{}) (*sql.Rows, error)
-
 type <span id="Iom">Iom</span>
 
     type Iom struct {
@@ -179,7 +245,7 @@ type <span id="Iom">Iom</span>
 
 func <span id="NewIom">NewIom</span>
 
-    func NewIom(config *model.Config, redis *godis.Client) *Iom
+    func NewIom(config *model.Config, redis broker.Redis) *Iom
 
     func (iom *Iom) GET(meta *gobus.HTTPMeta, arg *IomGetArg, reply *string) (err error)
         获取用户user_id名下的hash对应的资源。
@@ -211,6 +277,34 @@ type <span id="IomPostArg">IomPostArg</span>
         Data   string `json:"data"`
     }
 
+type <span id="PostRepository">PostRepository</span>
+
+    type PostRepository struct {
+        // contains filtered or unexported fields
+    }
+
+func <span id="NewPostRepository">NewPostRepository</span>
+
+    func NewPostRepository(config *model.Config, db *broker.DBMultiplexer, redis *broker.RedisMultiplexer, dispatcher *gobus.Dispatcher) (*PostRepository, error)
+
+    func (r *PostRepository) AddUnreadCount(uri string, userID int64, count int) error
+
+    func (r *PostRepository) DeletePost(refID string, postID uint64) error
+
+    func (r *PostRepository) FindCross(id uint64) (model.Cross, error)
+
+    func (r *PostRepository) FindIdentity(identity model.Identity) (model.Identity, error)
+
+    func (r *PostRepository) FindPosts(exfeeID uint64, refURI, sinceTime, untilTime string, minID, maxID uint64) ([]convmodel.Post, error)
+
+    func (r *PostRepository) GetUnreadCount(uri string, userID int64) (int, error)
+
+    func (r *PostRepository) SavePost(post convmodel.Post) (uint64, error)
+
+    func (r *PostRepository) SendUpdate(tos []model.Recipient, cross model.Cross, post model.Post) error
+
+    func (r *PostRepository) SetUnreadCount(uri string, userID int64, count int) error
+
 type <span id="Thirdpart">Thirdpart</span>
 
     type Thirdpart struct {
@@ -228,14 +322,14 @@ func <span id="NewThirdpart">NewThirdpart</span>
 
 	> curl http://127.0.0.1:23333/Thirdpart?method=Send -d '{"to":{"external_id":"123","external_username":"name","auth_data":"","provider":"twitter","identity_id":789,"user_id":1},"private":"private","public":"public","info":null}'
 
-    func (t *Thirdpart) UpdateFriends(meta *gobus.HTTPMeta, tos model.ThirdpartTos, i *int) error
+    func (t *Thirdpart) UpdateFriends(meta *gobus.HTTPMeta, to model.ThirdpartTo, i *int) error
         同步更新to在第三方网站的好友信息
 
         例子：
 
 	> curl http://127.0.0.1:23333/Thirdpart?method=UpdateFriends -d '{"external_id":"123","external_username":"name","auth_data":"","provider":"twitter","identity_id":789,"user_id":1}'
 
-    func (t *Thirdpart) UpdateIdentity(meta *gobus.HTTPMeta, tos model.ThirdpartTos, i *int) error
+    func (t *Thirdpart) UpdateIdentity(meta *gobus.HTTPMeta, to model.ThirdpartTo, i *int) error
         同步更新to在第三方网站的个人信息（头像，bio之类）
 
         例子：
@@ -258,15 +352,7 @@ type <span id="TokenManager">TokenManager</span>
 
 func <span id="NewTokenManager">NewTokenManager</span>
 
-    func NewTokenManager(config *model.Config) (*TokenManager, error)
-
-    func (mng *TokenManager) Delete(meta *gobus.HTTPMeta, token *string, reply *int) error
-        删除token，如果成功返回0
-
-        例子：
-
-	> curl http://127.0.0.1:23333/TokenManager?method=Delete -d '"ab56b4d92b40713acc5af89985d4b786c027b1ee301059618fb364abafd43f4a"'
-	0
+    func NewTokenManager(config *model.Config, db *broker.DBMultiplexer) (*TokenManager, error)
 
     func (mng *TokenManager) Expire(meta *gobus.HTTPMeta, token *string, reply *int) error
         立刻使token过期。
@@ -276,12 +362,12 @@ func <span id="NewTokenManager">NewTokenManager</span>
 	> curl http://127.0.0.1:23333/TokenManager?method=Expire -d '"ab56b4d92b40713acc5af89985d4b786c027b1ee301059618fb364abafd43f4a"'
 	0
 
-    func (mng *TokenManager) ExpireAll(meta *gobus.HTTPMeta, key *string, reply *int) error
-        立刻使key对应的所有token过期。
+    func (mng *TokenManager) ExpireAll(meta *gobus.HTTPMeta, resource *string, reply *int) error
+        立刻使resource对应的所有token过期。
 
         例子：
 
-	> curl http://127.0.0.1:23333/TokenManager?method=ExpireAll -d '"ab56b4d92b40713acc5af89985d4b786"'
+	> curl http://127.0.0.1:23333/TokenManager?method=ExpireAll -d '"abc"'
 	0
 
     func (mng *TokenManager) Find(meta *gobus.HTTPMeta, resource *string, reply *[]*tokenmanager.Token) error
@@ -343,13 +429,12 @@ type <span id="TokenRefreshArg">TokenRefreshArg</span>
 type <span id="TokenRepository">TokenRepository</span>
 
     type TokenRepository struct {
-        DBRepository
         // contains filtered or unexported fields
     }
 
 func <span id="NewTokenRepository">NewTokenRepository</span>
 
-    func NewTokenRepository(config *model.Config) (*TokenRepository, error)
+    func NewTokenRepository(config *model.Config, db *broker.DBMultiplexer) (*TokenRepository, error)
 
     func (r *TokenRepository) Create(token *tokenmanager.Token) error
 
@@ -396,9 +481,9 @@ type <span id="User">User</span>
 
 func <span id="NewUser">NewUser</span>
 
-    func NewUser(localTemplate *formatter.LocalTemplate, config *model.Config) *User
+    func NewUser(localTemplate *formatter.LocalTemplate, config *model.Config, sender *broker.Sender) *User
 
-    func (u *User) ResetPassword(meta *gobus.HTTPMeta, tos model.UserVerifys, i *int) error
+    func (u *User) ResetPassword(meta *gobus.HTTPMeta, verify model.UserVerify, i *int) error
         发送给用户的重置密码请求
 
         例子：
@@ -408,7 +493,7 @@ func <span id="NewUser">NewUser</span>
         name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"by_name":"by
         user"}]'
 
-    func (u *User) Verify(meta *gobus.HTTPMeta, confirmations model.UserVerifys, i *int) error
+    func (u *User) Verify(meta *gobus.HTTPMeta, confirmation model.UserVerify, i *int) error
         发送给用户的验证请求
 
         例子：
@@ -418,7 +503,7 @@ func <span id="NewUser">NewUser</span>
         name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"by_name":"by
         user"}]'
 
-    func (u *User) Welcome(meta *gobus.HTTPMeta, welcomes model.UserWelcomes, i *int) error
+    func (u *User) Welcome(meta *gobus.HTTPMeta, welcome model.UserWelcome, i *int) error
         发送给用户的邀请
 
         例子：
