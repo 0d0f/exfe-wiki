@@ -16,6 +16,12 @@ CONSTANTS
         POST_DELETE = "UPDATE `posts` SET posts.del=1 WHERE id=? AND ref_uri=?"
     )
     const (
+        SHORTTOKEN_STORE           = "INSERT INTO `shorttokens` (`key`, `resource`, `data`, `expire_at`, `created_at`) VALUES (?, ?, ?, ?, ?)"
+        SHORTTOKEN_FIND            = "SELECT `key`, resource, data, expire_at FROM `shorttokens` WHERE expire_at>UTC_TIMESTAMP()"
+        SHORTTOKEN_UPDATE_DATA     = "UPDATE `shorttokens` SET data=? WHERE expire_at>UTC_TIMESTAMP()"
+        SHORTTOKEN_UPDATE_EXPIREAT = "UPDATE `shorttokens` SET expire_at=? WHERE expire_at>UTC_TIMESTAMP()"
+    )
+    const (
         CREATE                   = "INSERT INTO `tokens` VALUES (null, ?, ?, ?, ?, ?)"
         STORE                    = "UPDATE `tokens` SET expire_at=?, data=? WHERE tokens.key=? AND tokens.rand=?"
         FIND_BY_KEY              = "SELECT rand, created_at, expire_at, data FROM `tokens` WHERE tokens.key=?"
@@ -277,6 +283,14 @@ type <span id="IomPostArg">IomPostArg</span>
         Data   string `json:"data"`
     }
 
+type <span id="PostArg">PostArg</span>
+
+    type PostArg struct {
+        Resource          string `json:"resource"`
+        Data              string `json:"data"`
+        ExpireAfterSecond int    `json:"expire_after_second"`
+    }
+
 type <span id="PostRepository">PostRepository</span>
 
     type PostRepository struct {
@@ -304,6 +318,67 @@ func <span id="NewPostRepository">NewPostRepository</span>
     func (r *PostRepository) SendUpdate(tos []model.Recipient, cross model.Cross, post model.Post) error
 
     func (r *PostRepository) SetUnreadCount(uri string, userID int64, count int) error
+
+type <span id="ShortToken">ShortToken</span>
+
+    type ShortToken struct {
+        // contains filtered or unexported fields
+    }
+
+func <span id="NewShortToken">NewShortToken</span>
+
+    func NewShortToken(config *model.Config, db *broker.DBMultiplexer) (*ShortToken, error)
+
+    func (s *ShortToken) GET(meta *gobus.HTTPMeta, arg string, reply *model.Token) error
+        根据key或者resource获得一个token，如果token不存在，返回错误
+
+        例子：
+
+	> curl "http://127.0.0.1:23333/shorttoken?method=GET&key=0303&resource=123" -d '""'
+
+        返回：
+
+	{"key":"0303","data":"abc"}
+
+    func (s *ShortToken) POST(meta *gobus.HTTPMeta, arg PostArg, reply *model.Token) error
+        根据resource，data和expire after second创建一个token
+
+        例子：
+
+	> curl "http://127.0.0.1:23333/shorttoken" -d '{"data":"abc","resource":"123","expire_after_second":300}'
+
+        返回：
+
+	{"key":"0303","data":"abc"}
+
+    func (s *ShortToken) PUT(meta *gobus.HTTPMeta, arg UpdateArg, reply *int) error
+        更新key对应的token的data信息或者expire after second
+
+        例子：
+
+	> curl "http://127.0.0.1:23333/shorttoken/0303?method=PUT" -d '{"data":"xyz","expire_after_second":13}'
+
+        返回：
+
+	0
+
+type <span id="ShortTokenRepository">ShortTokenRepository</span>
+
+    type ShortTokenRepository struct {
+        // contains filtered or unexported fields
+    }
+
+func <span id="NewShortTokenRepository">NewShortTokenRepository</span>
+
+    func NewShortTokenRepository(config *model.Config, db *broker.DBMultiplexer) (*ShortTokenRepository, error)
+
+    func (r *ShortTokenRepository) Find(key, resource string) (shorttoken.Token, bool, error)
+
+    func (r *ShortTokenRepository) Store(token shorttoken.Token) error
+
+    func (r *ShortTokenRepository) UpdateData(key, resource, data string) error
+
+    func (r *ShortTokenRepository) UpdateExpireAt(key, resource string, expireAt time.Time) error
 
 type <span id="Thirdpart">Thirdpart</span>
 
@@ -471,6 +546,13 @@ type <span id="TokenVerifyReply">TokenVerifyReply</span>
     type TokenVerifyReply struct {
         Matched bool                `json:"matched"`
         Token   *tokenmanager.Token `json:"token,omitempty"`
+    }
+
+type <span id="UpdateArg">UpdateArg</span>
+
+    type UpdateArg struct {
+        Data              *string `json:"data"`
+        ExpireAfterSecond *int    `json:"expire_after_second"`
     }
 
 type <span id="User">User</span>
