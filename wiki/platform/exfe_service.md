@@ -243,6 +243,13 @@ func <span id="NewCross">NewCross</span>
         name","nickname":"facebook4 nick","bio":"facebook4
         bio","timezone":"+0800","connected_user_id":4,"avatar_filename":"http://path/to/facebook4.avatar","provider":"facebook","external_id":"facebook4@domain.com","external_username":"facebook4@domain.com"}}]'
 
+type <span id="ExpireArg">ExpireArg</span>
+
+    type ExpireArg struct {
+        Resource          string `json:"resource"`
+        ExpireAfterSecond int    `json:"expire_after_second"`
+    }
+
 type <span id="Iom">Iom</span>
 
     type Iom struct {
@@ -329,7 +336,18 @@ func <span id="NewShortToken">NewShortToken</span>
 
     func NewShortToken(config *model.Config, db *broker.DBMultiplexer) (*ShortToken, error)
 
-    func (s *ShortToken) GET(meta *gobus.HTTPMeta, arg string, reply *model.Token) error
+    func (s *ShortToken) Expire(meta *gobus.HTTPMeta, arg ExpireArg, reply *int) error
+        更新resource对应的token的expire after second
+
+        例子：
+
+	> curl "http://127.0.0.1:23333/shorttoken?method=Expire" -d '{"resource":"123","expire_after_second":13}'
+
+        返回：
+
+	0
+
+    func (s *ShortToken) GET(meta *gobus.HTTPMeta, arg string, reply *[]model.Token) error
         根据key或者resource获得一个token，如果token不存在，返回错误
 
         例子：
@@ -372,7 +390,7 @@ func <span id="NewShortTokenRepository">NewShortTokenRepository</span>
 
     func NewShortTokenRepository(config *model.Config, db *broker.DBMultiplexer) (*ShortTokenRepository, error)
 
-    func (r *ShortTokenRepository) Find(key, resource string) (shorttoken.Token, bool, error)
+    func (r *ShortTokenRepository) Find(key, resource string) ([]shorttoken.Token, error)
 
     func (r *ShortTokenRepository) Store(token shorttoken.Token) error
 
