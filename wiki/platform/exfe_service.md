@@ -243,13 +243,6 @@ func <span id="NewCross">NewCross</span>
         name","nickname":"facebook4 nick","bio":"facebook4
         bio","timezone":"+0800","connected_user_id":4,"avatar_filename":"http://path/to/facebook4.avatar","provider":"facebook","external_id":"facebook4@domain.com","external_username":"facebook4@domain.com"}}]'
 
-type <span id="ExpireArg">ExpireArg</span>
-
-    type ExpireArg struct {
-        Resource          string `json:"resource"`
-        ExpireAfterSecond int    `json:"expire_after_second"`
-    }
-
 type <span id="Iom">Iom</span>
 
     type Iom struct {
@@ -293,9 +286,9 @@ type <span id="IomPostArg">IomPostArg</span>
 type <span id="PostArg">PostArg</span>
 
     type PostArg struct {
-        Resource          string `json:"resource"`
-        Data              string `json:"data"`
-        ExpireAfterSecond int    `json:"expire_after_second"`
+        Resource           string `json:"resource"`
+        Data               string `json:"data"`
+        ExpireAfterSeconds int    `json:"expire_after_seconds"`
     }
 
 type <span id="PostRepository">PostRepository</span>
@@ -336,12 +329,12 @@ func <span id="NewShortToken">NewShortToken</span>
 
     func NewShortToken(config *model.Config, db *broker.DBMultiplexer) (*ShortToken, error)
 
-    func (s *ShortToken) Expire(meta *gobus.HTTPMeta, arg ExpireArg, reply *int) error
-        更新resource对应的token的expire after second
+    func (s *ShortToken) Expire(meta *gobus.HTTPMeta, expire int, reply *int) error
+        更新resource对应的token的expire after seconds
 
         例子：
 
-	> curl "http://127.0.0.1:23333/shorttoken?method=Expire" -d '{"resource":"123","expire_after_second":13}'
+	> curl "http://127.0.0.1:23333/shorttoken/resource?method=Expire&resource=123" -d '13'
 
         返回：
 
@@ -359,22 +352,22 @@ func <span id="NewShortToken">NewShortToken</span>
 	{"key":"0303","data":"abc"}
 
     func (s *ShortToken) POST(meta *gobus.HTTPMeta, arg PostArg, reply *model.Token) error
-        根据resource，data和expire after second创建一个token
+        根据resource，data和expire after seconds创建一个token
 
         例子：
 
-	> curl "http://127.0.0.1:23333/shorttoken" -d '{"data":"abc","resource":"123","expire_after_second":300}'
+	> curl "http://127.0.0.1:23333/shorttoken" -d '{"data":"abc","resource":"123","expire_after_seconds":300}'
 
         返回：
 
 	{"key":"0303","data":"abc"}
 
     func (s *ShortToken) PUT(meta *gobus.HTTPMeta, arg UpdateArg, reply *int) error
-        更新key对应的token的data信息或者expire after second
+        更新key对应的token的data信息或者expire after seconds
 
         例子：
 
-	> curl "http://127.0.0.1:23333/shorttoken/0303?method=PUT" -d '{"data":"xyz","expire_after_second":13}'
+	> curl "http://127.0.0.1:23333/shorttoken/0303?method=PUT" -d '{"data":"xyz","expire_after_seconds":13}'
 
         返回：
 
@@ -569,8 +562,8 @@ type <span id="TokenVerifyReply">TokenVerifyReply</span>
 type <span id="UpdateArg">UpdateArg</span>
 
     type UpdateArg struct {
-        Data              *string `json:"data"`
-        ExpireAfterSecond *int    `json:"expire_after_second"`
+        Data               *string `json:"data"`
+        ExpireAfterSeconds *int    `json:"expire_after_seconds"`
     }
 
 type <span id="User">User</span>
