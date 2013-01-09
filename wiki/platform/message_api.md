@@ -12,6 +12,10 @@ Message API
 			"bus://streaming/conversation",
 			"bus://notifier/conversation",
 		],
+		"ticket": "....",
+		"recipients": [
+			...
+		],
 		"data": {
 			"by_identity": {...},
 			"exfee_id": {...},
