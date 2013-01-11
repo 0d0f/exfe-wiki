@@ -11,11 +11,6 @@ CONSTANTS
 -------
 
     const (
-        POST_CREATE = "INSERT INTO `posts` (by_id, created_at, relationship, content, via, exfee_id, ref_uri) VALUES (?, ?, ?, ?, ?, ?, ?)"
-        POST_FIND   = "SELECT id, by_id, created_at, relationship, content, via, exfee_id, ref_uri FROM `posts` WHERE del=0 AND exfee_id=? AND ref_uri=?"
-        POST_DELETE = "UPDATE `posts` SET posts.del=1 WHERE id=? AND ref_uri=?"
-    )
-    const (
         SHORTTOKEN_STORE           = "INSERT INTO `shorttokens` (`key`, `resource`, `data`, `expire_at`, `created_at`) VALUES (?, ?, ?, ?, ?)"
         SHORTTOKEN_FIND            = "SELECT `key`, resource, data, expire_at FROM `shorttokens` WHERE expire_at>UTC_TIMESTAMP()"
         SHORTTOKEN_UPDATE_DATA     = "UPDATE `shorttokens` SET data=? WHERE expire_at>UTC_TIMESTAMP()"
@@ -86,7 +81,7 @@ type <span id="Message">Message</span>
 
 func <span id="NewMessage">NewMessage</span>
 
-    func NewMessage(config *model.Config, dispatcher *gobus.Dispatcher) (*Message, error)
+    func NewMessage(config *model.Config, dispatcher *gobus.Dispatcher, platform message.Platform) (*Message, error)
 
     func (m *Message) Send(params map[string]string, arg model.Message) (int, error)
         通过Message发送一条消息arg
@@ -94,7 +89,7 @@ func <span id="NewMessage">NewMessage</span>
         例子：
 
         > curl 'http://127.0.0.1:23333/message' -d
-        '{"service":"bus://exfe_service/conversation",
+        '{"service":"bus://exfe_service/notifier/conversation",
 
 	"ticket":"email_cross123",
 	"recipients":[{"identity_id":12,"user_id":3,"name":"email1 name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"sender1@gmail.com","external_username":"sender1@gmail.com"},{"identity_id":12,"user_id":3,"name":"email1 name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"sender2@hotmail.com","external_username":"sender2@hotmail.com"}],
@@ -257,33 +252,21 @@ func <span id="NewNotifier">NewNotifier</span>
         '[{"to":{"identity_id":11,"user_id":1,"name":"email1
         name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"need_verify":true}]'
 
-type <span id="PostRepository">PostRepository</span>
+type <span id="Platform">Platform</span>
 
-    type PostRepository struct {
+    type Platform struct {
         // contains filtered or unexported fields
     }
 
-func <span id="NewPostRepository">NewPostRepository</span>
+func <span id="NewPlatform">NewPlatform</span>
 
-    func NewPostRepository(config *model.Config, db *broker.DBMultiplexer, redis *broker.RedisMultiplexer, dispatcher *gobus.Dispatcher) (*PostRepository, error)
+    func NewPlatform(config *model.Config) (*Platform, error)
 
-    func (r *PostRepository) AddUnreadCount(uri string, userID int64, count int) error
+    func (p *Platform) FindCross(id uint64) (model.Cross, error)
 
-    func (r *PostRepository) DeletePost(refID string, postID uint64) error
+    func (p *Platform) FindIdentity(identity model.Identity) (model.Identity, error)
 
-    func (r *PostRepository) FindCross(id uint64) (model.Cross, error)
-
-    func (r *PostRepository) FindIdentity(identity model.Identity) (model.Identity, error)
-
-    func (r *PostRepository) FindPosts(exfeeID uint64, refURI, sinceTime, untilTime string, minID, maxID uint64) ([]convmodel.Post, error)
-
-    func (r *PostRepository) GetUnreadCount(uri string, userID int64) (int, error)
-
-    func (r *PostRepository) SavePost(post convmodel.Post) (uint64, error)
-
-    func (r *PostRepository) SendUpdate(tos []model.Recipient, cross model.Cross, post model.Post) error
-
-    func (r *PostRepository) SetUnreadCount(uri string, userID int64, count int) error
+    func (p *Platform) GetHotRecipient(userID int64) ([]model.Recipient, error)
 
 type <span id="ShortToken">ShortToken</span>
 
