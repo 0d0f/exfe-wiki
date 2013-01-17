@@ -12,19 +12,21 @@ CONSTANTS
 
     const (
         SHORTTOKEN_STORE           = "INSERT INTO `shorttokens` (`key`, `resource`, `data`, `expire_at`, `created_at`) VALUES (?, ?, ?, ?, ?)"
-        SHORTTOKEN_FIND            = "SELECT `key`, resource, data, expire_at FROM `shorttokens` WHERE expire_at>UTC_TIMESTAMP()"
+        SHORTTOKEN_FIND            = "SELECT `key`, resource, data, touched_at, expire_at FROM `shorttokens` WHERE expire_at>UTC_TIMESTAMP()"
         SHORTTOKEN_UPDATE_DATA     = "UPDATE `shorttokens` SET data=? WHERE expire_at>UTC_TIMESTAMP()"
         SHORTTOKEN_UPDATE_EXPIREAT = "UPDATE `shorttokens` SET expire_at=? WHERE expire_at>UTC_TIMESTAMP()"
+        SHORTTOKEN_TOUCH           = "UPDATE `shorttokens` SET touched_at=NOW() WHERE expire_at>UTC_TIMESTAMP() AND `key`=? AND resource=?"
     )
     const (
-        CREATE                   = "INSERT INTO `tokens` VALUES (null, ?, ?, ?, ?, ?)"
+        CREATE                   = "INSERT INTO `tokens` VALUES (null, ?, ?, ?, ?, ?, ?)"
         STORE                    = "UPDATE `tokens` SET expire_at=?, data=? WHERE tokens.key=? AND tokens.rand=?"
-        FIND_BY_KEY              = "SELECT rand, created_at, expire_at, data FROM `tokens` WHERE tokens.key=?"
-        FIND_BY_TOKEN            = "SELECT created_at, expire_at, data FROM `tokens` WHERE tokens.key=? AND tokens.rand=?"
+        FIND_BY_KEY              = "SELECT rand, touched_at, created_at, expire_at, data FROM `tokens` WHERE tokens.key=?"
+        FIND_BY_TOKEN            = "SELECT touched_at, created_at, expire_at, data FROM `tokens` WHERE tokens.key=? AND tokens.rand=?"
         UPDATE_DATA_BY_TOKEN     = "UPDATE `tokens` SET tokens.data=? WHERE tokens.key=? AND tokens.rand=?"
         UPDATE_EXPIREAT_BY_TOKEN = "UPDATE `tokens` SET tokens.expire_at=? WHERE tokens.key=? AND tokens.rand=?"
         UPDATE_EXPIREAT_BY_KEY   = "UPDATE `tokens` SET tokens.expire_at=? WHERE tokens.key=?"
         DELETE_BY_TOKEN          = "DELETE FROM `tokens` WHERE tokens.key=? AND tokens.rand=?"
+        TOUCH                    = "UPDATE `tokens` SET touched_at=NOW() WHERE tokens.key=? AND tokens.rand=?"
     )
 
 TYPES
@@ -37,6 +39,18 @@ type <span id="CreateArg">CreateArg</span>
         Resource           string `json:"resource"`
         ExpireAfterSeconds int    `json:"expire_after_seconds"`
     }
+
+type <span id="Gate">Gate</span>
+
+    type Gate struct {
+        // contains filtered or unexported fields
+    }
+
+func <span id="NewGate">NewGate</span>
+
+    func NewGate(config *model.Config) (*Gate, error)
+
+    func (g *Gate) Verify(token string) (int64, error)
 
 type <span id="Iom">Iom</span>
 
@@ -72,30 +86,6 @@ type <span id="IomPostArg">IomPostArg</span>
         UserID string `json:"user_id"`
         Data   string `json:"data"`
     }
-
-type <span id="Message">Message</span>
-
-    type Message struct {
-        // contains filtered or unexported fields
-    }
-
-func <span id="NewMessage">NewMessage</span>
-
-    func NewMessage(config *model.Config, dispatcher *gobus.Dispatcher, platform message.Platform) (*Message, error)
-
-    func (m *Message) Send(params map[string]string, arg model.Message) (int, error)
-        通过Message发送一条消息arg
-
-        例子：
-
-        > curl 'http://127.0.0.1:23333/message' -d
-        '{"service":"bus://exfe_service/notifier/conversation",
-
-	"ticket":"email_cross123",
-	"recipients":[{"identity_id":12,"user_id":3,"name":"email1 name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"sender1@gmail.com","external_username":"sender1@gmail.com"},{"identity_id":12,"user_id":3,"name":"email1 name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"sender2@hotmail.com","external_username":"sender2@hotmail.com"}],
-	"data":{"cross":{"id":123,"by_identity":{"id":11,"name":"email1 name","nickname":"email1 nick","bio":"email1 bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"sender2@hotmail.com","external_username":"sender2@hotmail.com"},"title":"Test Cross","description":"test cross description","time":{"begin_at":{"date_word":"","date":"","time_word":"","time":"","timezone":""},"origin":"","output_format":0},"place":{"id":0,"title":"","description":"","lng":"","lat":"","provider":"","external_id":""},"exfee":{"id":0,"name":"","invitations":null}},"post":{"id":1,"by_identity":{"id":11,"name":"email1 name","nickname":"email1 nick","bio":"email1 bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"sender2@hotmail.com","external_username":"sender2@hotmail.com"},"content":"email1 post sth","via":"abc","created_at":"2012-10-24 16:31:00"}}}'
-
-    func (m *Message) SetRoute(r gobus.RouteCreater) error
 
 type <span id="Notifier">Notifier</span>
 
@@ -338,9 +328,40 @@ func <span id="NewShortTokenRepository">NewShortTokenRepository</span>
 
     func (r *ShortTokenRepository) Store(token shorttoken.Token) error
 
+    func (r *ShortTokenRepository) Touch(key, resource string) error
+
     func (r *ShortTokenRepository) UpdateData(key, resource, data string) error
 
     func (r *ShortTokenRepository) UpdateExpireAt(key, resource string, expireAt time.Time) error
+
+type <span id="Streaming">Streaming</span>
+
+    type Streaming struct {
+        // contains filtered or unexported fields
+    }
+
+func <span id="NewStreaming">NewStreaming</span>
+
+    func NewStreaming(config *model.Config, gate *Gate) (*Streaming, error)
+
+    func (s *Streaming) Provider() string
+
+    func (s *Streaming) Receive(params map[string]string, data map[string]interface{}) (int, error)
+        将data发给已经建立的streaming连接。streaming的用户通过data.to.user_id确定。
+        streaming通过23335接口建立，需要提供user type的token做身份验证。
+
+        例子：
+
+        > curl
+        "http://127.0.0.1:23335?token=c50afa33ffbffc6335134e0d4558ce2c3ca6c0833ccc396dc902963d6de9d8c1"
+        > curl http://127.0.0.1:23333/streaming -d
+        '{"to":{"external_id":"123","external_username":"name","auth_data":"","provider":"streaming","identity_id":789,"user_id":375},"private":"private","public":"public","info":null}'
+
+    func (s *Streaming) Send(to *model.Recipient, privateMessage string, publicMessage string, data *model.InfoData) (string, error)
+
+    func (s *Streaming) ServeHTTP(w http.ResponseWriter, r *http.Request)
+
+    func (s *Streaming) SetRoute(r gobus.RouteCreater) error
 
 type <span id="Thirdpart">Thirdpart</span>
 
@@ -350,7 +371,7 @@ type <span id="Thirdpart">Thirdpart</span>
 
 func <span id="NewThirdpart">NewThirdpart</span>
 
-    func NewThirdpart(config *model.Config) (*Thirdpart, error)
+    func NewThirdpart(config *model.Config, streaming *Streaming) (*Thirdpart, error)
 
     func (t *Thirdpart) Send(params map[string]string, arg model.ThirdpartSend) (string, error)
         发信息给to，如果是私人信息，就发送private的内容，如果是公开信息，就发送public的内容。info内是相关的应用信息。
