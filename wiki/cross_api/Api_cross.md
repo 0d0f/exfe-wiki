@@ -238,7 +238,9 @@ response:
         "id": 74,
         "type": "identity"
     },
-    "id": 76
+    "id": 76,
+    "deleted": false,
+    "closed": false
 }
 </pre>
 
