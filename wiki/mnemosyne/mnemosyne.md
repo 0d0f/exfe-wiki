@@ -27,7 +27,7 @@ Mnemosyne 记忆女神之青春
           "stroke-width": 2
         }
 
-  * Note: 准寻 SVG 定义,描述
+  * Note: 遵循 SVG 定义,描述
 
 #### Layout 排版结构
   * `Layout` Class
