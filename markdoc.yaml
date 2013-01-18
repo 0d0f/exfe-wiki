@@ -18,11 +18,15 @@ listing-filename: "_list.html"
 use-default-static: true
 use-default-templates: true
 
+# Building
+
 # Rendering
 markdown:
   safe-mode: false
   output-format: html
-  extensions: [codehilite, def_list]
+  extensions:
+    - codehilite
+    - def_list
   extension-configs:
     codehilite:
       force_linenos: true
