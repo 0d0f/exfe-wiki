@@ -3,18 +3,6 @@ Mnemosyne 记忆女神之青春
 > author: cfd   
 > date  : 2013-01-18T19:09:42 UTC+0800
 
-    #!javascript
-    {
-      layouts: {
-        1: [],
-        2: [],
-        3: [],
-        4: [],
-        5: []
-        //...
-      }
-    }
-
 ## 前端规划
 
 ### 功能
@@ -33,6 +21,19 @@ Mnemosyne 记忆女神之青春
 #### Layout Engine 排版引擎
   * `Typesetting` Class
   * Struct
+
+
+    #!javascript
+    {
+      layouts: {
+        1: [],
+        2: [],
+        3: [],
+        4: [],
+        5: []
+        //...
+      }
+    }
 
 
   * APIs
