@@ -46,7 +46,10 @@ Mnemosyne 记忆女神之青春
 #### Photo Item 图片对象
   * `PhotoItem` Class
   * Struct
-      #!javascript
+
+    #!javascript
+    {}
+
   * APIs
     - `generateHTML()` 生产 HTML 结构
     - `addAttrs()` 给 Photo-Item DOM 添加属性
