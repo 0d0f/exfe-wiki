@@ -1,6 +1,18 @@
 Mnemosyne 记忆女神之青春
 ------------------------
 
+
+## 前端规划
+
+### 功能
+
+#### Layout Engine 排版引擎
+
+
+#### Photo Item 图片对象
+
+#### Smart Resize
+
+
 ## Roadmap
 
-### 前端规划
