@@ -6,7 +6,6 @@ hide-prefix: "."
 wiki-dir: "wiki"
 static-dir: "static"
 html-dir: ".html"
-temp-dir: ".tmp"
 
 # Rendering
 markdown:
