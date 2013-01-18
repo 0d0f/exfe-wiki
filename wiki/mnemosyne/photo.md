@@ -1,3 +1,4 @@
+:::javascript
 {
     "id": [int],
     "caption": [str],
