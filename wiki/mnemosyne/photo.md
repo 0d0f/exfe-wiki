@@ -7,21 +7,19 @@
     "provider": [str],
     "external_id": [str],
     "location": [object:place],
-    "images": [
-        {
-            "fullsize": {
-                "height": [int],
-                "width": [int],
-                "url": [str:url]
-            },
-            "thumbnail": {
-                "height": [int],
-                "width": [int],
-                "url": [str:url]
-            }
+    "images": {
+        "fullsize": {
+            "height": [int],
+            "width": [int],
+            "url": [str:url]
         },
-        ...
-    ],
-    "type": "photo"
+        "thumbnail": {
+            "height": [int],
+            "width": [int],
+            "url": [str:url]
+        }
+    },
+    "type": "photo",
+    "siblings": [[object:photo]]
 },
 
