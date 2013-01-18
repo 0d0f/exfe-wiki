@@ -1,4 +1,4 @@
-    :::javascript
+    #!javascript
     {
         "id": [int],
         "caption": [str],
