@@ -21,17 +21,17 @@ Mnemosyne 记忆女神之青春
 #### Layout Engine 排版引擎
   * `Typesetting` Class
   * Struct
-      #!javascript
-      {
-        layouts: {
-          1: []
-          2: []
-          3: []
-          4: []
-          5: []
-          ...
-        }
+    #!javascript
+    {
+      layouts: {
+        1: []
+        2: []
+        3: []
+        4: []
+        5: []
+        ...
       }
+    }
   * APIs
     - `typeset()` 排版
     - `order()` 排序
