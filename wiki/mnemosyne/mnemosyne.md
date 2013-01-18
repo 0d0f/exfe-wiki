@@ -13,9 +13,30 @@ Mnemosyne 记忆女神之青春
   * APIs
     - `getPhotos()` 获取图片数据
 
+#### Rect 排版形状 (第一阶段，只支持矩形)
+  * `Rect` Class
+  * Struct
+
+        :::javascript
+        {
+          "x": 1,
+          "y": 1,
+          "width": 1,
+          "height": 1,
+          "stroke": "black",
+          "stroke-width": 2
+        }
+
+  * Note: 准寻 SVG 定义,描述
+
 #### Layout 排版结构
   * `Layout` Class
   * Struct
+
+        :::javascript
+        {
+        }
+
   * APIs
 
 #### Layout Engine 排版引擎
@@ -24,12 +45,12 @@ Mnemosyne 记忆女神之青春
 
         :::javascript
         {
-          layouts: {
-            1: [],
-            2: [],
-            3: [],
-            4: [],
-            5: []
+          "layouts": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
             //...
           }
         }
