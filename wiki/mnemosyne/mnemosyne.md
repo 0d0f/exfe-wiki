@@ -23,17 +23,17 @@ Mnemosyne 记忆女神之青春
   * Struct
 
 
-    #!javascript
-    {
-      layouts: {
-        1: [],
-        2: [],
-        3: [],
-        4: [],
-        5: []
-        //...
-      }
-    }
+        #!javascript
+        {
+          layouts: {
+            1: [],
+            2: [],
+            3: [],
+            4: [],
+            5: []
+            //...
+          }
+        }
 
 
   * APIs
