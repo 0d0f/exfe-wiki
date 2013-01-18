@@ -22,8 +22,7 @@ Mnemosyne 记忆女神之青春
   * `Typesetting` Class
   * Struct
 
-
-        #!javascript
+        :::javascript
         {
           layouts: {
             1: [],
@@ -48,8 +47,8 @@ Mnemosyne 记忆女神之青春
   * `PhotoItem` Class
   * Struct
 
-    #!javascript
-    {}
+        :::javascript
+        {}
 
   * APIs
     - `generateHTML()` 生产 HTML 结构
