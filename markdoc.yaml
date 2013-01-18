@@ -1,20 +1,12 @@
 # Metadata
 wiki-name: "0d0f Wiki"
-#google-analytics: UA-XXXXXX-X
 
 # Directories
 hide-prefix: "."
 wiki-dir: "wiki"
 static-dir: "static"
 html-dir: ".html"
-template-dir: ".templates"
 temp-dir: ".tmp"
-cvs-exclude: true
-
-# Building
-document-extensions: [.md, .mdown, .markdown, .wiki, .text]
-generate-listing: always
-listing-filename: "_list.html"
 
 # Rendering
 markdown:
@@ -22,6 +14,7 @@ markdown:
     - codehilite
     - def_list
     - headerid
+    - toc
 
 # Serving
 server:
