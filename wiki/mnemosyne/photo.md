@@ -1,4 +1,3 @@
-    :::text
     :::javascript
     {
         "id": [int],
