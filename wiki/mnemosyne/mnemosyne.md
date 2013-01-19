@@ -19,18 +19,31 @@ Mnemosyne 记忆女神之青春
 
         :::javascript
         {
-          "x": 1,
-          "y": 1,
-          "width": 1,
-          "height": 1,
-          "stroke": "black",
-          "stroke-width": 2
+          "x": int,
+          "y": int,
+          "width": int,
+          "height": int,
+          "stroke": string,
+          "stroke-width": int
         }
 
   * Note: 遵循 SVG 定义,描述
 
-#### Layout 排版结构
-  * `Layout` Class
+#### G Group Container
+  * `G` Class
+  * Struct
+
+        :::javascript
+        {
+          "x": int,
+          "y": int,
+          "width": int,
+          "height": int
+
+        }
+
+#### Layout Box 对 Box 进行排版
+  * `LayoutBox` Class
   * Struct
 
         :::javascript
