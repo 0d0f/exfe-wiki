@@ -10,7 +10,7 @@ Mnemosyne 记忆女神之青春
 #### Data Controller
   * `DataController` Class
   * Struct
-  * APIs
+  * API
     - `getPhotos()` 获取图片数据
 
 #### Rect 排版形状 (第一阶段，只支持矩形)
@@ -19,15 +19,20 @@ Mnemosyne 记忆女神之青春
 
         :::javascript
         {
-          "x": int,
-          "y": int,
-          "width": int,
-          "height": int,
+          "id": int,
+          "class": "rect",
+          "x": int/floag,
+          "y": int/float,
+          "width": int/float,
+          "height": int/float,
           "stroke": string,
           "stroke-width": int
         }
 
-  * Note: 遵循 SVG 定义,描述
+  * Note: 遵循 SVG rect-tag 定义,描述
+
+#### Shape
+  * `Shape` Single Factoy Manager Shapes
 
 #### G Group Container
   * `G` Class
@@ -35,12 +40,17 @@ Mnemosyne 记忆女神之青春
 
         :::javascript
         {
-          "x": int,
-          "y": int,
-          "width": int,
-          "height": int
-
+          "id": int,
+          "class": "grouping"
+          "x": int/float,
+          "y": int/float,
+          "width": int/float,
+          "height": int/float
         }
+
+  * API
+    - `append()` 添加 element
+  * Note: 遵循 SVG g-tag 定义,描述
 
 #### Layout Box 对 Box 进行排版
   * `LayoutBox` Class
@@ -50,7 +60,7 @@ Mnemosyne 记忆女神之青春
         {
         }
 
-  * APIs
+  * API
 
 #### Layout Engine 排版引擎
   * `Typesetting` Class
@@ -69,7 +79,7 @@ Mnemosyne 记忆女神之青春
         }
 
 
-  * APIs
+  * API
     - `typeset()` 排版
     - `order()` 排序
     - `random()` 生产随机数
@@ -84,7 +94,7 @@ Mnemosyne 记忆女神之青春
         :::javascript
         {}
 
-  * APIs
+  * API
     - `generateHTML()` 生产 HTML 结构
     - `addAttrs()` 给 Photo-Item DOM 添加属性
     - `removeAttrs()` 删除 Photo-Item DOM 属性
