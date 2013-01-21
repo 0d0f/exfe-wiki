@@ -4,21 +4,21 @@ Mnemosyne 记忆女神之青春
 > date  : 2013-01-18T19:09:42 UTC+0800
 
 ## 结构模型
-  * Data Controller 负责数据交互
-    - get photos
+  - Data Controller 负责数据交互
+    * get photos
 
-  * Layout Engine 排版引擎，负责对数据进行排版
-    - models
+  - Layout Engine 排版引擎，负责对数据进行排版
+    * models
       * Layout 模板
       * Rect 矩形
       * G 群组
       * PhotoItem 图片
       * Typesetting 排版
 
-  * View
-    - 负责对排版内容，进行渲染
-    - events bind
-    - smart resize 智能检测 window size
+  - View
+    * 负责对排版内容，进行渲染
+    * events bind
+    * smart resize 智能检测 window size
 
 ## Roadmap 开发周期
   * 2013-01-21 ~ 2013-01-25
