@@ -3,6 +3,36 @@ Mnemosyne 记忆女神之青春
 > author: cfd   
 > date  : 2013-01-18T19:09:42 UTC+0800
 
+## Roadmap 开发周期
+  * 2013-01-21 ~ 2013-01-25
+    1. Rect (矩形) 结构、方法, 第一阶段只支持矩形
+    2. G (群组) 结构、方法
+    3. shapeFactory 简单工厂模式
+    4. layout 结构定义
+    5. Typesetting 排版模型、功能，第一阶段只实现简单排版方法, 只支持二级排版
+    6. html + css 结构
+    7. 模拟数据，简单 Demo
+
+  * 2013-01-27 ~ 2013-02-01
+    1. 监听 window.resize，重新排版内容
+    2. events 绑定，第一阶段，只支持 Desktop
+    3. 图片浏览交互
+    4. navbar 导航栏
+    5. 根据设计稿，修改 html css 结构
+
+  * 2013-02-4 ~ 2013-02-07
+    2. 数据交互
+    3. 添加身份，分享图片
+    4. 根据 source, identity, etc... 分类筛选
+
+  * 2013-02-18 ~ 2013-02-22
+    1. 适配 iPad
+    2. Mobile events 绑定
+    3. 提升体验, 第一阶段不追究特酷效果
+
+  * 2013-02-25 ~ 2013-03-01
+    1. 测试 优化
+
 ## 前端规划
 
 ### 功能
@@ -25,17 +55,15 @@ Mnemosyne 记忆女神之青春
           "y": int/float,
           "width": int/float,
           "height": int/float,
-          "stroke": string,
-          "stroke-width": int
         }
 
   * Note: 遵循 SVG rect-tag 定义,描述
 
-#### Shape
-  * `Shape` Single Factoy Manager Shapes
+#### shapeFactory
+  * `shapeFactory` 简单工厂模式
 
 #### G Group Container
-  * `G` Class
+  * `G` Class, 对图形进行分组
   * Struct
 
         :::javascript
@@ -98,8 +126,3 @@ Mnemosyne 记忆女神之青春
     - `generateHTML()` 生产 HTML 结构
     - `addAttrs()` 给 Photo-Item DOM 添加属性
     - `removeAttrs()` 删除 Photo-Item DOM 属性
-
-
-## Roadmap 开发周期
-
-
