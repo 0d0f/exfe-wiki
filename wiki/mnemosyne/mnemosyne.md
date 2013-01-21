@@ -3,6 +3,23 @@ Mnemosyne 记忆女神之青春
 > author: cfd   
 > date  : 2013-01-18T19:09:42 UTC+0800
 
+## 结构模型
+  * Data Controller 负责数据交互
+    - get photos
+
+  * Layout Engine 排版引擎，负责对数据进行排版
+    - models
+      * Layout 模板
+      * Rect 矩形
+      * G 群组
+      * PhotoItem 图片
+      * Typesetting 排版
+
+  * View
+    - 负责对排版内容，进行渲染
+    - events bind
+    - smart resize 智能检测 window size
+
 ## Roadmap 开发周期
   * 2013-01-21 ~ 2013-01-25
     1. Rect (矩形) 结构、方法, 第一阶段只支持矩形
@@ -33,12 +50,13 @@ Mnemosyne 记忆女神之青春
   * 2013-02-25 ~ 2013-03-01
     1. 测试 优化
 
+
 ## 前端规划
 
 ### 功能
 
 #### Data Controller
-  * `DataController` Class
+  * `DataController` Object
   * Struct
   * API
     - `getPhotos()` 获取图片数据
@@ -80,12 +98,16 @@ Mnemosyne 记忆女神之青春
     - `append()` 添加 element
   * Note: 遵循 SVG g-tag 定义,描述
 
-#### Layout Box 对 Box 进行排版
-  * `LayoutBox` Class
+#### Layout 模板
+  * `Layout` Object
   * Struct
 
         :::javascript
         {
+          top: [int/float/string],
+          left: [int/float/string],
+          width: [int/float/string],
+          height: [int/float/string]
         }
 
   * API
@@ -93,20 +115,6 @@ Mnemosyne 记忆女神之青春
 #### Layout Engine 排版引擎
   * `Typesetting` Class
   * Struct
-
-        :::javascript
-        {
-          "layouts": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": []
-            //...
-          }
-        }
-
-
   * API
     - `typeset()` 排版
     - `order()` 排序
