@@ -9,7 +9,7 @@ Mnemosyne 记忆女神之青春
 
   - Layout Engine 排版引擎，负责对数据进行排版
     * Typesetting 排版
-    * models
+    - models
       * PhotoItem 图片
       * Layout 模板
       * Rect 矩形
