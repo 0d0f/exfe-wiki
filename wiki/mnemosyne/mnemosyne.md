@@ -8,12 +8,12 @@ Mnemosyne 记忆女神之青春
     * get photos
 
   - Layout Engine 排版引擎，负责对数据进行排版
+    * Typesetting 排版
     * models
       * Layout 模板
       * Rect 矩形
       * G 群组
       * PhotoItem 图片
-      * Typesetting 排版
 
   - View
     * 负责对排版内容，进行渲染
