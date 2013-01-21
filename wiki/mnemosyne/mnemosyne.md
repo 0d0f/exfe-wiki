@@ -68,11 +68,11 @@ Mnemosyne 记忆女神之青春
         :::javascript
         {
           "id": int,
-          "class": "rect",
-          "x": int/floag,
-          "y": int/float,
-          "width": int/float,
-          "height": int/float,
+          "type": "Rect",
+          "x": [int/floa],
+          "y": [int/float],
+          "width": [int/float],
+          "height": [int/float],
         }
 
   * Note: 遵循 SVG rect-tag 定义,描述
@@ -87,30 +87,31 @@ Mnemosyne 记忆女神之青春
         :::javascript
         {
           "id": int,
-          "class": "grouping"
-          "x": int/float,
-          "y": int/float,
-          "width": int/float,
-          "height": int/float
+          "type": "g",
+          "group_name": "xyz",
+          "celles": [
+            { "type": "Rect" ... },
+            { "type": "Circle" ... }
+            ...
+           ]
+        }
+
+        :::javascript
+        // sample:
+        {
+          "id" 233,
+          "type": "G",
+          "group_name": "233喵",
+          "celles": [
+            { "type": "Rect", "x": 0, "y": 0, "width": 1, "height": 1 },
+            { "type": "Circle", "cx": 50, "cy": 50, "r": 30 }
+          ]
         }
 
   * API
     - `append()` 添加 element
   * Note: 遵循 SVG g-tag 定义,描述
 
-#### Layout 模板
-  * `Layout` Object
-  * Struct
-
-        :::javascript
-        {
-          top: [int/float/string],
-          left: [int/float/string],
-          width: [int/float/string],
-          height: [int/float/string]
-        }
-
-  * API
 
 #### Layout Engine 排版引擎
   * `Typesetting` Class
