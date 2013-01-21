@@ -104,6 +104,7 @@ Mnemosyne 记忆女神之青春
             { "type": "Circle" ... }
             ...
            ]
+           ...
         }
 
         :::javascript
