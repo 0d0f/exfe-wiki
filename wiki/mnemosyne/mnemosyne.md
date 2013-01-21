@@ -61,7 +61,17 @@ Mnemosyne 记忆女神之青春
   * API
     - `getPhotos()` 获取图片数据
 
-#### Rect 排版形状 (第一阶段，只支持矩形)
+#### Layout Engine 排版引擎
+  * `Typesetting` Class
+  * Struct
+  * API
+    - `typeset()` 排版
+    - `order()` 排序
+    - `random()` 生产随机数
+    - `getLayout(photo_numbers)` 根据图片数, 随机获取图片排版结构
+
+
+##### Rect 排版形状 (第一阶段，只支持矩形)
   * `Rect` Class
   * Struct
 
@@ -77,10 +87,10 @@ Mnemosyne 记忆女神之青春
 
   * Note: 遵循 SVG rect-tag 定义,描述
 
-#### shapeFactory
-  * `shapeFactory` 简单工厂模式
+##### cellFactory
+  * `cellFactory` 简单工厂模式
 
-#### G Group Container
+##### G Group Container
   * `G` Class, 对图形进行分组
   * Struct
 
@@ -113,18 +123,11 @@ Mnemosyne 记忆女神之青春
   * Note: 遵循 SVG g-tag 定义,描述
 
 
-#### Layout Engine 排版引擎
-  * `Typesetting` Class
-  * Struct
-  * API
-    - `typeset()` 排版
-    - `order()` 排序
-    - `random()` 生产随机数
-    - `getLayout(photo_numbers)` 根据图片数, 随机获取图片排版结构
+#### View
 
-#### Smart Resize
+##### Smart Resize
 
-#### Photo Item 图片对象
+##### Photo Item 图片对象
   * `PhotoItem` Class
   * Struct
 
