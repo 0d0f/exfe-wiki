@@ -66,7 +66,7 @@ Mnemosyne 记忆女神之青春
   * Struct
   * API
     - `typeset()` 排版
-    - `order()` 排序
+    - `sort()` 排序
     - `random()` 生产随机数
     - `getLayout(photo_numbers)` 根据图片数, 随机获取图片排版结构
 
@@ -113,7 +113,7 @@ Mnemosyne 记忆女神之青春
           "id" 233,
           "type": "G",
           "group_name": "233喵",
-          "celles": [
+          "cells": [
             { "type": "Rect", "x": 0, "y": 0, "width": 1, "height": 1 },
             { "type": "Circle", "cx": 50, "cy": 50, "r": 30 }
           ]
