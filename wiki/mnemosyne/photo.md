@@ -21,5 +21,4 @@
     },
     "type": "photo",
     "siblings": [[object:photo]]
-},
-
+}
