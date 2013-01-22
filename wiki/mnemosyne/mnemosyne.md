@@ -99,7 +99,7 @@ Mnemosyne 记忆女神之青春
           "id": int,
           "type": "g",
           "group_name": "xyz",
-          "celles": [
+          "cells": [
             { "type": "Rect" ... },
             { "type": "Circle" ... }
             ...
