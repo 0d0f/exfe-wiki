@@ -3,7 +3,7 @@ Mnemosyne 记忆女神之青春
 > author: cfd   
 > date  : 2013-01-18T19:09:42 UTC+0800
 
-# 结构模型
+## 结构模型
   - Data Controller 负责数据交互
     * get photos
 
@@ -20,7 +20,7 @@ Mnemosyne 记忆女神之青春
     * events bind
     * smart resize 智能检测 window size
 
-# Roadmap 开发周期
+## Roadmap 开发周期
   * 2013-01-21 ~ 2013-01-25
     1. Rect (矩形) 结构、方法, 第一阶段只支持矩形
     2. G (群组) 结构、方法
@@ -51,17 +51,17 @@ Mnemosyne 记忆女神之青春
     1. 测试 优化
 
 
-# 前端规划
+## 前端规划
 
-## 功能
+### 功能
 
-### Data Controller
+#### Data Controller
   * `DataController` Object
   * Struct
   * API
     - `getPhotos()` 获取图片数据
 
-### Layout Engine 排版引擎
+#### Layout Engine 排版引擎
   * `Typesetting` Class
   * Struct
   * API
