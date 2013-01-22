@@ -97,7 +97,7 @@ Mnemosyne 记忆女神之青春
         :::javascript
         {
           "id": int,
-          "type": "g",
+          "type": "G",
           "group_name": "xyz",
           "cells": [
             { "type": "Rect" ... },
