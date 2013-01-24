@@ -98,7 +98,8 @@ Mnemosyne 记忆女神之青春
         {
           "id": int,
           "type": "G",
-          "group_name": "xyz",
+          "name": "xyz",
+          "aspect_ratio": 3 / 4, // `width / height` = 9 / 16 or = .75
           "cells": [
             { "type": "Rect" ... },
             { "type": "Circle" ... }
@@ -112,10 +113,11 @@ Mnemosyne 记忆女神之青春
         {
           "id" 233,
           "type": "G",
-          "group_name": "233喵",
+          "name": "233喵",
+          "aspect_ratio": 3 / 4,
           "cells": [
             { "type": "Rect", "x": 0, "y": 0, "width": 1, "height": 1 },
-            { "type": "Circle", "cx": 50, "cy": 50, "r": 30 }
+            { "type": "Circle", "cx": .5, "cy": .5, "r": .5 }
           ]
         }
 
