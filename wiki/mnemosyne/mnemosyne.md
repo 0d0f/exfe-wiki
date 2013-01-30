@@ -113,11 +113,13 @@ Mnemosyne 记忆女神之青春
         :::javascript
         {
           "id": int,
-          "type": "Rect",
+          "_tag": "Rect",
           "x": [int/floa],
           "y": [int/float],
           "width": [int/float],
           "height": [int/float],
+          "margin": { "top": 5, "right": 5, "bottom", 5, "left": 5 },
+          "type": "photo" // OR "map"
         }
 
   * Note: 遵循 SVG rect-tag 定义,描述
