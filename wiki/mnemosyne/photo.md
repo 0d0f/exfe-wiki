@@ -6,13 +6,14 @@
         "created_at": [str:time],
         "updated_at": [str:time],
         "provider": [str],
+        "external_album_id": [str],
         "external_id": [str],
         "location": [object:place],
         "images": {
             "fullsize": {
                 "height": [int],
                 "width": [int],
-                "url": [str:url]
+                "url": [str:url],
             },
             "thumbnail": {
                 "height": [int],
