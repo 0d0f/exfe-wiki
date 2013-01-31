@@ -1,6 +1,6 @@
 Mnemosyne 记忆女神之青春
 ------------------------
-> author: cfd   
+> author: cfd
 > date  : 2013-01-18T19:09:42 UTC+0800
 
 ## 结构模型
@@ -57,7 +57,7 @@ Mnemosyne 记忆女神之青春
 1        - 地图
 2        - 模板最佳适应尺寸
 3        - Like/Emotion？
-      
+
   * GUI / UX
 0        - 墙样式调整
 0        - 启动入场动画
