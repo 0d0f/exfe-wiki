@@ -34,51 +34,47 @@ Mnemosyne 记忆女神之青春
     1. 监听 window.resize，重新排版内容
     2. events 绑定，第一阶段，只支持 Desktop
     3. 图片浏览交互
-    4. navbar 导航栏
-    5. 根据设计稿，修改 html css 结构
 
-  * 2013-02-4 ~ 2013-02-07
-    2. 数据交互
-    3. 添加身份，分享图片
-    4. 根据 source, identity, etc... 分类筛选
+  * 2013-01-31 ~ 2013-02-08
+    1. GUI / UX
+        - 墙样式调整
+        - 大图入场动画
+        - 大图出场动画
+        - 大图切换动画
+
+    2. Optimization
+        - HTML + CSS 结构
+        - 排版引擎数据结构，排版引擎算法，二维 => 一维
+
+    3. Others
+        - 初始Group模板
 
   * 2013-02-18 ~ 2013-02-22
-    1. 适配 iPad
-    2. Mobile events 绑定
-    3. 提升体验, 第一阶段不追究特酷效果
+    * Features
+        - API数据层
+        - 嵌入·X·页
+        - 事件绑定调控
 
   * 2013-02-25 ~ 2013-03-01
-    1. 测试 优化
+    * Features
+        - 1 地图
+        - 2 模板最佳适应尺寸
+        - 3 Like/Emotion？
 
-  * Features
-0        - API数据层
-0        - 嵌入·X·页
-0        - 事件绑定调控
-1        - 地图
-2        - 模板最佳适应尺寸
-3        - Like/Emotion？
+    * GUI / UX
+        - 0 启动入场动画
+        - 1 Animation 调优
+        - 1 Pad重力感应
+        - 2 时间线：算法、交互、样式、3D效果
 
-  * GUI / UX
-0        - 墙样式调整
-0        - 启动入场动画
-0        - 大图入场动画
-0        - 大图出场动画
-0        - 大图切换动画
-1        - Animation 调优
-1        - Pad重力感应
-2        - 根据当前所看大图, 滚动背景wall
-2        - 时间线：算法、交互、样式、3D效果
+    * Optimization
+        - 2 CSS3 3D GPU 加速
+        - 2 根据当前所看大图, 滚动背景wall
+        - 3 墙边界弹性滚动
+        - 3 窗口尺寸缩放时动画流畅
 
-  * Optimization
-1        - HTML + CSS 结构
-1        - 排版引擎算法，二维 => 一维
-2        - CSS3 3D GPU 加速
-3        - 墙边界弹性滚动
-3        - 窗口尺寸缩放时动画流畅
-
-  * Others
-0        - 初始Group模板
-1        - 照片座标定位计算函数
+    * Others
+        - 1 照片座标定位计算函数
 
   * Next
       - Cell 后期支持更多属性描述, 圆 多边形等
@@ -117,11 +113,13 @@ Mnemosyne 记忆女神之青春
         :::javascript
         {
           "id": int,
-          "type": "Rect",
+          "_tag": "Rect",
           "x": [int/floa],
           "y": [int/float],
           "width": [int/float],
           "height": [int/float],
+          "margin": { "top": 5, "right": 5, "bottom", 5, "left": 5 },
+          "type": "photo" // OR "map"
         }
 
   * Note: 遵循 SVG rect-tag 定义,描述
