@@ -46,7 +46,7 @@ Mnemosyne API
     - 401: invalid_auth
 
 
-## Get pullsize photo
+## Get fullsize photo
 * description: 获取某一张照片的全尺寸版本。
 * endpoint: /v2/photos/GetFullsizePhoto
 * GET args:
