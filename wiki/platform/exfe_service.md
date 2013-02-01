@@ -396,7 +396,7 @@ func <span id="NewThirdpart">NewThirdpart</span>
     func NewThirdpart(config *model.Config, streaming *Streaming, platform *Platform) (*Thirdpart, error)
 
     func (t *Thirdpart) GrabPhotos(params map[string]string, to model.Recipient) (int, error)
-        抓取渠道to上图片库albumID里的图片，并加入crossID里
+        抓取渠道to上图片库albumID里的图片，并加入crossID里。bus地质：bus://exfe_service/thirdpart/photographers
 
         例子：
 
