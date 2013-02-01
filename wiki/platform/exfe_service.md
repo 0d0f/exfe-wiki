@@ -258,6 +258,8 @@ func <span id="NewPlatform">NewPlatform</span>
 
     func (p *Platform) GetHotRecipient(userID int64) ([]model.Recipient, error)
 
+    func (p *Platform) UploadPhoto(crossID string, photos []model.Photo) error
+
 type <span id="ShortToken">ShortToken</span>
 
     type ShortToken struct {
@@ -334,6 +336,26 @@ func <span id="NewShortTokenRepository">NewShortTokenRepository</span>
 
     func (r *ShortTokenRepository) UpdateExpireAt(key, resource string, expireAt time.Time) error
 
+type <span id="Status">Status</span>
+
+    type Status struct {
+        // contains filtered or unexported fields
+    }
+
+func <span id="NewStatus">NewStatus</span>
+
+    func NewStatus() *Status
+
+    func (s *Status) Get(key string) int
+
+    func (s *Status) Live(params map[string]string) (string, error)
+
+    func (s *Status) Set(key string, data int)
+
+    func (s *Status) SetRoute(r gobus.RouteCreater) (err error)
+
+    func (s *Status) Show(params map[string]string) (int, error)
+
 type <span id="Streaming">Streaming</span>
 
     type Streaming struct {
@@ -371,7 +393,14 @@ type <span id="Thirdpart">Thirdpart</span>
 
 func <span id="NewThirdpart">NewThirdpart</span>
 
-    func NewThirdpart(config *model.Config, streaming *Streaming) (*Thirdpart, error)
+    func NewThirdpart(config *model.Config, streaming *Streaming, platform *Platform) (*Thirdpart, error)
+
+    func (t *Thirdpart) GrabPhotos(params map[string]string, to model.Recipient) (int, error)
+        抓取渠道to上图片库albumID里的图片，并加入crossID里
+
+        例子：
+
+	> curl "http://127.0.0.1:23333/thirdpart/photographers?album_id=/Photos/underwater&cross_id=100354" -d '{"external_id":"123","external_username":"name","auth_data":"{\"oauth_token\":\"key\",\"oauth_token_secret\":\"secret\"}","provider":"dropbox","identity_id":789,"user_id":1}'
 
     func (t *Thirdpart) Send(params map[string]string, arg model.ThirdpartSend) (string, error)
         发信息给to，如果是私人信息，就发送private的内容，如果是公开信息，就发送public的内容。info内是相关的应用信息。
