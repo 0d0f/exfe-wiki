@@ -7,9 +7,9 @@ Mnemosyne API
 > updated date: 2013-02-01
 
 
-## Get all photos in Cross
-* description: 获取一个 Cross 下的所有照片。
-* endpoint: /v2/photos/[int:cross_id]
+## Get PhotoX
+* description: 获取一个 PhotoX 下的所有照片。
+* endpoint: /v2/photox/[str:photox_id]
 * GET args:
     - token: [str:user_token] 
 * returns:
@@ -20,8 +20,8 @@ Mnemosyne API
 
 
 ## Get albums
-* description: 获取某个第三方身份的所有可添加进 Cross 的相册。
-* endpoint: /v2/photos/GetAlbums
+* description: 获取某个第三方身份的所有可添加进 PhotoX 的相册。
+* endpoint: /v2/photox/GetSouceAlbums
 * GET args:
     - token: [str:user_token]
 * POST args:
@@ -33,9 +33,9 @@ Mnemosyne API
     - 401: invalid_auth
 
 
-## Get photos
+## Get source photos
 * description: 获取某个第三方身份的照片 feed 中的照片。
-* endpoint: /v2/photos/GetPhotos
+* endpoint: /v2/photox/GetSoucePhotos
 * GET args:
     - token: [str:user_token]
 * POST args:
@@ -46,13 +46,13 @@ Mnemosyne API
     - 401: invalid_auth
 
 
-## Get fullsize photo
+## Get photo
 * description: 获取某一张照片的全尺寸版本。
-* endpoint: /v2/photos/GetFullsizePhoto
+* endpoint: /v2/photox/GetPhoto
 * GET args:
     - token: [str:user_token]
 * POST args:
-    - cross_id: [int]
+    - photox_id: [int]
     - id: [int:photo_id]
 * returns:
     - 200: {"photo" : [object:photo]}
@@ -61,25 +61,25 @@ Mnemosyne API
     - 403: not_authorized
 
 
-## Add albums to cross
-* description: 添加相册到 Cross。
-* endpoint: /v2/photos/AddAlbumsToCross
+## Add
+* description: 添加照片到 PhotoX。
+* endpoint: /v2/photox/Add
 * GET args:
     - token: [str:user_token]
 * POST args OPTION A / 用于从有相册功能的身份中添加照片
   (eg: Facebook, Flickr, Dropbox):
-    - cross_id: [int]
+    - photox_id: [int]
     - identity_id: [int]
     - album_id: [str]
 * POST args OPTION B / 用于从有照片流功能的身份中添加照片
   (eg: Instagram): 
-    - cross_id: [int]
+    - photox_id: [str]
     - identity_id: [int]
     - min_id: [int]
     - max_id: [int]
 * POST args OPTION C / 用于从 PhotoStream 等公开 feed 中加入照片: 
   (eg: PhotoStream): 
-    - cross_id: [int]
+    - photox_id: [int]
     - stream_id: [str]
 * return:
     - 200: {"photos" : [array:photo_object]}
@@ -88,9 +88,9 @@ Mnemosyne API
     - 403: not_authorized
 
 
-## Add photos to cross (for GoBus only)
+## Add photos (for GoBus only)
 * description: GoBus 爬照片回调接口。
-* endpoint: /v2/photos/AddPhotosToCross/[cross_id]
+* endpoint: /v2/gobus/AddPhotos/[str:photox_id]
 * POST args:
     - BODY: [json:photos_array]
 * return:
