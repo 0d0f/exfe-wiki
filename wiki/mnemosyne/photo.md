@@ -10,12 +10,17 @@
         "external_id": [str],
         "location": [object:place],
         "images": {
+            "origin": {
+                "height": [int],
+                "width": [int],
+                "url": [str:url],
+            },
             "fullsize": {
                 "height": [int],
                 "width": [int],
                 "url": [str:url],
             },
-            "thumbnail": {
+            "preview": {
                 "height": [int],
                 "width": [int],
                 "url": [str:url]
