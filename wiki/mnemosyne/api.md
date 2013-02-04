@@ -1,4 +1,4 @@
-Mnemosyne API
+PhotoX API
 ------------------------
 > author: Leask
 
@@ -13,7 +13,7 @@ Mnemosyne API
 * GET args:
     - token: [str:user_token] 
 * returns:
-    - 200: {"photos" : [array:photo_object]}
+    - 200: {"photox" : [object:photox]}
     - 400: param_error
     - 401: invalid_auth
     - 403: not_authorized
@@ -52,13 +52,13 @@ Mnemosyne API
 * GET args:
     - token: [str:user_token]
 * POST args:
-    - photox_id: [int]
     - id: [int:photo_id]
 * returns:
     - 200: {"photo" : [object:photo]}
     - 400: error_getting_photo
     - 401: invalid_auth
     - 403: not_authorized
+    - 404: image_not_found
 
 
 ## Add
@@ -82,7 +82,7 @@ Mnemosyne API
     - photox_id: [int]
     - stream_id: [str]
 * return:
-    - 200: {"photos" : [array:photo_object]}
+    - 200: {"photox" : [object:photo]}
     - 400: param_error
     - 401: invalid_auth
     - 403: not_authorized
