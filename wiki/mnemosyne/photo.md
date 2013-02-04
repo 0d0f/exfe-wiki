@@ -10,7 +10,7 @@
         "external_id": [str],
         "location": [object:place],
         "images": {
-            "origin": {
+            "original": {
                 "height": [int],
                 "width": [int],
                 "url": [str:url],
