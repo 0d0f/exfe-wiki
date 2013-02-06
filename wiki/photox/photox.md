@@ -57,7 +57,7 @@ PhotoX API
         "size"        : [str:size],
         "by_identity" : [object:identity]
         "created_at"  : [str:time],
-        "updated_at"  : [str:time],
+        "updated_at"  : [str:time]
     }
 * Response
     #!javascript
