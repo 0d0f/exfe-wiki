@@ -27,11 +27,12 @@
 * endpoint: /v2/Gobus/NotificationCallback
 * POST args:
     - BODY:
-        #!javascript
-        {
-            "recipient" : [object:recipient],
-            "error"     : [string:reason]
-        }
+
+            #!javascript
+            {
+                "recipient" : [object:recipient],
+                "error"     : [string:reason]
+            }
 
 
 ## Revoke Identity:
@@ -59,18 +60,21 @@
 * endpoint: /v2/Gobus/Gether
 * POST args OPTION A:
     - BODY:
-        #!javascript
-        {
-            cross_id: [int],
-            identities: [array:identity]
-        }
+
+            #!javascript
+            {
+                cross_id: [int],
+                identities: [array:identity]
+            }
+
 * POST args OPTION B:
     - BODY:
-        #!javascript
-        {
-            exfee_id: [int],
-            identities: [array:identity]
-        }
+
+            #!javascript
+            {
+                exfee_id: [int],
+                identities: [array:identity]
+            }
 
 
 ## Post Conversation:
