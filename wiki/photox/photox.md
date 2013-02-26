@@ -13,6 +13,7 @@
         "type"   : "photox"
     }
 * photo
+
         #!javascript
         {
             "id"                : [int],
