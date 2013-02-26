@@ -1,7 +1,7 @@
 # For Bus
-> author: Leask Huang
-> created date: 2013-02-26
-> updated date: 2013-02-26
+    author: Leask Huang
+    created date: 2013-02-26
+    updated date: 2013-02-26
 
 
 ## Response:
@@ -27,6 +27,7 @@
 * endpoint: /v2/Gobus/NotificationCallback
 * POST args:
     - BODY:
+        #!javascript
         {
             "recipient" : [object:recipient],
             "error"     : [string:reason]
@@ -58,12 +59,14 @@
 * endpoint: /v2/Gobus/Gether
 * POST args OPTION A:
     - BODY:
+        #!javascript
         {
             cross_id: [int],
             identities: [array:identity]
         }
 * POST args OPTION B:
     - BODY:
+        #!javascript
         {
             exfee_id: [int],
             identities: [array:identity]

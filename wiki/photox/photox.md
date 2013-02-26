@@ -1,7 +1,7 @@
 # PhotoX API
-> author: Leask Huang
-> created date: 2013-02-01
-> updated date: 2013-02-26
+    author: Leask Huang
+    created date: 2013-02-01
+    updated date: 2013-02-26
 
 
 ## Basic Objects
