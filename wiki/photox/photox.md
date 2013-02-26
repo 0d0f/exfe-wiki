@@ -181,7 +181,7 @@
     - 404: photo_not_found
 
 
-## Add photos (for GoBus only)
+## Add photos (for Bus only)
 * description: GoBus 爬照片回调接口。
 * endpoint: /v2/gobus/AddPhotos/[str:photox_id]
 * POST args:
