@@ -1,10 +1,7 @@
-PhotoX API
-------------------------
-> author: Leask
-
+# PhotoX API
+> author: Leask Huang
 > created date: 2013-02-01
-
-> updated date: 2013-02-01
+> updated date: 2013-02-26
 
 
 ## Basic Objects
@@ -76,7 +73,7 @@ PhotoX API
 * description: 获取一个 PhotoX 下的所有照片。
 * endpoint: /v2/photox/[str:photox_id]
 * GET args:
-    - token: [str:user_token] 
+    - token: [str:user_token]
 * returns:
     - 200: {"photox" : [object:photox]}
     - 400: param_error
@@ -93,7 +90,7 @@ PhotoX API
     - identity_id: [int]
     - album_id: [str]
 * returns:
-    - 200: {"albums" : [array:album_object]} 
+    - 200: {"albums" : [array:album_object]}
     - 400: param_error
     - 401: invalid_auth
 
@@ -136,12 +133,12 @@ PhotoX API
     - identity_id: [int]
     - album_id: [str]
 * POST args OPTION B / 用于从有照片流功能的身份中添加照片
-  (eg: Instagram): 
+  (eg: Instagram):
     - identity_id: [int]
     - min_id: [int]
     - max_id: [int]
-* POST args OPTION C / 用于从 PhotoStream 等公开 feed 中加入照片: 
-  (eg: PhotoStream): 
+* POST args OPTION C / 用于从 PhotoStream 等公开 feed 中加入照片:
+  (eg: PhotoStream):
     - stream_id: [str]
 * return:
     - 200: {"photox" : [object:photo]}
@@ -156,7 +153,7 @@ PhotoX API
 * GET args:
     - token: [str:user_token]
 * return:
-    - 200: {"likes" : [array:response_object]} 
+    - 200: {"likes" : [array:response_object]}
     - 400: param_error
     - 401: invalid_auth
     - 403: not_authorized
