@@ -6,12 +6,13 @@
 
 ## Basic Objects
 * PhotoX
-    #!javascript
-    {
-        "id"     : [int],
-        "photos" : [array:photo_object],
-        "type"   : "photox"
-    }
+
+        #!javascript
+        {
+            "id"     : [int],
+            "photos" : [array:photo_object],
+            "type"   : "photox"
+        }
 * photo
 
         #!javascript
@@ -46,28 +47,30 @@
             "siblings"          : [[object:photo]]
         }
 * Album
-    #!javascript
-    {
-        "external_id" : [str],
-        "provider"    : [str],
-        "caption"     : [str],
-        "count"       : [int],
-        "size"        : [str:size],
-        "by_identity" : [object:identity]
-        "created_at"  : [str:time],
-        "updated_at"  : [str:time]
-    }
+
+        #!javascript
+        {
+            "external_id" : [str],
+            "provider"    : [str],
+            "caption"     : [str],
+            "count"       : [int],
+            "size"        : [str:size],
+            "by_identity" : [object:identity]
+            "created_at"  : [str:time],
+            "updated_at"  : [str:time]
+        }
 * Response
-    #!javascript
-    {
-        "id"          : [int],
-        "object_type" : [str],
-        "object_id"   : [str],
-        "response"    : [str],
-        "by_identity" : [object:identity],
-        "created_at"  : [str:time],
-        "updated_at"  : [str:time]
-    }
+
+        #!javascript
+        {
+            "id"          : [int],
+            "object_type" : [str],
+            "object_id"   : [str],
+            "response"    : [str],
+            "by_identity" : [object:identity],
+            "created_at"  : [str:time],
+            "updated_at"  : [str:time]
+        }
 
 
 ## Get PhotoX
