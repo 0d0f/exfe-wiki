@@ -57,7 +57,7 @@
 
 
 ## Invite
-* endpoint: /v2/Gobus/Gether
+* endpoint: /v2/Gobus/Invite
 * POST args OPTION A:
     - BODY:
 
@@ -86,6 +86,12 @@
     - content: [string]
     - time: [string:time]
 * POST args OPTION B:
+    - external_id: [string]
+    - provider: [string]
+    - exfee_id: [int]
+    - content: [string]
+    - time: [string:time]
+* POST args OPTION C:
     - external_id: [string]
     - provider: [string]
     - iom: [string]
