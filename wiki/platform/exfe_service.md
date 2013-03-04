@@ -18,15 +18,22 @@ CONSTANTS
         SHORTTOKEN_TOUCH           = "UPDATE `shorttokens` SET touched_at=NOW() WHERE expire_at>UTC_TIMESTAMP() AND `key`=? AND resource=?"
     )
     const (
-        CREATE                   = "INSERT INTO `tokens` VALUES (null, ?, ?, ?, ?, ?, ?)"
-        STORE                    = "UPDATE `tokens` SET expire_at=?, data=? WHERE tokens.key=? AND tokens.rand=?"
-        FIND_BY_KEY              = "SELECT rand, touched_at, created_at, expire_at, data FROM `tokens` WHERE tokens.key=?"
-        FIND_BY_TOKEN            = "SELECT touched_at, created_at, expire_at, data FROM `tokens` WHERE tokens.key=? AND tokens.rand=?"
-        UPDATE_DATA_BY_TOKEN     = "UPDATE `tokens` SET tokens.data=? WHERE tokens.key=? AND tokens.rand=?"
-        UPDATE_EXPIREAT_BY_TOKEN = "UPDATE `tokens` SET tokens.expire_at=? WHERE tokens.key=? AND tokens.rand=?"
-        UPDATE_EXPIREAT_BY_KEY   = "UPDATE `tokens` SET tokens.expire_at=? WHERE tokens.key=?"
-        DELETE_BY_TOKEN          = "DELETE FROM `tokens` WHERE tokens.key=? AND tokens.rand=?"
-        TOUCH                    = "UPDATE `tokens` SET touched_at=NOW() WHERE tokens.key=? AND tokens.rand=?"
+        TOKEN_STORE           = "INSERT INTO `tokens` (`key`, `hash`, `data`, `expire_at`, `created_at`, `touched_at`) VALUES (?, ?, ?, ?, ?, NOW())"
+        TOKEN_FIND            = "SELECT `key`, hash, data, touched_at, expire_at FROM `tokens` WHERE expire_at>UTC_TIMESTAMP()"
+        TOKEN_UPDATE_DATA     = "UPDATE `tokens` SET data=? WHERE expire_at>UTC_TIMESTAMP()"
+        TOKEN_UPDATE_EXPIREAT = "UPDATE `tokens` SET expire_at=? WHERE expire_at>UTC_TIMESTAMP()"
+        TOKEN_TOUCH           = "UPDATE `tokens` SET touched_at=NOW() WHERE expire_at>UTC_TIMESTAMP()"
+    )
+    const (
+        CREATE                   = "INSERT INTO `tokens_` VALUES (null, ?, ?, ?, ?, ?, ?)"
+        STORE                    = "UPDATE `tokens_` SET expire_at=?, data=? WHERE tokens_.key=? AND tokens_.rand=?"
+        FIND_BY_KEY              = "SELECT rand, touched_at, created_at, expire_at, data FROM `tokens_` WHERE tokens_.key=?"
+        FIND_BY_TOKEN            = "SELECT touched_at, created_at, expire_at, data FROM `tokens_` WHERE tokens_.key=? AND tokens_.rand=?"
+        UPDATE_DATA_BY_TOKEN     = "UPDATE `tokens_` SET tokens_.data=? WHERE tokens_.key=? AND tokens_.rand=?"
+        UPDATE_EXPIREAT_BY_TOKEN = "UPDATE `tokens_` SET tokens_.expire_at=? WHERE tokens_.key=? AND tokens_.rand=?"
+        UPDATE_EXPIREAT_BY_KEY   = "UPDATE `tokens_` SET tokens_.expire_at=? WHERE tokens_.key=?"
+        DELETE_BY_TOKEN          = "DELETE FROM `tokens_` WHERE tokens_.key=? AND tokens_.rand=?"
+        TOUCH                    = "UPDATE `tokens_` SET touched_at=NOW() WHERE tokens_.key=? AND tokens_.rand=?"
     )
 
 TYPES
@@ -95,7 +102,7 @@ type <span id="Notifier">Notifier</span>
 
 func <span id="NewNotifier">NewNotifier</span>
 
-    func NewNotifier(local *formatter.LocalTemplate, config *model.Config, sender *broker.Sender) *Notifier
+    func NewNotifier(local *formatter.LocalTemplate, config *model.Config, platform *broker.Platform) *Notifier
 
     func (n *Notifier) CrossInvite(params map[string]string, invitation model.CrossInvitation) (int, error)
         发送Cross的邀请消息invitations
@@ -242,24 +249,6 @@ func <span id="NewNotifier">NewNotifier</span>
         '[{"to":{"identity_id":11,"user_id":1,"name":"email1
         name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"email1@domain.com","external_username":"email1@domain.com"},"need_verify":true}]'
 
-type <span id="Platform">Platform</span>
-
-    type Platform struct {
-        // contains filtered or unexported fields
-    }
-
-func <span id="NewPlatform">NewPlatform</span>
-
-    func NewPlatform(config *model.Config) (*Platform, error)
-
-    func (p *Platform) FindCross(id uint64) (model.Cross, error)
-
-    func (p *Platform) FindIdentity(identity model.Identity) (model.Identity, error)
-
-    func (p *Platform) GetHotRecipient(userID int64) ([]model.Recipient, error)
-
-    func (p *Platform) UploadPhoto(crossID string, photos []model.Photo) error
-
 type <span id="ShortToken">ShortToken</span>
 
     type ShortToken struct {
@@ -379,7 +368,7 @@ func <span id="NewStreaming">NewStreaming</span>
         > curl http://127.0.0.1:23333/streaming -d
         '{"to":{"external_id":"123","external_username":"name","auth_data":"","provider":"streaming","identity_id":789,"user_id":375},"private":"private","public":"public","info":null}'
 
-    func (s *Streaming) Send(to *model.Recipient, privateMessage string, publicMessage string, data *model.InfoData) (string, error)
+    func (s *Streaming) Send(to *model.Recipient, text string) (string, error)
 
     func (s *Streaming) ServeHTTP(w http.ResponseWriter, r *http.Request)
 
@@ -393,7 +382,7 @@ type <span id="Thirdpart">Thirdpart</span>
 
 func <span id="NewThirdpart">NewThirdpart</span>
 
-    func NewThirdpart(config *model.Config, streaming *Streaming, platform *Platform) (*Thirdpart, error)
+    func NewThirdpart(config *model.Config, streaming *Streaming, platform *broker.Platform) (*Thirdpart, error)
 
     func (t *Thirdpart) GrabPhotos(params map[string]string, to model.Recipient) (int, error)
         抓取渠道to上图片库albumID里的图片，并加入crossID里。bus地质：bus://exfe_service/thirdpart/photographers
@@ -424,6 +413,70 @@ func <span id="NewThirdpart">NewThirdpart</span>
         例子：
 
 	> curl http://127.0.0.1:23333/thirdpart/identity -d '{"external_id":"123","external_username":"name","auth_data":"","provider":"twitter","identity_id":789,"user_id":1}'
+
+type <span id="Token">Token</span>
+
+    type Token struct {
+        rest.Service `root:"/v3/tokens"`
+
+        Create         rest.Processor `method:"POST" path:"/(short|long)"`
+        KeyGet         rest.Processor `method:"GET" path:"/key/([a-zA-Z0-9]+)"`
+        ResourceGet    rest.Processor `method:"GET" path:"/resource"`
+        KeyUpdate      rest.Processor `method:"POST" path:"/key/([a-zA-Z0-9]+)"`
+        ResourceUpdate rest.Processor `method:"POST" path:"/resource"`
+        // contains filtered or unexported fields
+    }
+
+func <span id="NewToken">NewToken</span>
+
+    func NewToken(config *model.Config, db *broker.DBMultiplexer) (*Token, error)
+
+    func (s Token) Create_(genType string, arg CreateArg) (ret model.Token)
+        根据resource，data和expire after seconds创建一个token
+
+        例子：
+
+	> curl "http://127.0.0.1:23333/v3/tokens/long" -d '{"data":"abc","resource":"123","expire_after_seconds":300}'
+
+        返回：
+
+	{"key":"0303","data":"abc"}
+
+    func (s Token) KeyGet_(key string) []model.Token
+        根据key获得一个token，如果token不存在，返回错误
+
+        例子：
+
+	> curl "http://127.0.0.1:23333/v3/tokens/key/0303"
+
+        返回：
+
+	[{"key":"0303","data":"abc"}]
+
+    func (s Token) KeyUpdate_(key string, arg UpdateArg)
+        更新key对应的token的data信息或者expire after seconds
+
+        例子：
+
+	> curl "http://127.0.0.1:23333/v3/tokens/key/0303" -d '{"data":"xyz","expire_after_seconds":13}'
+
+    func (s Token) ResourceGet_(resource string) []model.Token
+        根据resource获得一个token，如果token不存在，返回错误
+
+        例子：
+
+	> curl "http://127.0.0.1:23333/v3/tokens/resource" -d '"abc"'
+
+        返回：
+
+	[{"key":"0303","data":"abc"}]
+
+    func (s Token) ResourceUpdate_(arg UpdateArg)
+        更新resource对应的token的expire after seconds
+
+        例子：
+
+	> curl "http://127.0.0.1:23333/v3/tokens/resource" -d '{"resource":"abc", "expire_after_seconds":13}'
 
 type <span id="TokenGenerateArgs">TokenGenerateArgs</span>
 
@@ -527,6 +580,26 @@ type <span id="TokenRefreshArg">TokenRefreshArg</span>
         ExpireAfterSeconds int    `json:"expire_after_seconds"`
     }
 
+type <span id="TokenRepo">TokenRepo</span>
+
+    type TokenRepo struct {
+        // contains filtered or unexported fields
+    }
+
+func <span id="NewTokenRepo">NewTokenRepo</span>
+
+    func NewTokenRepo(config *model.Config, db *broker.DBMultiplexer) (*TokenRepo, error)
+
+    func (r *TokenRepo) Find(token token.Token) (ret []token.Token, err error)
+
+    func (r *TokenRepo) Store(token token.Token) (err error)
+
+    func (r *TokenRepo) Touch(token token.Token) (err error)
+
+    func (r *TokenRepo) UpdateData(token token.Token, data string) (err error)
+
+    func (r *TokenRepo) UpdateExpireAt(token token.Token, expireAt time.Time) (err error)
+
 type <span id="TokenRepository">TokenRepository</span>
 
     type TokenRepository struct {
@@ -579,5 +652,6 @@ type <span id="UpdateArg">UpdateArg</span>
     type UpdateArg struct {
         Data               *string `json:"data"`
         ExpireAfterSeconds *int    `json:"expire_after_seconds"`
+        Resource           string  `json:"resource"`
     }
 

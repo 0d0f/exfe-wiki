@@ -112,3 +112,49 @@ EVANGEL设计文档
  	查询已发送数量和发送成功的数量。数据用于统计用，不作为发送是否成功的接口。
 
  	 	http://domain/2013-02/status/{state name}?token=xxxxx GET
+
+ 	查询返回具体的查询值，内容由查询的状态决定。
+
+返回值
+------
+
+ - 正常
+
+ 	http返回码：200
+
+ 	返回内容：发送消息在对应通道内的id值。如果是email，是Message ID，如果是twitter，为对应tweet id。有些渠道可能没有返回值。
+
+ - 不可重试错误
+
+	http返回码：4xx
+
+	返回内容：具体错误信息的json字符串。这种错误属于与使用者相关的错误，在不解决发生错误的原因前，始终无法发送，比如身份验证出错，接收者不存在。这种错误在问题解决前不能重试。
+
+ - 可重试错误
+
+	http返回码：5xx
+
+	返回内容：具体错误信息的json字符串。这种错误属于发送中发生的错误，比如网络不通（超时），服务器过载等。在过了一段时间之后可能会恢复，可以过一段时间重试。
+
+支持渠道信息
+-----------
+
+ - email
+
+	email需要到amazon aws的ses服务申请开通一个smtp帐号，或者提交要发送的邮箱名代为申请。发送时认证auth\_data如下：
+
+ - twitter
+
+	twitter需要到twitter develop申请client。
+
+ - 短信
+
+ 	国内短信需要到短彩网申请帐户，国外短信需要到twilio申请帐户。或者使用公用号码发送。
+
+ - iOS apn push
+
+ 	需要有mac develop认证，并取得相应tls证书。
+
+ - Android GCM push
+
+ 	需要在android develop申请gcm服务，并取得相应的key。
