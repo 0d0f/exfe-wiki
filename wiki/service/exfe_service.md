@@ -421,7 +421,7 @@ type <span id="Token">Token</span>
 
         Create         rest.Processor `method:"POST" path:"/(short|long)"`
         KeyGet         rest.Processor `method:"GET" path:"/key/([a-zA-Z0-9]+)"`
-        ResourceGet    rest.Processor `method:"GET" path:"/resource"`
+        ResourceGet    rest.Processor `method:"POST" path:"/resources"`
         KeyUpdate      rest.Processor `method:"POST" path:"/key/([a-zA-Z0-9]+)"`
         ResourceUpdate rest.Processor `method:"POST" path:"/resource"`
         // contains filtered or unexported fields
@@ -465,7 +465,7 @@ func <span id="NewToken">NewToken</span>
 
         例子：
 
-	> curl "http://127.0.0.1:23333/v3/tokens/resource" -X GET -d '"abc"'
+	> curl "http://127.0.0.1:23333/v3/tokens/resources" -d '"abc"'
 
         返回：
 
