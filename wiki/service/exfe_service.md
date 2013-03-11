@@ -417,7 +417,7 @@ func <span id="NewThirdpart">NewThirdpart</span>
 type <span id="Token">Token</span>
 
     type Token struct {
-        rest.Service `root:"/v3/tokens"`
+        rest.Service `prefix:"/v3/tokens"`
 
         Create         rest.Processor `method:"POST" path:"/(short|long)"`
         KeyGet         rest.Processor `method:"GET" path:"/key/([a-zA-Z0-9]+)"`
@@ -440,7 +440,7 @@ func <span id="NewToken">NewToken</span>
 
         返回：
 
-	{"key":"0303","data":"abc"}
+	{"key":"0303","data":"abc","touched_at":21341234,"expire_at":66354}
 
     func (s Token) KeyGet_(key string) []model.Token
         根据key获得一个token，如果token不存在，返回错误
@@ -451,7 +451,7 @@ func <span id="NewToken">NewToken</span>
 
         返回：
 
-	[{"key":"0303","data":"abc"}]
+	[{"key":"0303","data":"abc","touched_at":21341234,"expire_at":66354}]
 
     func (s Token) KeyUpdate_(key string, arg UpdateArg)
         更新key对应的token的data信息或者expire after seconds
@@ -469,7 +469,7 @@ func <span id="NewToken">NewToken</span>
 
         返回：
 
-	[{"key":"0303","data":"abc"}]
+	[{"key":"0303","data":"abc","touched_at":21341234,"expire_at":66354}]
 
     func (s Token) ResourceUpdate_(arg UpdateArg)
         更新resource对应的token的expire after seconds
