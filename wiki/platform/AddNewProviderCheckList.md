@@ -14,4 +14,12 @@
 * Identity Model Create New Identity
 * Photo Models (If Needed)
 
-## Front-End
+## Web Front-End
+  * URL Route
+    - `Profile` URL Route
+    - `X` invited URL Route
+  * Display in `Profile` Identity list
+  * Check `isOAuthIdentity` function in `handlebarsext` library
+  * Check `production/view` templates
+  * Check `Start` Dialog, `Add Identity` Dialog
+  * Check `printExtUserName` & `parseId` functions in `util` library
