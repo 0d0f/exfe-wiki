@@ -79,29 +79,6 @@
             }
 
 
-## Exfee Update
-* endpoint: /v2/Gobus/ExfeeUpdate
-* POST args OPTION A:
-    - BODY:
-
-            #!javascript
-            {
-                cross_id: [int],
-                exfee: [object:exfee],
-                by_identity: [object:identity]
-            }
-
-* POST args OPTION B:
-    - BODY:
-
-            #!javascript
-            {
-                exfee_id: [int],
-                exfee: [object:exfee],
-                by_identity: [object:identity]
-            }
-
-
 ## Post Conversation:
 * endpoint: /v2/Gobus/PostConversation
 * POST args OPTION A:
