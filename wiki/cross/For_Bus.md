@@ -64,7 +64,8 @@
             #!javascript
             {
                 cross_id: [int],
-                identities: [array:identity]
+                identities: [array:identity],
+                by_identity: [object:identity]
             }
 
 * POST args OPTION B:
@@ -73,7 +74,8 @@
             #!javascript
             {
                 exfee_id: [int],
-                identities: [array:identity]
+                identities: [array:identity],
+                by_identity: [object:identity]
             }
 
 
