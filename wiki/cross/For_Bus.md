@@ -56,15 +56,15 @@
     - BODY: [json:cross]
 
 
-## Invite
-* endpoint: /v2/Gobus/Invite
+## X Update
+* endpoint: /v2/Gobus/XUpdate
 * POST args OPTION A:
     - BODY:
 
             #!javascript
             {
                 cross_id: [int],
-                identities: [array:identity],
+                cross: [object:cross],
                 by_identity: [object:identity]
             }
 
@@ -74,7 +74,30 @@
             #!javascript
             {
                 exfee_id: [int],
-                identities: [array:identity],
+                cross: [object:cross],
+                by_identity: [object:identity]
+            }
+
+
+## Exfee Update
+* endpoint: /v2/Gobus/ExfeeUpdate
+* POST args OPTION A:
+    - BODY:
+
+            #!javascript
+            {
+                cross_id: [int],
+                exfee: [object:exfee],
+                by_identity: [object:identity]
+            }
+
+* POST args OPTION B:
+    - BODY:
+
+            #!javascript
+            {
+                exfee_id: [int],
+                exfee: [object:exfee],
                 by_identity: [object:identity]
             }
 
