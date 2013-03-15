@@ -51,7 +51,7 @@
 
 
 ## Gather
-* endpoint: /v2/Gobus/Gether
+* endpoint: /v2/Gobus/Gather
 * POST args:
     - BODY: [json:cross]
 

@@ -7,7 +7,7 @@ args:
 rsvp=[
     {
         identity_id : [int]
-        rsvp_status : '[Enumerate: 'NORESPONSE', 'ACCEPTED', 'INTERESTED', 'DECLINED', 'REMOVED', 'NOTIFICATION']'
+        rsvp_status : '[Enumerate: 'NORESPONSE', 'ACCEPTED', 'INTERESTED', 'DECLINED', 'REMOVED', 'NOTIFICATION', 'IGNORED']'
         by_identity_id : [int]
         type : 'rsvp'
     }
