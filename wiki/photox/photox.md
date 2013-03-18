@@ -94,10 +94,17 @@
 * GET args:
     - token: [str:user_token]
 * POST args:
-    - identity_id: [int]
-    - album_id: [str]
+    - identity_id: [int/Optional]
+    - album_id: [str/Optional]
 * returns:
-    - 200: {"albums" : [array:album_object]}
+    - 200: 
+
+            #!javascript            
+            {
+                "albums"            : [array:album_object],
+                "failed_identities" : [object:identities]
+            }
+
     - 400: param_error
     - 401: invalid_auth
 
