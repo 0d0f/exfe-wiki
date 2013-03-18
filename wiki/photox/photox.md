@@ -55,6 +55,7 @@
             "external_id" : [str],
             "provider"    : [str],
             "caption"     : [str],
+            "artwork"     : [str:url],
             "count"       : [int],
             "size"        : [str:size],
             "by_identity" : [object:identity]
