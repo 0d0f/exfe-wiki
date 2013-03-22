@@ -1,7 +1,5 @@
-Update User name
-===
-Description:
----
+# Update User name
+## Description
 
 * method:
 	POST
@@ -24,9 +22,8 @@ Description:
 	user object
 
 
-Sample:
----
-
+## Sample
+### Request
 	leask@Flora:~/Downloads> http -f post api.local.exfe.com/v2/users/update?token=sadfsadfsdafsdf name="LLLLL"
 	HTTP/1.1 200 OK
 	X-Powered-By: PHP/5.3.13
@@ -38,7 +35,7 @@ Sample:
 	Transfer-Encoding: chunked
 	Date: Thu, 31 May 2012 10:32:40 GMT
 	Server: lighttpd/1.4.30
-
+### Response
 	{
 	    "meta": {
 	        "code": 200
