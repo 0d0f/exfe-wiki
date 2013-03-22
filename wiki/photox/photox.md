@@ -110,7 +110,24 @@
     - 401: invalid_auth
 
 
-## Get photo
+## Get Source Photo
+* description: 获取源照片。
+* endpoint: /v2/photox/GetSourcePhotos
+* GET args:
+    - token: [str:user_token]
+* POST args:
+    - external_ids: [json:external_id_array]
+    - identity_id: [int]
+    - album_id: [str]
+* returns:
+    - 200: {"photos" : [array:photo_object]}
+    - 400: error_getting_photo
+    - 401: invalid_auth
+    - 403: not_authorized
+    - 404: photo_not_found
+
+
+## Get Photo
 * description: 获取某一张照片的全尺寸版本。
 * endpoint: /v2/photox/GetPhoto
 * GET args:

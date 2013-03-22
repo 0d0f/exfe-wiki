@@ -4,7 +4,7 @@
 * OAuth Model
 * OAuth API
 * Recipient Model
-* Avatar Action
+* Avatar Action / get / add
 * Verify Identity API
 * OAuth Verify Identity API
 * Get Identity API
