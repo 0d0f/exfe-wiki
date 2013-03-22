@@ -1,27 +1,19 @@
 # Update User name
 ## Description
 
-* method:
-	POST
-
-* endpoint:
-	<%API_V2_ROOT%>users/update?token=[string]
-
-* encoding:
-	FormURLParameterEncoding
-
-* url args: 
-
-	"token"=[string]
-
-* form args: 
-
-	"name"=[string]
-
-* return:
-	user object
-
-
+* method:    
+	POST    
+* endpoint:    
+	<%API_V2_ROOT%>users/update?token=[string]    
+* encoding:    
+	FormURLParameterEncoding    
+* url args:     
+	"token"=[string]    
+* form args:     
+	"name"=[string]    
+* return:    
+	user object    
+	
 ## Sample
 ### Request
 	leask@Flora:~/Downloads> http -f post api.local.exfe.com/v2/users/update?token=sadfsadfsdafsdf name="LLLLL"
