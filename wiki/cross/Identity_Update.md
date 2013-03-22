@@ -1,11 +1,12 @@
 h1. Update  public
 
-<pre>
+
 method: post,
 endpoint: api.local.exfe.com/v2/identities/[identities_id]/update?token=[string]
 args: token, name, bio
 return: identity object
 
+<pre>
 leask@Flora:~/Downloads> http -f post api.local.exfe.com/v2/identities/233/update?token=sadfsadfsdafsdf bio="ok"
 HTTP/1.1 200 OK
 X-Powered-By: PHP/5.3.13

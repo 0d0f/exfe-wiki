@@ -1,12 +1,12 @@
 h1. Update
 
-<pre>
+
 method: post,
 endpoint: api.local.exfe.com/v2/users/update?token=[string]
 args: token, name
 return: user object
 
-
+<pre>
 leask@Flora:~/Downloads> http -f post api.local.exfe.com/v2/users/update?token=sadfsadfsdafsdf name="LLLLL"
 HTTP/1.1 200 OK
 X-Powered-By: PHP/5.3.13
