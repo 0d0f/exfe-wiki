@@ -6,23 +6,28 @@ Description:
 * method:
 
 	POST
+
 * endpoint:
 
 	<%API_V2_ROOT%>identities/[identities_id]/update?token=[string]
 * encoding
 
 	FormURLParameterEncoding
+
 * url args:
 
 	"token"=[string]
+
 * form args:
 
 	"name"=[string]
 	
 	"bio"=[string]
+
 * return:
 	
 	identity object
+
 
 Sample:
 ---
