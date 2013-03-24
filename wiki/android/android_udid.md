@@ -1,4 +1,4 @@
-## Android Device Identity信息
+# Android UDID
 
 设备型号
 Build.MODEL
