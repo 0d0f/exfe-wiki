@@ -55,6 +55,7 @@
             "external_id" : [str],
             "provider"    : [str],
             "caption"     : [str],
+            "artwork"     : [str:url],
             "count"       : [int],
             "size"        : [str:size],
             "by_identity" : [object:identity]
@@ -88,40 +89,50 @@
     - 403: not_authorized
 
 
-## Get albums
+## Browse Source
 * description: 获取某个第三方身份的所有可添加进 PhotoX 的相册。
-* endpoint: /v2/photox/GetSourceAlbums
+* endpoint: /v2/photox/browseSource
 * GET args:
     - token: [str:user_token]
-* POST args:
-    - identity_id: [int]
-    - album_id: [str]
+    - identity_id: [int/Optional]
+    - album_id: [str/Optional]
 * returns:
-    - 200: {"albums" : [array:album_object]}
+    - 200: 
+
+            #!javascript            
+            {
+                "albums"            : [array:album_object],
+                "photos"            : [array:photo_object],
+                "failed_identities" : [object:identities]
+            }
+
     - 400: param_error
     - 401: invalid_auth
 
 
-## Get source photos
-* description: 获取某个第三方身份的照片 feed 中的照片。
+## Get Source Photo
+* description: 获取源照片。
 * endpoint: /v2/photox/GetSourcePhotos
 * GET args:
     - token: [str:user_token]
 * POST args:
+    - external_ids: [json:external_id_array]
     - identity_id: [int]
+    - album_id: [str]
 * returns:
     - 200: {"photos" : [array:photo_object]}
-    - 400: param_error
+    - 400: error_getting_photo
     - 401: invalid_auth
+    - 403: not_authorized
+    - 404: photo_not_found
 
 
-## Get photo
+## Get Photo
 * description: 获取某一张照片的全尺寸版本。
 * endpoint: /v2/photox/GetPhoto
 * GET args:
     - token: [str:user_token]
-* POST args:
-    - id: [int:photo_id]
+    - photo_id: [int:photo_id]
 * returns:
     - 200: {"photo" : [object:photo]}
     - 400: error_getting_photo

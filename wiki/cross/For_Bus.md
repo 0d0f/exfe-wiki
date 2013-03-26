@@ -51,20 +51,21 @@
 
 
 ## Gather
-* endpoint: /v2/Gobus/Gether
+* endpoint: /v2/Gobus/Gather
 * POST args:
     - BODY: [json:cross]
 
 
-## Invite
-* endpoint: /v2/Gobus/Invite
+## X Update
+* endpoint: /v2/Gobus/XUpdate
 * POST args OPTION A:
     - BODY:
 
             #!javascript
             {
                 cross_id: [int],
-                identities: [array:identity]
+                cross: [object:cross],
+                by_identity: [object:identity]
             }
 
 * POST args OPTION B:
@@ -73,7 +74,8 @@
             #!javascript
             {
                 exfee_id: [int],
-                identities: [array:identity]
+                cross: [object:cross],
+                by_identity: [object:identity]
             }
 
 
