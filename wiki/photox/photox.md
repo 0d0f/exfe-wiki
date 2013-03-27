@@ -173,8 +173,7 @@
 * GET args:
     - token: [str:user_token]
 * POST args OPTION:
-    - identity_id: [int]
-    - album_id: [str]
+    - provider: [str]
     - external_album_id: [str]
 * return:
     - 200: {}
