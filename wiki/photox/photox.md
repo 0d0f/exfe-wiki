@@ -44,6 +44,7 @@
                     "url"    : [str:url]
                 }
             },
+            "imported"          : [bol],
             "type"              : "photo",
             "siblings"          : [[object:photo]]
         }
