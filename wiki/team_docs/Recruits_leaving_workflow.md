@@ -6,7 +6,8 @@
 * 设置Dropbox分享组。
 * 开通置Trello账号及项目组。
 * 加入iMessage、微信群组。
-* 提交key开通测试服务器帐号。
+* 提交 public key 开通测试服务器帐号。
+* 提交 public key 开通 panda-git (例如：wiki) 帐号。
 * 欢迎邮件。
 
 
