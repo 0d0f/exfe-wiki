@@ -44,6 +44,7 @@
                     "url"    : [str:url]
                 }
             },
+            "imported"          : [bol],
             "type"              : "photo",
             "siblings"          : [[object:photo]]
         }
@@ -60,7 +61,8 @@
             "size"        : [str:size],
             "by_identity" : [object:identity]
             "created_at"  : [str:time],
-            "updated_at"  : [str:time]
+            "updated_at"  : [str:time],
+            "imported"    : [bol]
         }
 
 * Response
@@ -96,6 +98,7 @@
     - token: [str:user_token]
     - identity_id: [int/Optional]
     - album_id: [str/Optional]
+    - photox_id: [int/Optional]
 * returns:
     - 200: 
 
@@ -160,6 +163,21 @@
     - stream_id: [str]
 * return:
     - 200: {"photox" : [object:photo]}
+    - 400: param_error
+    - 401: invalid_auth
+    - 403: not_authorized
+
+
+## Del
+* description: 从 PhotoX 中删除照片。
+* endpoint: /v2/photox/[str:photox_id]/Delete
+* GET args:
+    - token: [str:user_token]
+* POST args OPTION:
+    - provider: [str]
+    - external_album_id: [str]
+* return:
+    - 200: {}
     - 400: param_error
     - 401: invalid_auth
     - 403: not_authorized
