@@ -1,56 +1,173 @@
-国家名称,Country,ISO 3166-1,Country Code,Dialing Plan,International Access Code,Trunk Code,MCC E.164,MNC Length,Notes,Issuer Identification Number (SIM ICCID Prefix) E.118,DCC,MID,IMSI
-阿富汗,Afghanistan,AF,+93,Open,00,0,412,,,,,,
-奥兰群岛,Aland Islands,AX,+358,,,,,,,,,,
-阿尔巴尼亚,Albania (Republic of),AL,+355,Open,00,0,276,,,,,,
-阿尔及利亚,Algeria (People's Democratic Republic of),DZ,+213,Open,00,0,603,,,,,,
-美属萨摩亚群岛,American Samoa,AS,+1684,NANP,011,1,544,3,,,,,
-安道尔,Andorra (Principality of),AD,+376,Closed,00,N/A,213,,,,,,
-安哥拉,Angola (Republic of),AO,+244,Open,00,0,631,,,,,,
-安圭拉岛,Anguilla,AI,+1264,NANP,011,1,365,3,,,,,
-南极洲,Antarctica,AQ,+672,,,,,3,,,,,
-安提瓜和巴布达,Antigua and Barbuda,AG,+1268,NANP,011,1,344,3,,,,,
-阿根廷,Argentine Republic,AR,+54,Open,00,0,722,3,,,,,
-亚美尼亚,Armenia (Republic of),AM,+374,Open,00,0,283,,,,,,
-阿鲁巴岛,Aruba,AW,+297,Closed,00,N/A,363,,http://en.wikipedia.org/wiki/Telephone_numbers_in_Aruba,,,,
-澳大利亚,Australia,AU,+61,Open,0011,0,505,,,,,,
-,"Australian External 
-Territorie",,+672,,00,0,,,,,,,
-奥地利,Austria,AT,+43,Open,00,0,232,,,,,,
-阿塞拜疆,Azerbaijani Republic,AZ,+994,Open,00,0,400,,,,,,
-巴哈马,Bahamas (Commonwealth of the),BS,+1242,NANP,011,1,364,3,,,,,
-巴林,Bahrain (Kingdom of),BH,+973,Closed,00,N/A,426,,,,,,
-孟加拉共和国,Bangladesh (People's Republic of),BD,+880,Open,00,0,470,,,,,,
-巴巴多斯,Barbados,BB,+1246,NANP,011,1,342,3,,,,,
-白俄罗斯,Belarus (Republic of),BY,+375,Open,810,8,257,,"*Dial 8, wait for a new dial tone and then dial 10",,,,
-比利时,Belgium,BE,+32,Closed with Trunk,00,0,206,,,,,,
-伯利兹,Belize,BZ,+501,Closed,00,N/A,702,,,,,,
-贝宁,Benin (Republic of),BJ,+229,Closed,00,N/A,616,,,,,,
-百慕大,Bermuda,BM,+1441,NANP,011,1,350,3,,,,,
-不丹,Bhutan (Kingdom of),BT,+975,Closed,00,N/A,402,,http://www.bicma.gov.bt/paper/NUMPLAN.pdf,,,,
-玻利维亚共和国,Bolivia (Plurinational State of),BO,+591,Open,00,0,736,,http://www.bolivia.com/Servicios/Plandenumeracion.pdf,,,,
-,"Bonaire, Sint Eustatius and 
-Saba",,+599,,00,0,,,,,,,
-波斯尼亚和黑塞哥维那,Bosnia And Herzegovina,BA,+387,Open,00,0,218,,,,,,
-博茨瓦纳,Botswana (Republic of),BW,+267,Closed,00,N/A,652,,,,,,
-巴西,Brazil (Federative Republic of),BR,+55,Open,00,0,724,,,,,,
-英属维京群岛,British Virgin Islands,VG,+1284,NANP,011,1,348,3,,,,,
-文莱达鲁萨兰国,Brunei Darussalam,BN,+673,Closed,00,N/A,528,,,,,,
-保加利亚,Bulgaria (Republic of),BG,+359 ,Open,00,0,284,,,,,,
-布基纳法索国,Burkina Faso,BF,+226 ,Closed,00,N/A,613,,,,,,
-布隆迪,Burundi (Republic of),BI,+257 ,Closed,00,N/A,642,,,,,,
-柬埔寨,Cambodia (Kingdom of),KH,+855 ,Open,"001
-007",0,456,,,,,,
-噶麦隆,Cameroon (Republic of),CM,+237 ,Closed,00,N/A,624,,,,,,
-加拿大,Canada,CA,+1 ,NANP,011,1,302,3,,,,,
-佛得角,Cape Verde (Republic of),CV,+238 ,Closed,00,N/A,625,,,,,,
-开曼群岛,Cayman Islands,KY,+1345 ,NANP,011,1,346,3,,,,,
-中非共和国,Central African Republic,CF,+236 ,Closed,00,N/A,623,,,,,,
-乍得,Chad (Republic of),TD,+235 ,Closed,00,N/A,622,,http://www.itu.int/oth/T0202000029/en,,,,
-智利,Chile,CL,+56 ,Open,1YZ0,1YZ,730,,,,,,
-中国,China (People's Republic of),CN,+86 ,Open,00,0,"460
-461",,,89 86 XX,,,
-圣诞岛,Christmas Island,CX,+61 ,Open,0011,0,,,,,,,
-科科斯（基林）群岛,Cocos(Keeling) Islands,CC,+61 ,Open,0011,0,,,,,,,
+国家名称,Country,ISO 3166-1,Country Code,Dialing Plan,International Access Code,Trunk Code,MCC E.164,MNC Length,Notes,Issuer Identification Number (SIM ICCID Prefix) E.118,DCC,MID,IMSI,Valid
+加拿大,Canada,CA,+1 ,NANP,11,1,302,3,,,,,,TRUE
+美利坚合众国,United States of America,US,+1 ,NANP,11,1,"310
+311
+312
+313
+314
+315
+316",3,http://en.wikipedia.org/wiki/List_of_NANP_area_codes,,,,,TRUE
+巴哈马,Bahamas (Commonwealth of the),BS,+1242,NANP,11,1,364,3,,,,,,FALSE
+巴巴多斯,Barbados,BB,+1246,NANP,11,1,342,3,,,,,,FALSE
+安圭拉岛,Anguilla,AI,+1264,NANP,11,1,365,3,,,,,,FALSE
+安提瓜和巴布达,Antigua and Barbuda,AG,+1268,NANP,11,1,344,3,,,,,,FALSE
+英属维京群岛,British Virgin Islands,VG,+1284,NANP,11,1,348,3,,,,,,FALSE
+美属维京群岛,United States Virgin Islands,VI,+1340,NANP,11,1,332,3,,,,,,FALSE
+开曼群岛,Cayman Islands,KY,+1345 ,NANP,11,1,346,3,,,,,,FALSE
+百慕大,Bermuda,BM,+1441,NANP,11,1,350,3,,,,,,FALSE
+格林纳达岛,Grenada,GD,+1473 ,NANP,11,1,352,3,,,,,,FALSE
+特克斯和凯科斯群岛,Turks and Caicos Islands,TC,+1649 ,NANP,11,1,376,3,,,,,,FALSE
+蒙特萨拉特岛,Montserrat,MS,+1664 ,NANP,11,1,354,3,,,,,,FALSE
+美国北马里亚纳群岛,Northern Mariana Islands,MP,+1670 ,NANP,11,1,,3,,,,,,FALSE
+关岛,Guam,GU,+1671 ,NANP,11,1,,3,,,,,,FALSE
+美属萨摩亚群岛,American Samoa,AS,+1684,NANP,11,1,544,3,,,,,,FALSE
+圣马丁岛,Sint Maarten (Dutch part),SX,+1721,NANP,11,1,,3,,,,,,FALSE
+圣卢西亚,Saint Lucia,LC,+1758 ,NANP,11,1,358,3,,,,,,FALSE
+多米尼加,Dominica (Commonwealth of),DM,+1767 ,NANP,11,1,366,3,,,,,,FALSE
+圣文森特和格林纳丁斯,Saint Vincent and the Grenadines,VC,+1784 ,NANP,11,1,360,3,,,,,,FALSE
+波多黎各,Puerto Rico,PR,"+1787 
++1939",NANP,11,1,330,3,,,,,,FALSE
+多米尼加共和国,Dominican Republic,DO,"+1809
++1829
++1849",NANP,11,1,370,3,,,,,,FALSE
+特立尼达和多巴哥,Trinidad and Tobago,TT,+1868 ,NANP,11,1,374,3,,,,,,FALSE
+圣基茨和尼维斯联邦,Saint Kitts and Nevis,KN,+1869,NANP,11,1,356,3,,,,,,FALSE
+牙买加,Jamaica,JM,+1876 ,NANP,11,1,338,3,,,,,,FALSE
+埃及,Egypt (Arab Republic of),EG,+20 ,Open,0,0,602,,,,,,,FALSE
+,South Suda,,+211,,0,0,,,,,,,,FALSE
+西撒哈拉,Western Sahara,EH,+212,,,,,,,,,,,FALSE
+摩洛哥,Morocco (Kingdom of),MA,+212 ,Closed with Trunk,0,0,604,,,,,,,FALSE
+阿尔及利亚,Algeria (People's Democratic Republic of),DZ,+213,Open,0,0,603,,,,,,,FALSE
+突尼斯,Tunisia,TN,+216 ,Closed,0,N/A,605,,,,,,,FALSE
+大阿拉伯利比亚民众国,Libya (Socialist People's Libyan Arab Jamahiriya),LY,+218,Open,0,0,606,,,,,,,FALSE
+甘比亚,Gambia (Republic of the),GM,+220 ,Closed,0,N/A,607,,,,,,,FALSE
+塞内加尔共和国,Senegal (Republic of),SN,+221 ,Closed,0,N/A,608,,,,,,,FALSE
+毛里塔尼亚,Mauritania (Islamic Republic of),MR,+222 ,Closed,0,N/A,609,,,,,,,FALSE
+马里,Mali (Republic of),ML,+223 ,Closed,0,N/A,610,,,,,,,FALSE
+几内亚,Guinea (Republic of),GN,+224 ,Closed,0,N/A,611,,,,,,,FALSE
+科特迪瓦,Côte d'Ivoire (Republic of),CI,+225,Closed,0,N/A,612,,,,,,,FALSE
+布基纳法索国,Burkina Faso,BF,+226 ,Closed,0,N/A,613,,,,,,,FALSE
+尼日尔,Niger (Republic of the),NE,+227 ,Closed,0,N/A,614,,,,,,,FALSE
+多哥,Togo,TG,+228 ,Closed,0,N/A,615,,,,,,,FALSE
+贝宁,Benin (Republic of),BJ,+229,Closed,0,N/A,616,,,,,,,FALSE
+毛里求斯,Mauritius (Republic of),MU,+230 ,Closed,0,N/A,617,,,,,,,FALSE
+利比里亚,Liberia (Republic of),LR,+231 ,Closed,0,N/A,618,,,,,,,FALSE
+塞拉利昂,Sierra Leone,SL,+232 ,Open,0,0,619,,,,,,,FALSE
+加纳,Ghana,GH,+233 ,Closed with Trunk,0,0,620,,,,,,,FALSE
+尼日利亚,Nigeria (Federal Republic of),NG,+234 ,Open,9,0,621,,http://www.ncc.gov.ng/nnp/,,,,,FALSE
+乍得,Chad (Republic of),TD,+235 ,Closed,0,N/A,622,,http://www.itu.int/oth/T0202000029/en,,,,,FALSE
+中非共和国,Central African Republic,CF,+236 ,Closed,0,N/A,623,,,,,,,FALSE
+噶麦隆,Cameroon (Republic of),CM,+237 ,Closed,0,N/A,624,,,,,,,FALSE
+佛得角,Cape Verde (Republic of),CV,+238 ,Closed,0,N/A,625,,,,,,,FALSE
+圣多美与普林西比,São Tomé and Príncipe (Democratic Republic of),ST,+239 ,Closed,0,N/A,626,,,,,,,FALSE
+赤道几内亚,Equatorial Guinea (Republic of),GQ,+240 ,Closed,0,N/A,627,,,,,,,FALSE
+加蓬,Gabon,GA,+241 ,Closed,0,N/A,628,,,,,,,FALSE
+刚果,Congo (Republic of the),CG,+242,Closed,0,N/A,629,,,,,,,FALSE
+刚果民主共和国,Democratic Republic of the Congo,CD,+243,Open,0,0,630,,,,,,,FALSE
+安哥拉,Angola (Republic of),AO,+244,Open,0,0,631,,,,,,,FALSE
+几内亚比绍共和国,Guinea-Bissau (Republic of),GW,+245 ,Closed,0,N/A,632,,,,,,,FALSE
+,"Saint Helena, Ascension 
+and Tristan da Cunha",,+247,Closed,0,N/A,,,,,,,,FALSE
+塞舌尔共和国,Seychelles (Republic of),SC,+248 ,Closed,0,N/A,633,,,,,,,FALSE
+苏丹,Sudan (Republic of the),SD,+249 ,Open,0,0,634,,,,,,,FALSE
+卢旺达,Rwanda (Republic of),RW,+250 ,Closed,0,N/A,635,,,,,,,FALSE
+埃塞俄比亚,Ethiopia (Federal Democratic Republic of),ET,+251 ,Open,0,0,636,,,,,,,FALSE
+索马里,Somalia Democratic Republic,SO,+252 ,Closed,0,N/A,637,,,,,,,FALSE
+吉布提,Djibouti (Republic of),DJ,+253 ,Closed,0,N/A,638,,,,,,,FALSE
+肯尼亚,Kenya (Republic of),KE,+254 ,Open,0,0,639,,,,,,,FALSE
+坦桑尼亚联合共和国,Tanzania (United Republic of),TZ,+255,Open,0,0,640,,,,,,,FALSE
+乌干达,Uganda (Republic of),UG,+256 ,Open,0,0,641,,,,,,,FALSE
+布隆迪,Burundi (Republic of),BI,+257 ,Closed,0,N/A,642,,,,,,,FALSE
+莫桑比克,Mozambique (Republic of),MZ,+258 ,Closed,0,N/A,643,,,,,,,FALSE
+赞比亚,Zambia (Republic of),ZM,+260 ,Open,0,0,645,,,,,,,FALSE
+马达加斯加,Madagascar (Republic of),MG,+261 ,Closed ,0,N/A,646,,,,,,,FALSE
+,"French Departments and 
+Territories in the Indian 
+Ocean",,+262,,0,N/A,,,,,,,,FALSE
+马约特岛,Mayotte,YT,+262 ,Closed,0,N/A,,,,,,,,FALSE
+津巴布韦共和国,Zimbabwe (Republic of),ZW,+263 ,Open,0,0,648,,,,,,,FALSE
+纳米比亚,Namibia (Republic of),NA,+264 ,Open,0,0,649,,,,,,,FALSE
+马拉威,Malawi,MW,+265 ,Closed,0,N/A,650,,,,,,,FALSE
+莱索托,Lesotho (Kingdom of),LS,+266 ,Closed,0,N/A,651,,,,,,,FALSE
+博茨瓦纳,Botswana (Republic of),BW,+267,Closed,0,N/A,652,,,,,,,FALSE
+斯威士兰,Swaziland (Kingdom of),SZ,+268 ,Closed,0,N/A,653,,,,,,,FALSE
+科摩罗,Comoros (Union of the),KM,+269 ,Closed,0,N/A,654,,,,,,,FALSE
+南非共和国,South Africa (Republic of),ZA,+27 ,Closed with Trunk,0,0,655,,,,,,,FALSE
+,"Saint Helena, Ascension 
+and Tristan da Cunha",,+290,Closed,0,N/A,,,,,,,,FALSE
+厄立特里亚,Eritrea,ER,+291 ,Closed with Trunk,0,0,657,,,,,,,FALSE
+阿鲁巴岛,Aruba,AW,+297,Closed,0,N/A,363,,http://en.wikipedia.org/wiki/Telephone_numbers_in_Aruba,,,,,FALSE
+法罗群岛,Faroe Islands,FO,+298 ,Closed,0,N/A,288,,,,,,,FALSE
+格陵兰岛,Greenland (Denmark),GL,+299 ,Closed,0,N/A,290,,,,,,,FALSE
+希腊,Greece,GR,+30 ,Closed with Trunk,0,0,202,,,,,,,FALSE
+荷兰,Netherlands (Kingdom of the),NL,+31 ,Open,0,0,204,,,,,,,FALSE
+比利时,Belgium,BE,+32,Closed with Trunk,0,0,206,,,,,,,FALSE
+法国,France,FR,+33 ,Closed with Trunk,0,0,208,,,,,,,FALSE
+西班牙,Spain,ES,+34 ,Closed,0,N/A,214,,,,,,,FALSE
+直布罗陀,Gibraltar,GI,+350 ,Closed,0,N/A,266,,,,,,,FALSE
+葡萄牙,Portugal,PT,+351 ,Closed,0,N/A,268,,,,,,,FALSE
+卢森堡,Luxembourg,LU,+352 ,Closed,0,N/A,270,,,,,,,FALSE
+爱尔兰,Ireland,IE,+353 ,Open,0,0,272,,,,,,,FALSE
+冰岛,Iceland,IS,+354 ,Closed,0,N/A,274,,,,,,,FALSE
+阿尔巴尼亚,Albania (Republic of),AL,+355,Open,0,0,276,,,,,,,FALSE
+马耳他,Malta,MT,+356 ,Closed,0,N/A,278,,,,,,,FALSE
+塞浦路斯,Cyprus (Republic of),CY,+357 ,Closed,0,N/A,280,,,,,,,FALSE
+奥兰群岛,Aland Islands,AX,+358,,,,,,,,,,,FALSE
+芬兰,Finland,FI,+358 ,Open,"00
+99X",0,244,,,,,,,FALSE
+保加利亚,Bulgaria (Republic of),BG,+359 ,Open,0,0,284,,,,,,,FALSE
+匈牙利,Hungary (Republic of),HU,+36 ,Open,0,6,216,,,,,,,FALSE
+立陶宛,Lithuania (Republic of),LT,+370 ,Open,0,0,246,,,,,,,FALSE
+拉脱维亚,Latvia (Republic of),LV,+371 ,Closed,0,N/A,247,,,,,,,FALSE
+爱沙尼亚,Estonia (Republic of),EE,+372 ,Closed,0,N/A,248,,,,,,,FALSE
+摩尔多瓦共和国,Moldova (Republic of),MD,+373,Open,0,0,259,,,,,,,FALSE
+亚美尼亚,Armenia (Republic of),AM,+374,Open,0,0,283,,,,,,,FALSE
+白俄罗斯,Belarus (Republic of),BY,+375,Open,810,8,257,,"*Dial 8, wait for a new dial tone and then dial 10",,,,,FALSE
+安道尔,Andorra (Principality of),AD,+376,Closed,0,N/A,213,,,,,,,FALSE
+摩纳哥,Monaco (Principality of),MC,+377 ,Closed,0,N/A,212,,,,,,,FALSE
+圣马力诺,San Marino (Republic of),SM,+378 ,Closed,0,N/A,292,,,,,,,FALSE
+梵蒂冈,Vatican City,VA,+379,,,,225,,,,,,,FALSE
+乌克兰,Ukraine,UA,+380 ,Open,0,0,255,,,,,,,FALSE
+塞尔维亚,Serbia (Republic of),RS,+381 ,Open,0,0,220,,,,,,,FALSE
+黑山共和国,Montenegro (Republic of),ME,+382 ,Open,0,0,297,,,,,,,FALSE
+克罗地亚,Croatia (Republic of),HR,+385 ,Open,0,0,219,,,,,,,FALSE
+斯洛文尼亚,Slovenia (Republic of),SI,+386 ,Open,0,0,293,,,,,,,FALSE
+波斯尼亚和黑塞哥维那,Bosnia And Herzegovina,BA,+387,Open,0,0,218,,,,,,,FALSE
+,"Group of countries, shared 
+code",,+388,,,,,,,,,,,FALSE
+马其顿,The Former Yugoslav Republic of Macedonia,MK,+389,Open,0,0,294,,,,,,,FALSE
+梵蒂冈,Vatican City,VA,+39,Closed,0,N/A,225,,,,,,,FALSE
+意大利,Italy,IT,+39 ,Closed,0,N/A,222,,,,,,,FALSE
+罗马尼亚,Romania,RO,+40 ,Closed with Trunk,0,0,226,,,,,,,FALSE
+瑞士,Switzerland (Confederation of),CH,+41 ,Closed with Trunk,0,0,228,,,,,,,FALSE
+捷克共和国,Czech Republic,CZ,+420 ,Closed,0,N/A,230,,,,,,,FALSE
+斯洛伐克,Slovakia,SK,+421 ,Open,0,0,231,,,,,,,FALSE
+列支敦士登,Liechtenstein (Principality of),LI,+423 ,Closed,0,N/A,295,,,,,,,FALSE
+奥地利,Austria,AT,+43,Open,0,0,232,,,,,,,FALSE
+马恩岛,Isle Of Man,IM,+44 ,,,,,,,,,,,FALSE
+大不列颠及北爱尔兰联合王国,United Kingdom of Great Britain and Northern Ireland,GB,+44 ,Open,0,0,"234
+235",,,,,,,FALSE
+丹麦,Denmark,DK,+45 ,Closed,0,N/A,238,,,,,,,TRUE
+瑞典,Sweden,SE,+46 ,Open,0,0,240,,,,,,,FALSE
+挪威,Norway,NO,+47 ,Closed,0,N/A,242,,,,,,,FALSE
+波兰,Poland (Republic of),PL,+48 ,Closed with Trunk,0,0,260,,,,,,,FALSE
+德国,Germany (Federal Republic of),DE,+49 ,Open,0,0,262,,,,,,,FALSE
+福克兰群岛,Falkland Islands (Malvinas),FK,+500,Closed,0,N/A,750,,,,,,,FALSE
+伯利兹,Belize,BZ,+501,Closed,0,N/A,702,,,,,,,FALSE
+危地马拉,Guatemala (Republic of),GT,+502 ,Closed,0,N/A,704,,,,,,,FALSE
+萨尔瓦多,El Salvador (Republic of),SV,+503 ,Closed,0,N/A,706,,,,,,,FALSE
+洪都拉斯,Honduras (Republic of),HN,+504 ,Closed,0,N/A,708,,,,,,,FALSE
+尼加拉瓜,Nicaragua,NI,+505 ,Closed,0,N/A,710,,,,,,,FALSE
+哥斯达黎加共和国,Costa Rica,CR,+506 ,Closed,0,N/A,712,,,,,,,FALSE
+巴拿马共和国,Panama (Republic of),PA,+507 ,Closed,0,N/A,714,,,,,,,FALSE
+圣皮埃尔岛和密克隆岛,Saint Pierre and Miquelon (Collectivité territoriale de la République française),PM,+508 ,Closed,0,N/A,308,,,,,,,FALSE
+海地,Haiti (Republic of),HT,+509 ,Closed,0,N/A,372,,http://www.itu.int/oth/T020200005E/en,,,,,FALSE
+秘鲁,Peru,PE,+51 ,Open,0,0,716,,,,,,,FALSE
+墨西哥,Mexico,MX,+52 ,Open,0,1,334,,http://en.wikipedia.org/wiki/Telephone_numbers_in_Mexico,,,,,FALSE
+古巴,Cuba,CU,+53 ,Open,119,0,368,,,,,,,FALSE
+阿根廷,Argentine Republic,AR,+54,Open,0,0,722,3,,,,,,FALSE
+巴西,Brazil (Federative Republic of),BR,+55,Open,0,0,724,,,,,,,FALSE
+智利,Chile,CL,+56 ,Open,1YZ0,1YZ,730,,,,,,,FALSE
 哥伦比亚,Colombia (Republic of),CO,+57 ,Open,"00A
 00ABC
 009
@@ -59,258 +176,141 @@ Saba",,+599,,00,0,,,,,,,
 0ABC
 09
 07
-05",732,3,,,,,
-科摩罗,Comoros (Union of the),KM,+269 ,Closed,00,N/A,654,,,,,,
-刚果,Congo (Republic of the),CG,+242,Closed,00,N/A,629,,,,,,
-库克群岛,Cook Islands,CK,+682 ,Closed,00,N/A,548,,,,,,
-哥斯达黎加共和国,Costa Rica,CR,+506 ,Closed,00,N/A,712,,,,,,
-科特迪瓦,Côte d'Ivoire (Republic of),CI,+225,Closed,00,N/A,612,,,,,,
-克罗地亚,Croatia (Republic of),HR,+385 ,Open,00,0,219,,,,,,
-古巴,Cuba,CU,+53 ,Open,119,0,368,,,,,,
-库拉索,Curaçao,CW,+599,,00,0,,,"http://en.wikipedia.org/wiki/Telephone_numbers_in_Cura%C3%A7ao,_Sint_Maarten_and_the_Caribbean_Netherlands",,,,
-塞浦路斯,Cyprus (Republic of),CY,+357 ,Closed,00,N/A,280,,,,,,
-捷克共和国,Czech Republic,CZ,+420 ,Closed,00,N/A,230,,,,,,
-朝鲜,Democratic People's Republic of Korea,KP,+850,Open,00,0,467,3,,,,,
-刚果民主共和国,Democratic Republic of the Congo,CD,+243,Open,00,0,630,,,,,,
-丹麦,Denmark,DK,+45 ,Closed,00,N/A,238,,,,,,
-吉布提,Djibouti (Republic of),DJ,+253 ,Closed,00,N/A,638,,,,,,
-多米尼加,Dominica (Commonwealth of),DM,+1767 ,NANP,011,1,366,3,,,,,
-多米尼加共和国,Dominican Republic,DO,"+1809
-+1829
-+1849",NANP,011,1,370,3,,,,,
-帝汶岛,East Timor,TL,+670 ,Closed,00,N/A,514,,,,,,
-厄瓜多尔,Ecuador,EC,+593 ,Open,00,0,740,,,,,,
-埃及,Egypt (Arab Republic of),EG,+20 ,Open,00,0,602,,,,,,
-萨尔瓦多,El Salvador (Republic of),SV,+503 ,Closed,00,N/A,706,,,,,,
-赤道几内亚,Equatorial Guinea (Republic of),GQ,+240 ,Closed,00,N/A,627,,,,,,
-厄立特里亚,Eritrea,ER,+291 ,Closed with Trunk,00,0,657,,,,,,
-爱沙尼亚,Estonia (Republic of),EE,+372 ,Closed,00,N/A,248,,,,,,
-埃塞俄比亚,Ethiopia (Federal Democratic Republic of),ET,+251 ,Open,00,0,636,,,,,,
-福克兰群岛,Falkland Islands (Malvinas),FK,+500,Closed,00,N/A,750,,,,,,
-法罗群岛,Faroe Islands,FO,+298 ,Closed,00,N/A,288,,,,,,
-斐济,Fiji (Republic of),FJ,+679 ,Closed,00,N/A,542,,,,,,
-芬兰,Finland,FI,+358 ,Open,"00
-99X",0,244,,,,,,
-法国,France,FR,+33 ,Closed with Trunk,00,0,208,,,,,,
-,"French Departments and 
-Territories in the Indian 
-Ocean",,+262,,00,N/A,,,,,,,
-法属圭亚那,French Guiana (French Department of),GF,+594,Closed,00,N/A,742,,,,,,
-法属玻利尼西亚,French Polynesia (Territoire français d'outre-mer),PF,+689 ,Closed,00,N/A,547,,,,,,
-加蓬,Gabon,GA,+241 ,Closed,00,N/A,628,,,,,,
-甘比亚,Gambia (Republic of the),GM,+220 ,Closed,00,N/A,607,,,,,,
-格鲁吉亚,Georgia,GE,+995 ,Open,00,0,282,,,,,,
-德国,Germany (Federal Republic of),DE,+49 ,Open,00,0,262,,,,,,
-加纳,Ghana,GH,+233 ,Closed with Trunk,00,0,620,,,,,,
-直布罗陀,Gibraltar,GI,+350 ,Closed,00,N/A,266,,,,,,
-,"Global Mobile Satellite 
-System (GMSS), shared 
-code",,+881,,,,,,,,,,
-希腊,Greece,GR,+30 ,Closed with Trunk,00,0,202,,,,,,
-格陵兰岛,Greenland (Denmark),GL,+299 ,Closed,00,N/A,290,,,,,,
-格林纳达岛,Grenada,GD,+1473 ,NANP,011,1,352,3,,,,,
-,"Group of countries, shared 
-code",,+388,,,,,,,,,,
-法属瓜德罗普省,Guadeloupe (French Department of),GP,+590,Closed,00,N/A,340,,,,,,
-关岛,Guam,GU,+1671 ,NANP,011,1,,3,,,,,
-危地马拉,Guatemala (Republic of),GT,+502 ,Closed,00,N/A,704,,,,,,
-几内亚,Guinea (Republic of),GN,+224 ,Closed,00,N/A,611,,,,,,
-几内亚比绍共和国,Guinea-Bissau (Republic of),GW,+245 ,Closed,00,N/A,632,,,,,,
-英属圭亚那,Guyana,GY,+592 ,Closed,001,N/A,738,,,,,,
-海地,Haiti (Republic of),HT,+509 ,Closed,00,N/A,372,,http://www.itu.int/oth/T020200005E/en,,,,
-洪都拉斯,Honduras (Republic of),HN,+504 ,Closed,00,N/A,708,,,,,,
-香港（中国）,"Hong Kong, China",HK,+852 ,Closed,001,N/A,454,,,89 852 XX,"453,454",477,
-匈牙利,Hungary (Republic of),HU,+36 ,Open,00,06,216,,,,,,
-冰岛,Iceland,IS,+354 ,Closed,00,N/A,274,,,,,,
-印度,India (Republic of),IN,+91 ,Open,00,0,"404
-405
-406",3,,,,,
+05",732,3,,,,,,FALSE
+委内瑞拉玻利瓦尔共和国,Venezuela (Bolivarian Republic of),VE,+58,Open,0,0,734,,,,,,,FALSE
+法属瓜德罗普省,Guadeloupe (French Department of),GP,+590,Closed,0,N/A,340,,,,,,,FALSE
+圣巴泰勒米,Saint Barthélemy,BL,+590 ,Closed,0,N/A,,,,,,,,FALSE
+玻利维亚共和国,Bolivia (Plurinational State of),BO,+591,Open,0,0,736,,http://www.bolivia.com/Servicios/Plandenumeracion.pdf,,,,,FALSE
+英属圭亚那,Guyana,GY,+592 ,Closed,1,N/A,738,,,,,,,FALSE
+厄瓜多尔,Ecuador,EC,+593 ,Open,0,0,740,,,,,,,FALSE
+法属圭亚那,French Guiana (French Department of),GF,+594,Closed,0,N/A,742,,,,,,,FALSE
+巴拉圭共和国,Paraguay (Republic of),PY,+595 ,Open,0,0,744,,,,,,,FALSE
+,Martinique,,+596,Closed,0,N/A,,,,,,,,FALSE
+苏里南,Suriname (Republic of),SR,+597 ,Open,0,0,746,,,,,,,FALSE
+乌拉圭,Uruguay (Eastern Republic of),UY,+598 ,Closed with Trunk,0,0,748,,,,,,,FALSE
+,"Bonaire, Sint Eustatius and 
+Saba",,+599,,0,0,,,,,,,,FALSE
+库拉索,Curaçao,CW,+599,,0,0,,,"http://en.wikipedia.org/wiki/Telephone_numbers_in_Cura%C3%A7ao,_Sint_Maarten_and_the_Caribbean_Netherlands",,,,,FALSE
+安的列斯岛,Netherlands Antilles,AN,+599,,0,0,362,,2010年分裂  http://en.wikipedia.org/wiki/Netherlands_Antilles,,,,,FALSE
+马来西亚,Malaysia,MY,+60 ,Open,0,0,502,,,,,,,FALSE
+澳大利亚,Australia,AU,+61,Open,11,0,505,,,,,,,FALSE
+圣诞岛,Christmas Island,CX,+61 ,Open,11,0,,,,,,,,FALSE
+科科斯（基林）群岛,Cocos(Keeling) Islands,CC,+61 ,Open,11,0,,,,,,,,FALSE
 印度尼西亚,Indonesia (Republic of),ID,+62 ,Open,"001
-008",0,510,,,,,,
+008",0,510,,,,,,,FALSE
+菲律宾,Philippines (Republic of the),PH,+63 ,Open,0,0,515,,,,,,,FALSE
+皮特凯恩岛,Pitcairn Islands,PN,+64,Closed with Trunk,0,0,,,,,,,,FALSE
+新西兰,New Zealand,NZ,+64 ,Open,0,0,530,,,,,,,FALSE
+新加坡,Singapore (Republic of),SG,+65 ,Closed,"001
+002
+008",N/A,525,,,,,,,FALSE
+泰国,Thailand,TH,+66 ,Closed with Trunk,1,0,520,,,,,,,FALSE
+,Timor-Leste,,+670,Closed,0,N/A,,,,,,,,FALSE
+帝汶岛,East Timor,TL,+670 ,Closed,0,N/A,514,,,,,,,FALSE
+南极洲,Antarctica,AQ,+672,,,,,3,,,,,,FALSE
+,"Australian External 
+Territorie",,+672,,0,0,,,,,,,,FALSE
+诺福克岛,Norfolk Island,NF,+672 ,Closed with Trunk,0,0,,,,,,,,FALSE
+文莱达鲁萨兰国,Brunei Darussalam,BN,+673,Closed,0,N/A,528,,,,,,,FALSE
+瑙鲁,Nauru (Republic of),NR,+674 ,Closed,0,N/A,536,,,,,,,FALSE
+巴布亚新几内亚,Papua New Guinea,PG,+675 ,Closed,0,N/A,537,,,,,,,FALSE
+汤加,Tonga (Kingdom of),TO,+676 ,Closed,0,N/A,539,,,,,,,FALSE
+所罗门群岛,Solomon Islands,SB,+677 ,Closed,0,N/A,540,,,,,,,FALSE
+瓦努阿图,Vanuatu (Republic of),VU,+678 ,Closed,0,N/A,541,,,,,,,FALSE
+斐济,Fiji (Republic of),FJ,+679 ,Closed,0,N/A,542,,,,,,,FALSE
+帕劳,Palau (Republic of),PW,+680 ,Closed,11,N/A,552,,,,,,,FALSE
+瓦利斯群岛和富图纳群岛,Wallis and Futuna (Territoire français d'outre-mer),WF,+681 ,Closed,0,N/A,543,,,,,,,FALSE
+库克群岛,Cook Islands,CK,+682 ,Closed,0,N/A,548,,,,,,,FALSE
+纽埃岛,Niue,NU,+683 ,Closed,0,N/A,555,,,,,,,FALSE
+美属萨摩亚领地,Samoa (Independent State of),AS,+685,Closed,0,N/A,549,,,,,,,FALSE
+基里巴斯,Kiribati (Republic of),KI,+686 ,Closed,0,N/A,545,,,,,,,FALSE
+新喀里多尼亚,New Caledonia (Territoire français d'outre-mer),NC,+687 ,Closed,0,N/A,546,,,,,,,FALSE
+图瓦卢,Tuvalu,TV,+688 ,Closed,0,N/A,,,,,,,,FALSE
+法属玻利尼西亚,French Polynesia (Territoire français d'outre-mer),PF,+689 ,Closed,0,N/A,547,,,,,,,FALSE
+托克劳,Tokelau,TK,+690 ,Closed,0,N/A,,,,,,,,FALSE
+密克罗尼西亚,Micronesia (Federated States of),FM,+691,Closed with trunk,11,1,550,,,,,,,FALSE
+马绍尔群岛,Marshall Islands (Republic of the),MH,+692 ,Closed with trunk,11,1,551,,,,,,,FALSE
+俄罗斯联邦,Russian Federation,RU,+7,Open,810,8,250,,,,,,,TRUE
+哈萨克斯坦,Kazakhstan (Republic of),KZ,+7 ,Open,810,8,401,,,,,,,TRUE
 ,"International Freephone 
-Service",,+800,,,,,,,,,,
-,"International Networks, 
-shared code",,+882,,,,,,,,,,
-,"International Networks, 
-shared code",,+883,,,,,,,,,,
+Service",,+800,,,,,,,,,,,FALSE
 ,"International Premium Rate 
-Service (IPRS)",,+979,,,,,,,,,,
-,"International Premium Rate 
-Service (IPRS)",,+808,,,,,,,,,,
-伊朗伊斯兰共和国,Iran (Islamic Republic of),IR,+98,Open,00,0,432,,,,,,
-伊拉克,Iraq (Republic of),IQ,+964 ,Open,00,0,418,,,,,,
-爱尔兰,Ireland,IE,+353 ,Open,00,0,272,,,,,,
-马恩岛,Isle Of Man,IM,+44 ,,,,,,,,,,
-以色列,Israel (State of),IL,+972 ,Open,"00
-012
-013
-014
-018
-019",0,425,,,,,,
-意大利,Italy,IT,+39 ,Closed,00,N/A,222,,,,,,
-牙买加,Jamaica,JM,+1876 ,NANP,011,1,338,3,,,,,
-日本,Japan,JP,+81 ,Open,010,0,"440
-441",,,,,,
-约旦,Jordan (Hashemite Kingdom of),JO,+962 ,Open,00,0,416,,,,,,
-哈萨克斯坦,Kazakhstan (Republic of),KZ,+7 ,Open,810,8,401,,,,,,
-肯尼亚,Kenya (Republic of),KE,+254 ,Open,000,0,639,,,,,,
-基里巴斯,Kiribati (Republic of),KI,+686 ,Closed,00,N/A,545,,,,,,
+Service (IPRS)",,+808,,,,,,,,,,,FALSE
+日本,Japan,JP,+81 ,Open,10,0,"440
+441",,,,,,,FALSE
 韩国,Korea (Republic of),KR,+82,Open,"00N
 00ABC
 001
 002","08N
-082",450,,http://en.wikipedia.org/wiki/Telephone_numbers_in_South_Korea,,,,
-科威特,Kuwait (State of),KW,+965 ,Closed,00,N/A,419,,,,,,
-吉尔吉斯斯坦,Kyrgyzstan,KG,+996 ,Open,00,0,437,,,,,,
-老挝人民民主共和国,Lao People's Democratic Republic,LA,+856,Open,00,0,457,,,,,,
-拉脱维亚,Latvia (Republic of),LV,+371 ,Closed,00,N/A,247,,,,,,
-黎巴嫩,Lebanon,LB,+961 ,Open,00,0,415,,,,,,
-莱索托,Lesotho (Kingdom of),LS,+266 ,Closed,00,N/A,651,,,,,,
-利比里亚,Liberia (Republic of),LR,+231 ,Closed,00,N/A,618,,,,,,
-大阿拉伯利比亚民众国,Libya (Socialist People's Libyan Arab Jamahiriya),LY,+218,Open,00,0,606,,,,,,
-列支敦士登,Liechtenstein (Principality of),LI,+423 ,Closed,00,N/A,295,,,,,,
-立陶宛,Lithuania (Republic of),LT,+370 ,Open,00,0,246,,,,,,
-卢森堡,Luxembourg,LU,+352 ,Closed,00,N/A,270,,,,,,
-澳门（中国）,"Macao, China",MO,+853,Closed,00,N/A,455,,,,,,
-马达加斯加,Madagascar (Republic of),MG,+261 ,Closed ,00,N/A,646,,,,,,
-马拉威,Malawi,MW,+265 ,Closed,00,N/A,650,,,,,,
-马来西亚,Malaysia,MY,+60 ,Open,00,0,502,,,,,,
-马尔代夫,Maldives (Republic of),MV,+960 ,Closed,00,N/A,472,,,,,,
-马里,Mali (Republic of),ML,+223 ,Closed,00,N/A,610,,,,,,
-马耳他,Malta,MT,+356 ,Closed,00,N/A,278,,,,,,
-马绍尔群岛,Marshall Islands (Republic of the),MH,+692 ,Closed with trunk,011,1,551,,,,,,
-,Martinique,,+596,Closed,00,N/A,,,,,,,
-毛里塔尼亚,Mauritania (Islamic Republic of),MR,+222 ,Closed,00,N/A,609,,,,,,
-毛里求斯,Mauritius (Republic of),MU,+230 ,Closed,00,N/A,617,,,,,,
-马约特岛,Mayotte,YT,+262 ,Closed,00,N/A,,,,,,,
-墨西哥,Mexico,MX,+52 ,Open,00,01,334,,http://en.wikipedia.org/wiki/Telephone_numbers_in_Mexico,,,,
-密克罗尼西亚,Micronesia (Federated States of),FM,+691,Closed with trunk,011,1,550,,,,,,
-摩尔多瓦共和国,Moldova (Republic of),MD,+373,Open,00,0,259,,,,,,
-摩纳哥,Monaco (Principality of),MC,+377 ,Closed,00,N/A,212,,,,,,
-蒙古,Mongolia,MN,+976 ,Open,001,0,428,,,,,,
-黑山共和国,Montenegro (Republic of),ME,+382 ,Open,00,0,297,,,,,,
-蒙特萨拉特岛,Montserrat,MS,+1664 ,NANP,011,1,354,3,,,,,
-摩洛哥,Morocco (Kingdom of),MA,+212 ,Closed with Trunk,00,0,604,,,,,,
-莫桑比克,Mozambique (Republic of),MZ,+258 ,Closed,00,N/A,643,,,,,,
-缅甸,Myanmar (Union of),MM,+95,Open,00,0,414,,,,,,
-纳米比亚,Namibia (Republic of),NA,+264 ,Open,00,0,649,,,,,,
-瑙鲁,Nauru (Republic of),NR,+674 ,Closed,00,N/A,536,,,,,,
-尼泊尔,Nepal (Federal Democratic Republic of),NP,+977 ,Open,00,0,429,,http://www.nta.gov.np/en/content/index.php?task=articles&option=view&id=54,,,,
-荷兰,Netherlands (Kingdom of the),NL,+31 ,Open,00,0,204,,,,,,
-安的列斯岛,Netherlands Antilles,AN,+599,,00,0,362,,2010年分裂  http://en.wikipedia.org/wiki/Netherlands_Antilles,,,,
-新喀里多尼亚,New Caledonia (Territoire français d'outre-mer),NC,+687 ,Closed,00,N/A,546,,,,,,
-新西兰,New Zealand,NZ,+64 ,Open,00,0,530,,,,,,
-尼加拉瓜,Nicaragua,NI,+505 ,Closed,00,N/A,710,,,,,,
-尼日尔,Niger (Republic of the),NE,+227 ,Closed,00,N/A,614,,,,,,
-尼日利亚,Nigeria (Federal Republic of),NG,+234 ,Open,009,0,621,,http://www.ncc.gov.ng/nnp/,,,,
-纽埃岛,Niue,NU,+683 ,Closed,00,N/A,555,,,,,,
-诺福克岛,Norfolk Island,NF,+672 ,Closed with Trunk,00,0,,,,,,,
-美国北马里亚纳群岛,Northern Mariana Islands,MP,+1670 ,NANP,011,1,,3,,,,,
-挪威,Norway,NO,+47 ,Closed,00,N/A,242,,,,,,
-阿曼,Oman (Sultanate of),OM,+968 ,Closed,00,N/A,422,,,,,,
-巴基斯坦,Pakistan (Islamic Republic of),PK,+92 ,Open,00,0,410,,,,,,
-帕劳,Palau (Republic of),PW,+680 ,Closed,011,N/A,552,,,,,,
-巴拿马共和国,Panama (Republic of),PA,+507 ,Closed,00,N/A,714,,,,,,
-巴布亚新几内亚,Papua New Guinea,PG,+675 ,Closed,00,N/A,537,,,,,,
-巴拉圭共和国,Paraguay (Republic of),PY,+595 ,Open,00,0,744,,,,,,
-秘鲁,Peru,PE,+51 ,Open,00,0,716,,,,,,
-菲律宾,Philippines (Republic of the),PH,+63 ,Open,00,0,515,,,,,,
-皮特凯恩岛,Pitcairn Islands,PN,+64,Closed with Trunk,00,0,,,,,,,
-波兰,Poland (Republic of),PL,+48 ,Closed with Trunk,00,0,260,,,,,,
-葡萄牙,Portugal,PT,+351 ,Closed,00,N/A,268,,,,,,
-波多黎各,Puerto Rico,PR,"+1787 
-+1939",NANP,011,1,330,3,,,,,
-卡塔尔,Qatar (State of),QA,+974 ,Closed,00,N/A,427,,,,,,
-罗马尼亚,Romania,RO,+40 ,Closed with Trunk,00,0,226,,,,,,
-俄罗斯联邦,Russian Federation,RU,+7,Open,810,8,250,,,,,,
-卢旺达,Rwanda (Republic of),RW,+250 ,Closed,00,N/A,635,,,,,,
-,"Saint Helena, Ascension 
-and Tristan da Cunha",,+247,Closed,00,N/A,,,,,,,
-,"Saint Helena, Ascension 
-and Tristan da Cunha",,+290,Closed,00,N/A,,,,,,,
-圣巴泰勒米,Saint Barthélemy,BL,+590 ,Closed,00,N/A,,,,,,,
-圣基茨和尼维斯联邦,Saint Kitts and Nevis,KN,+1869,NANP,011,1,356,3,,,,,
-圣卢西亚,Saint Lucia,LC,+1758 ,NANP,011,1,358,3,,,,,
-圣皮埃尔岛和密克隆岛,Saint Pierre and Miquelon (Collectivité territoriale de la République française),PM,+508 ,Closed,00,N/A,308,,,,,,
-圣文森特和格林纳丁斯,Saint Vincent and the Grenadines,VC,+1784 ,NANP,011,1,360,3,,,,,
-美属萨摩亚领地,Samoa (Independent State of),AS,+685,Closed,0,N/A,549,,,,,,
-圣马力诺,San Marino (Republic of),SM,+378 ,Closed,00,N/A,292,,,,,,
-圣多美与普林西比,São Tomé and Príncipe (Democratic Republic of),ST,+239 ,Closed,00,N/A,626,,,,,,
-沙特阿拉伯王国,Saudi Arabia (Kingdom of),SA,+966 ,Open,00,0,420,,,,,,
-塞内加尔共和国,Senegal (Republic of),SN,+221 ,Closed,00,N/A,608,,,,,,
-塞尔维亚,Serbia (Republic of),RS,+381 ,Open,00,0,220,,,,,,
-塞舌尔共和国,Seychelles (Republic of),SC,+248 ,Closed,00,N/A,633,,,,,,
-塞拉利昂,Sierra Leone,SL,+232 ,Open,00,0,619,,,,,,
-新加坡,Singapore (Republic of),SG,+65 ,Closed,"001
-002
-008",N/A,525,,,,,,
-圣马丁岛,Sint Maarten (Dutch part),SX,+1721,NANP,011,1,,3,,,,,
-斯洛伐克,Slovakia,SK,+421 ,Open,00,0,231,,,,,,
-斯洛文尼亚,Slovenia (Republic of),SI,+386 ,Open,00,0,293,,,,,,
-所罗门群岛,Solomon Islands,SB,+677 ,Closed,00,N/A,540,,,,,,
-索马里,Somalia Democratic Republic,SO,+252 ,Closed,00,N/A,637,,,,,,
-南非共和国,South Africa (Republic of),ZA,+27 ,Closed with Trunk,00,0,655,,,,,,
-,South Suda,,+211,,00,0,,,,,,,
-西班牙,Spain,ES,+34 ,Closed,00,N/A,214,,,,,,
-斯里兰卡,Sri Lanka (Democratic Socialist Republic of),LK,+94 ,Open,00,0,413,,,,,,
-苏丹,Sudan (Republic of the),SD,+249 ,Open,00,0,634,,,,,,
-苏里南,Suriname (Republic of),SR,+597 ,Open,00,0,746,,,,,,
-斯威士兰,Swaziland (Kingdom of),SZ,+268 ,Closed,00,N/A,653,,,,,,
-瑞典,Sweden,SE,+46 ,Open,00,0,240,,,,,,
-瑞士,Switzerland (Confederation of),CH,+41 ,Closed with Trunk,00,0,228,,,,,,
-阿拉伯叙利亚共和国,Syria,SY,+963,Open,00,0,417,,,,,,
+082",450,,http://en.wikipedia.org/wiki/Telephone_numbers_in_South_Korea,,,,,FALSE
+越南,Vietnam (Socialist Republic of),VN,+84,Open,0,0,452,,,,,,,FALSE
+朝鲜,Democratic People's Republic of Korea,KP,+850,Open,0,0,467,3,,,,,,FALSE
+香港（中国）,"Hong Kong, China",HK,+852 ,Closed,1,N/A,454,,,89 852 XX,"453,454",477,,TRUE
+澳门（中国）,"Macao, China",MO,+853,Closed,0,N/A,455,,,,,,,FALSE
+柬埔寨,Cambodia (Kingdom of),KH,+855 ,Open,"001
+007",0,456,,,,,,,FALSE
+老挝人民民主共和国,Lao People's Democratic Republic,LA,+856,Open,0,0,457,,,,,,,FALSE
+中国,China (People's Republic of),CN,+86 ,Open,0,0,"460
+461",,,89 86 XX,,,,FALSE
+,"Universal Personal 
+Telecommunication (UPT",,+878,,,,,,,,,,,FALSE
+孟加拉共和国,Bangladesh (People's Republic of),BD,+880,Open,0,0,470,,,,,,,FALSE
+,"Global Mobile Satellite 
+System (GMSS), shared 
+code",,+881,,,,,,,,,,,FALSE
+,"International Networks, 
+shared code",,+882,,,,,,,,,,,FALSE
+,"International Networks, 
+shared code",,+883,,,,,,,,,,,FALSE
 台湾（中国）,"Taiwan, China",TW,+886,Open,"002
 005
 006
 007
 009
-019",0,466,,http://en.wikipedia.org/wiki/Telephone_numbers_in_Taiwan,,,,
-塔吉克斯坦,Tajikistan (Republic of),TJ,+992 ,Open,810,8,436,,,,,,
-坦桑尼亚联合共和国,Tanzania (United Republic of),TZ,+255,Open,000,0,640,,,,,,
+019",0,466,,http://en.wikipedia.org/wiki/Telephone_numbers_in_Taiwan,,,,,TRUE
 ,"Telecommunications for 
-Disaster Relief (TDR",,+888,,,,,,,,,,
-泰国,Thailand,TH,+66 ,Closed with Trunk,001,0,520,,,,,,
-马其顿,The Former Yugoslav Republic of Macedonia,MK,+389,Open,00,0,294,,,,,,
-,Timor-Leste,,+670,Closed,00,N/A,,,,,,,
-多哥,Togo,TG,+228 ,Closed,00,N/A,615,,,,,,
-托克劳,Tokelau,TK,+690 ,Closed,00,N/A,,,,,,,
-汤加,Tonga (Kingdom of),TO,+676 ,Closed,00,N/A,539,,,,,,
+Disaster Relief (TDR",,+888,,,,,,,,,,,FALSE
+土耳其,Turkey,TR,+90 ,Open,0,0,286,,,,,,,FALSE
+印度,India (Republic of),IN,+91 ,Open,0,0,"404
+405
+406",3,,,,,,FALSE
+巴基斯坦,Pakistan (Islamic Republic of),PK,+92 ,Open,0,0,410,,,,,,,FALSE
+阿富汗,Afghanistan,AF,+93,Open,0,0,412,,,,,,,FALSE
+斯里兰卡,Sri Lanka (Democratic Socialist Republic of),LK,+94 ,Open,0,0,413,,,,,,,FALSE
+缅甸,Myanmar (Union of),MM,+95,Open,0,0,414,,,,,,,FALSE
+马尔代夫,Maldives (Republic of),MV,+960 ,Closed,0,N/A,472,,,,,,,FALSE
+黎巴嫩,Lebanon,LB,+961 ,Open,0,0,415,,,,,,,FALSE
+约旦,Jordan (Hashemite Kingdom of),JO,+962 ,Open,0,0,416,,,,,,,FALSE
+阿拉伯叙利亚共和国,Syria,SY,+963,Open,0,0,417,,,,,,,FALSE
+伊拉克,Iraq (Republic of),IQ,+964 ,Open,0,0,418,,,,,,,FALSE
+科威特,Kuwait (State of),KW,+965 ,Closed,0,N/A,419,,,,,,,FALSE
+沙特阿拉伯王国,Saudi Arabia (Kingdom of),SA,+966 ,Open,0,0,420,,,,,,,FALSE
+也门,Yemen (Republic of),YE,+967 ,Open,0,0,421,,,,,,,FALSE
+阿曼,Oman (Sultanate of),OM,+968 ,Closed,0,N/A,422,,,,,,,FALSE
+, Reserved for the Palestinian Authorit,,+970,,,,,,,,,,,FALSE
+阿拉伯联合酋长国,United Arab Emirates,AE,+971 ,Open,0,0,"424
+430
+431",,,,,,,FALSE
+以色列,Israel (State of),IL,+972 ,Open,"00
+012
+013
+014
+018
+019",0,425,,,,,,,FALSE
+巴林,Bahrain (Kingdom of),BH,+973,Closed,0,N/A,426,,,,,,,FALSE
+卡塔尔,Qatar (State of),QA,+974 ,Closed,0,N/A,427,,,,,,,FALSE
+不丹,Bhutan (Kingdom of),BT,+975,Closed,0,N/A,402,,http://www.bicma.gov.bt/paper/NUMPLAN.pdf,,,,,FALSE
+蒙古,Mongolia,MN,+976 ,Open,1,0,428,,,,,,,FALSE
+尼泊尔,Nepal (Federal Democratic Republic of),NP,+977 ,Open,0,0,429,,http://www.nta.gov.np/en/content/index.php?task=articles&option=view&id=54,,,,,FALSE
+,"International Premium Rate 
+Service (IPRS)",,+979,,,,,,,,,,,FALSE
+伊朗伊斯兰共和国,Iran (Islamic Republic of),IR,+98,Open,0,0,432,,,,,,,FALSE
 ,"Trial of a proposed new 
 international service, shared 
-code",,+991,,,,,,,,,,
-特立尼达和多巴哥,Trinidad and Tobago,TT,+1868 ,NANP,011,1,374,3,,,,,
-突尼斯,Tunisia,TN,+216 ,Closed,00,N/A,605,,,,,,
-土耳其,Turkey,TR,+90 ,Open,00,0,286,,,,,,
-土库曼斯坦,Turkmenistan,TM,+993 ,Open,810,8,438,,,,,,
-特克斯和凯科斯群岛,Turks and Caicos Islands,TC,+1649 ,NANP,011,1,376,3,,,,,
-图瓦卢,Tuvalu,TV,+688 ,Closed,00,N/A,,,,,,,
-乌干达,Uganda (Republic of),UG,+256 ,Open,000,0,641,,,,,,
-乌克兰,Ukraine,UA,+380 ,Open,00,0,255,,,,,,
-阿拉伯联合酋长国,United Arab Emirates,AE,+971 ,Open,00,0,"424
-430
-431",,,,,,
-大不列颠及北爱尔兰联合王国,United Kingdom of Great Britain and Northern Ireland,GB,+44 ,Open,00,0,"234
-235",,,,,,
-美利坚合众国,United States of America,US,+1 ,NANP,011,1,"310
-311
-312
-313
-314
-315
-316",3,http://en.wikipedia.org/wiki/List_of_NANP_area_codes,,,,
-美属维京群岛,United States Virgin Islands,VI,+1340,NANP,011,1,332,3,,,,,
-,"Universal Personal 
-Telecommunication (UPT",,+878,,,,,,,,,,
-乌拉圭,Uruguay (Eastern Republic of),UY,+598 ,Closed with Trunk,00,0,748,,,,,,
-乌兹别克斯坦,Uzbekistan (Republic of),UZ,+998 ,Open,810,8,434,,,,,,
-瓦努阿图,Vanuatu (Republic of),VU,+678 ,Closed,00,N/A,541,,,,,,
-梵蒂冈,Vatican City,VA,+379,,,,225,,,,,,
-梵蒂冈,Vatican City,VA,+39,Closed,00,N/A,225,,,,,,
-委内瑞拉玻利瓦尔共和国,Venezuela (Bolivarian Republic of),VE,+58,Open,00,0,734,,,,,,
-越南,Vietnam (Socialist Republic of),VN,+84,Open,00,0,452,,,,,,
-瓦利斯群岛和富图纳群岛,Wallis and Futuna (Territoire français d'outre-mer),WF,+681 ,Closed,00,N/A,543,,,,,,
-西撒哈拉,Western Sahara,EH,+212,,,,,,,,,,
-也门,Yemen (Republic of),YE,+967 ,Open,00,0,421,,,,,,
-赞比亚,Zambia (Republic of),ZM,+260 ,Open,00,0,645,,,,,,
-津巴布韦共和国,Zimbabwe (Republic of),ZW,+263 ,Open,00,0,648,,,,,,
-, Reserved for the Palestinian Authorit,,+970,,,,,,,,,,
+code",,+991,,,,,,,,,,,FALSE
+塔吉克斯坦,Tajikistan (Republic of),TJ,+992 ,Open,810,8,436,,,,,,,FALSE
+土库曼斯坦,Turkmenistan,TM,+993 ,Open,810,8,438,,,,,,,FALSE
+阿塞拜疆,Azerbaijani Republic,AZ,+994,Open,0,0,400,,,,,,,FALSE
+格鲁吉亚,Georgia,GE,+995 ,Open,0,0,282,,,,,,,FALSE
+吉尔吉斯斯坦,Kyrgyzstan,KG,+996 ,Open,0,0,437,,,,,,,FALSE
+乌兹别克斯坦,Uzbekistan (Republic of),UZ,+998 ,Open,810,8,434,,,,,,,FALSE
