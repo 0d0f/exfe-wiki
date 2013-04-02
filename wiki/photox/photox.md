@@ -172,9 +172,11 @@
 * endpoint: /v2/photox/[str:photox_id]/Delete
 * GET args:
     - token: [str:user_token]
-* POST args OPTION:
+* POST args OPTION A:
     - provider: [str]
     - external_album_id: [str]
+* POST args OPTION B:
+    - photo_ids: [array:str]
 * return:
     - 200: {}
     - 400: param_error
