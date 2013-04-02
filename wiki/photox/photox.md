@@ -156,8 +156,7 @@
 * POST args OPTION B / 用于从有照片流功能的身份中添加照片
   (eg: Instagram):
     - identity_id: [int]
-    - min_id: [int]
-    - max_id: [int]
+    - ids: [array:string]
 * POST args OPTION C / 用于从 PhotoStream 等公开 feed 中加入照片:
   (eg: PhotoStream):
     - stream_id: [str]
