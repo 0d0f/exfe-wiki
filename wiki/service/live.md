@@ -9,7 +9,9 @@ live发现服务
 	表示一个Identity的对象
 
 		{
-			"id": "external_id@provider"
+			"external_id": "id",
+			"external_username": "username",
+			"provider": "provider"
 		}
 
  - Card
@@ -22,7 +24,7 @@ live发现服务
 			"avatar": "http://avatar/url",
 			"bio": "some bio",
 			"identities": [...], // 由Identity组成的数组，包括用户所有的身份信息
-			"is_me": true, // 表示是不是自己
+			"is_me": true // 表示是不是自己
 		}
  - Data
 
