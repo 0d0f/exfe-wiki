@@ -178,7 +178,7 @@
 * POST args OPTION B:
     - photo_ids: [array:str]
 * return:
-    - 200: {}
+    - 200: {"photox" : [object:photo]}
     - 400: param_error
     - 401: invalid_auth
     - 403: not_authorized
