@@ -203,6 +203,7 @@
     - token: [str:user_token]
 * POST args：
     - id: [int:photo_id]
+    - LIKE: [str:"false"] OPTION
 * return:
     - 200: {"like" : [object:response]}
     - 400: error_responsing_photo
