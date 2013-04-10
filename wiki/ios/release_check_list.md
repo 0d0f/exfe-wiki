@@ -1,5 +1,5 @@
 #iOS Release Check List
-* 清理图片   
+* 清理图片    
 使用脚本unused.js找出候选图片 
 
     for i in `find . -name "*.png" -o -name "*.jpg"`; do    
@@ -49,7 +49,8 @@
 测试版本 导出后用脚本（具体脚本待定）发布到0d0f.com上。
 正式版本 导出后用xcode工具上传，确认push能够工作
 
-测试版本发布脚本
+测试版本发布脚本    
+
     project="EXFE"    
     server="0d0f.com"    
     ext=".ipa"    
@@ -58,13 +59,15 @@
     build=$project$seed$ext    
     if [ -f $build ]    
     then    
-        seed=$(date '+_%y%m%d_%H%M%S')
-        build=$project$seed$ext
-    fi
-    echo $project $ipa $build
-    cp $ipa $build
-    scp $ipa $server:/usr/local/www/exfeweb/static/img/
-    scp $build $server:/usr/home/stony/beta/iOS/
+        seed=$(date '+_%y%m%d_%H%M%S')    
+        build=$project$seed$ext    
+    fi    
+    echo $project $ipa $build    
+    cp $ipa $build    
+    scp $ipa $server:/usr/local/www/exfeweb/static/img/    
+    scp $build $server:/usr/home/stony/beta/iOS/    
+
+
 
 
 
