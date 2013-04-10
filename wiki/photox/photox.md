@@ -85,6 +85,7 @@
 * GET args:
     - token: [str:user_token]
     - sort: [str:[imported_time_desc|...]] OPTION
+    - limit: [int] OPTION
 * returns:
     - 200: {"photox" : [object:photox]}
     - 400: param_error
