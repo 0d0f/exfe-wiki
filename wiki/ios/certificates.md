@@ -1,6 +1,7 @@
 # iOS Developer: Certificates, Identifiers & Profiles
 ##概述
-iOS开发采用证书管理，管理网站在 https://developer.apple.com/account/overview.action ,凡是注册帐号并在有效期内，都可以申请证书。
+iOS开发采用证书管理，凡是注册帐号并在有效期内，都可以申请证书。    
+[管理网站入口](https://developer.apple.com/account/overview.action) 
 
 这里涉及到几个概念：证书(Certificate)、标示(Identifier)、设备(Devices)和Provisioning Profile。
 
@@ -18,11 +19,11 @@ iOS开发采用证书管理，管理网站在 https://developer.apple.com/accoun
 
 ###标示(Identifier)
 标示用来区分app，不同app应该有不同的标示。在同一台手机上，若已经存在相同标示的app会被按照替换升级的方式而不是全新安装。
-在开发的时候，标示也同时被用来匹配证书的，因此xcode也会帮忙自动管理一个用*通配的标示。
+在开发的时候，标示也同时被用来匹配证书的，因此更改app标示会导致可用的证书出现变化。
+xcode也会帮忙自动管理一个用*通配的标示。
 
-###设备(Devices)
+###设备(Device)
 设备就是iOS开发、测试设备的串号，可以通过iTunes的界面获取，也可以在连接手机后，xcode organizer来直接添加为开发机器。
-
 
 ###Provisioning Profile
 翻译没有想好，这个profile的作用是：指定哪些人（证书）、哪些机器允许参与开发和测试（真机运行），并且限制了对应的app（Identifier）。
@@ -34,32 +35,32 @@ iOS开发采用证书管理，管理网站在 https://developer.apple.com/accoun
 为了开发方便，xcode还会产生一个包含通配标示的Profile，方便开发人员临时增加项目调试代码，因此自建的开发Profile应当包含项目具体标示而不是通配标示
 
 ## 查找问题
-这片文章包含的7个步骤保证了能够重设完整的环境，结合上面的解释来自己解决问题：
-http://stackoverflow.com/questions/8424017/xcode-could-not-find-a-valid-private-key-certificate-pair-for-this-profile-in-yo
+这篇[SO回答](http://stackoverflow.com/questions/8424017/xcode-could-not-find-a-valid-private-key-certificate-pair-for-this-profile-in-yo)包含的7个步骤保证了能够重设完整的环境，结合上面的解释来自己解决问题：
 
-    1- Delete your Certificates: Open the Application called Keychain Access on your Mac (You can hit the keys command + space bar on your keyboard to bring Spotlight and type Keychain Access to launch it). Then select login on the upper left list and Certificates on the lower left list, you will delete only the Certificates starting with the words "iPhone Developer" or "iPhone Distribution".
 
-    2- You need to revoke the old certificates by logging into your Apple iOS Developer's account and going to the Provisioning Portal and then to the Certificates option on the left menu. Then locate your Developer Certificate and click on the link located at the right that reads "Revoke".
+1. Delete your Certificates: Open the Application called Keychain Access on your Mac (You can hit the keys command + space bar on your keyboard to bring Spotlight and type Keychain Access to launch it). Then select login on the upper left list and Certificates on the lower left list, you will delete only the Certificates starting with the words "iPhone Developer" or "iPhone Distribution".
 
-    3- Go back to the Keychain Access Application on you Mac, click on the menu bar the following menus: "Keychain Access" -> "Certificate Assistant" -> "Request a Certificate from a Certificate Authority". Just enter you email if needed and modify the option that says "Request is:" selecting the option "save to disk"... a dialog will ask you where do you want to save a CSR file wich is normally called "CertificateSigningRequest.certSigningRequest".
+2. You need to revoke the old certificates by logging into your Apple iOS Developer's account and going to the Provisioning Portal and then to the Certificates option on the left menu. Then locate your Developer Certificate and click on the link located at the right that reads "Revoke".
 
-    4- Go back to the online Provision Portal and create a new Certificate uploading the file you just generated on the same option where your old Certificates were before.
+3. Go back to the Keychain Access Application on you Mac, click on the menu bar the following menus: "Keychain Access" -> "Certificate Assistant" -> "Request a Certificate from a Certificate Authority". Just enter you email if needed and modify the option that says "Request is:" selecting the option "save to disk"... a dialog will ask you where do you want to save a CSR file wich is normally called "CertificateSigningRequest.certSigningRequest".
 
-    5- After a minute or so... you will see under the Certificates list that you can now Download you new certificate and that you can also download a WWDR intermediate certificate (See the links under the certificate list). Download them and give them to your Keychain Access by double-clicking them.
+4. Go back to the online Provision Portal and create a new Certificate uploading the file you just generated on the same option where your old Certificates were before.
 
-    6- You will have to go to the Provisioning Portal menu option called Provisioning where you will see all your App's Development Provisioning Profiles. You will have to click the link "Edit"->"Modify" at the right and verify that the Certificate is checked.
+5. After a minute or so... you will see under the Certificates list that you can now Download you new certificate and that you can also download a WWDR intermediate certificate (See the links under the certificate list). Download them and give them to your Keychain Access by double-clicking them.
 
-    7- Finally, just close "XCode 4". When you re-open it, go to the menu "Window" -> "Organizer". Because the Organizer reads the certificates from you keychain, they should be there already. Next time you plug your devices just click on Provisioning and make sure the old certificates are gone and the new certificate is on.
+6. You will have to go to the Provisioning Portal menu option called Provisioning where you will see all your App's Development Provisioning Profiles. You will have to click the link "Edit"->"Modify" at the right and verify that the Certificate is checked.
+
+7. Finally, just close "XCode 4". When you re-open it, go to the menu "Window" -> "Organizer". Because the Organizer reads the certificates from you keychain, they should be there already. Next time you plug your devices just click on Provisioning and make sure the old certificates are gone and the new certificate is on.
 
 ##目前项目的遗留问题
-* 发布证书私钥和dm的开发证书私钥相同
-  造成问题：dm的开发用户会被自动激活，违反每人使用自己证书的原则。
-  解决办法：开发用的Provisioning Profile应当排除dm
+* 发布证书私钥和dm的开发证书私钥相同    
+  造成问题：dm的开发用户会被自动激活，违反每人使用自己证书的原则。    
+  解决办法：开发用的Provisioning Profile应当排除dm。
 
-* 项目的证书指定选择
-  造成问题：不同人工作环境的证书不同，因此工程文件会互相冲突。
-  解决办法：通过Provisioning Profile的配置，工程选自动选择，让xcode自己选择对应的证书进行操作。
+* 项目的证书指定选择    
+  造成问题：不同人工作环境的证书不同，因此工程文件会互相冲突，导致反复提交。   
+  解决办法：通过Provisioning Profile的正确配置，工程选自动选择，让xcode自己选择对应的证书进行操作。    
   
 ## 迁移
-方法1 从xcode Organizer的Teams来导出全部证书（含私钥），导入到新机器后，刷新，用apple id登陆后，会得到最新的Provisioning Profile。
-方法2 到keychain里面选择对应的证书导出，到新机器上逐一导入。这里需要注意的是，只需要导入带私钥的证书，仅有公钥的证书可以通过xcode organizer刷新的方式取回。
+方法1 从xcode Organizer的Teams中导出全部证书（含私钥），导入到新机器后，点右下刷新，用apple id登陆后，会得到最新的Provisioning Profile。    
+方法2 到keychain里面选择对应的证书导出，到新机器上逐一导入。这里需要注意的是，只需要导出带私钥的证书，仅有公钥的证书可以通过xcode organizer刷新的方式取回。
