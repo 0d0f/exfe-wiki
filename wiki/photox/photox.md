@@ -84,6 +84,7 @@
 * endpoint: /v2/photox/[str:photox_id]
 * GET args:
     - token: [str:user_token]
+    - sort: [str:[imported_time_desc|...]] OPTION
 * returns:
     - 200: {"photox" : [object:photox]}
     - 400: param_error
@@ -100,9 +101,9 @@
     - album_id: [str/Optional]
     - photox_id: [int/Optional]
 * returns:
-    - 200: 
+    - 200:
 
-            #!javascript            
+            #!javascript
             {
                 "albums"            : [array:album_object],
                 "photos"            : [array:photo_object],
