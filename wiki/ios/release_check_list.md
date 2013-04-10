@@ -73,7 +73,7 @@ file: usused.sh
         file=`basename -s .jpg "$i" | xargs basename -s .png | xargs basename -s @2x`
         result=`ack -i "$file"`
         if [ -z "$result" ]; then
-            echo "$i“”
+            echo "$i"
         fi
     done
 
