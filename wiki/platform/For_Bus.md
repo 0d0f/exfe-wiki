@@ -42,12 +42,16 @@
 
 
 ## Get Cross By Id
-* endpoint: /v2/Gobus/GetCrossById
+* endpoint: /v2/Gobus/Crosses
 * GET args:
     - id: [int]
+    - user_id: [int]
+    - updated_at: [str:time]
 * returns:
     - 200: [json:cross]
-    - 404: '' // Cross Not Found
+    - 304: '' // Not Modified
+    - 403: '' // Forbidden
+    - 404: '' // Not Found
 
 
 ## Gather

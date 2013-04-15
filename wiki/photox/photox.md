@@ -84,6 +84,8 @@
 * endpoint: /v2/photox/[str:photox_id]
 * GET args:
     - token: [str:user_token]
+    - sort: [str:[imported_time_desc|...]] OPTION
+    - limit: [int] OPTION
 * returns:
     - 200: {"photox" : [object:photox]}
     - 400: param_error
@@ -100,9 +102,9 @@
     - album_id: [str/Optional]
     - photox_id: [int/Optional]
 * returns:
-    - 200: 
+    - 200:
 
-            #!javascript            
+            #!javascript
             {
                 "albums"            : [array:album_object],
                 "photos"            : [array:photo_object],
@@ -156,8 +158,7 @@
 * POST args OPTION B / 用于从有照片流功能的身份中添加照片
   (eg: Instagram):
     - identity_id: [int]
-    - min_id: [int]
-    - max_id: [int]
+    - ids: [array:string]
 * POST args OPTION C / 用于从 PhotoStream 等公开 feed 中加入照片:
   (eg: PhotoStream):
     - stream_id: [str]
@@ -173,11 +174,13 @@
 * endpoint: /v2/photox/[str:photox_id]/Delete
 * GET args:
     - token: [str:user_token]
-* POST args OPTION:
+* POST args OPTION A:
     - provider: [str]
     - external_album_id: [str]
+* POST args OPTION B:
+    - photo_ids: [array:str]
 * return:
-    - 200: {}
+    - 200: {"photox" : [object:photo]}
     - 400: param_error
     - 401: invalid_auth
     - 403: not_authorized
@@ -202,6 +205,7 @@
     - token: [str:user_token]
 * POST args：
     - id: [int:photo_id]
+    - LIKE: [str:"false"] OPTION
 * return:
     - 200: {"like" : [object:response]}
     - 400: error_responsing_photo
