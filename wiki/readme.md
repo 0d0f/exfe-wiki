@@ -11,6 +11,8 @@ Readme
   - git@git.0d0f.com:wiki
   - git@git.0d0f.com:gitolite-admin
 
+  - git@git.0d0f.com:0d0f2b
+
 ## WIki http://wiki.0d0f.com/0d0fwiki:
   * web: [wiki.0d0f.com](http://wiki.0d0f.com)
   * git: [git.0d0f.com](git.0d0f.com)
