@@ -1,4 +1,19 @@
 # iOS Build and Release Process
+
+##Repo
+###Check out Repo
+code
+
+    git clone git@git.0d0f.com:exfeiosv2
+    
+默认库位置，项目库名字exfeiosv2
+###Init submodules
+code
+
+    cd exfeiosv2/
+    git submodule update --init --recursive
+    
+初始化子模块要加上递归开关
 ## Shell
 ### make
 code
@@ -22,9 +37,10 @@ code
     ./publish.sh 0d0f|pilot|exfe
     
 ## 发布位置
-网页入口 [app.0d0f.com/app.html](http://app.0d0f.com/app.html)    
-服务器 0d0f.com    
-路径 [/usr/local/www/app/ios/](ssh://0d0f.com/usr/local/www/app/ios/)    
+网页入口 [app.0d0f.com](http://app.0d0f.com/)    
+服务器 app.0d0f.com 即 panda.0d0f.com    
+路径 [/0d0f/app/ios/](ssh://app.0d0f.com/0d0f/app/ios/)    
+
 ## 配置环境
 ###证书
 测试服务器使用eDoctor私钥，由yashure提供，Stony持有和管理，hj备份持有。    
@@ -48,5 +64,8 @@ Pilot对应Panda服务器panda.0d0f.com，支持Push，Identifier是com.0d0f.pro
 ###工程文件
 工程的3个target，对应3个不同的Identifier，并有3个同名的scheme分别对应编译target的信息。
 ###服务器
-在黑盒上配置相应帐号和权限
+在Panda上配置相应帐号和权限
+建立帐号
+上传公钥
+确认文件夹权限
 
