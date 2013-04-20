@@ -66,6 +66,7 @@ Response:
     }
 
 ##验证用户(登录后)
+
 <pre>
 endpoint: VerifyUserIdentity
 method: post
@@ -141,6 +142,7 @@ Response:
 
 
 ##解释Token
+
 <pre>
 endpoint: ResolveToken
 method: post
@@ -154,6 +156,7 @@ http -f POST api.local.exfe.com/v2/users/ResolveToken token='xxxxxxxxxx'
 </pre>
 
 ##重设密码
+
 <pre>
 endpoint: ResetPassword
 method: post
