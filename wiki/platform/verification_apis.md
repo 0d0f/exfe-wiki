@@ -1,7 +1,7 @@
 # Verification APIs For Front-end
 
 
-##请求发出验证用户链接(登录前)
+##验证用户(登录前)
 * 在用户没有登陆的情况下，给需要验证的身份，请求发送一次验证信息。根据provider，系统会发送的相应的渠道验证信息(VERIFYING)或者返回需要登陆的URL(REDIRECT)并交给客户端触发
 * endpoint: users/verifyidentity
 * method: post
@@ -65,9 +65,8 @@ Response:
         }
     }
 
-
+##验证用户(登录后)
 <pre>
-登录后，验证用户
 endpoint: VerifyUserIdentity
 method: post
 args: identity_id, token
@@ -141,9 +140,8 @@ Response:
 
 
 
-
+##解释Token
 <pre>
-解释Token
 endpoint: ResolveToken
 method: post
 args: token
@@ -155,9 +153,8 @@ example:
 http -f POST api.local.exfe.com/v2/users/ResolveToken token='xxxxxxxxxx'
 </pre>
 
-
+##重设密码
 <pre>
-重设密码
 endpoint: ResetPassword
 method: post
 args: token, password, name
