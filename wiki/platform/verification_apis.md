@@ -7,13 +7,21 @@
 * method: post
 * args: provider, external_username
 * content type: application/x-www-form-urlencoded; charset=utf-8
-* returns:     
+* returns:  
+有两种正确结果   
     action:VERIFYING（已经发送验证邮件）    
-        和Identity
-    action:REDIRECT（需要重定向到第三方验证）    
-        和Identity？
+    Identity:
+    
+    action:REDIRECT（需要重定向到第三方验证）  
+    url: 直接跳转到第三方登陆用的url   
+    Identity:    
+错误结果：    
+	400 "errorType": "identity_does_not_exist"    
+	400 "errorType": "no_need_to_verify"    
+	
 * 备注：请使用测试服务器测试本接口，生产服务器发邮件或者短信要钱的。
 
+第一种结果：    
 Request:
     
     $ http -fv POST api.panda.0d0f.com/v2/users/verifyidentity provider='email' external_username=stonydemo@gmail.com
@@ -64,6 +72,60 @@ Response:
             }
         }
     }
+   
+第二种结果：    
+Request: 
+
+    $ http -fv POST api.panda.0d0f.com/v2/users/verifyidentity provider='facebook' external_username=leaskh
+    POST /v2/users/verifyidentity HTTP/1.1
+    Accept: */*
+    Accept-Encoding: gzip, deflate, compress
+    Content-Length: 42
+    Content-Type: application/x-www-form-urlencoded; charset=utf-8
+    Host: api.panda.0d0f.com
+    User-Agent: HTTPie/0.4.1
+
+    provider=facebook&external_username=leaskh
+
+Response:
+
+    HTTP/1.1 200 OK
+    Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+    Content-Type: application/json; charset=UTF-8
+    Date: Mon, 22 Apr 2013 05:02:16 GMT
+    Expires: Thu, 19 Nov 1981 08:52:00 GMT
+    Pragma: no-cache
+    Server: lighttpd/1.4.28
+    Set-Cookie: PHPSESSID=6tkhp2en3ek1j01rbus5ope9g2; path=/; domain=.exfe.com
+    Transfer-Encoding: chunked
+    X-Powered-By: PHP/5.4.14-1~precise+1
+
+    {
+        "meta": {
+            "code": 200
+        }, 
+        "response": {
+            "action": "REDIRECT", 
+            "identity": {
+                "avatar_filename": "https://graph.facebook.com/554148635/picture?type=large", 
+                "bio": "", 
+                "connected_user_id": -638, 
+                "created_at": "2013-04-02 14:17:52 +0000", 
+                "external_id": "554148635", 
+                "external_username": "leaskh", 
+                "id": 638, 
+                "name": "Leask Huang", 
+                "nickname": "", 
+                "order": 999, 
+                "provider": "facebook", 
+                "type": "identity", 
+                "unreachable": false, 
+                "updated_at": "2013-04-02 14:17:52 +0000"
+            }, 
+            "url": "https://graph.facebook.com/oauth/authorize?client_id=119145884898699&redirect_uri=http://panda.0d0f.com/OAuth/facebookCallBack&type=web_server&scope=user_photos,email,user_birthday,user_online_presence,status_update,photo_upload,video_upload,create_note,share_item,publish_stream"
+        }
+    }
+
 
 ##验证用户(登录后)
 
