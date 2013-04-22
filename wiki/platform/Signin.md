@@ -27,5 +27,7 @@ error:
 400 weak_password
 400 unsupported_provider
 403 failed
+400 invalid_external_username
+400 invalid_username
 
 </pre>
