@@ -18,4 +18,14 @@ return:
         token: string
     }
 }
+
+error:
+
+403 no_external_username
+403 no_provider
+403 no_password
+400 weak_password
+400 unsupported_provider
+403 failed
+
 </pre>
