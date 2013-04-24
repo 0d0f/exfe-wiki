@@ -22,15 +22,15 @@
 exfe://crosses/%CROSS_ID%
 直接打开CrossID为%CROSS_ID%的Cross Detail界面
 
-## <a id="crosses"></a>Cross List
+### <a id="crosses"></a>Cross List
 exfe://crosses
 直接打开Cross List界面
 
-## <a id="profile"></a>Profile
+### <a id="profile"></a>Profile
 exfe://profile
 直接打开Profile界面
 
-## <a id="identity"></a>Identity (NOT Implemented)
+### <a id="identity"></a>Identity (NOT Implemented)
 exfe://Identity/IDENTITY_ID
 添加Identity（未完成）
 
