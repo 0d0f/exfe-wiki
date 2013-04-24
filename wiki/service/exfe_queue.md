@@ -1,134 +1,50 @@
-exfe队列
-=======
+# exfe队列
 
-PACKAGE
--------
+## 说明
 
-    package main
-        import "queue"
+假设队列服务架设在本机127.0.0.1的23334端口。接口：
 
-TYPES
--------
+    http://127.0.0.1:23334/v3/queue/{merge_key}/{method}/{service}?update={update}&ontime={ontime}
 
-type <span id="Head">Head</span>
+参数merge_key是合并的key，所有merge_key，method，service三项一样的队列请求，在队列时间到达后会一并发送给service作处理。如果不需要合并，merge_key始终为“-“。
 
-    type Head struct {
-        // contains filtered or unexported fields
-    }
+参数method表示队列时间到达后，发送给service时的http动作。一般为POST。
 
-func <span id="NewHead">NewHead</span>
+参数service是队列时间到达后，发送到的服务地址。此地址不包含schema部分。
 
-    func NewHead(delayInSecond uint, url string, config *model.Config) (*Head, *tomb.Tomb)
+参数ontime表示此队列到达时间timestamp，到达此时间时，该条队列里的值将交给service处理。
 
-    func (i *Head) Push(params map[string]string, arg model.QueuePush) (int, error)
-        首延迟发送队列
+参数update表示是否修改已有的队列时间ontime，always表示总是用新的ontime替换现有队列的值，once表示只在新队列时使用ontime值。
 
-        例子：
+POST内容：
 
-        > curl 'http://127.0.0.1:23334/head10' -d '{"service":"Conversation",
+    {...} // 入队的数据
 
-	"method":"Update",
-	"merge_key":"email_cross123",
-	"tos":[{"identity_id":12,"user_id":3,"name":"email1 name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"sender1@gmail.com","external_username":"sender1@gmail.com"},{"identity_id":12,"user_id":3,"name":"email1 name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"sender2@hotmail.com","external_username":"sender2@hotmail.com"}],
-	"data":{"to":{"identity_id":12,"user_id":3,"name":"email1 name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"sender1@gmail.com","external_username":"sender1@gmail.com"},"cross":{"id":123,"by_identity":{"id":11,"name":"email1 name","nickname":"email1 nick","bio":"email1 bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"sender2@hotmail.com","external_username":"sender2@hotmail.com"},"title":"Test Cross","description":"test cross description","time":{"begin_at":{"date_word":"","date":"","time_word":"","time":"","timezone":""},"origin":"","output_format":0},"place":{"id":0,"title":"","description":"","lng":"","lat":"","provider":"","external_id":""},"exfee":{"id":0,"name":"","invitations":null}},"post":{"id":1,"by_identity":{"id":11,"name":"email1 name","nickname":"email1 nick","bio":"email1 bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"sender2@hotmail.com","external_username":"sender2@hotmail.com"},"content":"email1 post sth","via":"abc","created_at":"2012-10-24 16:31:00"}}}'
+## 例子：
 
-    func (i *Head) SetRoute(route gobus.RouteCreater) error
+ - 发送摘要邮件：
 
-    func (i Head) String() string
+    接收者identity id为789，cross id为123。在1366614150时发送。
 
-type <span id="Instant">Instant</span>
+        curl "http://127.0.0.1:23334/v3/queue/cross123_789/POST/127.0.0.1:23333/v3/notifier/cross/digest?update=always&ontime=1366614150" -d '{
+            "to": {"identity_id": 789, ...},
+            "cross_id": 123,
+            "updated_at": "2013-04-24 00:00:00"
+        }'
 
-    type Instant struct {
-        // contains filtered or unexported fields
-    }
+ - 需要Splitter拆分发送给多个Recipient，之后下发摘要邮件：
 
-func <span id="NewInstant">NewInstant</span>
+    立刻发送（ontime为0），拆分后的其中一个请求和上一个例子一样。具体参见splitter的文档。
 
-    func NewInstant(config *model.Config) *Instant
-
-    func (i *Instant) Push(params map[string]string, arg model.QueuePush) (int, error)
-        即时发送队列
-
-        例子：
-
-        > curl 'http://127.0.0.1:23334/instant' -d '{"service":"Conversation",
-
-	"method":"Update",
-	"merge_key":"email_cross123",
-	"tos":[{"identity_id":12,"user_id":3,"name":"email1 name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"sender1@gmail.com","external_username":"sender1@gmail.com"},{"identity_id":12,"user_id":3,"name":"email1 name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"sender2@hotmail.com","external_username":"sender2@hotmail.com"}],
-	"data":{"to":{"identity_id":12,"user_id":3,"name":"email1 name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"sender1@gmail.com","external_username":"sender1@gmail.com"},"cross":{"id":123,"by_identity":{"id":11,"name":"email1 name","nickname":"email1 nick","bio":"email1 bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"sender2@hotmail.com","external_username":"sender2@hotmail.com"},"title":"Test Cross","description":"test cross description","time":{"begin_at":{"date_word":"","date":"","time_word":"","time":"","timezone":""},"origin":"","output_format":0},"place":{"id":0,"title":"","description":"","lng":"","lat":"","provider":"","external_id":""},"exfee":{"id":0,"name":"","invitations":null}},"post":{"id":1,"by_identity":{"id":11,"name":"email1 name","nickname":"email1 nick","bio":"email1 bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"sender2@hotmail.com","external_username":"sender2@hotmail.com"},"content":"email1 post sth","via":"abc","created_at":"2012-10-24 16:31:00"}}}'
-
-    func (i *Instant) SetRoute(route gobus.RouteCreater) error
-
-type <span id="Push">Push</span>
-
-    type Push struct {
-        Service    string            `json:"service"`
-        Priority   string            `json:"priority"`
-        DelayType  string            `json:"delay_type"`
-        GroupKey   string            `json:"group_key"`
-        Recipients []model.Recipient `json:"recipients"`
-        Data       interface{}       `json:"data"`
-    }
-
-    func (a Push) String() string
-
-type <span id="Queue">Queue</span>
-
-    type Queue struct {
-        // contains filtered or unexported fields
-    }
-
-func <span id="NewQueue">NewQueue</span>
-
-    func NewQueue(config *model.Config, redis broker.Redis) (*Queue, error)
-
-    func (q *Queue) Push(param map[string]string, arg Push) (int, error)
-        将data以delay type的合并方式，放入priority队列，之后发送给service服务。合并关键字group
-        key，接收者recipients
-
-        priority取值：
-
-        - instant - urgent - normal
-
-        priority也可以使用数字，表示经过多少秒后合并发送。
-
-        例子：
-
-        > curl 'http://127.0.0.1:23334/' -d
-        '{"service":"bus://exfe_service/notifier/conversation",
-
-	"priority": "urgent",
-	"delay_type": "head",
-	"group_key":"email_cross123",
-	"recipients":[{"identity_id":12,"user_id":3,"name":"email1 name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"sender1@gmail.com","external_username":"sender1@gmail.com"},{"identity_id":12,"user_id":3,"name":"email1 name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"sender2@hotmail.com","external_username":"sender2@hotmail.com"}],
-	"data":{"cross":{"id":123,"by_identity":{"id":11,"name":"email1 name","nickname":"email1 nick","bio":"email1 bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"sender2@hotmail.com","external_username":"sender2@hotmail.com"},"title":"Test Cross","description":"test cross description","time":{"begin_at":{"date_word":"","date":"","time_word":"","time":"","timezone":""},"origin":"","output_format":0},"place":{"id":0,"title":"","description":"","lng":"","lat":"","provider":"","external_id":""},"exfee":{"id":0,"name":"","invitations":null}},"post":{"id":1,"by_identity":{"id":11,"name":"email1 name","nickname":"email1 nick","bio":"email1 bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"sender2@hotmail.com","external_username":"sender2@hotmail.com"},"content":"email1 post sth","via":"abc","created_at":"2012-10-24 16:31:00"}}}'
-
-    func (q *Queue) SetRoute(r gobus.RouteCreater) error
-
-type <span id="Tail">Tail</span>
-
-    type Tail struct {
-        // contains filtered or unexported fields
-    }
-
-func <span id="NewTail">NewTail</span>
-
-    func NewTail(delayInSecond uint, url string, config *model.Config) (*Tail, *tomb.Tomb)
-
-    func (i *Tail) Push(params map[string]string, arg model.QueuePush) (int, error)
-        尾延迟发送队列
-
-        例子：
-
-        > curl 'http://127.0.0.1:23334/tail10' -d '{"service":"Conversation",
-
-	"method":"Update",
-	"merge_key":"email_cross123",
-	"tos":[{"identity_id":12,"user_id":3,"name":"email1 name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"sender1@gmail.com","external_username":"sender1@gmail.com"},{"identity_id":12,"user_id":3,"name":"email1 name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"sender2@hotmail.com","external_username":"sender2@hotmail.com"}],
-	"data":{"to":{"identity_id":12,"user_id":3,"name":"email1 name","auth_data":"","timezone":"+0800","token":"recipient_email1_token","language":"en_US","provider":"email","external_id":"sender1@gmail.com","external_username":"sender1@gmail.com"},"cross":{"id":123,"by_identity":{"id":11,"name":"email1 name","nickname":"email1 nick","bio":"email1 bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"sender2@hotmail.com","external_username":"sender2@hotmail.com"},"title":"Test Cross","description":"test cross description","time":{"begin_at":{"date_word":"","date":"","time_word":"","time":"","timezone":""},"origin":"","output_format":0},"place":{"id":0,"title":"","description":"","lng":"","lat":"","provider":"","external_id":""},"exfee":{"id":0,"name":"","invitations":null}},"post":{"id":1,"by_identity":{"id":11,"name":"email1 name","nickname":"email1 nick","bio":"email1 bio","timezone":"+0800","connected_user_id":1,"avatar_filename":"http://path/to/email1.avatar","provider":"email","external_id":"sender2@hotmail.com","external_username":"sender2@hotmail.com"},"content":"email1 post sth","via":"abc","created_at":"2012-10-24 16:31:00"}}}'
-
-    func (i *Tail) SetRoute(route gobus.RouteCreater) error
-
-    func (i Tail) String() string
-
+        curl "http://127.0.0.1:23334/v3/queue/-/POST/127.0.0.1:23333/v3/splitter?update=always&ontime=0" -d '{
+            "recipients": [{"identity_id": 789, ...},{...}],
+            "merge_key": "cross123",
+            "method": "POST",
+            "service": "127.0.0.1:23333/v3/notifier/cross/digest",
+            "type": "always",
+            "ontime": 1366614150,
+            "data": {
+                "cross_id": 123,
+                "updated_at": "2013-04-24 00:00:00"
+            }
+        }'
