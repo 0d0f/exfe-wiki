@@ -4,6 +4,7 @@
 ###Check out Repo
 code
 
+    #!shell
     git clone git@git.0d0f.com:exfeiosv2
     
 默认库位置，项目库名字exfeiosv2
