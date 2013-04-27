@@ -6,7 +6,7 @@
 
     http://127.0.0.1:23334/v3/queue/{merge_key}/{method}/{service}?update={update}&ontime={ontime}
 
-参数merge_key是合并的key，所有merge_key，method，service三项一样的队列请求，在队列时间到达后会一并发送给service作处理。如果不需要合并，merge_key始终为“-“。
+参数merge_key是合并的key，所有merge_key，method，service三项一样的队列请求，在队列时间到达后会一并发送给service作处理。如果不需要合并，merge_key需要以“-”开头，为了能分散服务器压力，即便不需要合并的merge_key，最好也能根据请求不同有不一样的值，最简单的做法是使用提交时的时间戳前面加“-”，比如“-1366614150”。
 
 参数method表示队列时间到达后，发送给service时的http动作。一般为POST。
 
@@ -36,7 +36,7 @@ POST内容：
 
     立刻发送（ontime为0），拆分后的其中一个请求和上一个例子一样。具体参见splitter的文档。
 
-        curl "http://127.0.0.1:23334/v3/queue/-/POST/127.0.0.1:23333/v3/splitter?update=always&ontime=0" -d '{
+        curl "http://127.0.0.1:23334/v3/queue/-1366614139/POST/127.0.0.1:23333/v3/splitter?update=always&ontime=1366614139" -d '{
             "recipients": [{"identity_id": 789, ...},{...}],
             "merge_key": "cross123",
             "method": "POST",

@@ -4,12 +4,14 @@
 ###Check out Repo
 code
 
+    #!bash
     git clone git@git.0d0f.com:exfeiosv2
     
 默认库位置，项目库名字exfeiosv2
 ###Init submodules
 code
 
+    #!bash
     cd exfeiosv2/
     git submodule update --init --recursive
     
@@ -18,6 +20,7 @@ code
 ### make
 code
     
+    #!bash
     ./make.sh 0d0f|pilot
     
 包含了2个脚本
@@ -29,11 +32,13 @@ publish.sh
 ### build
 code
 
+    #!bash
     ./build.sh -p 0d0f|pilot|exfe
     
 ### publish
 code
 
+    #!bash
     ./publish.sh 0d0f|pilot|exfe
     
 ## 发布位置

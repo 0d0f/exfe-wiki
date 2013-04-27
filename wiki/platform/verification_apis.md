@@ -15,12 +15,14 @@
     action:REDIRECT（需要重定向到第三方验证）
     url: 直接跳转到第三方登陆用的url
     Identity:
+    
 错误结果：
-    400 - identity_does_not_exist
-    400 - no_external_username
-    400 - no_provider
-    400 - no_need_to_verify
-    500 - failed
+
+* 400 - identity_does_not_exist
+* 400 - no_external_username
+* 400 - no_provider
+* 400 - no_need_to_verify
+* 500 - failed
 
 * 备注：请使用测试服务器测试本接口，生产服务器发邮件或者短信要钱的。
 
@@ -204,12 +206,14 @@ Response:
         }
     }
 
-错误：
-400 - no_external_username
-400 - no_provider
-400 - identity_does_not_exist
-400 - identity_is_being_verified
-500 - failed
+错误:
+
+* 400 - no_external_username
+* 400 - no_provider
+* 400 - identity_does_not_exist
+* 400 - identity_is_being_verified
+* 429 - Too Many Requests (NOT Implemented)
+* 500 - failed
 
 
 ##解释Token
