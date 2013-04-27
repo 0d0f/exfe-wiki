@@ -24,3 +24,6 @@
   * Check `Start` Dialog, `Add Identity` Dialog
   * Check `printExtUserName` & `parseId` functions in `util` library
   * check add identity dialog
+
+## Design
+  * Design new provider icon
