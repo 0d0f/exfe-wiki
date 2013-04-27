@@ -7,23 +7,28 @@
 * method: post
 * args: provider, external_username
 * content type: application/x-www-form-urlencoded; charset=utf-8
-* returns:  
-有两种正确结果   
-    action:VERIFYING（已经发送验证邮件）    
+* returns:
+有两种正确结果
+    action:VERIFYING（已经发送验证邮件）
+    Identity:
+
+    action:REDIRECT（需要重定向到第三方验证）
+    url: 直接跳转到第三方登陆用的url
     Identity:
     
-    action:REDIRECT（需要重定向到第三方验证）  
-    url: 直接跳转到第三方登陆用的url   
-    Identity:    
-错误结果：    
-	400 "errorType": "identity_does_not_exist"    
-	400 "errorType": "no_need_to_verify"    
-	
+错误结果：
+
+* 400 - identity_does_not_exist
+* 400 - no_external_username
+* 400 - no_provider
+* 400 - no_need_to_verify
+* 500 - failed
+
 * 备注：请使用测试服务器测试本接口，生产服务器发邮件或者短信要钱的。
 
-第一种结果：    
+第一种结果：
 Request:
-    
+
     $ http -fv POST api.panda.0d0f.com/v2/users/verifyidentity provider='email' external_username=stonydemo@gmail.com
     POST /v2/users/VerifyIdentity HTTP/1.1
     Accept: */*
@@ -47,7 +52,7 @@ Response:
     Set-Cookie: PHPSESSID=cdi1fl23cc478cjsg5l4f3vo76; path=/; domain=.exfe.com
     Transfer-Encoding: chunked
     X-Powered-By: PHP/5.4.14-1~precise+1
-    
+
     {
         "meta": {
             "code": 200
@@ -72,9 +77,9 @@ Response:
             }
         }
     }
-   
-第二种结果：    
-Request: 
+
+第二种结果：
+Request:
 
     $ http -fv POST api.panda.0d0f.com/v2/users/verifyidentity provider='facebook' external_username=leaskh
     POST /v2/users/verifyidentity HTTP/1.1
@@ -103,25 +108,25 @@ Response:
     {
         "meta": {
             "code": 200
-        }, 
+        },
         "response": {
-            "action": "REDIRECT", 
+            "action": "REDIRECT",
             "identity": {
-                "avatar_filename": "https://graph.facebook.com/554148635/picture?type=large", 
-                "bio": "", 
-                "connected_user_id": -638, 
-                "created_at": "2013-04-02 14:17:52 +0000", 
-                "external_id": "554148635", 
-                "external_username": "leaskh", 
-                "id": 638, 
-                "name": "Leask Huang", 
-                "nickname": "", 
-                "order": 999, 
-                "provider": "facebook", 
-                "type": "identity", 
-                "unreachable": false, 
+                "avatar_filename": "https://graph.facebook.com/554148635/picture?type=large",
+                "bio": "",
+                "connected_user_id": -638,
+                "created_at": "2013-04-02 14:17:52 +0000",
+                "external_id": "554148635",
+                "external_username": "leaskh",
+                "id": 638,
+                "name": "Leask Huang",
+                "nickname": "",
+                "order": 999,
+                "provider": "facebook",
+                "type": "identity",
+                "unreachable": false,
                 "updated_at": "2013-04-02 14:17:52 +0000"
-            }, 
+            },
             "url": "https://graph.facebook.com/oauth/authorize?client_id=119145884898699&redirect_uri=http://panda.0d0f.com/OAuth/facebookCallBack&type=web_server&scope=user_photos,email,user_birthday,user_online_presence,status_update,photo_upload,video_upload,create_note,share_item,publish_stream"
         }
     }
@@ -144,9 +149,9 @@ http -f POST api.local.exfe.com/v2/users/VerifyUserIdentity?token=xxxxxxxxxx ide
 * 用户忘记密码，请求发送验证邮件重设密码
 * endpoint: ForgotPassword
 * method: post
-* args: provider, external_id
+* args: provider, external_username
 * returns: VERIFYING（已经发送重置密码邮件）
-    action:VERIFYING（已经发送验证邮件）    
+    action:VERIFYING（已经发送验证邮件）
         和Identity
 * 备注：请使用测试服务器测试本接口，生产服务器发邮件或者短信要钱的。
 
@@ -179,28 +184,36 @@ Response:
     {
         "meta": {
             "code": 200
-        }, 
+        },
         "response": {
-            "action": "VERIFYING", 
+            "action": "VERIFYING",
             "identity": {
-                "avatar_filename": "http://api.panda.0d0f.com/v2/avatar/default?name=Stony+Demo", 
-                "bio": "", 
-                "connected_user_id": -615, 
-                "created_at": "2013-03-25 22:22:02 +0000", 
-                "external_id": "stony.demo@gmail.com", 
-                "external_username": "stony.demo@gmail.com", 
-                "id": 615, 
-                "name": "Stony Demo", 
-                "nickname": "", 
-                "order": 999, 
-                "provider": "email", 
-                "type": "identity", 
-                "unreachable": false, 
+                "avatar_filename": "http://api.panda.0d0f.com/v2/avatar/default?name=Stony+Demo",
+                "bio": "",
+                "connected_user_id": -615,
+                "created_at": "2013-03-25 22:22:02 +0000",
+                "external_id": "stony.demo@gmail.com",
+                "external_username": "stony.demo@gmail.com",
+                "id": 615,
+                "name": "Stony Demo",
+                "nickname": "",
+                "order": 999,
+                "provider": "email",
+                "type": "identity",
+                "unreachable": false,
                 "updated_at": "2013-03-25 22:22:02 +0000"
             }
         }
     }
 
+错误:
+
+* 400 - no_external_username
+* 400 - no_provider
+* 400 - identity_does_not_exist
+* 400 - identity_is_being_verified
+* 429 - Too Many Requests (NOT Implemented)
+* 500 - failed
 
 
 ##解释Token
