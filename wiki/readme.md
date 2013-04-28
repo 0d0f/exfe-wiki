@@ -10,6 +10,7 @@ Readme
   - git@git.0d0f.com:exfeweb
   - git@git.0d0f.com:wiki
   - git@git.0d0f.com:gitolite-admin
+  - git@git.0d0f.com:devops
 
   - git@git.0d0f.com:0d0f2b
 
