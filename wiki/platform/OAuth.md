@@ -1,3 +1,39 @@
+# OAuth
+    author: Leask Huang
+    created date: 2013-02-26
+    updated date: 2013-05-05
+
+
+## ReverseAuth
+* endpoint: /oauth/reverseauth
+* POST args:
+    - provider: [string]
+    - oauth_token: [string]
+    - oauth_token_secret: [string] // twitter needed
+    - oauth_expires: [string] // facebook needed
+* returns:
+    - oauth_signin: {"user_id" : [int], "token" : [string]}
+    - identity: [object:identity]
+    - provider: [string]
+    - identity_status: [string:new/connected/revoked/verifying]
+    - twitter_following: [bol]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////// OLD /////////////////////////////////
+
+
 h1. Oauth signin
 
 <pre>
