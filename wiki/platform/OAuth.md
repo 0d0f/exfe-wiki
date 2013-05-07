@@ -12,12 +12,53 @@
     - oauth_token_secret: [string] // twitter needed
     - oauth_expires: [string] // facebook needed
 * returns:
-    - oauth_signin: {"user_id" : [int], "token" : [string]}
+    - oauth_signin:
+
+            #!javascript
+            {
+                "user_id" : [int],
+                "token" : [string],
+                "name" : [string],
+                "password" : [bol]
+            }
+
     - identity: [object:identity]
     - provider: [string]
     - identity_status: [string:new/connected/revoked/verifying]
-    - twitter_following: [bol]
+    - twitter_following: [bol] // twitter only
 
+* demo:
+
+        #!bash
+        http -f post http://panda.0d0f.com/oauth/ReverseAuth provider='facebook' oauth_token='BAAGK4vkbwaIBAP8zzYca1gqfhEvg1KtPtFuPayQb69UK8JZCHTMPHS6KCUdUDeS9JlSJzwWeSlkImNNGXidBt0TbCDZBx3E1O2fSUtroJpCmbNlw3ZAi9rKXiFzI0XnHIbXb6qZAeKSpBjsuTeF7BuQtPqvTjKN1bKGpkgQp3GGyQh9kl8HXYjWdtawz0kEjXHZCBEEGV8DlW0ZCkf3fO6' oauth_expires=1372061029
+        {
+            "data": {
+                "identity": {
+                    "avatar_filename": "https://graph.facebook.com/554148635/picture?type=large",
+                    "bio": "",
+                    "connected_user_id": 379,
+                    "created_at": "2013-04-02 14:17:52 +0000",
+                    "external_id": "554148635",
+                    "external_username": "leaskh",
+                    "id": 638,
+                    "name": "Leask Huang",
+                    "nickname": "",
+                    "order": 5,
+                    "provider": "facebook",
+                    "type": "identity",
+                    "unreachable": false,
+                    "updated_at": "2013-04-02 14:17:52 +0000"
+                },
+                "identity_status": "connected",
+                "oauth_signin": {
+                    "name": "Leask Huang",
+                    "password": true,
+                    "token": "83b51dc311b4bd3ff700fd69a4956afa301313b29f011a251f767fbdcaf60247",
+                    "user_id": 379
+                },
+                "provider": "facebook"
+            }
+        }
 
 
 
