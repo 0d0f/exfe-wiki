@@ -27,10 +27,46 @@
     - identity_status: [string:new/connected/revoked/verifying]
     - twitter_following: [bol] // twitter only
 
-* demo:
+* twitter demo:
+
+        #!bash
+        http -f post http://panda.0d0f.com/oauth/ReverseAuth provider='twitter' oauth_token='10065202-MPscyFW22D7v8ow68BsJPFzRJvbaU9aBENVhPWQSk' oauth_token_secret='aMcSO80OOKiSNlHibV4KhFMu4FF4bw3KW39ivTKt0'
+
+        {
+            "data": {
+                "identity": {
+                    "avatar_filename": "http://a0.twimg.com/profile_images/1417120703/leask_s_reasonably_small.png",
+                    "bio": "break the wall or bring the war",
+                    "connected_user_id": 379,
+                    "created_at": "2013-04-25 15:23:44 +0000",
+                    "external_id": "10065202",
+                    "external_username": "leaskh",
+                    "id": 668,
+                    "name": "Leask Huang",
+                    "nickname": "",
+                    "order": 4,
+                    "provider": "twitter",
+                    "type": "identity",
+                    "unreachable": false,
+                    "updated_at": "2013-04-25 15:23:44 +0000"
+                },
+                "identity_status": "connected",
+                "oauth_signin": {
+                    "name": "Leask Huang",
+                    "password": true,
+                    "token": "12fd2274d3213d0a0f386e3261b182db301313b29f011a251f767fbdcaf60247",
+                    "user_id": 379
+                },
+                "provider": "twitter",
+                "twitter_following": false
+            }
+        }
+
+* facebook demo:
 
         #!bash
         http -f post http://panda.0d0f.com/oauth/ReverseAuth provider='facebook' oauth_token='BAAGK4vkbwaIBAP8zzYca1gqfhEvg1KtPtFuPayQb69UK8JZCHTMPHS6KCUdUDeS9JlSJzwWeSlkImNNGXidBt0TbCDZBx3E1O2fSUtroJpCmbNlw3ZAi9rKXiFzI0XnHIbXb6qZAeKSpBjsuTeF7BuQtPqvTjKN1bKGpkgQp3GGyQh9kl8HXYjWdtawz0kEjXHZCBEEGV8DlW0ZCkf3fO6' oauth_expires=1372061029
+
         {
             "data": {
                 "identity": {
