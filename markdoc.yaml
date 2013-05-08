@@ -5,7 +5,7 @@ wiki-name: "0d0f Wiki"
 hide-prefix: "."
 wiki-dir: "wiki"
 static-dir: "static"
-html-dir: ".html"
+html-dir: ".tmp"
 
 # Rendering
 markdown:
