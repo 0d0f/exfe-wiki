@@ -8,7 +8,7 @@
 
 	http://127.0.0.1:23333/v3/splitter
 
-POST内容：
+内容：
 
 	{
         "recipients": [{...},{...}], // 多个recipient对象
@@ -24,7 +24,7 @@ POST内容：
 
  - 发送digest，其中包括identity id为789。
 
- 	curl "http://127.0.0.1:23333/v3/splitter" -d '{
+ 	curl "http://127.0.0.1:23333/v3/splitter" --data-binary '{
         "recipients": [{"identity_id": 789, ...},{...}],
         "merge_key": "cross123",
         "method": "POST",
@@ -35,4 +35,13 @@ POST内容：
             "cross_id": 123,
             "updated_at": "2013-04-24 00:00:00"
         }
+    }'
+
+ - 删除digest，其中包括identity id为789。
+
+    curl "http://127.0.0.1:23333/v3/splitter" -X DELETE --data-binary '{
+        "recipients": [{"identity_id": 789, ...},{...}],
+        "merge_key": "cross123",
+        "method": "POST",
+        "service": "127.0.0.1:23333/v3/notifier/cross/digest"
     }'
