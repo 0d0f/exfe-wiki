@@ -10,7 +10,7 @@
 
 参数method表示队列时间到达后，发送给service时的http动作。一般为POST。
 
-参数service是队列时间到达后，发送到的服务地址。此地址不包含schema部分。
+参数service是队列时间到达后，发送到的服务地址。地址需要先进行url escape
 
  - POST
 
@@ -36,27 +36,10 @@
 
         接收者identity id为789，cross id为123。在1366614150时发送。
 
-            curl "http://127.0.0.1:23334/v3/queue/cross123_789/POST/127.0.0.1:23333/v3/notifier/cross/digest?update=always&ontime=1366614150" -d '{
+            curl "http://127.0.0.1:23334/v3/queue/cross123_789/POST/http%3A%2F%2F127.0.0.1%3A23333%2Fv3%2Fnotifier%2Fcross%2Fdigest?update=always&ontime=1366614150" -d '{
                 "to": {"identity_id": 789, ...},
                 "cross_id": 123,
                 "updated_at": "2013-04-24 00:00:00"
-            }'
-
-     - 需要Splitter拆分发送给多个Recipient，之后下发摘要邮件：
-
-        立刻发送（ontime为0），拆分后的其中一个请求和上一个例子一样。具体参见splitter的文档。
-
-            curl "http://127.0.0.1:23334/v3/queue/-1366614139/POST/127.0.0.1:23333/v3/splitter?update=always&ontime=1366614139" -d '{
-                "recipients": [{"identity_id": 789, ...},{...}],
-                "merge_key": "cross123",
-                "method": "POST",
-                "service": "127.0.0.1:23333/v3/notifier/cross/digest",
-                "type": "always",
-                "ontime": 1366614150,
-                "data": {
-                    "cross_id": 123,
-                    "updated_at": "2013-04-24 00:00:00"
-                }
             }'
 
  - DELETE
@@ -69,4 +52,4 @@
 
         删除所有接收者identity id为789，cross id为123要发送的内容。
 
-            curl "http://127.0.0.1:23334/v3/queue/cross123_789/POST/127.0.0.1:23333/v3/notifier/cross/digest" -X DELETE
+            curl "http://127.0.0.1:23334/v3/queue/cross123_789/POST/http%3A%2F%2F127.0.0.1%3A23333%2Fv3%2Fnotifier%2Fcross%2Fdigest" -X DELETE
