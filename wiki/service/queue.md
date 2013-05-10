@@ -10,7 +10,7 @@
 
 参数method表示队列时间到达后，发送给service时的http动作。一般为POST。
 
-参数service是队列时间到达后，发送到的服务地址。地址需要先进行url escape
+参数service是队列时间到达后，发送到的服务地址。地址需要先进行url base64
 
  - POST
 
@@ -36,7 +36,7 @@
 
         接收者identity id为789，cross id为123。在1366614150时发送。
 
-            curl "http://127.0.0.1:23334/v3/queue/cross123_789/POST/http%3A%2F%2F127.0.0.1%3A23333%2Fv3%2Fnotifier%2Fcross%2Fdigest?update=always&ontime=1366614150" -d '{
+            curl "http://127.0.0.1:23334/v3/queue/cross123_789/POST/aHR0cDovLzEyNy4wLjAuMToyMzMzMy92My9ub3RpZmllci9jcm9zcy9kaWdlc3Q=?update=always&ontime=1366614150" -d '{
                 "to": {"identity_id": 789, ...},
                 "cross_id": 123,
                 "updated_at": "2013-04-24 00:00:00"
@@ -52,4 +52,4 @@
 
         删除所有接收者identity id为789，cross id为123要发送的内容。
 
-            curl "http://127.0.0.1:23334/v3/queue/cross123_789/POST/http%3A%2F%2F127.0.0.1%3A23333%2Fv3%2Fnotifier%2Fcross%2Fdigest" -X DELETE
+            curl "http://127.0.0.1:23334/v3/queue/cross123_789/POST/aHR0cDovLzEyNy4wLjAuMToyMzMzMy92My9ub3RpZmllci9jcm9zcy9kaWdlc3Q=" -X DELETE
