@@ -1,7 +1,7 @@
 # For Bus
     author: Leask Huang
     created date: 2013-02-26
-    updated date: 2013-05-05
+    updated date: 2013-05-10
 
 
 ## Response:
@@ -42,9 +42,8 @@
 
 
 ## Get Cross By Id
-* endpoint: /v2/Gobus/Crosses
+* endpoint: /v2/Gobus/Crosses/[int:cross_id]
 * GET args:
-    - id: [int]
     - user_id: [int]
     - updated_at: [str:time]
 * returns:
@@ -52,6 +51,16 @@
     - 304: '' // Not Modified
     - 403: '' // Forbidden
     - 404: '' // Not Found
+
+
+## Get Exfee By Id
+* endpoint: /v2/Gobus/Exfees/[int:exfee_id]
+* GET args:
+    - user_id: [int]
+* returns:
+    - 200: [json:exfee]
+    - 304: '' // Not Modified
+    - 403: '' // Forbidden
 
 
 ## Gather
