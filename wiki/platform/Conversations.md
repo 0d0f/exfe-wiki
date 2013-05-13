@@ -12,8 +12,8 @@
 * returns:
     - conversation: [json:conversations_array]
 * error:
-    401: invalid_auth
-    403: not_authorized
+    - 401: invalid_auth
+    - 403: not_authorized
 * demo:
 
         #!bash
