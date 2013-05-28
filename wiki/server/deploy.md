@@ -74,6 +74,7 @@
             "mod_fastcgi",
             "mod_setenv",
             "mod_rewrite",
+            "mod_accesslog",
             # }
         )
 
@@ -97,7 +98,7 @@
             ssl.use-sslv2 = "disable"
             setenv.add-environment = ( "HTTPS" => "on" )
 
-            $HTTP["host"] =~ "^exfe.com|api.exfe.com$" {
+            $HTTP["host"] =~ "^(exfe.com|api.exfe.com)$" {
                 server.document-root = "/exfe/exfeweb"
                 server.error-handler-404 = "index.php?_route=/error/404"
                 server.error-handler-500 = "views/error/500.html"
@@ -138,6 +139,7 @@
         upload_max_filesize = 15M
         zlib.output_compression = On
         session.cookie_domain = '.exfe.com'
+        error_reporting = E_ALL
         log_errors = On
         error_log = /var/log/php.log
 
