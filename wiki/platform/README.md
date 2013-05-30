@@ -24,22 +24,22 @@
             }
         }
 
-* demo: 206
+    * demo: 206
 
-        #!javascript
-        {
-            "data" : {
-                "cross_id" : 233
-            },
-            "warning" : {
-                "code" : -1,
-                "type" : "exfee_over_soft_quota",
-                "message" : {
-                    "exfee_soft_quota" : 12,
-                    "exfee_hard_quota" : 50
+            #!javascript
+            {
+                "data" : {
+                    "cross_id" : 233
+                },
+                "warning" : {
+                    "code" : -1,
+                    "type" : "exfee_over_soft_quota",
+                    "message" : {
+                        "exfee_soft_quota" : 12,
+                        "exfee_hard_quota" : 50
+                    }
                 }
             }
-        }
 
 - 3xx
 
