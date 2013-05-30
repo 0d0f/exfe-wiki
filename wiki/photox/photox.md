@@ -216,9 +216,13 @@
 
 ## Add photos (for Bus only)
 * description: GoBus 爬照片回调接口。
-* endpoint: /v2/gobus/AddPhotos/[str:photox_id]
+* endpoint: /v3/bus/addphotos/[str:photox_id]
 * POST args:
     - BODY: [json:photos_array]
 * return:
-    - 200: ''
-    - 500: error_input
+    - 200:
+        * data
+            * photox_id: [int:photox_id]
+    - 500: no_photox_id
+    - 500: no_input
+    - 500: internal_server_error
