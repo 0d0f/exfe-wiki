@@ -10,7 +10,7 @@
 * POST args:
     - external_username: [str:external_username]
     - provider: [str:provider]
-    - password: [str:password] // encode by utf8 && length >= 4
+    - password: [str:password] // encoded by utf8 && length >= 4
 * returns:
     - 200: {"user_id" : [int:user_id], "token" : [str:token]}
     - 400: no_external_username, external_username must be provided
