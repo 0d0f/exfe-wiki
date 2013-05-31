@@ -87,3 +87,9 @@
 * 2 = VERIFYING
 * 3 = CONNECTED
 * 4 = REVOKED
+
+
+## Registration Flag
+* VERIFY
+* AUTHENTICATE
+* SIGN_IN
