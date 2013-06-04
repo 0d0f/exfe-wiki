@@ -13,7 +13,7 @@
 ### user_id
 用来标示登陆的用户信息，必选。
 ### token
-授权的token
+授权的token，必选。
 ### identity_id (Optional)
 用来标示更改的身份信息，不是每个调用都有，一般用于Profile的更新或者添加Identity。
 
