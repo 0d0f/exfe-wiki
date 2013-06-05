@@ -12,7 +12,7 @@ Mobile
 
 ### SMS-Token
   1. 获取 head.meta 中的 sms token
-  2. 更具 token.action 走 `Set Password` or `Verify`
+  2. 根据 token.action 走 `Set Password` or `Verify` 流程
 
 ### Set Password
   0. 如果没有 SMS-Token, 请求 API `resolveToken`
