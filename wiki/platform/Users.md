@@ -26,23 +26,29 @@
 
 
 ## Add Identity
+
 * endpoint: users/addIdentity
+
 * QUERY args:
     - token: [str:user_token]
+
 * POST args OPTION A:
     - external_username: [string]
     - provider: [string]
     - device: [string]
     - device_callback: [str:url]
+
 * POST args OPTION B (reverse auth):
     - provider: [string]
     - oauth_token: [string]
     - oauth_token_secret: [string]
     - oauth_expires: [string]
+
 * return:
     - action: [string:VERIFYING]
     - identity: [object:identity]
     - url: [str:url]
+
 * example:
 
         #!bash
@@ -148,7 +154,7 @@
 
 * demo:
 
-        #!javascript
+        #!bash
         http -f post api.local.exfe.com/v2/users/208/mergeIdentities?token=764ca290b978ddc65e1364e50b36925787c831802f62b83e8aafcf9dcbb9aa06 browsing_identity_token='8ec8efd1910c08dac8cc9301a14a2008bf3e9e13b054df6f64b122d76ef5fa3b' identity_ids='[499,500]'
 
         {
