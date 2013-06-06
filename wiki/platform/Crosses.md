@@ -3,6 +3,7 @@
     created date: 2013-06-06
     updated date: 2013-06-06
 
+
 ## Check Invitation Token
 * endpoint: /v2/crosses/checkinvitationtoken
 * POST args:
