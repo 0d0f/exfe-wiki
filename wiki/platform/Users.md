@@ -6,14 +6,11 @@
 
 
 ## Signin / Signup
-
 * endpoint: /v2/users/signin
-
 * POST args:
     - external_username: [str:external_username]
     - provider: [str:provider]
     - password: [str:password] // encoded by utf8 && length >= 4
-
 * returns:
     - 200: {"user_id" : [int:user_id], "token" : [str:token]}
     - 400: no_external_username, external_username must be provided
@@ -26,29 +23,23 @@
 
 
 ## Add Identity
-
 * endpoint: users/addIdentity
-
 * QUERY args:
     - token: [str:user_token]
-
 * POST args OPTION A:
     - external_username: [string]
     - provider: [string]
     - device: [string]
     - device_callback: [str:url]
-
 * POST args OPTION B (reverse auth):
     - provider: [string]
     - oauth_token: [string]
     - oauth_token_secret: [string]
     - oauth_expires: [string]
-
 * return:
     - action: [string:VERIFYING]
     - identity: [object:identity]
     - url: [str:url]
-
 * example:
 
         #!bash
@@ -117,9 +108,7 @@
 
 
 ## Merge Identities
-
 * endpoint: /v2/users/mergeidentities
-
 * args OPTION A:
     * description: merge identities by two user tokens
     * QUERY:
@@ -127,20 +116,17 @@
     * POST:
         - browsing_identity_token: [str:user_token]
         - identity_ids: [json_array:identity_ids]
-
 * args OPTION B:
     * description: merge identities by merge / verification token
     * POST:
         - token: [str:merge / verification token]
         - identity_ids: [json_array:identity_ids]
-
 * args OPTION C:
     * description: merge identities by user token and invitation token
     * QUERY
         - token: [str:user_token]
     * POST:
         - invitation_token: [str:invitation_token]
-
 * returns:
     - 200: 成功 / 部分成功(部分成功将来在v3将返回206)
         * status: [array:identities] // 合并结果
@@ -151,8 +137,7 @@
     - 400: error_user_status
     - 401: no_signin
     - 500:server_error
-
-* demo:
+* example:
 
         #!bash
         http -f post api.local.exfe.com/v2/users/208/mergeIdentities?token=764ca290b978ddc65e1364e50b36925787c831802f62b83e8aafcf9dcbb9aa06 browsing_identity_token='8ec8efd1910c08dac8cc9301a14a2008bf3e9e13b054df6f64b122d76ef5fa3b' identity_ids='[499,500]'
@@ -238,4 +223,3 @@
                 }
             }
         }
-
