@@ -24,8 +24,9 @@
 
 ## Setup
 * endpoint: /v2/users/setup
+* QUERY args:
+    - token: [str:user_token]
 * POST args:
-    - token: [str:verification_token]
     - name: [str:user / identity name]
     - password: [str:password] // encoded by utf8 && length >= 4
     - identity_id: [int:identity_id]
