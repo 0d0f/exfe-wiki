@@ -22,6 +22,51 @@
     - 500: failed, failed while signing up new user
 
 
+## Setup
+* endpoint: /v2/users/setup
+* POST args:
+    - token: [str:verification_token]
+    - name: [str:user / identity name]
+    - password: [str:password] // encoded by utf8 && length >= 4
+    - identity_id: [int:identity_id]
+* returns:
+    - 200:
+
+            #!javascript
+            {
+                "authorization" : {
+                    "user_id" : [str:user_id],
+                    "token"   : [str:user_token]
+                }
+            }
+
+    - 400: no_password, password must be provided
+    - 400: weak_password, password must be longer than four
+    - 401: invalid_token, Invalid Token
+
+
+## Reset Password
+* endpoint: /v2/users/resetpassword
+* POST args:
+    - token: [str:verification_token]
+    - name: [str:user_name]
+    - password: [str:password] // encoded by utf8 && length >= 4
+* returns:
+    - 200:
+
+            #!javascript
+            {
+                "authorization" : {
+                    "user_id" : [str:user_id],
+                    "token"   : [str:user_token]
+                }
+            }
+
+    - 400: no_password, password must be provided
+    - 400: weak_password, password must be longer than four
+    - 401: invalid_token, Invalid Token
+
+
 ## Add Identity
 * endpoint: users/addIdentity
 * QUERY args:
