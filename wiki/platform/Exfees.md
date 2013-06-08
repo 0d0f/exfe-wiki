@@ -33,6 +33,8 @@
             "invitations" : [array:invitation_object],
             "total"       : [int],
             "accepted"    : [int],
+            "created_at"  : [str:time],
+            "updated_at"  : [str:time],
             "type"        : "exfee"
         }
 
