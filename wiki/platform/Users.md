@@ -174,9 +174,12 @@
     * POST:
         - invitation_token: [str:invitation_token]
 * returns:
-    - 200: 成功 / 部分成功(部分成功将来在v3将返回206)
+    - 200 case 1: 成功 / 部分成功(部分成功将来在v3将返回206)
         * status: [array:identities] // 合并结果
         * mergeable_user: [object:user] // 仍可继续合并的用户及其身份
+    - 200 case 2: 成功 / 部分成功(部分成功将来在v3将返回206)
+        * action: [str: VERIFYING / REDIRECT]
+        * url: [str:url] // only action === 'REDIRECT'
     - 400: error_browsing_identity_token
     - 400: error_invitation_token
     - 400: no_identity_ids
