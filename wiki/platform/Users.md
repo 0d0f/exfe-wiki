@@ -172,6 +172,7 @@
     * QUERY
         - token: [str:user_token]
     * POST:
+        - refere: [str:authenticate_callback_url]
         - invitation_token: [str:invitation_token]
 * returns:
     - 200 case 1: 成功 / 部分成功(部分成功将来在v3将返回206)
