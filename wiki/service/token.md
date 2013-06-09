@@ -29,7 +29,7 @@ scope代表了一个服务的操作权限。一个token具有这个scope，意�
 
 ## token manager
 
-manager会监听http请求。url query里必须含有token或者t字段，manager会将该字段的值取出，查到对应的token结构（如果不存在token，或者没有对应字段，返回403 Forbidden），将结构里的数据塞入http header，下发给下游服务。
+manager会监听http请求。如果url query里含有token或者t字段，manager会将该字段的值取出，查到对应的token结构，将结构里的数据塞入http header，下发给下游服务。如果没有相关字段，http请求不作处理直接转发。
 
 ## token内容与http header对应关系
 
@@ -40,3 +40,11 @@ manager会监听http请求。url query里必须含有token或者t字段，manage
  - expires_in: "2010-01-02 15:04:05" -> Exfe-Auth-Expires-In: Mon, 2 Jan 2010 15:04:05 GMT
  - touched_at: "2010-01-02 15:04:05" -> Exfe-Auth-Touched-At: Mon, 2 Jan 2010 15:04:05 GMT
  - data: "abcde" -> Exfe-Auth-Data: abcde
+
+额外字段：
+
+ - Exfe-Auth-Verified: true/false
+
+    如果http请求里的token请求有效，则为true，否则为false。
+
+ - Exfe-Auth-Version: 1
