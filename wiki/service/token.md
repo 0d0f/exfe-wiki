@@ -32,9 +32,9 @@ manager会监听http请求。url query里必须含有token或者t字段，manage
 
 ## token内容与http header对应关系
 
-scopes: ["exfe://user", "exfe://cross/ics"] -> Exfe-Auth-Scopes: exfe://user, exfe://cross/ics
-client: "client" -> Exfe-Auth-Client: client
-created_at: "2010-01-02 15:04:05" -> Exfe-Auth-Created-At: Mon, 2 Jan 2010 15:04:05 GMT
-expires_in: "2010-01-02 15:04:05" -> Exfe-Auth-Expires-In: Mon, 2 Jan 2010 15:04:05 GMT
-touched_at: "2010-01-02 15:04:05" -> Exfe-Auth-Touched-At: Mon, 2 Jan 2010 15:04:05 GMT
-data: "abcde" -> Exfe-Auth-Data: abcde
+ - scopes: ["exfe://user", "exfe://cross/ics"] -> Exfe-Auth-Scopes: exfe://user, exfe://cross/ics
+ - client: "client" -> Exfe-Auth-Client: client
+ - created_at: "2010-01-02 15:04:05" -> Exfe-Auth-Created-At: Mon, 2 Jan 2010 15:04:05 GMT
+ - expires_in: "2010-01-02 15:04:05" -> Exfe-Auth-Expires-In: Mon, 2 Jan 2010 15:04:05 GMT
+ - touched_at: "2010-01-02 15:04:05" -> Exfe-Auth-Touched-At: Mon, 2 Jan 2010 15:04:05 GMT
+ - data: "abcde" -> Exfe-Auth-Data: abcde
