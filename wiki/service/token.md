@@ -7,6 +7,7 @@
     {
         "token": "cccccc", // 根据类型不同，token长度不同
         "hash": "ccccc", // 根据resource字段做的md5
+        "id": "xxxx@provider", // token对应的所有者id
         "scopes": ["...", "..."], // token的权限
         "client": "cccc", // 申请token的客户端名字
         "created_at": "YYYY-MM-DD HH:MM:SS", // token创建时间
@@ -33,6 +34,7 @@ manager会监听http请求。url query里必须含有token或者t字段，manage
 ## token内容与http header对应关系
 
  - scopes: ["exfe://user", "exfe://cross/ics"] -> Exfe-Auth-Scopes: exfe://user, exfe://cross/ics
+ - id: "xxxx@provider" -> Exfe-Id: xxxx@provider
  - client: "client" -> Exfe-Auth-Client: client
  - created_at: "2010-01-02 15:04:05" -> Exfe-Auth-Created-At: Mon, 2 Jan 2010 15:04:05 GMT
  - expires_in: "2010-01-02 15:04:05" -> Exfe-Auth-Expires-In: Mon, 2 Jan 2010 15:04:05 GMT
