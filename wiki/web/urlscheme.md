@@ -1,4 +1,7 @@
-## Url规则:
+URL Scheme
+----------
+
+## Cross - X
 
   * X：http://exfe.com/#!1001234
 

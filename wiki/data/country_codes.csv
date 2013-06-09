@@ -25,7 +25,7 @@
 圣卢西亚,Saint Lucia,LC,+1758 ,NANP,11,1,358,3,,,,,,FALSE
 多米尼加,Dominica (Commonwealth of),DM,+1767 ,NANP,11,1,366,3,,,,,,FALSE
 圣文森特和格林纳丁斯,Saint Vincent and the Grenadines,VC,+1784 ,NANP,11,1,360,3,,,,,,FALSE
-波多黎各,Puerto Rico,PR,"+1787 
+波多黎各,Puerto Rico,PR,"+1787
 +1939",NANP,11,1,330,3,,,,,,FALSE
 多米尼加共和国,Dominican Republic,DO,"+1809
 +1829
@@ -66,7 +66,7 @@
 刚果民主共和国,Democratic Republic of the Congo,CD,+243,Open,0,0,630,,,,,,,FALSE
 安哥拉,Angola (Republic of),AO,+244,Open,0,0,631,,,,,,,FALSE
 几内亚比绍共和国,Guinea-Bissau (Republic of),GW,+245 ,Closed,0,N/A,632,,,,,,,FALSE
-,"Saint Helena, Ascension 
+,"Saint Helena, Ascension
 and Tristan da Cunha",,+247,Closed,0,N/A,,,,,,,,FALSE
 塞舌尔共和国,Seychelles (Republic of),SC,+248 ,Closed,0,N/A,633,,,,,,,FALSE
 苏丹,Sudan (Republic of the),SD,+249 ,Open,0,0,634,,,,,,,FALSE
@@ -81,8 +81,8 @@ and Tristan da Cunha",,+247,Closed,0,N/A,,,,,,,,FALSE
 莫桑比克,Mozambique (Republic of),MZ,+258 ,Closed,0,N/A,643,,,,,,,FALSE
 赞比亚,Zambia (Republic of),ZM,+260 ,Open,0,0,645,,,,,,,FALSE
 马达加斯加,Madagascar (Republic of),MG,+261 ,Closed ,0,N/A,646,,,,,,,FALSE
-,"French Departments and 
-Territories in the Indian 
+,"French Departments and
+Territories in the Indian
 Ocean",,+262,,0,N/A,,,,,,,,FALSE
 马约特岛,Mayotte,YT,+262 ,Closed,0,N/A,,,,,,,,FALSE
 津巴布韦共和国,Zimbabwe (Republic of),ZW,+263 ,Open,0,0,648,,,,,,,FALSE
@@ -93,7 +93,7 @@ Ocean",,+262,,0,N/A,,,,,,,,FALSE
 斯威士兰,Swaziland (Kingdom of),SZ,+268 ,Closed,0,N/A,653,,,,,,,FALSE
 科摩罗,Comoros (Union of the),KM,+269 ,Closed,0,N/A,654,,,,,,,FALSE
 南非共和国,South Africa (Republic of),ZA,+27 ,Closed with Trunk,0,0,655,,,,,,,FALSE
-,"Saint Helena, Ascension 
+,"Saint Helena, Ascension
 and Tristan da Cunha",,+290,Closed,0,N/A,,,,,,,,FALSE
 厄立特里亚,Eritrea,ER,+291 ,Closed with Trunk,0,0,657,,,,,,,FALSE
 阿鲁巴岛,Aruba,AW,+297,Closed,0,N/A,363,,http://en.wikipedia.org/wiki/Telephone_numbers_in_Aruba,,,,,FALSE
@@ -133,7 +133,7 @@ and Tristan da Cunha",,+290,Closed,0,N/A,,,,,,,,FALSE
 克罗地亚,Croatia (Republic of),HR,+385 ,Open,0,0,219,,,,,,,FALSE
 斯洛文尼亚,Slovenia (Republic of),SI,+386 ,Open,0,0,293,,,,,,,FALSE
 波斯尼亚和黑塞哥维那,Bosnia And Herzegovina,BA,+387,Open,0,0,218,,,,,,,FALSE
-,"Group of countries, shared 
+,"Group of countries, shared
 code",,+388,,,,,,,,,,,FALSE
 马其顿,The Former Yugoslav Republic of Macedonia,MK,+389,Open,0,0,294,,,,,,,FALSE
 梵蒂冈,Vatican City,VA,+39,Closed,0,N/A,225,,,,,,,FALSE
@@ -145,7 +145,7 @@ code",,+388,,,,,,,,,,,FALSE
 列支敦士登,Liechtenstein (Principality of),LI,+423 ,Closed,0,N/A,295,,,,,,,FALSE
 奥地利,Austria,AT,+43,Open,0,0,232,,,,,,,FALSE
 马恩岛,Isle Of Man,IM,+44 ,,,,,,,,,,,FALSE
-大不列颠及北爱尔兰联合王国,United Kingdom of Great Britain and Northern Ireland,GB,+44 ,Open,0,0,"234
+大不列颠及北爱尔兰联合王国,United Kingdom UK of Great Britain and Northern Ireland,GB,+44 ,Open,0,0,"234
 235",,,,,,,FALSE
 丹麦,Denmark,DK,+45 ,Closed,0,N/A,238,,,,,,,TRUE
 瑞典,Sweden,SE,+46 ,Open,0,0,240,,,,,,,FALSE
@@ -188,7 +188,7 @@ code",,+388,,,,,,,,,,,FALSE
 ,Martinique,,+596,Closed,0,N/A,,,,,,,,FALSE
 苏里南,Suriname (Republic of),SR,+597 ,Open,0,0,746,,,,,,,FALSE
 乌拉圭,Uruguay (Eastern Republic of),UY,+598 ,Closed with Trunk,0,0,748,,,,,,,FALSE
-,"Bonaire, Sint Eustatius and 
+,"Bonaire, Sint Eustatius and
 Saba",,+599,,0,0,,,,,,,,FALSE
 库拉索,Curaçao,CW,+599,,0,0,,,"http://en.wikipedia.org/wiki/Telephone_numbers_in_Cura%C3%A7ao,_Sint_Maarten_and_the_Caribbean_Netherlands",,,,,FALSE
 安的列斯岛,Netherlands Antilles,AN,+599,,0,0,362,,2010年分裂  http://en.wikipedia.org/wiki/Netherlands_Antilles,,,,,FALSE
@@ -208,7 +208,7 @@ Saba",,+599,,0,0,,,,,,,,FALSE
 ,Timor-Leste,,+670,Closed,0,N/A,,,,,,,,FALSE
 帝汶岛,East Timor,TL,+670 ,Closed,0,N/A,514,,,,,,,FALSE
 南极洲,Antarctica,AQ,+672,,,,,3,,,,,,FALSE
-,"Australian External 
+,"Australian External
 Territorie",,+672,,0,0,,,,,,,,FALSE
 诺福克岛,Norfolk Island,NF,+672 ,Closed with Trunk,0,0,,,,,,,,FALSE
 文莱达鲁萨兰国,Brunei Darussalam,BN,+673,Closed,0,N/A,528,,,,,,,FALSE
@@ -232,9 +232,9 @@ Territorie",,+672,,0,0,,,,,,,,FALSE
 马绍尔群岛,Marshall Islands (Republic of the),MH,+692 ,Closed with trunk,11,1,551,,,,,,,FALSE
 俄罗斯联邦,Russian Federation,RU,+7,Open,810,8,250,,,,,,,TRUE
 哈萨克斯坦,Kazakhstan (Republic of),KZ,+7 ,Open,810,8,401,,,,,,,TRUE
-,"International Freephone 
+,"International Freephone
 Service",,+800,,,,,,,,,,,FALSE
-,"International Premium Rate 
+,"International Premium Rate
 Service (IPRS)",,+808,,,,,,,,,,,FALSE
 日本,Japan,JP,+81 ,Open,10,0,"440
 441",,,,,,,FALSE
@@ -252,15 +252,15 @@ Service (IPRS)",,+808,,,,,,,,,,,FALSE
 老挝人民民主共和国,Lao People's Democratic Republic,LA,+856,Open,0,0,457,,,,,,,FALSE
 中国,China (People's Republic of),CN,+86 ,Open,0,0,"460
 461",,,89 86 XX,,,,TRUE
-,"Universal Personal 
+,"Universal Personal
 Telecommunication (UPT",,+878,,,,,,,,,,,FALSE
 孟加拉共和国,Bangladesh (People's Republic of),BD,+880,Open,0,0,470,,,,,,,FALSE
-,"Global Mobile Satellite 
-System (GMSS), shared 
+,"Global Mobile Satellite
+System (GMSS), shared
 code",,+881,,,,,,,,,,,FALSE
-,"International Networks, 
+,"International Networks,
 shared code",,+882,,,,,,,,,,,FALSE
-,"International Networks, 
+,"International Networks,
 shared code",,+883,,,,,,,,,,,FALSE
 台湾（中国）,"Taiwan, China",TW,+886,Open,"002
 005
@@ -268,7 +268,7 @@ shared code",,+883,,,,,,,,,,,FALSE
 007
 009
 019",0,466,,http://en.wikipedia.org/wiki/Telephone_numbers_in_Taiwan,,,,,TRUE
-,"Telecommunications for 
+,"Telecommunications for
 Disaster Relief (TDR",,+888,,,,,,,,,,,FALSE
 土耳其,Turkey,TR,+90 ,Open,0,0,286,,,,,,,FALSE
 印度,India (Republic of),IN,+91 ,Open,0,0,"404
@@ -302,11 +302,11 @@ Disaster Relief (TDR",,+888,,,,,,,,,,,FALSE
 不丹,Bhutan (Kingdom of),BT,+975,Closed,0,N/A,402,,http://www.bicma.gov.bt/paper/NUMPLAN.pdf,,,,,FALSE
 蒙古,Mongolia,MN,+976 ,Open,1,0,428,,,,,,,FALSE
 尼泊尔,Nepal (Federal Democratic Republic of),NP,+977 ,Open,0,0,429,,http://www.nta.gov.np/en/content/index.php?task=articles&option=view&id=54,,,,,FALSE
-,"International Premium Rate 
+,"International Premium Rate
 Service (IPRS)",,+979,,,,,,,,,,,FALSE
 伊朗伊斯兰共和国,Iran (Islamic Republic of),IR,+98,Open,0,0,432,,,,,,,FALSE
-,"Trial of a proposed new 
-international service, shared 
+,"Trial of a proposed new
+international service, shared
 code",,+991,,,,,,,,,,,FALSE
 塔吉克斯坦,Tajikistan (Republic of),TJ,+992 ,Open,810,8,436,,,,,,,FALSE
 土库曼斯坦,Turkmenistan,TM,+993 ,Open,810,8,438,,,,,,,FALSE

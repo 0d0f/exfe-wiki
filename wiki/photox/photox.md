@@ -82,7 +82,7 @@
 ## Get PhotoX
 * description: 获取一个 PhotoX 下的所有照片。
 * endpoint: /v2/photox/[str:photox_id]
-* GET args:
+* QUERY args:
     - token: [str:user_token]
     - sort: [str:[imported_time_desc|...]] OPTION
     - limit: [int] OPTION
@@ -96,7 +96,7 @@
 ## Browse Source
 * description: 获取某个第三方身份的所有可添加进 PhotoX 的相册。
 * endpoint: /v2/photox/browseSource
-* GET args:
+* QUERY args:
     - token: [str:user_token]
     - identity_id: [int/Optional]
     - album_id: [str/Optional]
@@ -118,7 +118,7 @@
 ## Get Source Photo
 * description: 获取源照片。
 * endpoint: /v2/photox/GetSourcePhotos
-* GET args:
+* QUERY args:
     - token: [str:user_token]
 * POST args:
     - external_ids: [json:external_id_array]
@@ -135,7 +135,7 @@
 ## Get Photo
 * description: 获取某一张照片的全尺寸版本。
 * endpoint: /v2/photox/GetPhoto
-* GET args:
+* QUERY args:
     - token: [str:user_token]
     - photo_id: [int:photo_id]
 * returns:
@@ -149,7 +149,7 @@
 ## Add
 * description: 添加照片到 PhotoX。
 * endpoint: /v2/photox/[str:photox_id]/Add
-* GET args:
+* QUERY args:
     - token: [str:user_token]
 * POST args OPTION A / 用于从有相册功能的身份中添加照片
   (eg: Facebook, Flickr, Dropbox):
@@ -172,7 +172,7 @@
 ## Del
 * description: 从 PhotoX 中删除照片。
 * endpoint: /v2/photox/[str:photox_id]/Delete
-* GET args:
+* QUERY args:
     - token: [str:user_token]
 * POST args OPTION A:
     - provider: [str]
@@ -189,7 +189,7 @@
 ## Get likes
 * description: 获取照片的 like 状态。
 * endpoint: /v2/photox/[str:photox_id]/GetLikes
-* GET args:
+* QUERY args:
     - token: [str:user_token]
 * return:
     - 200: {"likes" : [array:response_object]}
@@ -201,7 +201,7 @@
 ## Like
 * description: Like 一张照片。
 * endpoint: /v2/photox/Like
-* GET args:
+* QUERY args:
     - token: [str:user_token]
 * POST args：
     - id: [int:photo_id]
@@ -216,9 +216,13 @@
 
 ## Add photos (for Bus only)
 * description: GoBus 爬照片回调接口。
-* endpoint: /v2/gobus/AddPhotos/[str:photox_id]
+* endpoint: /v3/bus/addphotos/[str:photox_id]
 * POST args:
     - BODY: [json:photos_array]
 * return:
-    - 200: ''
-    - 500: error_input
+    - 200:
+        * data
+            * photox_id: [int:photox_id]
+    - 500: no_photox_id
+    - 500: no_input
+    - 500: internal_server_error
