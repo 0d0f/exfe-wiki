@@ -21,7 +21,7 @@ code
              -- 
           -- Snapshots
              -- 
-          -- images         ＃1
+          -- images
        -- Cookies
           -- ...
        -- FlurryFiles
