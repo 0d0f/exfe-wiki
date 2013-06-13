@@ -35,9 +35,9 @@ code
 Library/Caches/images/
 
 应用数据    
-Library/Preferences/<BundleIdentifier>.plist    
-Library/Application Support/<BundleIdentifier>/    
-Library/Application Support/<BundleIdentifier>/exfe.sqlite 
+Library/Preferences/\<BundleIdentifier>.plist    
+Library/Application Support/\<BundleIdentifier>/    
+Library/Application Support/\<BundleIdentifier>/exfe.sqlite 
 应用数据包含用户未登录的时候需要的配置数据、有效时间长于用户登陆登出的数据。
 比如push token、曾经的登陆过的帐号等。    
 
