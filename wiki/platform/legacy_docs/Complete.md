@@ -1,25 +1,26 @@
 ## Complete
 
-<pre>
-endpoint: identities/complete
-method: get
-args: token, key
+        #!text
 
-example:
-leask@Flora:~/Documents/Working/exfe/exfeweb/exfeweb> http get api.local.exfe.com/v2/identities/complete?token=sadfsadfsdafsdf\&key=a
-HTTP/1.1 200 OK
-X-Powered-By: PHP/5.4.3
-Set-Cookie: PHPSESSID=2i4m5q97s0csv5g67f6p4lvc72; path=/; domain=.exfe.com
-Expires: Thu, 19 Nov 1981 08:52:00 GMT
-Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
-Pragma: no-cache
-Content-Type: application/json; charset=UTF-8
-Transfer-Encoding: chunked
-Date: Fri, 22 Jun 2012 04:23:16 GMT
-Server: lighttpd/1.4.30
-</pre>
+        endpoint: identities/complete
+        method: get
+        args: token, key
+
+        example:
+        leask@Flora:~/Documents/Working/exfe/exfeweb/exfeweb> http get api.local.exfe.com/v2/identities/complete?token=sadfsadfsdafsdf\&key=a
+        HTTP/1.1 200 OK
+        X-Powered-By: PHP/5.4.3
+        Set-Cookie: PHPSESSID=2i4m5q97s0csv5g67f6p4lvc72; path=/; domain=.exfe.com
+        Expires: Thu, 19 Nov 1981 08:52:00 GMT
+        Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+        Pragma: no-cache
+        Content-Type: application/json; charset=UTF-8
+        Transfer-Encoding: chunked
+        Date: Fri, 22 Jun 2012 04:23:16 GMT
+        Server: lighttpd/1.4.30
 
         #!javascript
+
         {
             "meta": {
                 "code": 200
