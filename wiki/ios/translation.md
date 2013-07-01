@@ -4,15 +4,15 @@
 Code
     
     #!bash
-    find . -name "*.m" -print0 | xargs -0 genstrings -o en.lproj
+    $find . -name \*.m -print0 | xargs -0 genstrings -o en.lproj
     
 ##Find most of NSString
-Code
+RegEx
 
-    Regex: \@"\w+ \w+
+    \@"\w+ \w+
     
 ##Replace with
-Code
+Content:
 
     before: NSLocalizedString(
     content: @"Strings to be localized"
@@ -23,8 +23,9 @@ Code
 http://www.ibabbleon.com/iphone_app_localization.html
 http://pbi18n.com/2010/08/pseudo-localization/
 
-Code
+Bash
 
+    #!bash
     $ prop2po Localizable.strings en.po
     $ podebug --rewrite=unicode en.po en_rewritten.po
     $ po2prop en_rewritten.po rewritten.strings -t Localizable.strings
@@ -36,6 +37,8 @@ WelcomeView.m
 EFHeadView.m 
 EXRSVPMenuView.m
 
+Landing xib
+
 ## Language filer
 en
 zh-Hans
@@ -44,3 +47,9 @@ https://developer.apple.com/library/mac/#documentation/MacOSX/Conceptual/BPInter
 
 ## Reference
 https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/LoadingResources/Strings/Strings.html#//apple_ref/doc/uid/10000051i-CH6
+
+http://stackoverflow.com/questions/9895621/best-practice-using-nslocalizedstring
+
+## Problem
+"Accepted" = "Ȧƈƈḗƥŧḗḓ"; => "Accepted" = "Ȧccepŧḗḓ";    
+"Pending" = "Ƥḗƞḓīƞɠ"; => "Pending" = "Pḗƞḓīƞɠ";
