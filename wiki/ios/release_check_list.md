@@ -5,6 +5,7 @@
 
 shell
 
+    #!bash
     ./unused.js > unused.list
 
 * 去掉依赖项目的图片
@@ -15,16 +16,21 @@ shell
 
 shell 
 
+    #!bash
     xargs -a unused.list -d'\n' git rm
  
 * 将更改和工程文件一起准备提交
 
-shell
+git cmd
 
+    #!bash
     git add EXFE.xcodeproj/project.pbxproj
     git commit -m "clean unused images"
 
-##2 检查并更新版本号   
+##2 检查翻译文档
+* 去掉伪翻译
+
+##3 检查并更新版本号   
 
 * 检查Bundle Identifier    
   测试版本 com.0d0f.exfe    
@@ -33,16 +39,17 @@ shell
 * 确定发布平台Deployment Target是否需要更新    
 * 以上若有修改则需要提交
 
-shell
+git cmd
 
+    #!bash
     git commit -m "update build and etc."
 
-##3 选择对应的证书    
+##4 选择对应的证书    
 
 * 测试版本 iPhone Distribution: eDoctor Healthcare Communications Co., Ltd.
 * 正式版本 暂时没有搞定
 
-##4 编译项目    
+##5 编译项目    
 
 确认以下内容    
 
@@ -50,24 +57,26 @@ shell
 * 服务器连的是生产服务器exfe.com    
 * 项目和依赖项目的log输出关闭，或者设置在高于等于warning级别    
 
-##5 准备发布资料
+##6 准备发布资料
 截图、文字更新，设置app为待上传状态
 
-##6 导出并发布版本    
+##7 导出并发布版本    
 
 测试版本 导出后用脚本（publish.sh）发布到0d0f.com上。    
 正式版本 导出后用xcode工具上传，确认push能够工作。
 
-##7 提交当前修改并打上版本tag    
+##8 提交当前修改并打上版本tag    
 
-cmd
+git cmd
 
+    #!bash
     git push
     git tag
     
-##8 附件    
+##9 附件    
 file: usused.sh
 
+    #!bash
     #!/bin/sh
     for i in `find . -name "*.png" -o -name "*.jpg"`; do
         file=`basename -s .jpg "$i" | xargs basename -s .png | xargs basename -s @2x`
@@ -79,6 +88,7 @@ file: usused.sh
 
 file: publish.sh
 
+    #!bash
     #!/bin/sh
     project="EXFE"
     server="0d0f.com"

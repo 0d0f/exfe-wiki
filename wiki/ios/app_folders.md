@@ -6,30 +6,38 @@ code
     -- <AppName>.app
     -- Documents
        -- Inbox
-          -- 
+          -- ...
+       -- ...
     -- Library
        -- Application Support
           -- FlurryFiles
-             -- 
-          -- user_233.exfe
-             -- exfeInfo.plist
-             -- user.sqlite
+             -- ...
+          -- users
+             -- default.exfe
+                -- user.sqlite
+             -- user_233.exfe
+                -- exfeInfo.plist
+                -- user.sqlite
+                -- ...
        -- Caches
           -- <BundleIdentifier>
              -- exfe.sqlite
           -- DataDiskCache
-             -- 
+             -- ...
           -- Snapshots
-             -- 
+             -- ...
           -- images
+             -- ...
        -- Cookies
           -- ...
        -- FlurryFiles
-          -- 
+          -- ...
        -- Preferences
           -- <BundleIdentifier>.plist 
           -- com.apple.PeoplePicker.plist
+          -- ...
     -- tmp
+       -- ...
 
 图片缓存    
 Library/Caches/images/
@@ -48,4 +56,4 @@ Library/Application Support/users/user\_\<ID>.exfe/user.sqlite
 
 作废用户数据：    
 * 删除exfeInfo.plist    
-* 下次启动的时候删除不包含“exfeInfo.plist”的Library/Application Support/users/user\_\<ID>.exfe文件夹    
+* 下次启动的时候删除不包含“exfeInfo.plist”的Library/Application Support/users/*.exfe 所有文件夹    
