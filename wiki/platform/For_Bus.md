@@ -132,8 +132,7 @@
     - BODY: [json:cross]
 * returns:
     - 200:
-        * data
-            * cross_id: [int:cross_id]
+        * data: [object:cross]
     - 206:
         * data
             * cross_id: [int:cross_id]
