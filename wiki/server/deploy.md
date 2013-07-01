@@ -1,7 +1,7 @@
 # Deploy
     author: Leask Huang
     created date: 2013-05-15
-    updated date: 2013-05-15
+    updated date: 2013-07-01
 
 
 ## Config UTC timezone
@@ -97,7 +97,7 @@
             ssl.pemfile   = "/exfe/certs/server.pem"
             ssl.use-sslv2 = "disable"
             setenv.add-environment = ( "HTTPS" => "on" )
-
+            server.reject-expect-100-with-417 = "disable"
             $HTTP["host"] =~ "^(exfe.com|api.exfe.com)$" {
                 server.document-root = "/exfe/exfeweb"
                 server.error-handler-404 = "index.php?_route=/error/404"
