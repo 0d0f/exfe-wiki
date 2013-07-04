@@ -27,8 +27,8 @@
         Response: 
         
             {
-                "uin@wechat": [<location object>, ...],
-                "uin@wechat": [<location object>, ...],
+                "id@provider": [<location object>, ...],
+                "id@provider": [<location object>, ...],
                 ...
             }
 
@@ -59,7 +59,7 @@
         {
             "name": "/cross/nnnn/location",
             "data": {
-                "uin@wechat": [<location object>, ...]
+                "id@provider": [<location object>, ...]
             }
         }
         {
