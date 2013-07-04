@@ -16,12 +16,9 @@
      
         POST http://domain/v3/routex/cross/nnnn/location?token=xxxxxx
 
-        Data: 
+        Post Data: 
 
-            {
-                "id": "uin@wechat",
-                "location": <location object>
-            }
+            <location object>
 
      - 获得某个 cross 所有用户的 location 信息
 
@@ -60,7 +57,7 @@
     Response:
 
         {
-            "name": "/cross/nnnn/geo",
+            "name": "/cross/nnnn/location",
             "data": {
                 "uin@wechat": [<location object>, ...]
             }
