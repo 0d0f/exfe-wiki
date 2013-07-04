@@ -2,70 +2,70 @@
 
 ## 接口规划
 
- - Geo信息更新
+ - Location 信息更新
 
-    此接口用于更新某个用户的地理信息。用户地理信息geo object如下：
+    此接口用于更新某个用户的地理信息。用户地理信息 location object 如下：
 
         {
-            "id": "uin@wechat",
-            "geos": [
-                {
-                    "timestamp": nnnnn,
-                    "data": [geojson point object]
-                },
-                ...
-            ]
+            "timestamp": nnnnn,
+            "lng": "xxxxxx",
+            "lat": "yyyyyy"
         }
 
-     - 用户更新geo
+     - 用户更新 location
      
-        POST http://domain/v3/route_x/cross/nnnn/geo?token=xxxxxx
+        POST http://domain/v3/routex/cross/nnnn/location?token=xxxxxx
 
-        Data: geo object
+        Data: 
 
-     - 获得某个cross所有用户的geo信息
+            {
+                "id": "uin@wechat",
+                "location": [location object]
+            }
 
-        GET http://domain/v3/route_x/cross/nnnn/geo?token=xxxxxx
+     - 获得某个 cross 所有用户的 location 信息
+
+        GET http://domain/v3/routex/cross/nnnn/location?token=xxxxxx
 
         Response: 
         
             {
-                "uin@wechat": [geo object],
-                "uin@wechat": [geo object],
+                "uin@wechat": [[location object], ...],
+                "uin@wechat": [[location object], ...],
                 ...
             }
 
- - Path更新
+ - Route 更新
 
-    此接口用于传输app用户画的路径图信息。
+    此接口用于传输 app 用户画的路径图信息。
 
-     - 更新Path
+     - 更新 Route
     
-        POST http://domain/v3/route_x/cross/nnnn/path?token=xxxxxxxx
+        POST http://domain/v3/routex/cross/nnnn/route?token=xxxxxxxx
 
-        Post Data: [[geojson path object], ...]
+        Post Data: .....
 
-     - 获取Path
+     - 获取 Route
 
-        GET http://domain/v3/route_x/cross/nnnn/path?token=xxxxxxxxx
+        GET http://domain/v3/routex/cross/nnnn/route?token=xxxxxxxxx
 
-        Response: [[geojson path object], ...]
+        Response: .....
 
  - Streaming
  
-    获得关于某个cross的route_x更新的所有通知
+    获得关于某个 cross 的 route_x 更新的所有通知
 
-    POST http://domain/v3/route\_x/cross/nnnn?\_method=WATCH&token=xxxxxx
+    POST http://domain/v3/routex/cross/nnnn?\_method=WATCH&token=xxxxxx
 
     Response:
 
         {
             "name": "/cross/nnnn/geo",
-            "data": [geo object]
+            "data": {
+                "uin@wechat": [[geo object], ...]
+            }
         }
         {
-            "name": "/cross/nnnn/path",
-            "data": [[geojson path object], ...]
+            "name": "/cross/nnnn/route",
+            "data": "....." 
         }
-
-
