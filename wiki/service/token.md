@@ -5,14 +5,14 @@
 存储上的形式如下：
 
     {
-        "token": "cccccc", // 根据类型不同，token长度不同
+        "key": "cccccc", // 根据类型不同，key长度不同
         "hash": "ccccc", // 根据resource字段做的md5
-        "id": "xxxx@provider", // token对应的所有者id
+        "user_id": "xxxx@provider", // token对应的所有者的user id
         "scopes": ["...", "..."], // token的权限
         "client": "cccc", // 申请token的客户端名字
-        "created_at": "YYYY-MM-DD HH:MM:SS", // token创建时间
-        "expires_in": "YYYY-MM-DD HH:MM:SS", // token的过期时间
-        "touched_at": "YYYY-MM-DD HH:MM:SS", // token最近一次被访问的时间
+        "created_at": "nnnn", // token创建时间
+        "expires_at": "nnnn", // token的过期时间
+        "touched_at": "nnnn", // token最近一次被访问的时间
         "data": "....", // token附加数据，不参与索引
     }
 
@@ -34,11 +34,10 @@ manager会监听http请求。如果url query里含有token或者t字段，manage
 ## token内容与http header对应关系
 
  - scopes: ["exfe://user", "exfe://cross/ics"] -> Exfe-Auth-Scopes: exfe://user, exfe://cross/ics
- - id: "xxxx@provider" -> Exfe-Id: xxxx@provider
+ - user_id: "xxxx@provider" -> Exfe-Auth-User-Id: xxxx@provider
  - client: "client" -> Exfe-Auth-Client: client
- - created_at: "2010-01-02 15:04:05" -> Exfe-Auth-Created-At: Mon, 2 Jan 2010 15:04:05 GMT
- - expires_in: "2010-01-02 15:04:05" -> Exfe-Auth-Expires-In: Mon, 2 Jan 2010 15:04:05 GMT
- - touched_at: "2010-01-02 15:04:05" -> Exfe-Auth-Touched-At: Mon, 2 Jan 2010 15:04:05 GMT
+ - expires_at: "1371630909" -> Exfe-Auth-Expires-At: 1371630909
+ - touched_at: "1371630909" -> Exfe-Auth-Touched-At: 1371630909
  - data: "abcde" -> Exfe-Auth-Data: abcde
 
 额外字段：
