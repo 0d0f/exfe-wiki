@@ -20,7 +20,7 @@
 
             {
                 "id": "uin@wechat",
-                "location": [location object]
+                "location": <location object>
             }
 
      - 获得某个 cross 所有用户的 location 信息
@@ -30,8 +30,8 @@
         Response: 
         
             {
-                "uin@wechat": [[location object], ...],
-                "uin@wechat": [[location object], ...],
+                "uin@wechat": [<location object>, ...],
+                "uin@wechat": [<location object>, ...],
                 ...
             }
 
@@ -62,7 +62,7 @@
         {
             "name": "/cross/nnnn/geo",
             "data": {
-                "uin@wechat": [[geo object], ...]
+                "uin@wechat": [<location object>, ...]
             }
         }
         {
