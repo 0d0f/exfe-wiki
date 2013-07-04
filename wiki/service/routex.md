@@ -39,22 +39,17 @@
 
     此接口用于传输app用户画的路径图信息。
 
-        {
-            "cross_id": nnnnn,
-            "data": 
-        }
-
      - 更新Path
     
         POST http://domain/v3/route_x/cross/nnnn/path?token=xxxxxxxx
 
-        Post Data: path file
+        Post Data: [[geojson path object], ...]
 
      - 获取Path
 
         GET http://domain/v3/route_x/cross/nnnn/path?token=xxxxxxxxx
 
-        Response: path file
+        Response: [[geojson path object], ...]
 
  - Streaming
  
@@ -70,7 +65,7 @@
         }
         {
             "name": "/cross/nnnn/path",
-            "data": "<xml>...</xml>"
+            "data": [[geojson path object], ...]
         }
 
 
