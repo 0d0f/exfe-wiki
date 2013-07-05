@@ -76,9 +76,19 @@
             "mod_rewrite",
             "mod_accesslog",
             # }
+            # Changed by @lzh {
+            "mod_mysql_obj",
+            # }
         )
 
 ### /exfe/exfe_lighttpd.conf
+
+        mysql_obj.host = "127.0.0.1"
+        mysql_obj.port = 3306
+        mysql_obj.user = "root"
+        mysql_obj.pass = ""
+        mysql_obj.sock = ""
+        mysql_obj.db = "exfe_services"
 
         fastcgi.server = (
             ".php" => (
@@ -92,6 +102,30 @@
         )
 
         $SERVER["socket"] == "96.126.122.51:443" {
+            mysql_obj.insert = (
+                "query" => ( "token", "t" ),
+                "table" => "tokens",
+                "key"   => "key",
+                "map"   => (
+                    "scopes"     => "Exfe-Auth-Scopes",
+                    "user_id"    => "Exfe-Auth-User-Id",
+                    "client"     => "Exfe-Auth-Client",
+                    "expires_at" => "Exfe-Auth-Expires-At",
+                    "touched_at" => "Exfe-Auth-Touched-At",
+                    "data"       => "Exfe-Auth-Data",
+                ),
+                "extra" => (
+                    "Exfe-Auth-Version" => "1",
+                )
+            )
+
+            proxy.server  = (
+                "/v3/routex" =>((
+                    "host"  =>"127.0.0.1",
+                    "port"  =>"23333"
+                ))
+            )
+
             ssl.engine    = "enable"
             ssl.ca-file   = "/exfe/certs/ca-certs.crt"
             ssl.pemfile   = "/exfe/certs/server.pem"
@@ -107,6 +141,7 @@
                     "^/eimgs/(.*)$" => "/eimgs/$1",
                     "^/404$" => "index.php?_route=/error/404",
                     "^/500$" => "views/error/500.html",
+                    "^/v3/routex(.*)$" => "/v3/routex$1",
                     "^.*(\?.*)$" => "index.php$1",
                     "^.*$" => "index.php",
                 )
