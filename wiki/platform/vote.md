@@ -10,8 +10,8 @@
         {
             "id"          : [int],
             "status"      : [str:DRAFT | OPENING | PAUSED | CLOSED | DELETED],
-            "title"       : [str:length <= 233],
-            "description" : [str:length <= 64k],
+            "title"       : [str:length],
+            "description" : [str:length],
             "created_by"  : [object:identity],
             "updated_by:  : [object:identity],
             "created_at"  : [str:time],
