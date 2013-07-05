@@ -12,13 +12,13 @@
             "status"      : [str:DRAFT | OPENING | PAUSED | CLOSED | DELETED],
             "title"       : [str:length <= 233],
             "description" : [str:length <= 64k],
-            "created_by"  : [object:Identity],
-            "updated_by:  : [object:Identity],
+            "created_by"  : [object:identity],
+            "updated_by:  : [object:identity],
             "created_at"  : [str:time],
             "updated_at"  : [str:time],
             "options"     : [array:option],
             "type"        : "vote",
-            "responses"   : [array:response_object],
+            "responses"   : [array:response_object]
         }
 
 
@@ -29,8 +29,8 @@
             "id"          : [int],
             "title"       : [str:length <= 233],
             "data"        : [object],
-            "created_by"  : [object:Identity],
-            "updated_by:  : [object:Identity],
+            "created_by"  : [object:identity],
+            "updated_by:  : [object:identity],
             "created_at"  : [str:time],
             "updated_at"  : [str:time],
             "type"        : "option"
@@ -45,7 +45,7 @@
             "object_type" : [str:object_type],
             "object_id"   : [int:object_id],
             "response"    : [str:length < 233],
-            "by_identity" : [object:Identity],
+            "by_identity" : [object:identity],
             "created_at"  : [str:time],
             "updated_at"  : [str:time],
             "type"        : "response"
