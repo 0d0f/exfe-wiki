@@ -9,7 +9,7 @@
         #!javascript
         {
             "id"          : [int],
-            "status"      : [str:DRAFT | OPENING | PAUSED | CLOSED | 'DELETED'],
+            "status"      : [str:DRAFT | OPENING | PAUSED | CLOSED | DELETED],
             "title"       : [str:length <= 233],
             "description" : [str:length <= 64k],
             "created_by"  : [object:Identity],
@@ -72,7 +72,7 @@
 * QUERY args:
     - token: [str:user_token | cross_identity_token]
 * returns
-    - 200: [array: widget_object] // vote as widget
+    - 200: [array:widget_object] // vote as widget
     - 400: param_error
     - 401: invalid_auth
     - 403: not_authorized
@@ -82,11 +82,11 @@
 * endpoint: /v2/votes/create
 * QUERY args:
     - token: [str:user_token | cross_identity_token]
-    - cross_id: [int: cross_id]
+    - cross_id: [int:cross_id]
 * POST args:
-    - BODY: [object: vote]
+    - BODY: [object:vote]
 * returns:
-    - 200: [object: vote]
+    - 200: [object:vote]
     - 400: error_vote
     - 401: invalid_auth
     - 403: not_authorized
@@ -97,7 +97,7 @@
 * QUERY args:
     - token: [str:user_token | cross_identity_token]
 * returns:
-    - 200: [object: vote]
+    - 200: [object:vote]
     - 401: invalid_auth
     - 403: not_authorized
     - 404: not_found
@@ -108,9 +108,9 @@
 * QUERY args:
     - token: [str:user_token | cross_identity_token]
 * POST args:
-    - BODY: [object: vote]
+    - BODY: [object:vote]
 * returns:
-    - 200: [object: vote]
+    - 200: [object:vote]
     - 400: error_vote
     - 401: invalid_auth
     - 403: not_authorized
@@ -132,7 +132,7 @@
 * QUERY args:
     - token: [str:user_token | cross_identity_token]
 * returns:
-    - 200: [int: vote_id]
+    - 200: [int:vote_id]
     - 400: error_vote
     - 401: invalid_auth
     - 403: not_authorized
@@ -145,7 +145,7 @@
 * POST args:
     - BODY: [array: option_object]
 * returns:
-    - 200: [object: vote]
+    - 200: [object:vote]
     - 400: error_option
     - 401: invalid_auth
     - 403: not_authorized
@@ -171,7 +171,7 @@
 * QUERY args:
     - token: [str:user_token | cross_identity_token]
 * returns:
-    - 200: [object: vote]
+    - 200: [object:vote]
     - 400: error_option
     - 401: invalid_auth
     - 403: not_authorized
@@ -183,7 +183,7 @@
 * QUERY args:
     - token: [str:user_token | cross_identity_token]
 * returns:
-    - 200: [object: vote]
+    - 200: [object:vote]
     - 400: error_option
     - 401: invalid_auth
     - 403: not_authorized
