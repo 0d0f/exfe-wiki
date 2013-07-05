@@ -10,10 +10,10 @@
         {
             "id"          : [int],
             "status"      : [str:DRAFT | OPENING | PAUSED | CLOSED | DELETED],
-            "title"       : [str:length],
-            "description" : [str:length],
+            "title"       : [str:length <= 233],
+            "description" : [str:length <= 64k],
             "created_by"  : [object:identity],
-            "updated_by:  : [object:identity],
+            "updated_by"  : [object:identity],
             "created_at"  : [str:time],
             "updated_at"  : [str:time],
             "options"     : [array:option],
@@ -30,7 +30,7 @@
             "title"       : [str:length <= 233],
             "data"        : [object],
             "created_by"  : [object:identity],
-            "updated_by:  : [object:identity],
+            "updated_by"  : [object:identity],
             "created_at"  : [str:time],
             "updated_at"  : [str:time],
             "type"        : "option"
