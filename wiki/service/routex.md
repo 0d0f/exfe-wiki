@@ -7,7 +7,7 @@
     此接口用于更新某个用户的地理信息。用户地理信息 location object 如下：
 
         {
-            "timestamp": nnnnn,
+            "timestamp": yyyy,
             "lng": "xxxxxx",
             "lat": "yyyyyy"
         }
@@ -40,13 +40,77 @@
     
         POST http://domain/v3/routex/cross/nnnn/route?token=xxxxxxxx
 
-        Post Data: .....
+        Post Data: 
+
+            [
+                {
+                    "id": "nnnn",
+                    "type": "location",
+                    "timestamp": yyyy,
+                    "title": "xxx",
+                    "description": "xxx",
+                    "lng": "123.321",
+                    "lat": "23.432"
+                },
+                {
+                    "id": "nnnn",
+                    "type": "location",
+                    "timestamp": yyyy,
+                    "title": "xxx",
+                    "description": "xxx",
+                    "lng": "123.321",
+                    "lat": "23.432"
+                },
+                { 
+                    "id": "nnnn",
+                    "type": "route",
+                    ...
+                    "locations": [
+                        {"lng": "123.321", "lat": "23.432"},
+                        {"lng": "123.321", "lat": "23.432"},
+                        {"lng": "123.321", "lat": "23.432", "timestamp": nnnnn},
+                        {"lng": "123.321", "lat": "23.432"},
+                    ]
+                }
+            ]
 
      - 获取 Route
 
         GET http://domain/v3/routex/cross/nnnn/route?token=xxxxxxxxx
 
-        Response: .....
+        Response:
+
+            [
+                {
+                    "id": "nnnn",
+                    "type": "location",
+                    "timestamp": yyyy,
+                    "title": "xxx",
+                    "description": "xxx",
+                    "lng": "123.321",
+                    "lat": "23.432"
+                },
+                {
+                    "id": "nnnn",
+                    "type": "location",
+                    "timestamp": yyyy,
+                    "title": "xxx",
+                    "description": "xxx",
+                    "lng": "123.321",
+                    "lat": "23.432"
+                },
+                { 
+                    "id": "nnnn",
+                    "type": "route",
+                    ...
+                    "locations": [
+                        {"lng": "123.321", "lat": "23.432"},
+                        {"lng": "123.321", "lat": "23.432"},
+                        {"lng": "123.321", "lat": "23.432", "timestamp": nnnnn},
+                        {"lng": "123.321", "lat": "23.432"},
+                    ]
+                }
+            ]
 
  - Streaming
  
@@ -57,12 +121,44 @@
     Response:
 
         {
-            "name": "/cross/nnnn/location",
+            "name": "/v3/routex/cross/nnnn/location",
             "data": {
                 "id@provider": [<location object>, ...]
             }
         }
         {
-            "name": "/cross/nnnn/route",
-            "data": "....." 
+            "name": "/v3/routex/cross/nnnn/route",
+            "data": [
+                {
+                    "id": "nnnn",
+                    "type": "location",
+                    "timestamp": yyyy,
+                    "title": "xxx",
+                    "description": "xxx",
+                    "lng": "123.321",
+                    "lat": "23.432"
+                },
+                {
+                    "id": "nnnn",
+                    "type": "location",
+                    "timestamp": yyyy,
+                    "title": "xxx",
+                    "description": "xxx",
+                    "lng": "123.321",
+                    "lat": "23.432"
+                },
+                { 
+                    "id": "nnnn",
+                    "type": "route",
+                    "timestamp": yyyy,
+                    "title": "xxx",
+                    "description": "xxx",
+                    "locations": [
+                        {"lng": "123.321", "lat": "23.432"},
+                        {"lng": "123.321", "lat": "23.432"},
+                        {"lng": "123.321", "lat": "23.432", "timestamp": nnnnn},
+                        {"lng": "123.321", "lat": "23.432"},
+                    ]
+                }
+            ]
         }
