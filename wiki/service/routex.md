@@ -8,8 +8,8 @@
 
         {
             "timestamp": yyyy,
-            "lng": "xxxxxx",
-            "lat": "yyyyyy"
+            "longitude": "xxxxxx",
+            "latitude": "yyyyyy"
         }
 
      - 用户更新 location
@@ -44,32 +44,33 @@
 
             [
                 {
-                    "id": "nnnn",
+                    "id": "id",
                     "type": "location",
-                    "timestamp": yyyy,
-                    "title": "xxx",
-                    "description": "xxx",
-                    "lng": "123.321",
-                    "lat": "23.432"
+                    "created_at": 0,
+                    "created_by": "uid",
+                    "updated_at": 0,
+                    "updated_by": "uid",
+                    "tag": ["place", "park"],
+                    "icon": "http://...",
+                    "title": "Title",
+                    "description": "Description",
+                    "longitude": "x.xxx",
+                    "latitude": "y.yyy",
+                    //"altitude": "z.zzz"
                 },
                 {
-                    "id": "nnnn",
-                    "type": "location",
-                    "timestamp": yyyy,
-                    "title": "xxx",
-                    "description": "xxx",
-                    "lng": "123.321",
-                    "lat": "23.432"
-                },
-                { 
-                    "id": "nnnn",
+                    "id": "id",
                     "type": "route",
-                    ...
-                    "locations": [
-                        {"lng": "123.321", "lat": "23.432"},
-                        {"lng": "123.321", "lat": "23.432"},
-                        {"lng": "123.321", "lat": "23.432", "timestamp": nnnnn},
-                        {"lng": "123.321", "lat": "23.432"},
+                    "created_at": 0,
+                    "created_by": "id@provider",
+                    "updated_at": 0,
+                    "updated_by": "id@provider",
+                    "title": "Title",
+                    "description": "Description",
+                    "positions": [
+                        {"timestamp": 9, "longitude": "x.xxx", "latitude": "y.yyy"},
+                        ...
+                        {"timestamp": 1, "longitude": "x.xxx", "latitude": "y.yyy"}
                     ]
                 }
             ]
@@ -82,32 +83,33 @@
 
             [
                 {
-                    "id": "nnnn",
+                    "id": "id",
                     "type": "location",
-                    "timestamp": yyyy,
-                    "title": "xxx",
-                    "description": "xxx",
-                    "lng": "123.321",
-                    "lat": "23.432"
+                    "created_at": 0,
+                    "created_by": "uid",
+                    "updated_at": 0,
+                    "updated_by": "uid",
+                    "tag": ["place", "park"],
+                    "icon": "http://...",
+                    "title": "Title",
+                    "description": "Description",
+                    "longitude": "x.xxx",
+                    "latitude": "y.yyy",
+                    //"altitude": "z.zzz"
                 },
                 {
-                    "id": "nnnn",
-                    "type": "location",
-                    "timestamp": yyyy,
-                    "title": "xxx",
-                    "description": "xxx",
-                    "lng": "123.321",
-                    "lat": "23.432"
-                },
-                { 
-                    "id": "nnnn",
+                    "id": "id",
                     "type": "route",
-                    ...
-                    "locations": [
-                        {"lng": "123.321", "lat": "23.432"},
-                        {"lng": "123.321", "lat": "23.432"},
-                        {"lng": "123.321", "lat": "23.432", "timestamp": nnnnn},
-                        {"lng": "123.321", "lat": "23.432"},
+                    "created_at": 0,
+                    "created_by": "id@provider",
+                    "updated_at": 0,
+                    "updated_by": "id@provider",
+                    "title": "Title",
+                    "description": "Description",
+                    "positions": [
+                        {"timestamp": 9, "longitude": "x.xxx", "latitude": "y.yyy"},
+                        ...
+                        {"timestamp": 1, "longitude": "x.xxx", "latitude": "y.yyy"}
                     ]
                 }
             ]
@@ -130,34 +132,33 @@
             "name": "/v3/routex/cross/nnnn/route",
             "data": [
                 {
-                    "id": "nnnn",
+                    "id": "id",
                     "type": "location",
-                    "timestamp": yyyy,
-                    "title": "xxx",
-                    "description": "xxx",
-                    "lng": "123.321",
-                    "lat": "23.432"
+                    "created_at": 0,
+                    "created_by": "uid",
+                    "updated_at": 0,
+                    "updated_by": "uid",
+                    "tag": ["place", "park"],
+                    "icon": "http://...",
+                    "title": "Title",
+                    "description": "Description",
+                    "longitude": "x.xxx",
+                    "latitude": "y.yyy",
+                    //"altitude": "z.zzz"
                 },
                 {
-                    "id": "nnnn",
-                    "type": "location",
-                    "timestamp": yyyy,
-                    "title": "xxx",
-                    "description": "xxx",
-                    "lng": "123.321",
-                    "lat": "23.432"
-                },
-                { 
-                    "id": "nnnn",
+                    "id": "id",
                     "type": "route",
-                    "timestamp": yyyy,
-                    "title": "xxx",
-                    "description": "xxx",
-                    "locations": [
-                        {"lng": "123.321", "lat": "23.432"},
-                        {"lng": "123.321", "lat": "23.432"},
-                        {"lng": "123.321", "lat": "23.432", "timestamp": nnnnn},
-                        {"lng": "123.321", "lat": "23.432"},
+                    "created_at": 0,
+                    "created_by": "id@provider",
+                    "updated_at": 0,
+                    "updated_by": "id@provider",
+                    "title": "Title",
+                    "description": "Description",
+                    "positions": [
+                        {"timestamp": 9, "longitude": "x.xxx", "latitude": "y.yyy"},
+                        ...
+                        {"timestamp": 1, "longitude": "x.xxx", "latitude": "y.yyy"}
                     ]
                 }
             ]
