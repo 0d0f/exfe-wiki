@@ -73,7 +73,6 @@
 * * QUERY args:
     - token: [str:user_token]
 * POST args:
-    - name: [str:user_name]
     - current_password: [str:password]
     - new_password: [str:password] // encoded by utf8 && length >= 4
 * returns:
