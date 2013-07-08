@@ -14,10 +14,10 @@
         }
 
      - 用户更新 location
-     
+
         POST http://domain/v3/routex/cross/nnnn/location?token=xxxxxx
 
-        Post Data: 
+        Post Data:
 
             <location object>
 
@@ -25,8 +25,8 @@
 
         GET http://domain/v3/routex/cross/nnnn/location?token=xxxxxx
 
-        Response: 
-        
+        Response:
+
             {
                 "id@provider": [<location object>, ...],
                 "id@provider": [<location object>, ...],
@@ -38,10 +38,10 @@
     此接口用于传输 app 用户画的路径图信息。
 
      - 更新 Route
-    
+
         POST http://domain/v3/routex/cross/nnnn/route?token=xxxxxxxx
 
-        Post Data: 
+        Post Data:
 
             [
                 {
@@ -116,7 +116,7 @@
             ]
 
  - Streaming
- 
+
     获得关于某个 cross 的 route_x 更新的所有通知
 
     POST http://domain/v3/routex/cross/nnnn?\_method=WATCH&token=xxxxxx

@@ -68,6 +68,30 @@
     - 401: invalid_token, Invalid Token
 
 
+## Set Password
+* endpoint: /v2/users/setpassword
+* * QUERY args:
+    - token: [str:user_token]
+* POST args:
+    - name: [str:user_name]
+    - current_password: [str:password]
+    - new_password: [str:password] // encoded by utf8 && length >= 4
+* returns:
+    - 200:
+
+            #!javascript
+            {
+                "user_id" : [str:user_id],
+                "token"   : [str:user_token]
+            }
+
+    - 400: no_new_password
+    - 400: weak_password
+    - 401: no_signin
+    - 401: authenticate_timeout
+    - 500: failed
+
+
 ## Add Identity
 * endpoint: users/addIdentity
 * QUERY args:
