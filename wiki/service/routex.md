@@ -68,6 +68,7 @@
                     "updated_by": "id@provider",
                     "title": "Title",
                     "description": "Description",
+                    "color": "rrggbbaa",
                     "positions": [
                         {"timestamp": 9, "longitude": "x.xxx", "latitude": "y.yyy"},
                         ...
@@ -107,6 +108,7 @@
                     "updated_by": "id@provider",
                     "title": "Title",
                     "description": "Description",
+                    "color": "rrggbbaa",
                     "positions": [
                         {"timestamp": 9, "longitude": "x.xxx", "latitude": "y.yyy"},
                         ...
@@ -117,7 +119,7 @@
 
  - Streaming
  
-    获得关于某个 cross 的 route_x 更新的所有通知
+    获得关于某个 cross 的 route_x 更新的所有通知。第一次连接后，会下发cross对应的当前所有location和route的信息。
 
     POST http://domain/v3/routex/cross/nnnn?\_method=WATCH&token=xxxxxx
 
@@ -156,6 +158,7 @@
                     "updated_by": "id@provider",
                     "title": "Title",
                     "description": "Description",
+                    "color": "rrggbbaa",
                     "positions": [
                         {"timestamp": 9, "longitude": "x.xxx", "latitude": "y.yyy"},
                         ...
