@@ -8,6 +8,7 @@
 
         {
             "timestamp": yyyy,
+            "accuracy": "nnn",
             "longitude": "xxxxxx",
             "latitude": "yyyyyy"
         }
