@@ -126,13 +126,15 @@
     Response:
 
         {
-            "name": "/v3/cross/nnnn/routex/location",
+            "path": "/v3/cross/nnnn/routex/location",
+            "room": "location",
             "data": {
                 "id@provider": [<location object>, ...]
             }
         }
         {
-            "name": "/v3/cross/nnnn/routex/route",
+            "path": "/v3/cross/nnnn/routex/route",
+            "room": "route",
             "data": [
                 {
                     "id": "id",
