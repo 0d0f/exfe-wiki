@@ -15,7 +15,7 @@
 
      - 用户更新 location
 
-        POST http://domain/v3/crosses/nnnn/routex/location?token=xxxxxx
+        POST http://domain/v3/crosses/:cross\_id/routex/breadcrums?token=xxxxxx
 
         Post Data:
 
@@ -23,7 +23,7 @@
 
      - 获得某个 cross 所有用户的 location 信息
 
-        GET http://domain/v3/crosses/nnnn/routex/location?token=xxxxxx
+        GET http://domain/v3/crosses/:cross\_id/routex/breadcrums?token=xxxxxx
 
         Response:
 
@@ -39,7 +39,7 @@
 
      - 更新 Route
 
-        POST http://domain/v3/crosses/nnnn/routex/route?token=xxxxxxxx
+        POST http://domain/v3/crosses/:cross\_id/routex/geomarks?token=xxxxxxxx
 
         Post Data:
 
@@ -79,7 +79,7 @@
 
      - 获取 Route
 
-        GET http://domain/v3/crosses/nnnn/routex/route?token=xxxxxxxxx
+        GET http://domain/v3/crosses/:cross\_id/routex/collection?token=xxxxxxxxx
 
         Response:
 
@@ -121,7 +121,7 @@
 
     给用户发送push，通知用户登录routex。
 
-    POST http://domain/v3/crosses/nnnn/routex/notice?token=xxxxxx
+    POST http://domain/v3/crosses/:cross\_id/routex/notice?token=xxxxxx
 
     Post Data:
 
@@ -131,20 +131,19 @@
  
     获得关于某个 cross 的 route_x 更新的所有通知。第一次连接后，会下发cross对应的当前所有location和route的信息。
 
-    POST http://domain/v3/crosses/nnnn/routex?\_method=WATCH&token=xxxxxx
+    POST http://domain/v3/crosses/:cross\_id/routex?\_method=WATCH&token=xxxxxx
 
     Response:
 
         {
-            "path": "/v3/crosses/nnnn/routex/location",
-            "room": "location",
+            "type": "routex/breadcrums",
             "data": {
                 "id@provider": [<location object>, ...]
             }
         }
         {
-            "path": "/v3/crosses/nnnn/routex/route",
-            "room": "route",
+            "path": "/v3/crosses/:cross_id/routex/geomarks",
+            "type": "routex/geomarks",
             "data": [
                 {
                     "id": "id",
@@ -153,7 +152,7 @@
                     "created_by": "uid",
                     "updated_at": 0,
                     "updated_by": "uid",
-                    "tags": ["place", "park"],
+                    "tags": ["destination", "park"],
                     "icon": "http://...",
                     "title": "Title",
                     "description": "Description",
