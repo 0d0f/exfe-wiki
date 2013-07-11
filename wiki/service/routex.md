@@ -15,7 +15,7 @@
 
      - 用户更新 location
 
-        POST http://domain/v3/crosses/:cross\_id/routex/breadcrums?token=xxxxxx
+        POST http://domain/v3/crosses/:cross\_id/routex/breadcrumbs?token=xxxxxx
 
         Post Data:
 
@@ -23,7 +23,7 @@
 
      - 获得某个 cross 所有用户的 location 信息
 
-        GET http://domain/v3/crosses/:cross\_id/routex/breadcrums?token=xxxxxx
+        GET http://domain/v3/crosses/:cross\_id/routex/breadcrumbs?token=xxxxxx
 
         Response:
 
@@ -79,7 +79,7 @@
 
      - 获取 Route
 
-        GET http://domain/v3/crosses/:cross\_id/routex/collection?token=xxxxxxxxx
+        GET http://domain/v3/crosses/:cross\_id/routex/geomarks?token=xxxxxxxxx
 
         Response:
 
@@ -136,13 +136,13 @@
     Response:
 
         {
-            "type": "routex/breadcrums",
+            "type": "/crosses/routex/breadcrumbs",
             "data": {
                 "id@provider": [<location object>, ...]
             }
         }
         {
-            "path": "/v3/crosses/:cross_id/routex/geomarks",
+            "type": "/crosses/routex/geomarks",
             "type": "routex/geomarks",
             "data": [
                 {
