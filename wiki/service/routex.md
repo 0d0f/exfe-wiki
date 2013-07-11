@@ -117,6 +117,16 @@
                 }
             ]
 
+ - Notice
+
+    给用户发送push，通知用户登录routex。
+
+    POST http://domain/v3/crosses/nnnn/routex/notice?token=xxxxxx
+
+    Post Data:
+
+        "id@provider"
+
  - Streaming
  
     获得关于某个 cross 的 route_x 更新的所有通知。第一次连接后，会下发cross对应的当前所有location和route的信息。
