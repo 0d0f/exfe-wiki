@@ -72,6 +72,6 @@
             "name"              : [str],
             "os_name"           : [str],
             "os_version"        : [str],
-            "status"            : "CONNECTED",
+            "status"            : [str: CONNECTED | DISCONNECTED],
             "type"              : "device"
         }
