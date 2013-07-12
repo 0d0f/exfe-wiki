@@ -136,14 +136,13 @@
     Response:
 
         {
-            "type": "/crosses/routex/breadcrumbs",
+            "type": "/v3/crosses/routex/breadcrumbs",
             "data": {
                 "id@provider": [<location object>, ...]
             }
         }
         {
-            "type": "/crosses/routex/geomarks",
-            "type": "routex/geomarks",
+            "type": "/v3/crosses/routex/geomarks",
             "data": [
                 {
                     "id": "id",
