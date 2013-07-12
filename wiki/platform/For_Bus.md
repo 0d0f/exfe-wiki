@@ -228,3 +228,64 @@
     - 500: user_error
     - 500: cross_error
     - 500: internal_server_error
+
+
+## Get all recipients by identity_id
+* endpoint: /v3/bus/recipients
+* QUERY args:
+    - identity_id: [str:identity_id]
+* returns:
+    - 200:
+        * data: [array:recipient_object]
+    - 400: error_identity_id
+    - 404: recipient_not_found
+* example:
+
+        #!bash
+        http api.panda.0d0f.com/v3/bus/recipients?identity_id=i@leaskh.com@email
+        {
+            "data": [
+                {
+                    "auth_data": "",
+                    "external_id": "i@leaskh.com",
+                    "external_username": "i@leaskh.com",
+                    "id": 0,
+                    "identity_id": 569,
+                    "language": "en_us",
+                    "name": "Leask Huang",
+                    "provider": "email",
+                    "timezone": "+08:00",
+                    "token": "",
+                    "type": "Recipient",
+                    "user_id": 587
+                },
+                {
+                    "auth_data": "",
+                    "external_id": "xxx@leaskh.com",
+                    "external_username": "xxx@leaskh.com",
+                    "id": 0,
+                    "identity_id": 828,
+                    "language": "en_us",
+                    "name": "xxx",
+                    "provider": "email",
+                    "timezone": "+08:00",
+                    "token": "",
+                    "type": "Recipient",
+                    "user_id": 587
+                },
+                {
+                    "auth_data": "",
+                    "external_id": "988b537e3dce8e4d2d1471ca9931cc742f92ce1a54c9891a361cb4019101971a",
+                    "external_username": "988b537e3dce8e4d2d1471ca9931cc742f92ce1a54c9891a361cb4019101971a",
+                    "id": 0,
+                    "identity_id": -130,
+                    "language": "en_us",
+                    "name": "Leask Huang",
+                    "provider": "iOS",
+                    "timezone": "+08:00",
+                    "token": "",
+                    "type": "Recipient",
+                    "user_id": 587
+                }
+            ]
+        }
