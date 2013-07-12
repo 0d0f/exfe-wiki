@@ -15,7 +15,7 @@
 
      - 用户更新 location
 
-        POST http://domain/v3/routex/cross/nnnn/location?token=xxxxxx
+        POST http://domain/v3/crosses/:cross\_id/routex/breadcrumbs?token=xxxxxx
 
         Post Data:
 
@@ -23,7 +23,7 @@
 
      - 获得某个 cross 所有用户的 location 信息
 
-        GET http://domain/v3/routex/cross/nnnn/location?token=xxxxxx
+        GET http://domain/v3/crosses/:cross\_id/routex/breadcrumbs?token=xxxxxx
 
         Response:
 
@@ -39,7 +39,7 @@
 
      - 更新 Route
 
-        POST http://domain/v3/routex/cross/nnnn/route?token=xxxxxxxx
+        POST http://domain/v3/crosses/:cross\_id/routex/geomarks?token=xxxxxxxx
 
         Post Data:
 
@@ -68,6 +68,7 @@
                     "updated_by": "id@provider",
                     "title": "Title",
                     "description": "Description",
+                    "color": "rrggbbaa",
                     "positions": [
                         {"timestamp": 9, "longitude": "x.xxx", "latitude": "y.yyy"},
                         ...
@@ -78,7 +79,7 @@
 
      - 获取 Route
 
-        GET http://domain/v3/routex/cross/nnnn/route?token=xxxxxxxxx
+        GET http://domain/v3/crosses/:cross\_id/routex/geomarks?token=xxxxxxxxx
 
         Response:
 
@@ -107,6 +108,7 @@
                     "updated_by": "id@provider",
                     "title": "Title",
                     "description": "Description",
+                    "color": "rrggbbaa",
                     "positions": [
                         {"timestamp": 9, "longitude": "x.xxx", "latitude": "y.yyy"},
                         ...
@@ -115,22 +117,32 @@
                 }
             ]
 
+ - Notice
+
+    给用户发送push，通知用户登录routex。
+
+    POST http://domain/v3/crosses/:cross\_id/routex/notice?token=xxxxxx
+
+    Post Data:
+
+        "id@provider"
+
  - Streaming
+ 
+    获得关于某个 cross 的 route_x 更新的所有通知。第一次连接后，会下发cross对应的当前所有location和route的信息。
 
-    获得关于某个 cross 的 route_x 更新的所有通知
-
-    POST http://domain/v3/routex/cross/nnnn?\_method=WATCH&token=xxxxxx
+    POST http://domain/v3/crosses/:cross\_id/routex?\_method=WATCH&token=xxxxxx
 
     Response:
 
         {
-            "name": "/v3/routex/cross/nnnn/location",
+            "type": "/v3/crosses/routex/breadcrumbs",
             "data": {
                 "id@provider": [<location object>, ...]
             }
         }
         {
-            "name": "/v3/routex/cross/nnnn/route",
+            "type": "/v3/crosses/routex/geomarks",
             "data": [
                 {
                     "id": "id",
@@ -139,7 +151,7 @@
                     "created_by": "uid",
                     "updated_at": 0,
                     "updated_by": "uid",
-                    "tags": ["place", "park"],
+                    "tags": ["destination", "park"],
                     "icon": "http://...",
                     "title": "Title",
                     "description": "Description",
@@ -156,6 +168,7 @@
                     "updated_by": "id@provider",
                     "title": "Title",
                     "description": "Description",
+                    "color": "rrggbbaa",
                     "positions": [
                         {"timestamp": 9, "longitude": "x.xxx", "latitude": "y.yyy"},
                         ...
