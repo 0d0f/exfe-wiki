@@ -87,7 +87,7 @@
     - 400: no_new_password
     - 400: weak_password
     - 401: no_signin
-    - 401: authenticate_timeout
+    - 401: token_staled
     - 500: failed
 
 
