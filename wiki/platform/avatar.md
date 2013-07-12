@@ -25,9 +25,9 @@
 * POST args:
     - identity_id: [int:identity_id] // Optional
 * POST files:
-    - origin : [bin: png | gif | bmp | jpg(jpeg)]
-    - 320_320: [bin: png | gif | bmp | jpg(jpeg)] // Optional
-    - 80_80  : [bin: png | gif | bmp | jpg(jpeg)] // Optional
+    - original: [bin: png | gif | bmp | jpg(jpeg)]
+    - 320_320 : [bin: png | gif | bmp | jpg(jpeg)] // Optional
+    - 80_80   : [bin: png | gif | bmp | jpg(jpeg)] // Optional
 * returns:
     - 200:
         * avatar : [array: avatar_url]
