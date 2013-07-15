@@ -15,12 +15,12 @@
     - 404
 * example:
 
-    #!bash
-    $ http 'http://api.panda.0d0f.com/v3/icons/mapmark'
-    / - \
-    | P |
-     \ /
-    $ http 'http://api.panda.0d0f.com/v3/icons/mapmark?content=喵&color=red'
-    / - \
-    | 喵|
-     \ /
+        #!bash
+        $ http 'http://api.panda.0d0f.com/v3/icons/mapmark'
+        / - \
+        | P |
+         \ /
+        $ http 'http://api.panda.0d0f.com/v3/icons/mapmark?content=喵&color=red'
+        / - \
+        | 喵|
+         \ /
