@@ -23,18 +23,18 @@
 * QUERY args:
     - token
 * POST args:
-    - identity_id: [int:identity_id] // Optional
+    - identity_id: [int:identity_id] // OPTIONAL
 * POST files:
     - original: [bin: png | gif | bmp | jpg(jpeg)]
-    - 320_320 : [bin: png | gif | bmp | jpg(jpeg)] // Optional
-    - 80_80   : [bin: png | gif | bmp | jpg(jpeg)] // Optional
+    - 320_320 : [bin: png | gif | bmp | jpg(jpeg)] // OPTIONAL
+    - 80_80   : [bin: png | gif | bmp | jpg(jpeg)] // OPTIONAL
 * returns:
     - 200:
         * avatar : [array: avatar_url]
         * avatars: [array: avatar_url] // @warning: will be removed in v3
         * type: [str:user | identity]
-        * user_id: [int:user_id] // Optional
-        * identity_id: [int:identity_id] // Optional
+        * user_id: [int:user_id] // OPTIONAL
+        * identity_id: [int:identity_id] // OPTIONAL
     - 400: missing_original_sizes
     - 400: identity_does_not_exist
     - 400: provider_error
