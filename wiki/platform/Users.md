@@ -2,7 +2,7 @@
 
     author: Leask Huang
     created date: 2012-10-06
-    updated date: 2013-06-07
+    updated date: 2013-07-12
 
 
 ## Signin / Signup
@@ -73,7 +73,7 @@
 * * QUERY args:
     - token: [str:user_token]
 * POST args:
-    - current_password: [str:password]
+    - current_password: [str:password] // optional
     - new_password: [str:password] // encoded by utf8 && length >= 4
 * returns:
     - 200:
@@ -87,7 +87,7 @@
     - 400: no_new_password
     - 400: weak_password
     - 401: no_signin
-    - 401: authenticate_timeout
+    - 401: token_staled
     - 500: failed
 
 
@@ -106,9 +106,16 @@
     - oauth_token_secret: [string]
     - oauth_expires: [string]
 * return:
-    - action: [string:VERIFYING]
-    - identity: [object:identity]
-    - url: [str:url]
+    - 200:
+        * action: [string:VERIFYING]
+        * identity: [object:identity]
+        * url: [str:url]
+    - 401: no_signin
+    - 400: no_external_username
+    - 400: unknow_provider
+    - 400: invalid_oauth_token', '');
+    - 400: duplicate
+    - 500: failed
 * example:
 
         #!bash
