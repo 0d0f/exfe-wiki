@@ -42,12 +42,12 @@ git cmd
 git cmd
 
     #!bash
-    git commit -m "update build and etc."
+    git commit -m "update build xxx and etc."
 
 ##4 选择对应的证书    
 
 * 测试版本 iPhone Distribution: eDoctor Healthcare Communications Co., Ltd.
-* 正式版本 暂时没有搞定
+* 正式版本 （上传的时候再签名）
 
 ##5 编译项目    
 
@@ -55,17 +55,21 @@ git cmd
 
 * 编译参数Debug在正式版发布时已经去掉    
 * 服务器连的是生产服务器exfe.com    
-* 项目和依赖项目的log输出关闭，或者设置在高于等于warning级别    
+* 项目和依赖项目的log输出关闭，或者设置在高于等于warning级别
+  
+##6 升级兼容检查
 
-##6 准备发布资料
+* 检查和最近的正式版本、最近大版本的升级兼容性，包括登陆、登出后升级的兼容。
+
+##7 准备发布资料
 截图、文字更新，设置app为待上传状态
 
-##7 导出并发布版本    
+##8 导出并发布版本    
 
 测试版本 导出后用脚本（publish.sh）发布到0d0f.com上。    
 正式版本 导出后用xcode工具上传，确认push能够工作。
 
-##8 提交当前修改并打上版本tag    
+##9 提交当前修改并打上版本tag    
 
 git cmd
 
@@ -73,7 +77,7 @@ git cmd
     git push
     git tag
     
-##9 附件    
+##10 附件    
 file: usused.sh
 
     #!bash
