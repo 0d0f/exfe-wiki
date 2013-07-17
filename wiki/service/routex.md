@@ -117,11 +117,11 @@
                 }
             ]
 
- - Notice
+ - Request
 
     给用户发送push，通知用户登录routex。
 
-    POST http://domain/v3/crosses/:cross\_id/routex/notice?token=xxxxxx
+    POST http://domain/v3/crosses/:cross\_id/routex/request?token=xxxxxx
 
     Post Data:
 

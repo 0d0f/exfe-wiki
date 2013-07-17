@@ -29,6 +29,11 @@ exfe://crosses
 ### <a id="profile"></a>Profile
 exfe://profile
 直接打开Profile界面
+草稿：
+exfe://profile/username/edit
+exfe://profile/IDENTITY_ID/edit
+exfe://profile/password/change
+exfe://profile/password/reset
 
 ### <a id="identity"></a>Identity (NOT Implemented)
 exfe://Identity/IDENTITY_ID
