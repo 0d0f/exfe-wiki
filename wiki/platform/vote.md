@@ -9,13 +9,15 @@
         #!javascript
         {
             "id"          : [int],
-            "status"      : [str:DRAFT | OPENING | PAUSED | CLOSED | DELETED],
+            "status"      : [str:draft | opening | paused | closed | deleted],
             "title"       : [str:length <= 233],
             "description" : [str:length <= 64k],
             "created_by"  : [object:identity],
             "updated_by"  : [object:identity],
             "created_at"  : [str:time],
             "updated_at"  : [str:time],
+            "choice"      : [str:radio | multiple],
+            "anonymous"   : [bol],
             "options"     : [array:option],
             "type"        : "vote",
             "responses"   : [array:response_object]
@@ -182,6 +184,8 @@
 * endpoint: /v2/votes/[int:vote_id]/options/[int:option_id]/vote
 * QUERY args:
     - token: [str:user_token | cross_identity_token]
+* POST args:
+    - vote: [str:'' | agree | disagree]
 * returns:
     - 200: [object:vote]
     - 400: error_option
