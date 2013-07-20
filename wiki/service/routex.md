@@ -23,6 +23,13 @@
 
             <location object>
 
+        Response:
+
+            {
+                "earth": <location object>,
+                "mars": <location object>
+            }
+
      - 获得某个 cross 所有用户的 location 信息
 
         GET http://domain/v3/crosses/:cross\_id/routex/breadcrumbs?coordinate=(earth|mars)&token=xxxxxx
