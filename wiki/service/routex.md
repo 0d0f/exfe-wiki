@@ -26,8 +26,8 @@
         Response:
 
             {
-                "earth": <location object>,
-                "mars": <location object>
+                "earth_to_mars_latitude": "xx.xxxx",
+                "earth_to_mars_longitude": "yy.yyyy"
             }
 
      - 获得某个 cross 所有用户的 location 信息
