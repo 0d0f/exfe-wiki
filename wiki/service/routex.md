@@ -2,6 +2,8 @@
 
 ## 接口规划
 
+所有接口支持coordinate参数，表示操作的坐标系是地球坐标earth还是火星坐标mars。如果不给此参数，默认为地球坐标。
+
  - Location 信息更新
 
     此接口用于更新某个用户的地理信息。用户地理信息 location object 如下：
@@ -15,15 +17,22 @@
 
      - 用户更新 location
 
-        POST http://domain/v3/crosses/:cross\_id/routex/breadcrumbs?token=xxxxxx
+        POST http://domain/v3/crosses/:cross\_id/routex/breadcrumbs?coordinate=(earth|mars)&token=xxxxxx
 
         Post Data:
 
             <location object>
 
+        Response:
+
+            {
+                "earth_to_mars_latitude": "xx.xxxx",
+                "earth_to_mars_longitude": "yy.yyyy"
+            }
+
      - 获得某个 cross 所有用户的 location 信息
 
-        GET http://domain/v3/crosses/:cross\_id/routex/breadcrumbs?token=xxxxxx
+        GET http://domain/v3/crosses/:cross\_id/routex/breadcrumbs?coordinate=(earth|mars)&token=xxxxxx
 
         Response:
 
@@ -39,7 +48,7 @@
 
      - 更新 Route
 
-        POST http://domain/v3/crosses/:cross\_id/routex/geomarks?token=xxxxxxxx
+        POST http://domain/v3/crosses/:cross\_id/routex/geomarks?coordinate=(earth|mars)&token=xxxxxxxx
 
         Post Data:
 
@@ -79,7 +88,7 @@
 
      - 获取 Route
 
-        GET http://domain/v3/crosses/:cross\_id/routex/geomarks?token=xxxxxxxxx
+        GET http://domain/v3/crosses/:cross\_id/routex/geomarks?coordinate=(earth|mars)&token=xxxxxxxxx
 
         Response:
 
@@ -131,7 +140,7 @@
  
     获得关于某个 cross 的 route_x 更新的所有通知。第一次连接后，会下发cross对应的当前所有location和route的信息。
 
-    POST http://domain/v3/crosses/:cross\_id/routex?\_method=WATCH&token=xxxxxx
+    POST http://domain/v3/crosses/:cross\_id/routex?\_method=WATCH&coordinate=(earth|mars)&token=xxxxxx
 
     Response:
 
