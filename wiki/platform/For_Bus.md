@@ -200,7 +200,7 @@
     - 500: internal_server_error
 
 
-## Get user by identity_id (if identity_id does not exist, create it)
+## Get user by identity (if identity does not exist, create it)
 * endpoint: /v3/bus/users
 * POST args:
     - identity_id: [str:external_username@provider]
