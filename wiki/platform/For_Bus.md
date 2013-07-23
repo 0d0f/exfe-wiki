@@ -200,6 +200,100 @@
     - 500: internal_server_error
 
 
+## Get user by identity_id (if identity_id does not exist, create it)
+* endpoint: /v3/bus/users
+* POST args:
+    - identity_id: [str:external_username@provider]
+    - external_id: [str:external_id]
+* returns:
+    - 200:
+        * data: {"authorization": {"user_id": [int], "token": [str:user_token]}, "user": [obj:user]}
+    - 500: invalid_input
+    - 500: error_identity_id
+    - 500: error_external_id
+    - 500: identity_error
+    - 500: user_error
+    - 500: server_error
+* example:
+
+        #!bash
+        echo '{"external_username":"leaskh","provider":"wechat","external_id":"leask"}' | http post api.leask.0d0f.com/v3/bus/users
+        {
+            "data": {
+                "authorization": {
+                    "token": "6297f0b61d994c8cfb12c4336911417e6f6f14b14833e2e6ab8946915aafade9",
+                    "user_id": 639
+                },
+                "user": {
+                    "avatar": {
+                        "320_320": "http://panda.0d0f.com:1234/exfe-3rdpart-photos/thirdpart/weichat/130350.jpg",
+                        "80_80": "http://panda.0d0f.com:1234/exfe-3rdpart-photos/thirdpart/weichat/130350.jpg",
+                        "original": "http://panda.0d0f.com:1234/exfe-3rdpart-photos/thirdpart/weichat/130350.jpg"
+                    },
+                    "avatar_filename": "http://panda.0d0f.com:1234/exfe-3rdpart-photos/thirdpart/weichat/130350.jpg",
+                    "bio": "",
+                    "created_at": "2013-06-29 09:25:03 +0000",
+                    "devices": [],
+                    "id": 639,
+                    "identities": [
+                        {
+                            "avatar": {
+                                "320_320": "http://panda.0d0f.com:1234/exfe-3rdpart-photos/thirdpart/weichat/130350.jpg",
+                                "80_80": "http://panda.0d0f.com:1234/exfe-3rdpart-photos/thirdpart/weichat/130350.jpg",
+                                "original": "http://panda.0d0f.com:1234/exfe-3rdpart-photos/thirdpart/weichat/130350.jpg"
+                            },
+                            "avatar_filename": "http://panda.0d0f.com:1234/exfe-3rdpart-photos/thirdpart/weichat/130350.jpg",
+                            "bio": "",
+                            "connected_user_id": 639,
+                            "created_at": "0000-00-00 00:00:00 +0000",
+                            "external_id": "130350",
+                            "external_username": "leaskh",
+                            "id": 905,
+                            "locale": "zh_cn",
+                            "name": "leaskh",
+                            "nickname": "",
+                            "order": 0,
+                            "provider": "wechat",
+                            "status": "CONNECTED",
+                            "timezone": "Asia/Shanghai",
+                            "type": "identity",
+                            "unreachable": false,
+                            "updated_at": "0000-00-00 00:00:00 +0000"
+                        }
+                    ],
+                    "locale": "zh_cn",
+                    "name": "leaskh",
+                    "password": false,
+                    "timezone": "Asia/Shanghai",
+                    "type": "user",
+                    "updated_at": "2013-06-29 09:25:03 +0000"
+                }
+            }
+        }
+
+
+## Set User Password
+* endpoint: /v3/bus/setpassword
+* POST args:
+    - user_id: [int:user_id]
+    - password: [str:password]
+* returns:
+    - 200:
+        * data: {"user_id": [int:user_id]}
+    - 400: invalid_user_id
+    - 400: invalid_password
+    - 400: bad_request
+* example:
+
+        #!bash
+        http -f post api.leask.0d0f.com/v3/bus/SetPassword user_id=12 password='0000'
+        {
+            "data": {
+                "user_id": 12
+            }
+        }
+
+
 ## Post Conversation
 * endpoint: /v3/bus/postconversation
 * POST args OPTION A:
