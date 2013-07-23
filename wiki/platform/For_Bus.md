@@ -203,8 +203,7 @@
 ## Get user by identity (if identity does not exist, create it)
 * endpoint: /v3/bus/users
 * POST args:
-    - identity_id: [str:external_username@provider]
-    - external_id: [str:external_id]
+    - BODY: [obj:identity_object]
 * returns:
     - 200:
         * data: {"authorization": {"user_id": [int], "token": [str:user_token]}, "user": [obj:user]}
