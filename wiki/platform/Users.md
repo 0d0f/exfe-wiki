@@ -303,3 +303,38 @@
                 }
             }
         }
+
+
+## Preferences
+* description: get / set user preferences
+* endpoint: /v3/users/preferences
+* args OPTION A:
+    * description: get preferences
+    * QUERY:
+        - token: [str:user_token]
+* args OPTION B:
+    * description: set preferences
+    * QUERY:
+        - token: [str:user_token]
+    * POST:
+        - BODY: [str:preferences_json]
+* returns:
+    - 200: [object:preferences]
+    - 403: not_authorized
+    - 401: invalid_auth
+    - 400: unknow_timezone
+    - 400: unknow_preferences
+    - 400: error_preferences
+    - 500: server_error
+* example:
+
+        #!bash
+        echo '{"locale":"zh_cn","timezone":"Asia/Shanghai"}' | http api.leask.0d0f.com/v3/users/preferences?token=d75653e21c363db707e23959e0d2a2cc4b5a311499af54d7a86b6c6b8adfdac4
+
+        {
+            "data": {
+                "locale": "zh_cn",
+                "timezone": "Asia/Shanghai"
+            }
+        }
+
