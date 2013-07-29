@@ -37,7 +37,7 @@ Readme
         /home/git/reps/wiki
         /exfe/exfewiki
         ln -sf /home/git/repos/wiki /home/git/repos/0d0fwiki/docs
-        ln -sf /home/git/repos/wiki/markdoc.yaml /home/git/repos/markdoc.ymal
+        ln -sf /home/git/repos/wiki/markdoc.yaml /home/git/repos/0d0fwiki/markdoc.ymal
 
 ## 本地初始化:
   * 提供一个 user.pub 公钥
