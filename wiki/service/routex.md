@@ -84,7 +84,7 @@
 
         POST http://domain/v3/routex/breadcrumbs?coordinate=(earth|mars)&token=xxxxxx
 
-        Post Data: [simple location]
+        Post Data:
 
             [
                 {
@@ -138,7 +138,7 @@
 
         每次最多只返回最新的100个positions，如果要请求更多的数据，可以指定start参数，表示从第start个position开始再往更老的时间取最多100个数据。
 
-        Response: [route object with tag breadcrumbs, id is user identity id]
+        Response:
 
             {
                 "id": "external_username@provider",
