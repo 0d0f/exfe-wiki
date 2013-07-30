@@ -12,7 +12,7 @@ wiki-dir: "docs"
 static-dir: "static"
 html-dir: "html"
 template-dir: "templates"
-temp-dir: ".tmp"
+#temp-dir: ".tmp"
 cvs-exclude: true
 
 # Building
