@@ -153,7 +153,7 @@
                 "access-control-allow-origin"      => "http://exfe.com",
                 "access-control-allow-credentials" => "true",
             )
-        } else $HTTP["host"] == "www.exfe.com" {
+        } else $HTTP["host"] =~ "^(www.exfe.com|exfe.net|www.exfe.net|exfe.org|www.exfe.org|exfe.us|www.exfe.us)$" {
             url.redirect = ( "^/(.*)" => "https://exfe.com/$1" )
         } else $HTTP["host"] =~ "(.*)" {
             url.redirect = ( "^/(.*)" => "https://%1/$1" )

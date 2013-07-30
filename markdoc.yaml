@@ -1,19 +1,37 @@
 # Metadata
 wiki-name: "0d0f Wiki"
 
+# Set this to the html-root equivalent giif using custom templates.
+base-path: "http://wiki.0d0f.com/"
+
+# google-analytics: UA-XXXXXX-X
+
 # Directories
 hide-prefix: "."
-wiki-dir: "wiki"
+wiki-dir: "docs"
 static-dir: "static"
-html-dir: ".tmp"
+html-dir: "html"
+template-dir: "templates"
+temp-dir: ".tmp"
+cvs-exclude: true
+
+# Building
+document-extensions: [.md, .mdown, .markdown, .wiki, .text]
+generate-listing: always
+listing-filename: "_list.html"
+use-default-static: true
+use-default-templates: false
 
 # Rendering
 markdown:
-  extensions:
-    - codehilite
-    - def_list
-    - headerid
-    - toc
+  safe-mode: false
+  output-format: html
+  extensions: [codehilite, def_list, fenced_code, toc, tables]
+  extension-configs:
+    codehilite:
+      force_linenos: true
+    toc:
+      title: "Table of Contents"
 
 # Serving
 server:
@@ -21,5 +39,5 @@ server:
   port: 8008
   num-threads: 10
   name: 'wiki.0d0f.com'
-  request-queue-size: 10
+  request-queue-size: 5
   timeout: 10
