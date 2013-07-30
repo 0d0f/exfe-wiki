@@ -2,7 +2,7 @@
 
 ## 通用原则
 
- 所有接口支持coordinate参数，表示操作的坐标系是地球坐标earth还是火星坐标mars。如果不给此参数，默认为地球坐标。
+所有接口支持coordinate参数，表示操作的坐标系是地球坐标earth还是火星坐标mars。如果不给此参数，默认为地球坐标。
 
 ## 数据模型
 
@@ -84,7 +84,7 @@
 
         POST http://domain/v3/routex/breadcrumbs?coordinate=(earth|mars)&token=xxxxxx
 
-        Post Data: <simple location>
+        Post Data:
 
             [
                 {
