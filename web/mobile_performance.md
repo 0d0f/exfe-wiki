@@ -80,6 +80,8 @@ Mobile Web Performance - 移动端性能优化
 
 ## Static Resources
 
+以下设置服务器没有开启（只针对 css js images 文件, css 有开启 gzip )
+
 * gzip
 * expires
 * cache-control
