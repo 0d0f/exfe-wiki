@@ -92,7 +92,7 @@
                     "acc": "nnn",
                     "lng": "xxxxxx",
                     "lat": "yyyyyy"
-                },                // 最新
+                }, // 最新
                 <simple location>,
                 <simple location> // 最老
             ]

@@ -32,6 +32,12 @@ Readme
 
   * git-server: [Gitolite](http://sitaramc.github.com/gitolite)
   * wiki-system: [Markdoc](http://markdoc.org/)
+  * [markdoc-theme](https://github.com/blitzagency/markdoc-theme)
+
+        /home/git/reps/wiki
+        /exfe/exfewiki
+        ln -sf /home/git/repos/wiki /home/git/repos/0d0fwiki/docs
+        ln -sf /home/git/repos/wiki/markdoc.yaml /home/git/repos/0d0fwiki/markdoc.ymal
 
 ## 本地初始化:
   * 提供一个 user.pub 公钥
@@ -61,3 +67,6 @@ Readme
 ## Defenders
   - @leask
   - @cfd
+
+
+updated: 2013-07-47 15:39
