@@ -3,18 +3,12 @@ Mobile Web Performance - 移动端性能优化
 
 ## Linode & ENV
 
-  Server:         lighttpd/1.4.28
-  X-Powered-By:   PHP/5.4.15-1~precise+1
+    Server:         lighttpd/1.4.28
+    X-Powered-By:   PHP/5.4.15-1~precise+1
 
 ## CLI 终端
 
 ### curl
-
-    # PC
-    time curl https://exfe.com
-
-    x5
-      avg:
 
     # Mobile
     time curl -A'Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3' https://exfe.com
@@ -83,8 +77,8 @@ Mobile Web Performance - 移动端性能优化
 以下设置服务器没有开启（只针对 css js images 文件, css 有开启 gzip )
 
 * gzip
-* expires
 * cache-control
+* expires
 
 ### Images
 
@@ -101,4 +95,4 @@ Mobile Web Performance - 移动端性能优化
 
 ## Performance
 
-* 优化加载流程
+* 根据业务优化加载流程
