@@ -75,6 +75,7 @@
             "mod_setenv",
             "mod_rewrite",
             "mod_accesslog",
+            "mod_expire",
             # }
             # Changed by @lzh {
             "mod_mysql_obj",
