@@ -95,4 +95,33 @@ Mobile Web Performance - 移动端性能优化
 
 ## Performance
 
+* 静态文件
+  - gzip cache-control expires
+  - 单独域名 (例如: static.exfe.com)
+  - no-cookies
+  - 启用 http, 放弃 https ? (待测试验证 [http vs https][])
+
+  - 图片
+    - 优化压缩
+    - 去除空图链接
+
+  - CSS
+    - add top
+
+  - JS
+    - add bottom
+    - 异步加载 js 文件，等文档载完，再进行解释, [Async Attribute][] IE > 10  [Defer Attribute][]
+
+      <script async="async" defer="defer" src="x.js"></script>
+
 * 根据业务优化加载流程
+
+
+
+## Links
+
+* [Async Attribute](http://caniuse.com/#search=async)
+* [Defer Attribute](http://caniuse.com/#search=defer)
+* [Make the Web Faster](https://developers.google.com/speed/)
+* [Best Practices for Speeding Up Your Web Site](http://developer.yahoo.com/performance/rules.html)
+* [http vs https](http://stackoverflow.com/questions/149274/http-vs-https-performance)
