@@ -1,10 +1,11 @@
-Mobile Web Performance - 移动端性能优化
+
+obile Web Performance - 移动端性能优化
 ----------------------
 
 ## Linode & ENV
 
     Server:         lighttpd/1.4.28
-    X-Powered-By:   PHP/5.4.15-1~precise+1
+    X-Powered-By:   PHP/5.5.1-1~precise+1
 
 ## CLI 终端
 
@@ -71,7 +72,6 @@ Mobile Web Performance - 移动端性能优化
     page load time: 5374
 
 
-
 ## Static Resources
 
 以下设置服务器没有开启（只针对 css js images 文件, css 有开启 gzip )
@@ -95,7 +95,8 @@ Mobile Web Performance - 移动端性能优化
 
 ## Performance
 
-* 静态文件
+### 静态文件
+
   * gzip cache-control expires
   * 单独域名 (例如: static.exfe.com)
   * no-cookies
@@ -107,15 +108,20 @@ Mobile Web Performance - 移动端性能优化
 
   * CSS
     - add top
+    - 优化精简 css
 
   * JS
     - add bottom
-    - 异步加载 js 文件，等文档载完，再进行解释, [Async Attribute][] IE > 10  [Defer Attribute][]
 
-      <script async="async" defer="defer" src="x.js"></script>
 
-* 根据业务优化加载流程
+### 根据业务优化加载流程
 
+  * 合并 mobiledirector 和 exfemobile => exfemobile
+  * 根据路由分拆文件
+  * 先加载 core 文件
+  * 根据 matched route, 异步加载其业务逻辑代码
+
+### Offline Application Cache
 
 
 ## Links
