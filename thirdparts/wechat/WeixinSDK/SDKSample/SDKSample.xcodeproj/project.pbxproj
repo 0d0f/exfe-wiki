@@ -1,0 +1,359 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		55F1A8F91519F05200E04DEA /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F1A8F81519F05200E04DEA /* TextViewController.m */; };
+		F050299E1505F71800C3E5E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F050299D1505F71800C3E5E5 /* UIKit.framework */; };
+		F05029A01505F71800C3E5E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F050299F1505F71800C3E5E5 /* Foundation.framework */; };
+		F05029A21505F71800C3E5E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F05029A11505F71800C3E5E5 /* CoreGraphics.framework */; };
+		F0502A281505FD6A00C3E5E5 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0502A251505FD6A00C3E5E5 /* libWeChatSDK.a */; };
+		F0502A2C1505FD7C00C3E5E5 /* brush_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F0502A2A1505FD7C00C3E5E5 /* brush_icon.png */; };
+		F0502A2D1505FD7C00C3E5E5 /* brush_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0502A2B1505FD7C00C3E5E5 /* brush_icon@2x.png */; };
+		F0502A331505FE2300C3E5E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0502A301505FE2300C3E5E5 /* main.m */; };
+		F0502A341505FE2300C3E5E5 /* SDKSample-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0502A311505FE2300C3E5E5 /* SDKSample-Info.plist */; };
+		F0502A391505FE3D00C3E5E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0502A361505FE3D00C3E5E5 /* AppDelegate.m */; };
+		F0502A3A1505FE3D00C3E5E5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0502A381505FE3D00C3E5E5 /* ViewController.m */; };
+		F0502A411506011100C3E5E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0502A3B1506011100C3E5E5 /* InfoPlist.strings */; };
+		F0502A421506011100C3E5E5 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0502A3D1506011100C3E5E5 /* ViewController_iPad.xib */; };
+		F0502A431506011100C3E5E5 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0502A3F1506011100C3E5E5 /* ViewController_iPhone.xib */; };
+		F0A815231514726A00F72842 /* res1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F0A8151F1514726A00F72842 /* res1.jpg */; };
+		F0A815241514726A00F72842 /* res2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F0A815201514726A00F72842 /* res2.jpg */; };
+		F0A815251514726A00F72842 /* res3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F0A815211514726A00F72842 /* res3.jpg */; };
+		F0A815261514726A00F72842 /* res4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F0A815221514726A00F72842 /* res4.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		55F1A8F71519F05200E04DEA /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = SOURCE_ROOT; };
+		55F1A8F81519F05200E04DEA /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = SOURCE_ROOT; };
+		F05029991505F71700C3E5E5 /* SDKSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDKSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F050299D1505F71800C3E5E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F050299F1505F71800C3E5E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F05029A11505F71800C3E5E5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F0502A251505FD6A00C3E5E5 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		F0502A261505FD6A00C3E5E5 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		F0502A271505FD6A00C3E5E5 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		F0502A2A1505FD7C00C3E5E5 /* brush_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brush_icon.png; sourceTree = SOURCE_ROOT; };
+		F0502A2B1505FD7C00C3E5E5 /* brush_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brush_icon@2x.png"; sourceTree = SOURCE_ROOT; };
+		F0502A301505FE2300C3E5E5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
+		F0502A311505FE2300C3E5E5 /* SDKSample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SDKSample-Info.plist"; sourceTree = SOURCE_ROOT; };
+		F0502A321505FE2300C3E5E5 /* SDKSample-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDKSample-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		F0502A351505FE3D00C3E5E5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		F0502A361505FE3D00C3E5E5 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		F0502A371505FE3D00C3E5E5 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = SOURCE_ROOT; };
+		F0502A381505FE3D00C3E5E5 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = SOURCE_ROOT; };
+		F0502A3C1506011100C3E5E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		F0502A3E1506011100C3E5E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = SOURCE_ROOT; };
+		F0502A401506011100C3E5E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = SOURCE_ROOT; };
+		F0A8151F1514726A00F72842 /* res1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = res1.jpg; sourceTree = SOURCE_ROOT; };
+		F0A815201514726A00F72842 /* res2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = res2.jpg; sourceTree = SOURCE_ROOT; };
+		F0A815211514726A00F72842 /* res3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = res3.jpg; sourceTree = SOURCE_ROOT; };
+		F0A815221514726A00F72842 /* res4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = res4.jpg; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F05029961505F71700C3E5E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F050299E1505F71800C3E5E5 /* UIKit.framework in Frameworks */,
+				F05029A01505F71800C3E5E5 /* Foundation.framework in Frameworks */,
+				F05029A21505F71800C3E5E5 /* CoreGraphics.framework in Frameworks */,
+				F0502A281505FD6A00C3E5E5 /* libWeChatSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F050298E1505F71700C3E5E5 = {
+			isa = PBXGroup;
+			children = (
+				F0502A241505FD6A00C3E5E5 /* SDKExport */,
+				F05029A31505F71800C3E5E5 /* SDKSample */,
+				F050299C1505F71800C3E5E5 /* Frameworks */,
+				F050299A1505F71700C3E5E5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F050299A1505F71700C3E5E5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F05029991505F71700C3E5E5 /* SDKSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F050299C1505F71800C3E5E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F050299D1505F71800C3E5E5 /* UIKit.framework */,
+				F050299F1505F71800C3E5E5 /* Foundation.framework */,
+				F05029A11505F71800C3E5E5 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F05029A31505F71800C3E5E5 /* SDKSample */ = {
+			isa = PBXGroup;
+			children = (
+				55F1A8F71519F05200E04DEA /* TextViewController.h */,
+				55F1A8F81519F05200E04DEA /* TextViewController.m */,
+				F0502A351505FE3D00C3E5E5 /* AppDelegate.h */,
+				F0502A361505FE3D00C3E5E5 /* AppDelegate.m */,
+				F0502A371505FE3D00C3E5E5 /* ViewController.h */,
+				F0502A381505FE3D00C3E5E5 /* ViewController.m */,
+				F0502A2A1505FD7C00C3E5E5 /* brush_icon.png */,
+				F0502A2B1505FD7C00C3E5E5 /* brush_icon@2x.png */,
+				F05029A41505F71800C3E5E5 /* Supporting Files */,
+			);
+			path = SDKSample;
+			sourceTree = "<group>";
+		};
+		F05029A41505F71800C3E5E5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F0A8151F1514726A00F72842 /* res1.jpg */,
+				F0A815201514726A00F72842 /* res2.jpg */,
+				F0A815211514726A00F72842 /* res3.jpg */,
+				F0A815221514726A00F72842 /* res4.jpg */,
+				F0502A3B1506011100C3E5E5 /* InfoPlist.strings */,
+				F0502A3D1506011100C3E5E5 /* ViewController_iPad.xib */,
+				F0502A3F1506011100C3E5E5 /* ViewController_iPhone.xib */,
+				F0502A301505FE2300C3E5E5 /* main.m */,
+				F0502A311505FE2300C3E5E5 /* SDKSample-Info.plist */,
+				F0502A321505FE2300C3E5E5 /* SDKSample-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F0502A241505FD6A00C3E5E5 /* SDKExport */ = {
+			isa = PBXGroup;
+			children = (
+				F0502A251505FD6A00C3E5E5 /* libWeChatSDK.a */,
+				F0502A261505FD6A00C3E5E5 /* WXApi.h */,
+				F0502A271505FD6A00C3E5E5 /* WXApiObject.h */,
+			);
+			name = SDKExport;
+			path = ../SDKExport;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F05029981505F71700C3E5E5 /* SDKSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F05029BA1505F71800C3E5E5 /* Build configuration list for PBXNativeTarget "SDKSample" */;
+			buildPhases = (
+				F05029951505F71700C3E5E5 /* Sources */,
+				F05029961505F71700C3E5E5 /* Frameworks */,
+				F05029971505F71700C3E5E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SDKSample;
+			productName = SDKSample;
+			productReference = F05029991505F71700C3E5E5 /* SDKSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F05029901505F71700C3E5E5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = F05029931505F71700C3E5E5 /* Build configuration list for PBXProject "SDKSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F050298E1505F71700C3E5E5;
+			productRefGroup = F050299A1505F71700C3E5E5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F05029981505F71700C3E5E5 /* SDKSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F05029971505F71700C3E5E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0502A2C1505FD7C00C3E5E5 /* brush_icon.png in Resources */,
+				F0502A2D1505FD7C00C3E5E5 /* brush_icon@2x.png in Resources */,
+				F0502A341505FE2300C3E5E5 /* SDKSample-Info.plist in Resources */,
+				F0502A411506011100C3E5E5 /* InfoPlist.strings in Resources */,
+				F0502A421506011100C3E5E5 /* ViewController_iPad.xib in Resources */,
+				F0502A431506011100C3E5E5 /* ViewController_iPhone.xib in Resources */,
+				F0A815231514726A00F72842 /* res1.jpg in Resources */,
+				F0A815241514726A00F72842 /* res2.jpg in Resources */,
+				F0A815251514726A00F72842 /* res3.jpg in Resources */,
+				F0A815261514726A00F72842 /* res4.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F05029951505F71700C3E5E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0502A331505FE2300C3E5E5 /* main.m in Sources */,
+				F0502A391505FE3D00C3E5E5 /* AppDelegate.m in Sources */,
+				F0502A3A1505FE3D00C3E5E5 /* ViewController.m in Sources */,
+				55F1A8F91519F05200E04DEA /* TextViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F0502A3B1506011100C3E5E5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0502A3C1506011100C3E5E5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F0502A3D1506011100C3E5E5 /* ViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0502A3E1506011100C3E5E5 /* en */,
+			);
+			name = ViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F0502A3F1506011100C3E5E5 /* ViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0502A401506011100C3E5E5 /* en */,
+			);
+			name = ViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F05029B81505F71800C3E5E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F05029B91505F71800C3E5E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F05029BB1505F71800C3E5E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SDKSample-Prefix.pch";
+				INFOPLIST_FILE = "SDKSample-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../SDKExport\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F05029BC1505F71800C3E5E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SDKSample-Prefix.pch";
+				INFOPLIST_FILE = "SDKSample-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../SDKExport\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F05029931505F71700C3E5E5 /* Build configuration list for PBXProject "SDKSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F05029B81505F71800C3E5E5 /* Debug */,
+				F05029B91505F71800C3E5E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F05029BA1505F71800C3E5E5 /* Build configuration list for PBXNativeTarget "SDKSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F05029BB1505F71800C3E5E5 /* Debug */,
+				F05029BC1505F71800C3E5E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F05029901505F71700C3E5E5 /* Project object */;
+}
