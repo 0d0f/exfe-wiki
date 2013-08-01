@@ -82,6 +82,14 @@
             # }
         )
 
+        compress.filetype = (
+            "application/javascript",
+            "text/css",
+            "text/html",
+            "text/plain"
+        )
+
+
 ### /exfe/exfe_lighttpd.conf
 
         mysql_obj.host = "127.0.0.1"
@@ -121,7 +129,7 @@
             )
 
             proxy.server  = (
-                "/v3/routex" =>((
+                "/v3/routex" => ((
                     "host"  =>"127.0.0.1",
                     "port"  =>"23333"
                 ))
@@ -146,6 +154,12 @@
                     "^.*(\?.*)$" => "index.php$1",
                     "^.*$" => "index.php",
                 )
+                $HTTP["url"] =~ "^/(static|eimgs)/(.*)$" {
+                    expire.url = ( "" => "access 365 days" )
+                }
+                setenv.add-response-header += (
+                    "Cache-Control" => "public, must-revalidate"
+                )
             }
 
         } else $HTTP["host"] == "img.exfe.com" {
@@ -153,7 +167,9 @@
             setenv.add-response-header = (
                 "access-control-allow-origin"      => "http://exfe.com",
                 "access-control-allow-credentials" => "true",
+                "Cache-Control" => "public",
             )
+            expire.url = ( "" => "access 365 days" )
         } else $HTTP["host"] =~ "^(www.exfe.com|exfe.net|www.exfe.net|exfe.org|www.exfe.org|exfe.us|www.exfe.us)$" {
             url.redirect = ( "^/(.*)" => "https://exfe.com/$1" )
         } else $HTTP["host"] =~ "(.*)" {
