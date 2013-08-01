@@ -67,7 +67,7 @@
 
      - 提交用户可以更新的cross
 
-        POST http://domain/v3/routex/user
+        POST http://domain/v3/routex/user/crosses
 
         Post Data:
 
