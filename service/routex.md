@@ -76,11 +76,11 @@
                 {"cross_id": mmmmm, "save_breadcrumbs": false}
             ]
 
- - Location 信息更新
+ - 用户路径信息breadcrumbs更新
 
-    此接口用于更新某个用户的地理信息。
+    此接口用于更新某个用户的路径信息breadcrumbs。每个breadcrumbs的id为所属用户的user_id。
 
-     - 用户更新 location
+     - 用户更新 route
 
         POST http://domain/v3/routex/breadcrumbs?coordinate=(earth|mars)&token=xxxxxx
 
@@ -92,7 +92,7 @@
                     "acc": "nnn",
                     "lng": "xxxxxx",
                     "lat": "yyyyyy"
-                }, // 最新
+                },                // 最新
                 <simple location>,
                 <simple location> // 最老
             ]
@@ -104,21 +104,21 @@
                 "earth_to_mars_longitude": yy.yyyy
             }
 
-     - 获得某个 cross 所有用户的 location 信息
+     - 获得某个 cross 所有用户的 breadcrumbs 信息
 
-        GET http://domain/v3/routex/crosses/:cross\_id/breadcrumbs?coordinate=(earth|mars)&token=xxxxxx&start=100
+        GET http://domain/v3/routex/crosses/:cross\_id/breadcrumbs?coordinate=(earth|mars)&token=xxxxxx
 
         Response:
 
             [
                 <route object with tag breadcrumbs, id is user identity id>,
                 {
-                    "id": "external_username@provider",
+                    "id": "user_id",
                     "type": "route",
                     "created_at": 0,
-                    "created_by": "external_username@provider",
+                    "created_by": "",
                     "updated_at": 0,
-                    "updated_by": "external_username@provider",
+                    "updated_by": "",
                     "tags": ["breadcrumbs"],
                     "title": "Title",
                     "desc": "Description",
@@ -132,7 +132,7 @@
                 <route object with tag breadcrumbs, id is user identity id>
             ]
 
-     - 获得某个 cross 某个用户的 location 信息
+     - 获得某个 cross 某个用户的 breadcrumbs 信息
 
         GET http://domain/v3/routex/crosses/:cross\_id/breadcrumbs/external_username@provider?coordinate=(earth|mars)&token=xxxxxx&start=100
 
@@ -141,12 +141,12 @@
         Response:
 
             {
-                "id": "external_username@provider",
+                "id": "user_id",
                 "type": "route",
                 "created_at": 0,
-                "created_by": "external_username@provider",
+                "created_by": "",
                 "updated_at": 0,
-                "updated_by": "external_username@provider",
+                "updated_by": "",
                 "tags": ["breadcrumbs"],
                 "title": "Title",
                 "desc": "Description",
@@ -298,27 +298,25 @@
 
  - Streaming
  
-    获得关于某个 cross 的 route_x 更新的所有通知。第一次连接后，会下发cross对应的当前所有location和route的信息。对于routex对象，每次下发对象最多含有100个position信息，多于100个position会拆成几次分别下发，id相同，updated at相同。如果updated at不同但id相同的route，需要覆盖之前的同id route内容。
+    获得关于某个 cross 的 route_x 更新的所有通知。第一次连接后，会下发cross对应的当前所有breadcrumbs和geomarks的信息。对于route对象，每次下发对象最多含有100个position信息，多于100个position会拆成几次分别下发，id相同，updated at相同。如果updated at不同但id相同的route，需要覆盖之前的同id route内容。对于tag为breadcrumbs的route对象，只包含对应用户最新所在点的信息。
 
     POST http://domain/v3/routex/crosses/:cross\_id?\_method=WATCH&coordinate=(earth|mars)&token=xxxxxx
 
     Response:
 
         {
-            "id": "external_username@provider",
+            "id": "user_id",
             "type": "route",
             "created_at": 0,
-            "created_by": "external_username@provider",
+            "created_by": "",
             "updated_at": 0,
-            "updated_by": "external_username@provider",
+            "updated_by": "",
             "tags": ["breadcrumbs"],
             "title": "Title",
             "desc": "Description",
             "color": "rrggbbaa",
             "positions": [
                 {"ts": 9, "lng": x.xxx, "lat": y.yyy}, // 最新
-                ...
-                {"ts": 1, "lng": x.xxx, "lat": y.yyy}, // 最老
             ]
         }
         {
