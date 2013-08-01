@@ -22,38 +22,32 @@ Web Front-End Route
     /
 
 
-### sign up 注册
-
-
-    /signup
-
-
 ### sign in 登录
 
 
-    /login
+    /signin
 
 
-### logout 登出
+### sign out 登出
 
 
-    /logout
+    /signout
 
 
 ### users
 
 
-    /users                                      to /users#index                             as /:username
+    /users                                      to /users#index                             as /:identity_id
 
-    /users/:username                            to /users/:username#show                    as /:username
+    /users/:identity_id                         to /users/:identity_id#show                 as /:identity_id
 
-    /users/:username/setpassword
+    /users/:identity_id/setpassword
 
-    /users/:username/fogotpassword
+    /users/:identity_id/fogotpassword
 
-    /users/:username/preferences
+    /users/:identity_id/preferences
 
-    /users/:username/preferences/edit
+    /users/:identity_id/preferences/edit
 
     ...
 
@@ -71,7 +65,7 @@ Web Front-End Route
 
     /crosses/:cross_id/edit                     to /crosses/:cross_id#edit
 
-    /crosses/:cross_id/widgets                  to /crosses/:cross_id/widgets#show          as /!cross_id/widgets
+    /crosses/:cross_id/widget                   to /crosses/:cross_id/widget#show           as /!cross_id/widget
 
     /crosses/:cross_id/map
 
@@ -79,13 +73,13 @@ Web Front-End Route
 
     /crosses/:cross_id/routex
 
-    /crosses/:cross_id/votex
+    /crosses/:cross_id/pollx
 
-    /crosses/:cross_id/votex/new
+    /crosses/:cross_id/pollx/new
 
-    /crosses/:cross_id/votex/:vote_id                                                       as /!cross_id/vote_id
+    /crosses/:cross_id/pollx/:poll_id                                                       as /!cross_id/pollx/:poll_id
 
-    /crosses/:cross_id/votex/:vote_id/edit
+    /crosses/:cross_id/pollx/:poll_id/edit
 
     ...
 
@@ -107,3 +101,6 @@ Web Front-End Route
 
     /500
 
+
+## Links
+* [Old Routes](https://docs.google.com/a/exfe.com/document/d/1oIaFPUDBgrGyQ1wHXxv3bOAzqVL2K3Xpc3FjDKRLh40/)

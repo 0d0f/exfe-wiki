@@ -75,3 +75,29 @@
             "status"            : [str: CONNECTED | DISCONNECTED],
             "type"              : "device"
         }
+
+
+## Cross
+
+        #!javascript
+        {
+            "by_identity"       : [object_identity],
+            "conversation_count": [int],
+            "created_at"        : [str:date],
+            "description"       : [str],
+            "exfee"             : [object:exfee],
+            "id"                : [int:cross_id],
+            "place"             : [object:place],
+            "relative"          : [array],
+            "time"              : [object:cross_time],
+            "title"             : [str],
+            "touched_at"        : [str:date],
+            "type"              : "Cross",
+            "updated"           : [array:update_infos],
+            "updated_at"        : [str:date],
+            "widget"            : [array:widget_object],
+            "attribute"         : {
+               "closed": [bol],
+               "state" : [str:published | draft]
+            }
+        }
