@@ -5,7 +5,7 @@ obile Web Performance - 移动端性能优化
 ## Linode & ENV
 
     Server:         lighttpd/1.4.28
-    X-Powered-By:   PHP/5.4.15-1~precise+1
+    X-Powered-By:   PHP/5.5.1-1~precise+1
 
 ## CLI 终端
 
