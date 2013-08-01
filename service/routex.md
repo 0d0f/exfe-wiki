@@ -63,16 +63,16 @@
 
  - 设置cross
 
-    此接口设置用户提交的地理信息可以展示在哪个cross里。一次开启默认持续2个小时，就是说从上发一次save_breadcrumbs为true的时刻开始，2个小时内，此用户上发的breadcrumbs信息会存入对应的cross里。
+    此接口设置用户提交的地理信息可以展示在哪个cross里。一次开启默认持续2个小时（可以在after_in_seconds设置，默认7200），就是说从上发一次save_breadcrumbs为true的时刻开始，2个小时内，此用户上发的breadcrumbs信息会存入对应的cross里。
 
      - 提交用户可以更新的cross
 
-        POST http://domain/v3/routex/user/:user_id
+        POST http://domain/v3/routex/user
 
         Post Data:
 
             [
-                {"cross_id": nnnnn, "save_breadcrumbs": true},
+                {"cross_id": nnnnn, "save_breadcrumbs": true, "after_in_seconds": 7200},
                 {"cross_id": mmmmm, "save_breadcrumbs": false}
             ]
 
@@ -134,7 +134,7 @@
 
      - 获得某个 cross 某个用户的 breadcrumbs 信息
 
-        GET http://domain/v3/routex/crosses/:cross\_id/breadcrumbs/external_username@provider?coordinate=(earth|mars)&token=xxxxxx&start=100
+        GET http://domain/v3/routex/crosses/:cross\_id/breadcrumbs/users/:user\_id?coordinate=(earth|mars)&token=xxxxxx&start=100
 
         每次最多只返回最新的100个positions，如果要请求更多的数据，可以指定start参数，表示从第start个position开始再往更老的时间取最多100个数据。
 
