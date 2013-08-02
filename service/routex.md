@@ -162,47 +162,6 @@
 
     此接口用于传输 app 用户画的路径图信息。这几个接口不考虑分包的问题，提交和下发的对象都是全量信息。
 
-     - 更新 Geomarks
-
-        POST http://domain/v3/routex/crosses/:cross\_id/geomarks?coordinate=(earth|mars)&token=xxxxxxxx
-
-        Post Data:
-
-            [
-                {
-                    "id": "id",
-                    "type": "location",
-                    "created_at": nnn,
-                    "created_by": "uid",
-                    "updated_at": nnn,
-                    "updated_by": "uid",
-                    "tags": ["place", "park"],
-                    "icon": "http://...",
-                    "title": "Title",
-                    "desc": "Description",
-                    "acc": a.aaa,
-                    "lng": x.xxx,
-                    "lat": y.yyy,
-                },
-                {
-                    "id": "id",
-                    "type": "route",
-                    "created_at": 0,
-                    "created_by": "id@provider",
-                    "updated_at": 0,
-                    "updated_by": "id@provider",
-                    "tags": ["breadcrumbs", "geomarks"],
-                    "title": "Title",
-                    "desc": "Description",
-                    "color": "rrggbbaa",
-                    "positions": [
-                        {"ts": 9, "lng": x.xxx, "lat": y.yyy}, // 最新
-                        ...
-                        {"ts": 1, "lng": x.xxx, "lat": y.yyy}, // 最老
-                    ]
-                }
-            ]
-
      - 更新某个 Geomark
 
         POST http://domain/v3/routex/crosses/:cross\_id/geomarks/:geomark_id?coordinate=(earth|mars)&token=xxxxxxxx
