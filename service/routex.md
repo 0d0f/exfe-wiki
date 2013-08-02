@@ -113,7 +113,7 @@
             [
                 <route object with tag breadcrumbs, id is user identity id>,
                 {
-                    "id": "user_id",
+                    "id": "user_id@exfe",
                     "type": "route",
                     "created_at": 0,
                     "created_by": "",
@@ -141,7 +141,7 @@
         Response:
 
             {
-                "id": "user_id",
+                "id": "user_id@exfe",
                 "type": "route",
                 "created_at": 0,
                 "created_by": "",
@@ -245,6 +245,13 @@
                 ]
             }
 
+        or
+
+            {
+                "id": "id",
+                "type": "xxxx"
+            } // 表示删除对应type和id的geomark
+
      - 获取 Geomarks
 
         GET http://domain/v3/routex/crosses/:cross\_id/geomarks?coordinate=(earth|mars)&token=xxxxxxxxx
@@ -305,7 +312,7 @@
     Response:
 
         {
-            "id": "user_id",
+            "id": "user_id@exfe",
             "type": "route",
             "created_at": 0,
             "created_by": "",
@@ -341,7 +348,7 @@
             "created_by": "id@provider",
             "updated_at": 0,
             "updated_by": "id@provider",
-            "tags": ["breadcrumbs", "geomarks"],
+            "tags": ["geomarks"],
             "title": "Title",
             "desc": "Description",
             "color": "rrggbbaa",
@@ -351,3 +358,7 @@
                 {"lng": x.xxx, "lat": y.yyy}
             ]
         }
+        {
+            "id": "id",
+            "type": "location"
+        } // 只有id和type的marks，表示删除对应id的mark。
