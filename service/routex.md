@@ -204,12 +204,9 @@
                 ]
             }
 
-        or
+     - 删除某个 Geomark
 
-            {
-                "id": "id",
-                "type": "xxxx"
-            } // 表示删除对应type和id的geomark
+        DELETE http://domain/v3/routex/crosses/:cross\_id/geomarks/:geomark_id?coordinate=(earth|mars)&token=xxxxxxxx
 
      - 获取 Geomarks
 
