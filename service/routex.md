@@ -368,5 +368,4 @@
         }
         {
             "id": "id",
-            "type": "location"
-        } // 只有id和type的marks，表示删除对应id的mark。
+        } // 只有id的marks，表示删除对应id的mark。
