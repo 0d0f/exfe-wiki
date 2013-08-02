@@ -368,4 +368,5 @@
         }
         {
             "id": "id",
-        } // 只有id的marks，表示删除对应id的mark。
+            "action": "delete"
+        } // 表示删除对应id的mark。
