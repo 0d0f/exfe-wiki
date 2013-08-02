@@ -84,7 +84,7 @@
 
         POST http://domain/v3/routex/breadcrumbs?coordinate=(earth|mars)&token=xxxxxx
 
-        Post Data:
+        Request Data:
 
             [
                 {
@@ -162,11 +162,59 @@
 
     此接口用于传输 app 用户画的路径图信息。这几个接口不考虑分包的问题，提交和下发的对象都是全量信息。
 
+     - 创建某个 Geomark
+
+        POST http://domain/v3/routex/crosses/:cross\_id/geomarks?coordinate=(earth|mars)&token=xxxxxxxx
+
+        Request Data:
+
+            {
+                "type": "location",
+                "created_at": nnn,
+                "created_by": "uid",
+                "updated_at": nnn,
+                "updated_by": "uid",
+                "tags": ["place", "park"],
+                "icon": "http://...",
+                "title": "Title",
+                "desc": "Description",
+                "acc": a.aaa,
+                "lng": x.xxx,
+                "lat": y.yyy,
+            }
+
+        or
+
+            {
+                "type": "route",
+                "created_at": 0,
+                "created_by": "id@provider",
+                "updated_at": 0,
+                "updated_by": "id@provider",
+                "tags": ["breadcrumbs", "geomarks"],
+                "title": "Title",
+                "desc": "Description",
+                "color": "rrggbbaa",
+                "positions": [
+                    {"ts": 9, "lng": x.xxx, "lat": y.yyy}, // 最新
+                    ...
+                    {"ts": 1, "lng": x.xxx, "lat": y.yyy}, // 最老
+                ]
+            }
+
+        Response:
+
+            "id" 
+
      - 更新某个 Geomark
 
-        POST http://domain/v3/routex/crosses/:cross\_id/geomarks/:geomark_id?coordinate=(earth|mars)&token=xxxxxxxx
+        PUT http://domain/v3/routex/crosses/:cross\_id/geomarks/:geomark_id?coordinate=(earth|mars)&token=xxxxxxxx
 
-        Post Data:
+        or
+
+        POST http://domain/v3/routex/crosses/:cross\_id/geomarks/:geomark_id?coordinate=(earth|mars)&token=xxxxxxxx&_method=PUT
+
+        Request Data:
 
             {
                 "id": "id",
@@ -206,7 +254,11 @@
 
      - 删除某个 Geomark
 
-        DELETE http://domain/v3/routex/crosses/:cross\_id/geomarks/:geomark_id?coordinate=(earth|mars)&token=xxxxxxxx
+        DELETE http://domain/v3/routex/crosses/:cross\_id/geomarks/:geomark_id?token=xxxxxxxx
+
+        or
+
+        POST http://domain/v3/routex/crosses/:cross\_id/geomarks/:geomark_id?token=xxxxxxxx&_method=DELETE
 
      - 获取 Geomarks
 
@@ -255,7 +307,7 @@
 
     POST http://domain/v3/routex/crosses/:cross\_id/request?token=xxxxxx&id=external_username@provider
 
-    No post Data.
+    No Request Data.
 
     No Response.
 
