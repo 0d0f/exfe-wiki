@@ -37,6 +37,7 @@
 添加源：
 
     > sudo add-apt-repository ppa:gophers/go
+    > sudo add-apt-repository ppa:rwky/redis
 
 安装：
 

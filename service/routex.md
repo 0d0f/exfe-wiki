@@ -4,6 +4,8 @@
 
 所有接口支持coordinate参数，表示操作的坐标系是地球坐标earth还是火星坐标mars。如果不给此参数，默认为地球坐标。
 
+所有接口支持token参数，用于权鉴。其中GET接口支持user_token，cross_access_token和cross invitation code，其余接口支持user_token和cross_access_token。
+
 ## 数据模型
 
  - Location模型
@@ -67,7 +69,7 @@
 
      - 提交用户可以更新的cross
 
-        POST http://domain/v3/routex/user/crosses
+        POST http://domain/v3/routex/user/crosses?token=xxxxxxxx
 
         Post Data:
 
@@ -160,7 +162,7 @@
             
  - Geomarks 更新
 
-    此接口用于传输 app 用户画的路径图信息。这几个接口不考虑分包的问题，提交和下发的对象都是全量信息。
+    此接口用于传输 app 用户画的路径图信息。
 
      - 创建某个 Geomark
 
