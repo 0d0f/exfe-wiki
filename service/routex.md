@@ -63,15 +63,56 @@
 
 ## 接口规划
 
+ - 获取某个cross_id是否曾经开启过routex
+
+    此接口提交一个cross_id的列表，返回对应的cross是否开启过routex服务。
+
+    此接口为内部接口，外部不能调用。
+
+     POST http://domain/v3/_innter/routex/crosses
+
+     Request Data:
+
+        [
+            nnnnn, // cross_id
+            nnnn,
+            nnnn
+        ]
+
+    Response Data:
+
+        [
+            {"cross_id": nnnnn, "has_routex": true},
+            {"cross_id": nnnn, "has_routex": false},
+            {"cross_id": nnnn, "has_routex": false},
+            ...
+        ]
+
+
  - 设置cross
 
     此接口设置用户提交的地理信息可以展示在哪个cross里。一次开启默认持续2个小时（可以在after_in_seconds设置，默认7200），就是说从上发一次save_breadcrumbs为true的时刻开始，2个小时内，此用户上发的breadcrumbs信息会存入对应的cross里。
+
+     - 获取用户在cross_id里routex的状态
+
+        GET http://domain/v3/routex/user/crosses/:cross_id
+
+        Response:
+
+            true
+
+        or
+            false
+
+        or
+
+            null
 
      - 提交用户可以更新的cross
 
         POST http://domain/v3/routex/user/crosses?token=xxxxxxxx
 
-        Post Data:
+        Request Data:
 
             [
                 {"cross_id": nnnnn, "save_breadcrumbs": true, "after_in_seconds": 7200},
