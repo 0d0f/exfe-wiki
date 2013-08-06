@@ -205,51 +205,9 @@
 
     此接口用于传输 app 用户画的路径图信息。
 
-     - 创建某个 Geomark
+     - 设置某个 Geomark
 
-        POST http://domain/v3/routex/crosses/:cross\_id/geomarks?coordinate=(earth|mars)&token=xxxxxxxx
-
-        Request Data:
-
-            {
-                "type": "location",
-                "created_at": nnn,
-                "created_by": "uid",
-                "updated_at": nnn,
-                "updated_by": "uid",
-                "tags": ["place", "park"],
-                "icon": "http://...",
-                "title": "Title",
-                "desc": "Description",
-                "acc": a.aaa,
-                "lng": x.xxx,
-                "lat": y.yyy,
-            }
-
-        or
-
-            {
-                "type": "route",
-                "created_at": 0,
-                "created_by": "id@provider",
-                "updated_at": 0,
-                "updated_by": "id@provider",
-                "tags": ["breadcrumbs", "geomarks"],
-                "title": "Title",
-                "desc": "Description",
-                "color": "rrggbbaa",
-                "positions": [
-                    {"ts": 9, "lng": x.xxx, "lat": y.yyy}, // 最新
-                    ...
-                    {"ts": 1, "lng": x.xxx, "lat": y.yyy}, // 最老
-                ]
-            }
-
-        Response:
-
-            "id" 
-
-     - 更新某个 Geomark
+        如果已经有同id的geomark存在，则覆盖原来的geomark，如果没有则新建一个geomark。
 
         PUT http://domain/v3/routex/crosses/:cross\_id/geomarks/:geomark_id?coordinate=(earth|mars)&token=xxxxxxxx
 
