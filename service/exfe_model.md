@@ -347,6 +347,7 @@ type <span id="Recipient">Recipient</span>
         Provider         string `json:"provider"`
         ExternalID       string `json:"external_id"`
         ExternalUsername string `json:"external_username"`
+        Fallbacks        []string `json:"fallbacks"`
     }
 
     func (r Recipient) Equal(other *Recipient) bool
