@@ -69,7 +69,7 @@
 
     此接口为内部接口，外部不能调用。
 
-     POST http://domain/v3/_innter/routex/crosses
+     POST http://domain/v3/routex/_innter/crosses
 
      Request Data:
 
@@ -95,7 +95,7 @@
 
      - 获取用户在cross_id里routex的状态
 
-        GET http://domain/v3/_inner/routex/user/crosses/:cross_id
+        GET http://domain/v3/routex/_inner/user/crosses/:cross_id
 
         Response:
 
