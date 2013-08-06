@@ -65,7 +65,7 @@
 
  - 获取某个cross_id是否曾经开启过routex
 
-    此接口提交一个cross_id的列表，返回对应的cross是否开启过routex服务。
+    此接口提交一个cross_id的列表，返回对应的cross是否开启过routex服务，如果开启过服务，返回routex最后的更新时间。
 
     此接口为内部接口，外部不能调用。
 
@@ -82,9 +82,9 @@
     Response Data:
 
         [
-            {"cross_id": nnnnn, "has_routex": true},
-            {"cross_id": nnnn, "has_routex": false},
-            {"cross_id": nnnn, "has_routex": false},
+            {"cross_id": nnnnn, "has_routex": true,  "updated_at": xxxxx},
+            {"cross_id": nnnn,  "has_routex": false},
+            {"cross_id": nnnn,  "has_routex": false},
             ...
         ]
 
