@@ -95,13 +95,14 @@
 
      - 获取用户在cross_id里routex的状态
 
-        GET http://domain/v3/routex/user/crosses/:cross_id
+        GET http://domain/v3/_inner/routex/user/crosses/:cross_id
 
         Response:
 
             true
 
         or
+
             false
 
         or
@@ -203,17 +204,17 @@
             
  - Geomarks 更新
 
-    此接口用于传输 app 用户画的路径图信息。
+    此接口用于传输 app 用户画的路径图信息。url中的type字段为geomark的类型，可以为route或者location。
 
      - 设置某个 Geomark
 
         如果已经有同id的geomark存在，则覆盖原来的geomark，如果没有则新建一个geomark。
 
-        PUT http://domain/v3/routex/crosses/:cross\_id/geomarks/:geomark_id?coordinate=(earth|mars)&token=xxxxxxxx
+        PUT http://domain/v3/routex/crosses/:cross\_id/geomarks/:type/:geomark_id?coordinate=(earth|mars)&token=xxxxxxxx
 
         or
 
-        POST http://domain/v3/routex/crosses/:cross\_id/geomarks/:geomark_id?coordinate=(earth|mars)&token=xxxxxxxx&_method=PUT
+        POST http://domain/v3/routex/crosses/:cross\_id/geomarks/:type/:geomark_id?coordinate=(earth|mars)&token=xxxxxxxx&_method=PUT
 
         Request Data:
 
@@ -255,11 +256,11 @@
 
      - 删除某个 Geomark
 
-        DELETE http://domain/v3/routex/crosses/:cross\_id/geomarks/:geomark_id?token=xxxxxxxx
+        DELETE http://domain/v3/routex/crosses/:cross\_id/geomarks/:type/:geomark_id?token=xxxxxxxx
 
         or
 
-        POST http://domain/v3/routex/crosses/:cross\_id/geomarks/:geomark_id?token=xxxxxxxx&_method=DELETE
+        POST http://domain/v3/routex/crosses/:cross\_id/geomarks/:type/:geomark_id?token=xxxxxxxx&_method=DELETE
 
      - 获取 Geomarks
 
@@ -362,12 +363,13 @@
             "desc": "Description",
             "color": "rrggbbaa",
             "positions": [
-                {lng": x.xxx, "lat": y.yyy},
+                {"lng": x.xxx, "lat": y.yyy},
                 ...
                 {"lng": x.xxx, "lat": y.yyy}
             ]
         }
         {
+            "action": "delete",
             "id": "id",
-            "action": "delete"
+            "type": "route",
         } // 表示删除对应id的mark。
