@@ -100,6 +100,6 @@
     - 403: not_authorized
     - 401: invalid_auth
     - 403: not_authorized
-    - 400: no identity_id
-    - 400: error identity_id
+    - 400: no_identity_id
+    - 400: error_identity_id
     - 500: server_error
