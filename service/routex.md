@@ -1,4 +1,5 @@
 # 活点地图
+ ,
 
 ## 通用原则
 
@@ -69,7 +70,7 @@
 
     此接口为内部接口，外部不能调用。
 
-     POST http://domain/v3/routex/_innter/crosses
+     POST http://domain/v3/routex/_inner/crosses
 
      Request Data:
 
