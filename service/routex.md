@@ -83,9 +83,9 @@
     Response Data:
 
         [
-            {"cross_id": nnnnn, "has_routex": true,  "updated_at": xxxxx},
-            {"cross_id": nnnn,  "has_routex": false},
-            {"cross_id": nnnn,  "has_routex": false},
+            {"cross_id": nnnnn, "enable": true,  "updated_at": xxxxx},
+            {"cross_id": nnnn,  "enable": false},
+            {"cross_id": nnnn,  "enable": false},
             ...
         ]
 
