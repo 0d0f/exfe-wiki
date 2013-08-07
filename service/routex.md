@@ -95,7 +95,7 @@
 
      - 获取用户在cross_id里routex的状态
 
-        GET http://domain/v3/routex/_inner/user/crosses/:cross_id
+        GET http://domain/v3/routex/_inner/user/:user_id/crosses/:cross_id
 
         Response:
 
