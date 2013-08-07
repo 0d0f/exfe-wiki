@@ -86,3 +86,20 @@
             "accepted"    : 1,
             "type"        : "exfee"
         }
+
+
+## Remove Notification Identity
+* endpoint: /v2/exfee/[int:exfee_id]/removenotificationidentity
+* QUERY args:
+    - token: [str:user_token]
+* POST args:
+    - identity_id: [str:external_username@provider]
+* returns:
+    - 200: {"exfee" : [object:exfee]}
+    - 400: no_exfee_id
+    - 403: not_authorized
+    - 401: invalid_auth
+    - 403: not_authorized
+    - 400: no_identity_id
+    - 400: error_identity_id
+    - 500: server_error
