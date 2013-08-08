@@ -70,7 +70,7 @@
 
     此接口为内部接口，外部不能调用。
 
-     POST http://domain/v3/routex/_inner/crosses
+     POST http://domain/v3/routex/_inner/search/crosses
 
      Request Data:
 
@@ -96,7 +96,7 @@
 
      - 获取用户在cross_id里routex的状态
 
-        GET http://domain/v3/routex/_inner/user/:user_id/crosses/:cross_id
+        GET http://domain/v3/routex/_inner/users/:user_id/crosses/:cross_id
 
         Response:
 
@@ -112,7 +112,7 @@
 
      - 提交用户可以更新的cross（内部接口）
 
-        POST http://domain/v3/routex/_inner/user/:user_id/crosses?token=xxxxxxxx
+        POST http://domain/v3/routex/_inner/users/:user_id/crosses?token=xxxxxxxx
 
         Request Data:
 
@@ -123,7 +123,7 @@
 
      - 提交用户可以更新的cross
 
-        POST http://domain/v3/routex/user/crosses?token=xxxxxxxx
+        POST http://domain/v3/routex/users/crosses?token=xxxxxxxx
 
         Request Data:
 
@@ -162,7 +162,7 @@
 
      - 获得某个 cross 所有用户的 breadcrumbs 信息
 
-        GET http://domain/v3/routex/crosses/:cross\_id/breadcrumbs?coordinate=(earth|mars)&token=xxxxxx
+        GET http://domain/v3/routex/breadcrumbs/crosses/:cross\_id?coordinate=(earth|mars)&token=xxxxxx
 
         Response:
 
@@ -190,7 +190,7 @@
 
      - 获得某个 cross 某个用户的 breadcrumbs 信息
 
-        GET http://domain/v3/routex/crosses/:cross\_id/breadcrumbs/users/:user\_id?coordinate=(earth|mars)&token=xxxxxx&start=100
+        GET http://domain/v3/routex/breadcrumbs/crosses/:cross\_id/users/:user\_id?coordinate=(earth|mars)&token=xxxxxx&start=100
 
         每次最多只返回最新的100个positions，如果要请求更多的数据，可以指定start参数，表示从第start个position开始再往更老的时间取最多100个数据。
 
@@ -222,11 +222,11 @@
 
         如果已经有同id的geomark存在，则覆盖原来的geomark，如果没有则新建一个geomark。
 
-        PUT http://domain/v3/routex/crosses/:cross\_id/geomarks/:type/:geomark_id?coordinate=(earth|mars)&token=xxxxxxxx
+        PUT http://domain/v3/routex/geomarks/crosses/:cross\_id/:geomark\_type/:geomark\_id?coordinate=(earth|mars)&token=xxxxxxxx
 
         or
 
-        POST http://domain/v3/routex/crosses/:cross\_id/geomarks/:type/:geomark_id?coordinate=(earth|mars)&token=xxxxxxxx&_method=PUT
+        POST http://domain/v3/routex/geomarks/crosses/:cross\_id/geomarks/:geomark\_type/:geomark\_id?coordinate=(earth|mars)&token=xxxxxxxx&_method=PUT
 
         Request Data:
 
@@ -268,15 +268,15 @@
 
      - 删除某个 Geomark
 
-        DELETE http://domain/v3/routex/crosses/:cross\_id/geomarks/:type/:geomark_id?token=xxxxxxxx
+        DELETE http://domain/v3/routex/geomarks/crosses/:cross\_id/:geomark\_type/:geomark\_id?token=xxxxxxxx
 
         or
 
-        POST http://domain/v3/routex/crosses/:cross\_id/geomarks/:type/:geomark_id?token=xxxxxxxx&_method=DELETE
+        POST http://domain/v3/routex/geomarks/crosses/:cross\_id/:geomark\_type/:geomark\_id?token=xxxxxxxx&_method=DELETE
 
      - 获取 Geomarks
 
-        GET http://domain/v3/routex/crosses/:cross\_id/geomarks?coordinate=(earth|mars)&token=xxxxxxxxx
+        GET http://domain/v3/routex/geomarks/crosses/:cross\_id?coordinate=(earth|mars)&token=xxxxxxxxx
 
         Response:
 
@@ -317,9 +317,9 @@
 
  - Request
 
-    给用户发送push，通知用户登录routex。
+    给用户发送push，通知用户登录routex。identity_id是external_username@provider的形式。
 
-    POST http://domain/v3/routex/crosses/:cross\_id/request?token=xxxxxx&id=external_username@provider
+    POST http://domain/v3/routex/notification/crosses/:cross\_id/:identity_id?token=xxxxxx
 
     No Request Data.
 
