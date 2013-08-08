@@ -110,6 +110,17 @@
 
             null
 
+     - 提交用户可以更新的cross（内部接口）
+
+        POST http://domain/v3/routex/_inner/user/:user_id/crosses?token=xxxxxxxx
+
+        Request Data:
+
+            [
+                {"cross_id": nnnnn, "save_breadcrumbs": true, "after_in_seconds": 7200},
+                {"cross_id": mmmmm, "save_breadcrumbs": false}
+            ]
+
      - 提交用户可以更新的cross
 
         POST http://domain/v3/routex/user/crosses?token=xxxxxxxx
