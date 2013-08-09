@@ -1,7 +1,7 @@
 # 连接无线网络
 
-* SSID: 0d0f    
-Pwd: (hidden)    
+* SSID: 0d0f
+* Pwd: gatherx0    
 
 ## 自动翻墙代理
 * 连上无线网络(SSID:0d0f) 或者 有线网络
@@ -21,20 +21,23 @@ MAC下查询WI-FI的开启状态
 #手动配置代理
 ## 代理
 
-* Proxy1:    
-Domain: panda.0d0f.com    
-Port: 8964    
-Type: SOCKS5    
+Proxy1:
 
-* Proxy2:    
-Domain: panda.0d0f.com    
-Port: 6489    
-Type: HTTP
+    Domain: panda.0d0f.com    
+    Port: 8964    
+    Type: SOCKS5    
+
+
+Proxy2:    
+
+    Domain: panda.0d0f.com    
+    Port: 6489    
+    Type: HTTP
 
 
 ## PAC
 PAC URL: 
    
-* http://free.0d0f.com/
-* http://wpad/wpad.dat
+    http://free.0d0f.com/
+    http://wpad/wpad.dat
 
