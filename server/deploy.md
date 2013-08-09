@@ -39,6 +39,7 @@
         > source exfe_data_*******.sql
         > source exfe_services_schema_*******.sql
         > source exfe_services_data_*******.sql
+        > create user exfe@localhost identified by '******';
         > grant all privileges on exfe.* to 'exfe'@'%' identified by '*******';
         > grant all privileges on exfe_services.* to 'exfe'@'%' identified by '*******';
         > FLUSH PRIVILEGES;
@@ -47,21 +48,160 @@
 ## Install redis
 
         #!bash
+        # add-apt-repository ppa:rwky/redis
+        # apt-get update
         # apt-get install redis-server
 
-### redis_cache.conf
+### /etc/redis/redis-cache.conf
 
-        pidfile /var/run/redis_cache.pid
+        pidfile /var/run/redis-cache.pid
         port 6380
-        dbfilename dump_cache.rdb
-        maxmemory 52428800
-        maxmemory-policy volatile-lru
+        logfile /var/log/redis/redis-cache.log
+        # save 900 1
+        # save 300 10
+        # save 60 10000
+        dbfilename dump-cache.rdb
+        maxmemory 128000000
+        maxmemory-policy allkeys-lru
+
+### /etc/init/redis-cache-server.conf
+
+        # redis-cache-server - Redis Datastore Server, for cache
+        #
+        # Redis is a key value in memory persistent datastore
+
+        start on (local-filesystems and runlevel [2345])
+        stop on runlevel [016]
+        respawn
+        limit nofile 20000 65000
+        expect fork
+        pre-start script
+        mkdir -p /var/run/redis
+        chown redis:redis /var/run/redis
+        end script
+        exec start-stop-daemon --start --chuid redis:redis --pidfile /var/run/redis/redis-cache.pid --umask 007 --exec /usr/bin/redis-server -- /etc/redis/redis-cache.conf
+
+
+## Install git
+
+        #!bash
+        # apt-get install git
+        # adduser git
+        # su git
+        $ git config --global user.email "pandaci@exfe.com"
+        $ git config --global user.name "Panda Ci"
+
+
+## Install php
+
+        #!bash
+        # add-apt-repository ppa:ondrej/php5
+        # apt-get update
+        # apt-get install php5-cli php5-cgi php5-curl php5-mysqlnd php5-gd php5-intl php5-dev
+
+### /etc/php5/cgi/php.ini
+
+        date.timezone = 'UTC'
+        # magic_quotes_gpc = Off
+        post_max_size = 15M
+        upload_max_filesize = 15M
+        zlib.output_compression = On
+        session.cookie_domain = '.exfe.com'
+        error_reporting = E_ALL
+        log_errors = On
+        error_log = /var/log/php.log
+
+
+## Install phpredis
+
+        #!bash
+        # git clone https://github.com/nicolasff/phpredis.git
+        # cd phpredis
+        # phpize
+        # ./configure
+        # make
+        # make install
+        # cp rpm/redis.ini /etc/php5/mods-available/
+        # ln -s /etc/php5/mods-available/redis.ini /etc/php5/cgi/conf.d/20-redis.ini
+        # ln -s /etc/php5/mods-available/redis.ini /etc/php5/cli/conf.d/20-redis.ini
 
 
 ## Install lighttpd
 
         #!bash
         # apt-get install lighttpd
+
+
+## deploy codes
+
+        #!bash
+        # mkdir /exfe
+        # chown git:git /exfe
+        # sudo su git
+        $ cd /exfe
+
+        $ mkdir exfebus 
+        $ cd exfebus
+        $ git init
+        $ git config --add receive.denycurrentbranch ignore
+        $ touch world
+        $ git add .
+        $ git commit -am 'Hello World!'
+
+        $ cd ..
+        $ mkdir exfeweb
+        $ cd exfeweb
+        $ git init
+        $ git config --add receive.denycurrentbranch ignore
+        $ touch love
+        $ git add .
+        $ git commit -am 'Hello World!'
+
+        $ cd ..
+        $ mkdir exfelight
+        $ cd exfelight
+        $ git init
+        $ git config --add receive.denycurrentbranch ignore
+        $ touch love
+        $ git add .
+        $ git commit -am 'Hello World!'
+
+    add git repository to build server.
+
+        > vi /exfe/exfebus_release/.git/config
+        > vi /exfe/exfeweb_release/.git/config
+        > vi /exfe/exfelight_release/.git/config
+        [remote "release"]
+            url = git@domain:/exfe/exfebus
+
+    push code.
+
+### deploy exfebus
+
+        # su git
+        $ cd /exfe/exfebus
+        $ git checkout -f HEAD
+        // edit exfe.json
+        $ ./bin/mysql.sh
+        $ su
+
+        # cd /usr/lib/lighttpd/
+        # ln -s /exfe/exfebus/mod_mysql_obj.so
+
+        # cd /etc/rsyslog.d/
+        # ln -s /exfe/exfebus/configure/syslog.conf 30-exfebus.conf
+        # service rsyslog restart
+
+        # cd /etc/logrotate.d/
+        # ln -s /exfe/exfebus/configure/logrotate.conf exfebus
+
+        # cd /etc/init.d
+        # ln -s /exfe/exfebus/configure/init.d/exfe_bot 
+        # ln -s /exfe/exfebus/configure/init.d/exfe_queue 
+        # ln -s /exfe/exfebus/configure/init.d/exfe_service
+        # update-rc.d exfe_bot defaults
+        # update-rc.d exfe_queue defaults
+        # update-rc.d exfe_service defaults
 
 ### /etc/lighttpd/lighttpd.conf
 
@@ -150,6 +290,7 @@
                     "^/eimgs/(.*)$" => "/eimgs/$1",
                     "^/404$" => "index.php?_route=/error/404",
                     "^/500$" => "views/error/500.html",
+                    "^/v3/routex/_inner(.*)$" => "index.php?_route=/error/404",
                     "^/v3/routex(.*)$" => "/v3/routex$1",
                     "^.*(\?.*)$" => "index.php$1",
                     "^.*$" => "index.php",
@@ -177,74 +318,11 @@
         }
 
 
-## Install php
-
-        #!bash
-        # add-apt-repository ppa:ondrej/php5
-        # install php5-cli php5-cgi php5-curl php5-mysqlnd php5-gd php5-intl php5-dev
-
-### php.ini
-
-        date.timezone = 'UTC'
-        magic_quotes_gpc = Off
-        post_max_size = 15M
-        upload_max_filesize = 15M
-        zlib.output_compression = On
-        session.cookie_domain = '.exfe.com'
-        error_reporting = E_ALL
-        log_errors = On
-        error_log = /var/log/php.log
-
-
-## Install phpredis
-
-        #!bash
-        # git clone https://github.com/nicolasff/phpredis.git
-        # cd phpredis
-        # phpize
-        # ./configure
-        # make
-        # make install
-
-
-## Install git
-
-        #!bash
-        # apt-get install git
-        # su git
-        $ git config  --global  user.email "pandaci@exfe.com"
-        $ git config --global user.name "Panda Ci"
-
-
-## Install make
-
-        #!bash
-        # apt-get install make
-
-
 ## Config sshd
 
 ### /etc/ssh/sshd_config
 
         PasswordAuthentication no
-
-
-## deploy codes
-
-        #!bash
-        # mkdir /exfe
-        # chown git:git /exfe
-        # sudo su git
-        $ cd /exfe
-        $ mkdir exfeweb
-        $ cd exfeweb
-        $ git init
-        $ git config --add receive.denycurrentbranch ignore
-        $ touch love
-        $ git add .
-        $ git commit -am 'Hello World!'
-
-
 
 
 
