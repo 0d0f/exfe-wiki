@@ -112,7 +112,7 @@
 
      - 提交用户可以更新的cross（内部接口）
 
-        POST http://domain/v3/routex/_inner/users/:user_id/crosses?token=xxxxxxxx
+        POST http://domain/v3/routex/_inner/users/:user_id/crosses
 
         Request Data:
 
