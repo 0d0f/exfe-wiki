@@ -8,9 +8,12 @@
 ## 流程
 
 ### 有 xcode
-  1. 有 xcode，调用 getCrossByInvitationToken 接口
-  2. --> C
-  3. 根据本地 user-token 和 cross-access-token 、 read-only 判断读写状态
+  1. 有 xcode
+  2. 检查本地是否有 cross-access-token
+  3. 有 --> C
+  4. 没有 调用 getCrossByInvitationToken 接口
+  5. --> C
+  6. 根据本地 user-token 和 cross-access-token 、 read-only 判断读写状态
 
 ### 没有 xcode
   1. 判断本地是否有 user-token
@@ -23,9 +26,8 @@
   4. 授权成功，打开活点地图 url
     1. 保存 OAuth 回来的 user-token
     2. --> C
-  5. 授权失败
+  5. 授权失败/取消授权
 
 ### B 微信外
 
 ### C 进入活点地图
-
