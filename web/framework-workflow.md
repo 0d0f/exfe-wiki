@@ -6,16 +6,17 @@ domain/!:cross_id/:widget?xcode=xxxx&via=identity
 
 ## 基本流程
 1. if (WebKit = 微信)
-    1. if (user_token)
-        1. if (isSmith) inviteExfee(user_id);       #isSmith服务器已给
-        1. if (未获得cross数据) call getCross(user_token);       #需要服务器修改优化
+    a. if (user_token)
+        1. if (isSmith) inviteExfee(user_id);       #isSmith服务器已下发
+        1. 如果未获得cross数据则getCross(user_token);       #需要服务器优化
         1. 如果已获得cross数据，根据URL判断加载X页或widget，开始执行js。
-    1. call OAuth()
-        1. 如果OAuth返回的user_token与本地user_token不同则合并身份？
-        1. if (已获得cross数据) inviteExfee(user_id);
-        1. 如果已获得cross数据，根据URL判断加载X页或widget，开始执行js。
+    a. call OAuth()
+        1. 如果OAuth返回的user_token与本地user_token不同则合并身份？  #此步骤待定
+        1. 如果已获得cross数据
+            a. inviteExfee(user_id);
+            a. 根据URL判断加载X页或widget，开始执行js。
         1. 显示invalid link页面，结束。
-    1. 显示提示页面告知用户必须需同意OAuth
+    a. 显示提示页面告知用户必须需同意OAuth
         1. if (isSmith) 可以允许用户输入手机邮箱。
         1. 结束。
 1. if (cross-access-token)
