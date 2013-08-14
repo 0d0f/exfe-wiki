@@ -1,5 +1,4 @@
 # 活点地图
- ,
 
 ## 通用原则
 
@@ -139,6 +138,30 @@
      - 用户更新 route
 
         POST http://domain/v3/routex/breadcrumbs?coordinate=(earth|mars)&token=xxxxxx
+
+        Request Data:
+
+            [
+                {
+                    "ts": yyyy,
+                    "acc": "nnn",
+                    "lng": "xxxxxx",
+                    "lat": "yyyyyy"
+                },                // 最新
+                <simple location>,
+                <simple location> // 最老
+            ]
+
+        Response:
+
+            {
+                "earth_to_mars_latitude": xx.xxxx,
+                "earth_to_mars_longitude": yy.yyyy
+            }
+
+     - 用户更新 route（内部用）
+
+        POST http://domain/v3/routex/_inner/breadcrumbs/users/:user_id?coordinate=(earth|mars)
 
         Request Data:
 
@@ -364,6 +387,7 @@
             "lat": y.yyy
         }
         {
+            "action": "update", // 流建立后立刻下发的历史geomark对象不带action字段，之后更新的geomark都带action update字段。
             "id": "id",
             "type": "route",
             "created_at": 0,
