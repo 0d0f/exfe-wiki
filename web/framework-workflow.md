@@ -1,4 +1,4 @@
-#·X·页框架流程
+# ·X·页框架流程
 
 ## URL格式
 domain/!:cross_id/:widget?xcode=xxxx&via=identity
@@ -14,10 +14,9 @@ domain/!:cross_id/:widget?xcode=xxxx&via=identity
         1. getCross(user_token)，成功则根据URL判断加载cross或widget页，开始执行js。
         1. getCrossByInvitationToken，若返回user_roken则将微信身份合并，并根据URL判断加载cross或widget页，开始执行js。
         1. 显示invalid link页，结束。
-    a. 显示提示页面告知用户必须需同意OAuth
-        1. 当isSmith时可让用户输入手机邮箱验证。
+    a. 显示提示页面告知用户必须需同意OAuth。当isSmith时可让用户输入手机邮箱验证。
     a. 结束。
-//以下流程未完成
+1. //以下流程未完成
 1. if (cross-access-token)
     1. call getCrossByInvitationToken();
     1. （浏览身份相关逻辑）成功则打开·X·或widget页面。
