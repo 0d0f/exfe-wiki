@@ -1,24 +1,23 @@
-·X·页框架流程
-------------
-## URL形式
+#·X·页框架流程
 
+## URL格式
 domain/!:cross_id/:widget?xcode=xxxx&via=identity
 
 ## 基本流程
 1. if (WebKit = 微信)
-    a. if (user_token)
-        1. if (isSmith) inviteExfee(user_id);       #isSmith服务器已下发
-        1. 如果未获得cross数据则getCross(user_token);       #需要服务器优化
-        1. 如果已获得cross数据，根据URL判断加载X页或widget，开始执行js。
-    a. call OAuth()
-        1. 如果OAuth返回的user_token与本地user_token不同则合并身份？  #此步骤待定
-        1. 如果已获得cross数据
-            a. inviteExfee(user_id);
-            a. 根据URL判断加载X页或widget，开始执行js。
-        1. 显示invalid link页面，结束。
+    a. 本地已有user_token
+        1. 当isSmith时将user下的微信（或首选）身份加到cross中。     //需服务器下发isSmith标识
+        1. getCross(user_token)，成功则根据URL判断加载cross或widget页，开始执行js。
+    a. 调用微信内OAuth，并保存返回的user_token
+        1. 如果返回的user_token与本地不同则合并身份     //此步骤待定
+        1. 当isSmith时将user下的微信（或首选）身份加到cross中。
+        1. getCross(user_token)，成功则根据URL判断加载cross或widget页，开始执行js。
+        1. getCrossByInvitationToken，若返回user_roken则将微信身份合并，并根据URL判断加载cross或widget页，开始执行js。
+        1. 显示invalid link页，结束。
     a. 显示提示页面告知用户必须需同意OAuth
-        1. if (isSmith) 可以允许用户输入手机邮箱。
-        1. 结束。
+        1. 当isSmith时可让用户输入手机邮箱验证。
+    a. 结束。
+//以下流程未完成
 1. if (cross-access-token)
     1. call getCrossByInvitationToken();
     1. （浏览身份相关逻辑）成功则打开·X·或widget页面。
