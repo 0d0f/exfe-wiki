@@ -10,7 +10,7 @@
 ### 有 xcode
   1. 有 xcode，调用 getCrossByInvitationToken 接口
   2. --> C
-  3. 根据 cross-access-token 和 read-only 判断读写状态
+  3. 根据本地 user-token 和 cross-access-token 、 read-only 判断读写状态
 
 ### 没有 xcode
   1. 判断本地是否有 user-token
