@@ -236,7 +236,7 @@
                     {"ts": 1, "lng": x.xxx, "lat": y.yyy}, // 最老
                 ]
             }
-            
+
  - Geomarks 更新
 
     此接口用于传输 app 用户画的路径图信息。url中的type字段为geomark的类型，可以为route或者location。
@@ -349,7 +349,7 @@
     No Response.
 
  - Streaming
- 
+
     获得关于某个 cross 的 route_x 更新的所有通知。第一次连接后，会下发cross对应的当前所有breadcrumbs和geomarks的信息。对于route对象，每次下发对象最多含有100个position信息，多于100个position会拆成几次分别下发，id相同，updated at相同。如果updated at不同但id相同的route，需要覆盖之前的同id route内容。对于tag为breadcrumbs的route对象，只包含对应用户最新所在点的信息。
 
     POST http://domain/v3/routex/crosses/:cross_id?_method=WATCH&coordinate=(earth|mars)&token=xxxxxx
