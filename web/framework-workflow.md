@@ -12,7 +12,7 @@ domain/!:cross_id/:widget?xcode=xxxx&via=identity
         1. 如果返回的user_token与本地不同则合并身份     //此步骤待定
         1. 当isSmith时将user下的微信（或首选）身份加到cross中。
         1. getCross(user_token)，成功则根据URL判断加载cross或widget页，开始执行js。
-        1. getCrossByInvitationToken，若返回user_roken则将微信身份合并，并根据URL判断加载cross或widget页，开始执行js。
+        1. getCrossByInvitationToken，若返回user_token则将微信身份合并，并根据URL判断加载cross或widget页，开始执行js。
         1. 显示invalid link页，结束。
     a. 显示提示页面告知用户必须需同意OAuth。当isSmith时可让用户输入手机邮箱验证。
     a. 结束。
