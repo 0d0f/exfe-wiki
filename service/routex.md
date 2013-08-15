@@ -34,9 +34,9 @@
 
         {
             "ts": yyyy,
-            "acc": "nnn",
-            "lng": "xxxxxx",
-            "lat": "yyyyyy"
+            "acc": nnn,
+            "lng": x.xxxxx,
+            "lat": y.yyyyy
         }
 
  - Route模型
@@ -144,9 +144,9 @@
             [
                 {
                     "ts": yyyy,
-                    "acc": "nnn",
-                    "lng": "xxxxxx",
-                    "lat": "yyyyyy"
+                    "acc": nnn,
+                    "lng": x.xxxxx,
+                    "lat": y.yyyyy
                 },                // 最新
                 <simple location>,
                 <simple location> // 最老
@@ -168,9 +168,9 @@
             [
                 {
                     "ts": yyyy,
-                    "acc": "nnn",
-                    "lng": "xxxxxx",
-                    "lat": "yyyyyy"
+                    "acc": nnn,
+                    "lng": xx.xxxx,
+                    "lat": yy.yyyy
                 },                // 最新
                 <simple location>,
                 <simple location> // 最老
