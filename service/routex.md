@@ -22,7 +22,7 @@
             "tags": ["place", "park"],
             "icon": "http://...",
             "title": "Title",
-            "desc": "Description",
+            "description": "Description",
             "acc": a.aaa,
             "lng": x.xxx,
             "lat": y.yyy
@@ -52,7 +52,7 @@
             "updated_by": "id@provider",
             "tags": ["breadcrumbs", "geomarks"],
             "title": "Title",
-            "desc": "Description",
+            "description": "Description",
             "color": "rrggbbaa",
             "positions": [
                 {"ts": 9, "lng": x.xxx, "lat": y.yyy}, // 最新
@@ -200,7 +200,7 @@
                     "updated_by": "",
                     "tags": ["breadcrumbs"],
                     "title": "Title",
-                    "desc": "Description",
+                    "description": "Description",
                     "color": "rrggbbaa",
                     "positions": [
                         {"ts": 9, "lng": x.xxx, "lat": y.yyy}, // 最新
@@ -228,7 +228,7 @@
                 "updated_by": "",
                 "tags": ["breadcrumbs"],
                 "title": "Title",
-                "desc": "Description",
+                "description": "Description",
                 "color": "rrggbbaa",
                 "positions": [
                     {"ts": 9, "lng": x.xxx, "lat": y.yyy}, // 最新
@@ -263,7 +263,7 @@
                 "tags": ["place", "park"],
                 "icon": "http://...",
                 "title": "Title",
-                "desc": "Description",
+                "description": "Description",
                 "acc": a.aaa,
                 "lng": x.xxx,
                 "lat": y.yyy,
@@ -280,7 +280,7 @@
                 "updated_by": "id@provider",
                 "tags": ["breadcrumbs", "geomarks"],
                 "title": "Title",
-                "desc": "Description",
+                "description": "Description",
                 "color": "rrggbbaa",
                 "positions": [
                     {"ts": 9, "lng": x.xxx, "lat": y.yyy}, // 最新
@@ -314,7 +314,7 @@
                     "tags": ["place", "park"],
                     "icon": "http://...",
                     "title": "Title",
-                    "desc": "Description",
+                    "description": "Description",
                     "acc": a.aaa,
                     "lng": x.xxx,
                     "lat": y.yyy,
@@ -328,7 +328,7 @@
                     "updated_by": "id@provider",
                     "tags": ["breadcrumbs", "geomarks"],
                     "title": "Title",
-                    "desc": "Description",
+                    "description": "Description",
                     "color": "rrggbbaa",
                     "positions": [
                         {"ts": 9, "lng": x.xxx, "lat": y.yyy}, // 最新
@@ -365,7 +365,7 @@
             "updated_by": "",
             "tags": ["breadcrumbs"],
             "title": "Title",
-            "desc": "Description",
+            "description": "Description",
             "color": "rrggbbaa",
             "positions": [
                 {"ts": 9, "lng": x.xxx, "lat": y.yyy}, // 最新
@@ -381,7 +381,7 @@
             "tags": ["place", "park"],
             "icon": "http://...",
             "title": "Title",
-            "desc": "Description",
+            "description": "Description",
             "acc": a.aaa,
             "lng": x.xxx,
             "lat": y.yyy
@@ -396,7 +396,7 @@
             "updated_by": "id@provider",
             "tags": ["geomarks"],
             "title": "Title",
-            "desc": "Description",
+            "description": "Description",
             "color": "rrggbbaa",
             "positions": [
                 {"lng": x.xxx, "lat": y.yyy},
