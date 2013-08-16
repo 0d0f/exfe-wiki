@@ -1,7 +1,6 @@
 # Framework workflow 框架流程
 
 ## URL格式
-domain/:identity?token=xxxx
 domain/!:cross\_id/:widget?xcode=xxxx&via=identity
 
 ## 基本流程
