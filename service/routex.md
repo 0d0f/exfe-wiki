@@ -91,9 +91,16 @@
 
  - 设置cross
 
-    此接口设置用户提交的地理信息可以展示在哪个cross里。一次开启默认持续2个小时（可以在after_in_seconds设置，默认7200），就是说从上发一次save_breadcrumbs为true的时刻开始，2个小时内，此用户上发的breadcrumbs信息会存入对应的cross里。
+
+     - 设置新手引导
+
+        为用户设置新手引导cross相关的routex信息。参数都是必须的。
+
+        POST http://domain/v3/routex/_inner/tutorial/users/:user_id?cross_id=nnnn&lat=x.xxx&lng=y.yyy&language=zh-cn
 
      - 获取用户在cross_id里routex的状态
+
+        获取用户在某个cross的routex的状态，true为开启上报，false为关闭上报，null为用户没有操作过当前cross对应的routex。
 
         GET http://domain/v3/routex/_inner/users/:user_id/crosses/:cross_id
 
@@ -110,6 +117,8 @@
             null
 
      - 提交用户可以更新的cross（内部接口）
+
+        此接口设置用户提交的地理信息可以展示在哪个cross里。一次开启默认持续2个小时（可以在after_in_seconds设置，默认7200），就是说从上发一次save_breadcrumbs为true的时刻开始，2个小时内，此用户上发的breadcrumbs信息会存入对应的cross里。
 
         POST http://domain/v3/routex/_inner/users/:user_id/crosses
 
