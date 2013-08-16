@@ -213,9 +213,9 @@
 
      - 获得某个 cross 某个用户的 breadcrumbs 信息
 
-        GET http://domain/v3/routex/breadcrumbs/crosses/:cross_id/users/:user_id?coordinate=(earth|mars)&token=xxxxxx&start=100
+        GET http://domain/v3/routex/breadcrumbs/crosses/:cross_id/users/:user_id?coordinate=(earth|mars)&token=xxxxxx&after_timestamp=xxxxx
 
-        每次最多只返回最新的100个positions，如果要请求更多的数据，可以指定start参数，表示从第start个position开始再往更老的时间取最多100个数据。
+        每次最多只返回最新的100个positions，如果要请求更多的数据，可以指定after_timestamp参数，表示从after_timestamp时间开始再往更老的时间取最多100个数据。
 
         Response:
 
