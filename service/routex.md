@@ -23,7 +23,6 @@
             "icon": "http://...",
             "title": "Title",
             "description": "Description",
-            "acc": a.aaa,
             "lng": x.xxx,
             "lat": y.yyy
         }
@@ -33,10 +32,9 @@
     Simple Location模型用于提交用户的坐标信息。
 
         {
-            "ts": yyyy,
-            "acc": nnn,
-            "lng": x.xxxxx,
-            "lat": y.yyyyy
+            "t": yyyy,
+            "gps": [x.xxx, y.yyy, n.nnn]
+            // gps信息，都是浮点数。第一个值表示纬度latitude，第二个表示经度longitude，第三个表示经纬度的精度accuracy
         }
 
  - Route模型
@@ -55,9 +53,9 @@
             "description": "Description",
             "color": "rrggbbaa",
             "positions": [
-                {"ts": 9, "lng": x.xxx, "lat": y.yyy}, // 最新
+                {"t": yyyy, "gps": []}, // 最新
                 ...
-                {"ts": 1, "lng": x.xxx, "lat": y.yyy}  // 最老
+                {"t": yyyy, "gps": []} // 最老
             ]
         }
 
@@ -151,14 +149,9 @@
         Request Data:
 
             [
-                {
-                    "ts": yyyy,
-                    "acc": nnn,
-                    "lng": x.xxxxx,
-                    "lat": y.yyyyy
-                },                // 最新
+                {"t": yyyy, "gps": []}, // 最新
                 <simple location>,
-                <simple location> // 最老
+                <simple location>       // 最老
             ]
 
         Response:
@@ -175,14 +168,9 @@
         Request Data:
 
             [
-                {
-                    "ts": yyyy,
-                    "acc": nnn,
-                    "lng": xx.xxxx,
-                    "lat": yy.yyyy
-                },                // 最新
+                {"t": yyyy, "gps": []}, // 最新
                 <simple location>,
-                <simple location> // 最老
+                <simple location>       // 最老
             ]
 
         Response:
@@ -212,9 +200,9 @@
                     "description": "Description",
                     "color": "rrggbbaa",
                     "positions": [
-                        {"ts": 9, "lng": x.xxx, "lat": y.yyy}, // 最新
+                        {"t": yyyy, "gps": []}, // 最新
                         ...
-                        {"ts": 1, "lng": x.xxx, "lat": y.yyy}, // 最老
+                        {"t": yyyy, "gps": []}, // 最老
                     ]
                 },
                 <route object with tag breadcrumbs, id is user identity id>
@@ -240,9 +228,9 @@
                 "description": "Description",
                 "color": "rrggbbaa",
                 "positions": [
-                    {"ts": 9, "lng": x.xxx, "lat": y.yyy}, // 最新
+                    {"t": yyyy, "gps": []}, // 最新
                     ...
-                    {"ts": 1, "lng": x.xxx, "lat": y.yyy}, // 最老
+                    {"t": yyyy, "gps": []}, // 最老
                 ]
             }
 
@@ -273,7 +261,6 @@
                 "icon": "http://...",
                 "title": "Title",
                 "description": "Description",
-                "acc": a.aaa,
                 "lng": x.xxx,
                 "lat": y.yyy,
             }
@@ -292,9 +279,9 @@
                 "description": "Description",
                 "color": "rrggbbaa",
                 "positions": [
-                    {"ts": 9, "lng": x.xxx, "lat": y.yyy}, // 最新
+                    {"t": yyyy, "gps": []}, // 最新
                     ...
-                    {"ts": 1, "lng": x.xxx, "lat": y.yyy}, // 最老
+                    {"t": yyyy, "gps": []}, // 最老
                 ]
             }
 
@@ -324,7 +311,6 @@
                     "icon": "http://...",
                     "title": "Title",
                     "description": "Description",
-                    "acc": a.aaa,
                     "lng": x.xxx,
                     "lat": y.yyy,
                 }
@@ -349,7 +335,6 @@
                     "icon": "http://...",
                     "title": "Title",
                     "description": "Description",
-                    "acc": a.aaa,
                     "lng": x.xxx,
                     "lat": y.yyy,
                 },
@@ -365,9 +350,9 @@
                     "description": "Description",
                     "color": "rrggbbaa",
                     "positions": [
-                        {"ts": 9, "lng": x.xxx, "lat": y.yyy}, // 最新
+                        {"t": yyyy, "gps": []}, // 最新
                         ...
-                        {"ts": 1, "lng": x.xxx, "lat": y.yyy}, // 最老
+                        {"t": yyyy, "gps": []}, // 最老
                     ]
                 }
             ]
@@ -402,7 +387,7 @@
             "description": "Description",
             "color": "rrggbbaa",
             "positions": [
-                {"ts": 9, "lng": x.xxx, "lat": y.yyy}, // 最新
+                {"t": yyyy, "gps": []}, // 最新
             ]
         }
         {
@@ -416,7 +401,6 @@
             "icon": "http://...",
             "title": "Title",
             "description": "Description",
-            "acc": a.aaa,
             "lng": x.xxx,
             "lat": y.yyy
         }
@@ -433,9 +417,9 @@
             "description": "Description",
             "color": "rrggbbaa",
             "positions": [
-                {"lng": x.xxx, "lat": y.yyy},
+                {"t": yyyy, "gps": []},
                 ...
-                {"lng": x.xxx, "lat": y.yyy}
+                {"t": yyyy, "gps": []}
             ]
         }
         {
