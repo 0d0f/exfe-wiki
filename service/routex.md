@@ -306,6 +306,31 @@
 
         POST http://domain/v3/routex/geomarks/crosses/:cross_id/:geomark_type/:geomark_id?token=xxxxxxxx&_method=DELETE
 
+     - 搜索geomark，内部使用
+
+        GET http://domain/v3/routex/_inner/geomarks/crosses/:cross_id?tags=destination
+
+        Response:
+
+            [
+                {
+                    "id": "id",
+                    "type": "location",
+                    "created_at": nnn,
+                    "created_by": "uid",
+                    "updated_at": nnn,
+                    "updated_by": "uid",
+                    "tags": ["destination", "park"],
+                    "icon": "http://...",
+                    "title": "Title",
+                    "description": "Description",
+                    "acc": a.aaa,
+                    "lng": x.xxx,
+                    "lat": y.yyy,
+                }
+            ]
+  
+
      - 获取 Geomarks
 
         GET http://domain/v3/routex/geomarks/crosses/:cross_id?coordinate=(earth|mars)&token=xxxxxxxxx
