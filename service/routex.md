@@ -238,6 +238,8 @@
 
     此接口用于传输 app 用户画的路径图信息。url中的type字段为geomark的类型，可以为route或者location。
 
+    cross_place是一个特殊的tag，如果遇到有带有cross_place tag的geomark，修改时要删除这个tag。
+    
      - 设置某个 Geomark
 
         如果已经有同id的geomark存在，则覆盖原来的geomark，如果没有则新建一个geomark。
