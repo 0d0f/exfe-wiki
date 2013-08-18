@@ -146,6 +146,8 @@
 
         POST http://domain/v3/routex/breadcrumbs?coordinate=(earth|mars)&token=xxxxxx
 
+        gps一项至少包含三个float值，且第三个值的范围是(0,70]。
+
         Request Data:
 
             [
