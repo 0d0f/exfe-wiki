@@ -2,14 +2,12 @@
 
 ##Repo
 ###Check out Repo
-code
 
     #!bash
     git clone git@git.0d0f.com:exfeiosv2
     
 默认库位置，项目库名字exfeiosv2
 ###Init submodules
-code
 
     #!bash
     cd exfeiosv2/
@@ -18,7 +16,6 @@ code
 初始化子模块要加上递归开关
 ## Shell
 ### make
-code
     
     #!bash
     ./make.sh 0d0f|pilot
@@ -30,13 +27,11 @@ publish.sh
 目前没有做出错检查，也就是说，如果build过程失败，publish会把上一个版本的内容上传，因此要确保能够正确Build，或者清空临时文件夹builds/下面的ipa。
 
 ### build
-code
 
     #!bash
     ./build.sh -p 0d0f|pilot|exfe
     
 ### publish
-code
 
     #!bash
     ./publish.sh 0d0f|pilot|exfe

@@ -1,6 +1,6 @@
 # git分支管理策略
 ## 来源参考
-http://www.ruanyifeng.com/blog/2012/07/git.html
+[Git分支管理策略 - 阮一峰](http://www.ruanyifeng.com/blog/2012/07/git.html)
 
 ## 方案（草稿）
 ###主要分支
@@ -33,25 +33,30 @@ Git创建Develop分支的命令：
 #### 功能（feature）分支
 创建一个功能分支：
 
+    #!bash
     git checkout -b feature-x develop
 
 开发完成后，将功能分支合并到develop分支：
 
+    #!bash
     git checkout develop
     git merge --no-ff feature-x
 
 删除feature分支：
 
+    #!bash
     git branch -d feature-x
-
+    
 
 #### 预发布（release）分支
 创建一个预发布分支：
 
+    #!bash
     git checkout -b release-1.2 develop
 
 确认没有问题后，合并到master分支：
 
+    #!bash
     git checkout master
     git merge --no-ff release-1.2
     # 对合并生成的新节点，做一个标签
@@ -59,38 +64,45 @@ Git创建Develop分支的命令：
     
 再合并到develop分支：
 
+    #!bash
     git checkout develop
     git merge --no-ff release-1.2
 
 最后，删除预发布分支：
 
+    #!bash
     git branch -d release-1.2
 
 
 #### 修补bug（fixbug）分支
 创建一个修补bug分支：
 
+    #!bash
     git checkout -b fixbug-0.1 master
 
 修补结束后，合并到master分支：
 
+    #!bash
     git checkout master
     git merge --no-ff fixbug-0.1
     git tag -a 0.1.1
 
 再合并到develop分支：
 
+    #!bash
     git checkout develop
     git merge --no-ff fixbug-0.1
 
 最后，删除"修补bug分支"：
 
+    #!bash
     git branch -d fixbug-0.1
 
 
 ## Git配置建议
 ### ~/.gitconfig
 
+    #!ini
     [user]
     	name = <user name>
     	email = <user@email>
