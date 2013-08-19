@@ -70,5 +70,5 @@ https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/LoadingR
 http://stackoverflow.com/questions/9895621/best-practice-using-nslocalizedstring
 
 ## Problem
-"Accepted" = "Ȧƈƈḗƥŧḗḓ"; => "Accepted" = "Ȧccepŧḗḓ";    
+"Accepted" = "Ȧƈƈḗƥŧḗḓ"; => "Accepted" = "Ȧccepŧḗḓ";<br />
 "Pending" = "Ƥḗƞḓīƞɠ"; => "Pending" = "Pḗƞḓīƞɠ";

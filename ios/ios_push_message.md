@@ -1,6 +1,6 @@
 # iOS push message format
 
-
+	#!javascript
 	{
 	    "aps":
 	    {
@@ -16,10 +16,12 @@
 	}
 
 
-* "badge" 未读消息数量   
-* cid: cross_id   
-* "t" 是类型   
-c:conversation   
-i:invite to a new cross   
-u:update   
-r:remove a user from exfee   
+
+1. "badge" 未读消息数量
+2. cid: cross_id
+3. "t" 是类型
+
+    * c:conversation
+    * i:invite to a new cross
+    * u:update
+    * r:remove a user from exfee
