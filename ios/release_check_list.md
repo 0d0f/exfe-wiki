@@ -1,5 +1,5 @@
 #iOS Release Check List
-##1 清理图片    
+##1 清理图片
 
 * 使用脚本（unused.js）找出候选图片
 
@@ -32,11 +32,11 @@ git cmd
 
 ##3 检查并更新版本号   
 
-* 检查Bundle Identifier    
-  测试版本 com.0d0f.exfe    
-  正式版本 com.exfe.app    
-* 检查版本Version和Build，根据需要升级Version和Build    
-* 确定发布平台Deployment Target是否需要更新    
+* 检查Bundle Identifier<br />
+  测试版本 com.0d0f.exfe<br />
+  正式版本 com.exfe.app
+* 检查版本Version和Build，根据需要升级Version和Build
+* 确定发布平台Deployment Target是否需要更新
 * 以上若有修改则需要提交
 
 git cmd
@@ -44,17 +44,17 @@ git cmd
     #!bash
     git commit -m "update build xxx and etc."
 
-##4 选择对应的证书    
+##4 选择对应的证书
 
 * 测试版本 iPhone Distribution: eDoctor Healthcare Communications Co., Ltd.
 * 正式版本 （上传的时候再签名）
 
-##5 编译项目    
+##5 编译项目
 
-确认以下内容    
+确认以下内容
 
-* 编译参数Debug在正式版发布时已经去掉    
-* 服务器连的是生产服务器exfe.com    
+* 编译参数Debug在正式版发布时已经去掉
+* 服务器连的是生产服务器exfe.com
 * 项目和依赖项目的log输出关闭，或者设置在高于等于warning级别
   
 ##6 升级兼容检查
@@ -64,12 +64,12 @@ git cmd
 ##7 准备发布资料
 截图、文字更新，设置app为待上传状态
 
-##8 导出并发布版本    
+##8 导出并发布版本
 
-测试版本 导出后用脚本（publish.sh）发布到0d0f.com上。    
+测试版本 导出后用脚本（publish.sh）发布到0d0f.com上。<br />
 正式版本 导出后用xcode工具上传，确认push能够工作。
 
-##9 提交当前修改并打上版本tag    
+##9 提交当前修改并打上版本tag
 
 git cmd
 
@@ -77,7 +77,7 @@ git cmd
     git push
     git tag
     
-##10 附件    
+##10 附件
 file: usused.sh
 
     #!bash

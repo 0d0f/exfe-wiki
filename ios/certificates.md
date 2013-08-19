@@ -1,6 +1,6 @@
 # iOS Developer: Certificates, Identifiers & Profiles
 ##概述
-iOS开发采用证书管理，凡是注册帐号并在有效期内，都可以申请证书。    
+iOS开发采用证书管理，凡是注册帐号并在有效期内，都可以申请证书。<br />
 [管理网站入口](https://developer.apple.com/account/overview.action) 
 
 这里涉及到几个概念：证书(Certificate)、标示(Identifier)、设备(Devices)和Provisioning Profile。
@@ -53,14 +53,14 @@ xcode也会帮忙自动管理一个用*通配的标示。
 7. Finally, just close "XCode 4". When you re-open it, go to the menu "Window" -> "Organizer". Because the Organizer reads the certificates from you keychain, they should be there already. Next time you plug your devices just click on Provisioning and make sure the old certificates are gone and the new certificate is on.
 
 ##目前项目的遗留问题
-* 发布证书私钥和dm的开发证书私钥相同    
-  造成问题：dm的开发用户会被自动激活，违反每人使用自己证书的原则。    
+* 发布证书私钥和dm的开发证书私钥相同<br />
+  造成问题：dm的开发用户会被自动激活，违反每人使用自己证书的原则。<br />
   解决办法：开发用的Provisioning Profile应当排除dm。
 
-* 项目的证书指定选择    
+* 项目的证书指定选择<br />
   造成问题：不同人工作环境的证书不同，因此工程文件会互相冲突，导致反复提交。   
-  解决办法：通过Provisioning Profile的正确配置，工程选自动选择，让xcode自己选择对应的证书进行操作。    
+  解决办法：通过Provisioning Profile的正确配置，工程选自动选择，让xcode自己选择对应的证书进行操作。
   
 ## 迁移
-方法1 从xcode Organizer的Teams中导出全部证书（含私钥），导入到新机器后，点右下刷新，用apple id登陆后，会得到最新的Provisioning Profile。    
+方法1 从xcode Organizer的Teams中导出全部证书（含私钥），导入到新机器后，点右下刷新，用apple id登陆后，会得到最新的Provisioning Profile。<br />
 方法2 到keychain里面选择对应的证书导出，到新机器上逐一导入。这里需要注意的是，只需要导出带私钥的证书，仅有公钥的证书可以通过xcode organizer刷新的方式取回。
