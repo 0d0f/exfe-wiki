@@ -118,25 +118,27 @@
 
         此接口设置用户提交的地理信息可以展示在哪个cross里。一次开启默认持续2个小时（可以在after_in_seconds设置，默认7200），就是说从上发一次save_breadcrumbs为true的时刻开始，2个小时内，此用户上发的breadcrumbs信息会存入对应的cross里。
 
-        POST http://domain/v3/routex/_inner/users/:user_id/crosses
+        POST http://domain/v3/routex/_inner/users/:user_id/crosses/:cross_id
 
         Request Data:
 
-            [
-                {"cross_id": nnnnn, "save_breadcrumbs": true, "after_in_seconds": 7200},
-                {"cross_id": mmmmm, "save_breadcrumbs": false}
-            ]
+            {"save_breadcrumbs": true, "after_in_seconds": 7200},
+
+        or
+
+            {"save_breadcrumbs": false}
 
      - 提交用户可以更新的cross
 
-        POST http://domain/v3/routex/users/crosses?token=xxxxxxxx
+        POST http://domain/v3/routex/users/crosses/:cross_id?token=xxxxxxxx
 
         Request Data:
 
-            [
-                {"cross_id": nnnnn, "save_breadcrumbs": true, "after_in_seconds": 7200},
-                {"cross_id": mmmmm, "save_breadcrumbs": false}
-            ]
+            {"save_breadcrumbs": true, "after_in_seconds": 7200},
+
+        or
+
+            {"save_breadcrumbs": false}
 
  - 用户路径信息breadcrumbs更新
 
