@@ -10,7 +10,7 @@
 	        "badge":4,
 	        "sound":"default"
 	    },
-	    "path":""
+	    "path":"/!100120"
 	}
 
 
