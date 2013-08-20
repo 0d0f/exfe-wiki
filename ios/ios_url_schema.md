@@ -4,10 +4,10 @@
 
 设计原则：
 
-1. 兼容Android
+1. 兼容Android，比如[URL](http://developer.android.com/reference/java/net/URI.html)，[Intent Filter](http://developer.android.com/guide/topics/manifest/intent-filter-element.html)
 2. 和[Web的路由](/web/router.html)尽量统一 
 
-## Index(New)
+## <a id="index"></a>Index
 * [Cross List](#crosses)
 * [Cross](#cross)
 * [Conversation](#conversation)
@@ -19,7 +19,7 @@
 ## Schema
 目前注册的Schema是exfe://，测试版本则使用black://(0d0f 黑盒)和panda://(pilot P盒)。
 ## Host
-(默认)
+(默认)iOS支持空Host
 ## Parameters
 ### user_id
 用来标示登陆的用户信息，必选。
@@ -36,26 +36,35 @@
 
 其他不认识的path
 
+[^Index](#index)
+
 ### <a id="cross"></a>Cross
 /!%CROSS_ID%
 
 直接打开CrossID为%CROSS_ID%的Cross Detail界面
+
+[^Index](#index)
 
 ### <a id="conversation"></a>Conversation
 /!%CROSS_ID%/conversation
 
 直接打开CrossID为%CROSS_ID%的Cross Conversation界面
 
+[^Index](#index)
 
 ### <a id="exfee"></a>Exfee
 /!%CROSS_ID%/exfee
 
 直接打开CrossID为%CROSS_ID%的Cross Exfee界面
 
+[^Index](#index)
+
 ### <a id="routex"></a>Routex
 /!%CROSS_ID%/routex
 
 直接打开CrossID为%CROSS_ID%的Cross Routex界面
+
+[^Index](#index)
 
 ### <a id="gather"></a>Gather
 /gather
@@ -67,12 +76,15 @@
 * /gather/title
 * /gather/description
 
+[^Index](#index)
+
 ### <a id="profile"></a>Profile
 /users/profile
 直接打开Profile界面
 
+[^Index](#index)
 
----
+
 
 ##Index (Deprecated)   
 * [Cross](#cross_2)

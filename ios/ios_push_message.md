@@ -20,7 +20,6 @@
 
     路径，参考[iOS URL schema](ios_url_schema.html)
     
----
 
 ## Push Message Format (deprecated)
 	#!javascript
