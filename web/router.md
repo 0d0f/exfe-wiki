@@ -104,3 +104,5 @@ Web Front-End Route
 
 ## Links
 * [Old Routes](https://docs.google.com/a/exfe.com/document/d/1oIaFPUDBgrGyQ1wHXxv3bOAzqVL2K3Xpc3FjDKRLh40/)
+* [URI scheme](http://en.wikipedia.org/wiki/URI_scheme)
+* [IPhone URL Schemes](http://wiki.akosma.com/IPhone_URL_Schemes)
