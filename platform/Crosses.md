@@ -120,7 +120,7 @@
     - token: [str:user_token]
 * returns
     - 200: [url: [str:url]]
+    - 400: param_error
     - 401: invalid_auth
     - 403: not_authorized
     - 500: internal_server_error
-    - 400: param_error
