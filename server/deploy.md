@@ -106,6 +106,7 @@
         post_max_size = 15M
         upload_max_filesize = 15M
         zlib.output_compression = On
+        zlib.output_handler = On
         session.cookie_domain = '.exfe.com'
         error_reporting = E_ALL
         log_errors = On
@@ -140,7 +141,7 @@
         # sudo su git
         $ cd /exfe
 
-        $ mkdir exfebus 
+        $ mkdir exfebus
         $ cd exfebus
         $ git init
         $ git config --add receive.denycurrentbranch ignore
@@ -196,8 +197,8 @@
         # ln -s /exfe/exfebus/configure/logrotate.conf exfebus
 
         # cd /etc/init.d
-        # ln -s /exfe/exfebus/configure/init.d/exfe_bot 
-        # ln -s /exfe/exfebus/configure/init.d/exfe_queue 
+        # ln -s /exfe/exfebus/configure/init.d/exfe_bot
+        # ln -s /exfe/exfebus/configure/init.d/exfe_queue
         # ln -s /exfe/exfebus/configure/init.d/exfe_service
         # update-rc.d exfe_bot defaults
         # update-rc.d exfe_queue defaults
