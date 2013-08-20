@@ -242,11 +242,11 @@
 
     此接口用于传输 app 用户画的路径图信息。url中的type字段为geomark的类型，可以为route或者location。
 
-    cross_place是一个特殊的tag，如果遇到有带有cross_place tag的geomark，修改时要删除这个tag。
+    xplace是一个特殊的tag，如果遇到有带有xplace tag的geomark，修改时要删除这个tag。
     
      - 设置某个 Geomark
 
-        如果已经有同id的geomark存在，则覆盖原来的geomark，如果没有则新建一个geomark。
+        如果已经有同id的geomark存在，则覆盖原来的geomark，如果没有则新建一个geomark。提交时不能带有xplace的tag，如果有xplace，会返回bad request。
 
         PUT http://domain/v3/routex/geomarks/crosses/:cross_id/:geomark_type/:geomark_id?coordinate=(earth|mars)&token=xxxxxxxx
 
@@ -372,6 +372,22 @@
     No Request Data.
 
     No Response.
+
+     - 200
+
+        成功
+
+     - 401
+
+        token无效
+
+     - 403
+
+        用户identity_id不在cross里
+
+     - 406
+
+        用户identity_id没有可以发送的渠道。
 
  - Streaming
 
