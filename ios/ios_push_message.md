@@ -1,5 +1,28 @@
 # iOS push message format
 
+
+
+	#!javascript
+	{
+	    "aps":
+	    {
+	        "alert":"Gathering the X \\\"test 1a_04271801_release\\\" 6:30 PM, Apr 27, 2012",
+	        "badge":4,
+	        "sound":"default"
+	    },
+	    "path":""
+	}
+
+
+* aps
+    * "badge" 未读消息数量
+* path
+
+    路径，参考[iOS URL schema](ios_url_schema.html)
+    
+---
+
+## Push Message Format (deprecated)
 	#!javascript
 	{
 	    "aps":
