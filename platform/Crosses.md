@@ -112,3 +112,15 @@
                 "cross_access_token": "0a9ae2a5a94320ad5da772ba8a1b62e6745fe157545ef59433adf256a98a3e1d"
             }
         }
+
+
+## Get RouteX Url
+* endpoint: /v2/crosses/[int:cross_id]/getroutexurl
+* QUERY args:
+    - token: [str:user_token]
+* returns
+    - 200: [url: [str:url]]
+    - 400: param_error
+    - 401: invalid_auth
+    - 403: not_authorized
+    - 500: internal_server_error
