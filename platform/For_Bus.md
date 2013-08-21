@@ -399,12 +399,32 @@
             "touser": "[external_id]",
             "template_id": "x_title_update",
             "data": {
-                "cross": {
-                    "title" : '喵~'
-                }
+                ...
             }
         }
 
 * templetes:
     - x_title_update: 1分钟内回复新名字可更改这张活点地图当前的名字：{{cross.title.DATA}}
+
+        data参数：
+        
+            #!javascript
+            {
+                "cross": {
+                    "title" : "喵~"
+                }
+            }
+
     - user_location_request: {{identity.name.DATA}}在活点地图“{{cross.title.DATA}}”中请求更新您的位置。请打开“查看”菜单项更新。
+
+        data参数：
+        
+            #!javascript
+            {
+                "identity": {
+                    "name": "abc"
+                }
+                "cross": {
+                    "title" : "喵~"
+                }
+            }
