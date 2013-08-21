@@ -396,16 +396,11 @@
 
         #!javascript
         {
-            "touser": "OPENID",
-            "template_id": "aygtGTLdrjHJP7Bu4EdkptNfYaeFKi98ygn2kitCJ6fAfdmN88naVvX6V5uIV5x0",
+            "touser": "[external_id]",
+            "template_id": "x_title_update",
             "data": {
-                "Goods": "苹果",
-                "Unit_price": "RMB 20.13",
-                "Quantity": "5",
-                "Total": "RMB 100.65",
-                "Source": {
-                    "Shop": "Jas屌丝商店",
-                    "Recommend": "5颗星"
+                "cross": {
+                    "title" : '喵~'
                 }
             }
         }
