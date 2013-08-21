@@ -389,9 +389,9 @@
 * POST args:
     - BODY: [json:message]
 * returns:
-    - 200:
-    - 400:
-    - 500:
+    - 200
+    - 400
+    - 500
 * post body example:
 
         #!javascript
@@ -409,3 +409,7 @@
                 }
             }
         }
+
+* templetes:
+    - x_title_update: 1分钟内回复新名字可更改这张活点地图当前的名字：{{cross.title.DATA}}
+    - user_location_request: {{identity.name.DATA}}在活点地图“{{cross.title.DATA}}”中请求更新您的位置。请打开“查看”菜单项更新。
