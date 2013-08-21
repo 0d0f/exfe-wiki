@@ -89,13 +89,6 @@
 
  - 设置cross
 
-
-     - 设置新手引导
-
-        为用户设置新手引导cross相关的routex信息。参数都是必须的。
-
-        POST http://domain/v3/routex/_inner/tutorial/users/:user_id?cross_id=nnnn&lat=x.xxx&lng=y.yyy&language=zh-cn
-
      - 获取用户在cross_id里routex的状态
 
         获取用户在某个cross的routex的状态，true为开启上报，false为关闭上报，null为用户没有操作过当前cross对应的routex。
