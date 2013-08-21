@@ -104,13 +104,25 @@
     - 400: error_identity_id
     - 500: server_error
 
-<!--
-## working on!!!!!!!!!!!!!!!!!!!!!!!
+
 ## Invite User To Exfee
 * endpoint: /v2/exfee/[int:exfee_id]/invite
-* QUERY args:
+* POST args:
     - xcode: [str:xcode]
-    - user_id: [int:user_id]
-    -
- http -f post api.leask.0d0f.com xcode=77c4c4af701181364749dc9d015fd7a7 user_id=476 via=leaskh@gmail.com@email
- -->
+    - user_token: [str:user_token]
+    - widget_type: [str] // Optional
+    - widget_id: [str] // Optional
+    - via: [external_username@provider] // Optional
+* returns:
+    - 200: [object:cross]
+    - 400: no_exfee_id
+    - 400: no_user_token
+    - 400: no_xcode
+    - 400: error_user_token
+    - 400: error_via_identity
+    - 400: error_xcode
+    - 400: error_user
+    - 400: bad_request
+    - 400: error_via_identity
+    - 401: removed_user
+    - 500: server_error
