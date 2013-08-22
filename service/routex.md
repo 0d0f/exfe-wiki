@@ -231,6 +231,28 @@
                 ]
             }
 
+     - 获得某个用户的 breadcrumbs 信息 内部使用
+
+        GET http://domain/v3/routex/breadcrumbs/users/:user_id?coordinate=(earth|mars)
+
+        Response:
+
+            {
+                "id": "user_id@exfe",
+                "type": "route",
+                "created_at": 0,
+                "created_by": "",
+                "updated_at": 0,
+                "updated_by": "",
+                "tags": ["breadcrumbs"],
+                "title": "Title",
+                "description": "Description",
+                "color": "rrggbbaa",
+                "positions": [
+                    {"t": yyyy, "gps": []} // 最新
+                ]
+            }
+
  - Geomarks 更新
 
     此接口用于传输 app 用户画的路径图信息。url中的type字段为geomark的类型，可以为route或者location。
