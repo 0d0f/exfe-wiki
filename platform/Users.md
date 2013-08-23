@@ -204,6 +204,13 @@
     * POST:
         - refere: [str:authenticate_callback_url]
         - invitation_token: [str:invitation_token]
+* args OPTION D:
+    * description: merge identities by two user tokens
+    * QUERY:
+        - token: [str:user_token]
+    * POST:
+        - browsing_identity_token: [str:user_token]
+        - force: [str:true]
 * returns:
     - 200 case 1: 成功 / 部分成功(部分成功将来在v3将返回206)
         * status: [array:identities] // 合并结果

@@ -397,6 +397,7 @@
         #!javascript
         {
             "touser": "[external_id]",
+            "locale": "[locale]",
             "template_id": "x_title_update",
             "data": {
                 ...
@@ -418,7 +419,7 @@
     - user_location_request: {{identity.name.DATA}}在活点地图“{{cross.title.DATA}}”中请求更新您的位置。请打开“查看”菜单项更新。
 
         data参数：
-        
+
             #!javascript
             {
                 "identity": {
