@@ -259,7 +259,9 @@
 
      - 设置某个 Geomark
 
-        如果已经有同id的geomark存在，则覆盖原来的geomark，如果没有则新建一个geomark。
+        如果已经有同id的geomark存在，则覆盖原来的geomark，如果没有则新建一个geomark。如果是新建的geomakr，其id应该是nnnnnnnn.location或者nnnnnnnn.route的格式（nnnnnnnn为随机生成的8位[0-9a-zA-Z-_]字符）。
+
+        如果客户端要修改xplace location，又不想保存xplace tag，需要重新生成一个geomark id，视同创建新的geomark。不允许提交不带xplace tag且id不是nnnnnnnn.location/nnnnnnnn.route格式的geomark。
 
         特殊情况：
 
