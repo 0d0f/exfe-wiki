@@ -233,7 +233,7 @@
 
      - 获得某个用户的 breadcrumbs 信息 内部使用
 
-        GET http://domain/v3/routex/breadcrumbs/users/:user_id?coordinate=(earth|mars)
+        GET http://domain/v3/routex/_inner/breadcrumbs/users/:user_id?coordinate=(earth|mars)
 
         Response:
 
@@ -255,11 +255,19 @@
 
  - Geomarks 更新
 
-    此接口用于传输 app 用户画的路径图信息。url中的type字段为geomark的类型，可以为route或者location。
+    此接口用于传输app用户画的路径图信息。url中的type字段为geomark的类型，可以为route或者location。如果对应的cross有place信息，会默认生成一个xplace location的geomark，tag带有xplace标签，修改此xplace location视为对cross place的修改；删除xplace location视为删掉cross place。
 
      - 设置某个 Geomark
 
         如果已经有同id的geomark存在，则覆盖原来的geomark，如果没有则新建一个geomark。
+
+        特殊情况：
+
+         - 如果更新的type是location，同时tag带有xplace标签，那么更新时会把location的属性同步到对应cross的place信息
+
+            － 如果此点不是系统生成的xplace location，此点会被删除（streaming里给出此点删除的动作）
+
+            － 下发更新后的带有xplace tag的location（streaming里会有新点的更新信息，id会和之前的xplace location一致）。
 
         PUT http://domain/v3/routex/geomarks/crosses/:cross_id/:geomark_type/:geomark_id?coordinate=(earth|mars)&token=xxxxxxxx
 
@@ -305,6 +313,10 @@
             }
 
      - 删除某个 Geomark
+
+        特殊情况：
+
+         - 如果删除的是xplace location，streaming下发删除动作，还会删除对应cross的place信息。
 
         DELETE http://domain/v3/routex/geomarks/crosses/:cross_id/:geomark_type/:geomark_id?token=xxxxxxxx
 
