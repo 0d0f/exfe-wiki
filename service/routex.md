@@ -89,13 +89,6 @@
 
  - 设置cross
 
-
-     - 设置新手引导
-
-        为用户设置新手引导cross相关的routex信息。参数都是必须的。
-
-        POST http://domain/v3/routex/_inner/tutorial/users/:user_id?cross_id=nnnn&lat=x.xxx&lng=y.yyy&language=zh-cn
-
      - 获取用户在cross_id里routex的状态
 
         获取用户在某个cross的routex的状态，true为开启上报，false为关闭上报，null为用户没有操作过当前cross对应的routex。
@@ -238,15 +231,35 @@
                 ]
             }
 
+     - 获得某个用户的 breadcrumbs 信息 内部使用
+
+        GET http://domain/v3/routex/breadcrumbs/users/:user_id?coordinate=(earth|mars)
+
+        Response:
+
+            {
+                "id": "user_id@exfe",
+                "type": "route",
+                "created_at": 0,
+                "created_by": "",
+                "updated_at": 0,
+                "updated_by": "",
+                "tags": ["breadcrumbs"],
+                "title": "Title",
+                "description": "Description",
+                "color": "rrggbbaa",
+                "positions": [
+                    {"t": yyyy, "gps": []} // 最新
+                ]
+            }
+
  - Geomarks 更新
 
     此接口用于传输 app 用户画的路径图信息。url中的type字段为geomark的类型，可以为route或者location。
 
-    xplace是一个特殊的tag，如果遇到有带有xplace tag的geomark，修改时要删除这个tag。
-    
      - 设置某个 Geomark
 
-        如果已经有同id的geomark存在，则覆盖原来的geomark，如果没有则新建一个geomark。提交时不能带有xplace的tag，如果有xplace，会返回bad request。
+        如果已经有同id的geomark存在，则覆盖原来的geomark，如果没有则新建一个geomark。
 
         PUT http://domain/v3/routex/geomarks/crosses/:cross_id/:geomark_type/:geomark_id?coordinate=(earth|mars)&token=xxxxxxxx
 
@@ -321,7 +334,7 @@
                     "lat": y.yyy,
                 }
             ]
-  
+
 
      - 获取 Geomarks
 

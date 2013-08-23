@@ -389,23 +389,43 @@
 * POST args:
     - BODY: [json:message]
 * returns:
-    - 200:
-    - 400:
-    - 500:
+    - 200
+    - 400
+    - 500
 * post body example:
 
         #!javascript
         {
-            "touser": "OPENID",
-            "template_id": "aygtGTLdrjHJP7Bu4EdkptNfYaeFKi98ygn2kitCJ6fAfdmN88naVvX6V5uIV5x0",
+            "touser": "[external_id]",
+            "locale": "[locale]",
+            "template_id": "x_title_update",
             "data": {
-                "Goods": "苹果",
-                "Unit_price": "RMB 20.13",
-                "Quantity": "5",
-                "Total": "RMB 100.65",
-                "Source": {
-                    "Shop": "Jas屌丝商店",
-                    "Recommend": "5颗星"
-                }
+                ...
             }
         }
+
+* templetes:
+    - x_title_update: 1分钟内回复新名字可更改这张活点地图当前的名字：{{cross.title.DATA}}
+
+        data参数：
+
+            #!javascript
+            {
+                "cross": {
+                    "title" : "喵~"
+                }
+            }
+
+    - user_location_request: {{identity.name.DATA}}在活点地图“{{cross.title.DATA}}”中请求更新您的位置。请打开“查看”菜单项更新。
+
+        data参数：
+
+            #!javascript
+            {
+                "identity": {
+                    "name": "abc"
+                },
+                "cross": {
+                    "title" : "喵~"
+                }
+            }
