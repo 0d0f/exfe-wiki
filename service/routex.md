@@ -179,7 +179,9 @@
 
      - 获得某个 cross 所有用户的 breadcrumbs 信息
 
-        GET http://domain/v3/routex/breadcrumbs/crosses/:cross_id?coordinate=(earth|mars)&token=xxxxxx
+        GET http://domain/v3/routex/breadcrumbs/crosses/:cross_id?coordinate=(earth|mars)&token=xxxxxx&id=nnnn.location/nnnn.routex
+
+        参数id表示取指定id的geomark，可以填多个：id=nnnn.location&id=nnnn.routex&...
 
         Response:
 
