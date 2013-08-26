@@ -179,14 +179,16 @@
 
      - 获得某个 cross 所有用户的 breadcrumbs 信息
 
-        GET http://domain/v3/routex/breadcrumbs/crosses/:cross_id?coordinate=(earth|mars)&token=xxxxxx
+        GET http://domain/v3/routex/breadcrumbs/crosses/:cross_id?coordinate=(earth|mars)&token=xxxxxx&id=nnnn.location/nnnn.routex
+
+        参数id表示取指定id的geomark，可以填多个：id=nnnn.location&id=nnnn.routex&...
 
         Response:
 
             [
                 <route object with tag breadcrumbs, id is user identity id>,
                 {
-                    "id": "user_id@exfe",
+                    "id": "user_id.breadcrumbs",
                     "type": "route",
                     "created_at": 0,
                     "created_by": "",
@@ -214,7 +216,7 @@
         Response:
 
             {
-                "id": "user_id@exfe",
+                "id": "user_id.breadcrumbs",
                 "type": "route",
                 "created_at": 0,
                 "created_by": "",
@@ -233,12 +235,12 @@
 
      - 获得某个用户的 breadcrumbs 信息 内部使用
 
-        GET http://domain/v3/routex/breadcrumbs/users/:user_id?coordinate=(earth|mars)
+        GET http://domain/v3/routex/_inner/breadcrumbs/users/:user_id?coordinate=(earth|mars)
 
         Response:
 
             {
-                "id": "user_id@exfe",
+                "id": "user_id.breadcrumbs",
                 "type": "route",
                 "created_at": 0,
                 "created_by": "",
@@ -255,11 +257,21 @@
 
  - Geomarks 更新
 
-    此接口用于传输 app 用户画的路径图信息。url中的type字段为geomark的类型，可以为route或者location。
+    此接口用于传输app用户画的路径图信息。url中的type字段为geomark的类型，可以为route或者location。如果对应的cross有place信息，会默认生成一个xplace location的geomark，tag带有xplace标签，修改此xplace location视为对cross place的修改；删除xplace location视为删掉cross place。
 
      - 设置某个 Geomark
 
-        如果已经有同id的geomark存在，则覆盖原来的geomark，如果没有则新建一个geomark。
+        如果已经有同id的geomark存在，则覆盖原来的geomark，如果没有则新建一个geomark。如果是新建的geomakr，其id应该是nnnn.location或者nnnn.route的格式（nnnn为随机生成的4位[0-9a-zA-Z]字符）。
+
+        如果客户端要修改xplace location，又不想保存xplace tag，需要重新生成一个geomark id，视同创建新的geomark。不允许提交不带xplace tag且id不是nnnnnnnn.location/nnnnnnnn.route格式的geomark。
+
+        特殊情况：
+
+         - 如果更新的type是location，同时tag带有xplace标签，那么更新时会把location的属性同步到对应cross的place信息
+
+            － 如果此点不是系统生成的xplace location，此点会被删除（streaming里给出此点删除的动作）
+
+            － 下发更新后的带有xplace tag的location（streaming里会有新点的更新信息，id会和之前的xplace location一致）。
 
         PUT http://domain/v3/routex/geomarks/crosses/:cross_id/:geomark_type/:geomark_id?coordinate=(earth|mars)&token=xxxxxxxx
 
@@ -270,7 +282,7 @@
         Request Data:
 
             {
-                "id": "id",
+                "id": "nnnn.location",
                 "type": "location",
                 "created_at": nnn,
                 "created_by": "uid",
@@ -287,7 +299,7 @@
         or
 
             {
-                "id": "id",
+                "id": "nnnn.route",
                 "type": "route",
                 "created_at": 0,
                 "created_by": "id@provider",
@@ -305,6 +317,10 @@
             }
 
      - 删除某个 Geomark
+
+        特殊情况：
+
+         - 如果删除的是xplace location，streaming下发删除动作，还会删除对应cross的place信息。
 
         DELETE http://domain/v3/routex/geomarks/crosses/:cross_id/:geomark_type/:geomark_id?token=xxxxxxxx
 
@@ -344,7 +360,7 @@
 
             [
                 {
-                    "id": "id",
+                    "id": "nnnn.location",
                     "type": "location",
                     "created_at": nnn,
                     "created_by": "uid",
@@ -358,7 +374,7 @@
                     "lat": y.yyy,
                 },
                 {
-                    "id": "id",
+                    "id": "nnnn.route",
                     "type": "route",
                     "created_at": 0,
                     "created_by": "id@provider",
@@ -411,7 +427,7 @@
     Response:
 
         {
-            "id": "user_id@exfe",
+            "id": "user_id.breadcrumbs",
             "type": "route",
             "created_at": 0,
             "created_by": "",
@@ -426,7 +442,7 @@
             ]
         }
         {
-            "id": "id",
+            "id": "nnnn.location",
             "type": "location",
             "created_at": nnn,
             "created_by": "uid",
@@ -440,8 +456,11 @@
             "lat": y.yyy
         }
         {
-            "action": "update", // 流建立后立刻下发的历史geomark对象不带action字段，之后更新的geomark都带action update字段。
-            "id": "id",
+            "type": "command",
+            "action": "init_end" // 之前为流建立前全量的历史数据，之后为更新数据
+        }
+        {
+            "id": "nnnn.route",
             "type": "route",
             "created_at": 0,
             "created_by": "id@provider",
@@ -462,3 +481,34 @@
             "id": "id",
             "type": "route",
         } // 表示删除对应id的mark。
+        {
+            "id": "user_id.breadcrumbs",
+            "action": "save",  // user的route信息，如果action带有save标志，表示需要保存到历史记录里
+            "type": "route",
+            "created_at": 0,
+            "created_by": "",
+            "updated_at": 0,
+            "updated_by": "",
+            "tags": ["breadcrumbs"],
+            "title": "Title",
+            "description": "Description",
+            "color": "rrggbbaa",
+            "positions": [
+                {"t": yyyy, "gps": []}, // 最新
+            ]
+        }
+        {
+            "id": "user_id.breadcrumbs",
+            "type": "route",
+            "created_at": 0,
+            "created_by": "",
+            "updated_at": 0,
+            "updated_by": "",
+            "tags": ["breadcrumbs"],
+            "title": "Title",
+            "description": "Description",
+            "color": "rrggbbaa",
+            "positions": [
+                {"t": yyyy, "gps": []}, // 最新
+            ]
+        }
