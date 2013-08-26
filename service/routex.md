@@ -456,7 +456,10 @@
             "lat": y.yyy
         }
         {
-            "action": "update", // 流建立后立刻下发的历史geomark对象不带action字段，之后更新的geomark都带action update字段。
+            "type": "command",
+            "action": "init_end" // 之前为流建立前全量的历史数据，之后为更新数据
+        }
+        {
             "id": "id",
             "type": "route",
             "created_at": 0,
