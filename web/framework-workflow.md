@@ -4,27 +4,31 @@
 domain/!:cross\_id/:widget?xcode=xxxx&via=identity
 
 ## 基本流程
-1. url解析失败显示invalid link页，结束。
-1. 在微信WebKit中
-    a. 本地已有user\_token且isSmith时，添加当前user进·X·。成功则根据URL加载·X·或widget并开始执行js。
-    a. 调用微信内OAuth，并保存返回的user\_token
-        1. 如果返回的user\_token与本地不同user则合并身份。        // 此步待定
-        1. 当isSmith时将user下的微信（或首选）身份加到·X·中。成功则根据URL加载·X·或widget并开始执行js。
-        1. getCrossByInvitationToken，若返回user\_token则将微信身份合并，并根据URL加载·X·或widget并开始执行js。
-        1. 显示无权访问页面，可进行request access。
-    a. 显示活点地图受邀页面。当isSmith时可让用户输入手机邮箱验证。
-    a. 结束。
-1. 调用getCrossByInvitationToken，成功返回进行下列判断。
-    a. 返回user\_token且与本地user\_token不属同一user，则合并身份。
-    a. 返回user\_token且与本地user\_token同属相同user，则更新user\_token。
-    a. 返回cross\_access\_token且与本地user\_token不属同一user，则根据URL加载·X·或widget，以浏览身份开始执行js。
-    a. 返回cross\_access\_token且与本地user\_token同属相同user，则根据URL加载·X·或widget，以本地user开始执行js。
-    a. 当isSmith时显示加入·X·或widget的页面并开始执行js。
-1. 使用本地user\_token或·X·\_access\_token调用getCross接口，成功则根据URL加载·X·或widget并开始执行js。
-1. 显示无权访问页面，可进行request access。
+1. URL解析失败显示首页并提示无效链接，结束。    // 首页DOM在framework中
+1. 本地已存user\_token
+    a. 如果下发isSmith将user加进·X·，成功则加载页面。
+    a. 如果下发user\_token则加载页面，此时如果下发的与本地的user相同，更新本地为前者，否则需合并下发user的身份。
+    a. 如果下发x\_token与本地的user相同，以user加载页面。
+    a. 以本地user调用getCross，成功则加载页面。
+1. 若在微信WebKit中则调用OAuth。返回成功进行下列判断，失败显示首页并提示授权失败。
+    a. 如果OAuth返回的user\_token与本地的相同user，则更新本地为前者，否则需合并OAuth的user身份。
+    a. 如果下发isSmith将OAuth的user加进·X·，成功则加载页面。
+    a. 如果下发user\_token则加载页面，此时如果下发的与OAuth的user不同，需合并下发user的身份。
+    a. 如果下发x\_token与OAuth的user相同，以OAuth的user加载页面。
+    a. 以OAuth的user调用getCross，成功则加载页面。
+1. 如果下发isSmith，加载受邀页面。
+1. 如果下发x\_token，以浏览身份加载页面。
+1. 如果下发user\_token则加载页面。
+1. 加载无权访问页面。
 
-##·X·页面框架逻辑
-// 根据 user\_token 和 cross\_access\_token 、 read\_only 判断读写状态
+### 加载页面
+1. 根据URL和参数加载·X·或widget的页面或受邀页面并显示。若加载失败显示首页并提示服务器错，结束。
+1. 若需要合并身份，网页版提示合并，移动版直接合并。
+1. 开始运行被加载页面。
+
+## ·X·页面框架逻辑
+// 根据 user\_token 和 x\_token 、 read\_only 判断读写状态
 
 ## RouteX页面框架逻辑
-// 加入RouteX页面
+1. 如果是x\_token，跳回·X·页。
+1. 开始使用活点地图。
