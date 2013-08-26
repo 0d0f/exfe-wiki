@@ -4,13 +4,13 @@
 
 举例：
 
-    exfe:///?user_id=233&?token=b049787660161c912407e6b3a0de42647d515858592b54a1e1741e08a116e49a
+    exfe:///?user_id=233&username=moew&token=b049787660161c912407e6b3a0de42647d515858592b54a1e1741e08a116e49a
 
 根据URL的结构，分成Scheme host path parameters 4部分单独定义。
 
 ## 设计原则：
 
-1. 兼容Android，比如[URL](http://developer.android.com/reference/java/net/URI.html)，[Intent Filter](http://developer.android.com/guide/topics/manifest/intent-filter-element.html)
+1. 兼容Android，比如[URI](http://developer.android.com/reference/java/net/URI.html)，[Intent Filter](http://developer.android.com/guide/topics/manifest/intent-filter-element.html)
 2. 和[Web的路由](/web/router.html)尽量统一
 3. 权限和资源分离，权限部分用参数赖表示登陆等信息，资源用Path描述，两者正交。
 
@@ -30,6 +30,7 @@
 * [Parameters](#parameters)
 	* [user_id](#user_id)
 	* [token](#token)
+	* [username](#username)
 	* [identity_id](#identity_id)
 * [Sample](#sample)
 
@@ -51,7 +52,7 @@ iOS支持空Host，目前建议使用 空，实现目前不进行判断。
 
     /
 
-备注：其他不认识和解析失败的Path都进入到Cross List界面
+备注：其他不认识和解析失败的Path都进入到Cross List界面(草案)
 
 [^Index](#index)
 
@@ -110,7 +111,7 @@ iOS支持空Host，目前建议使用 空，实现目前不进行判断。
     /%IDENTITY_ID%
 
 [^Index](#index)
-### <a id="inplace"></a>Keep Current screen
+### <a id="inplace"></a>Keep Current screen (草案)
 保持当前界面不跳转
 
     (空)
@@ -129,12 +130,15 @@ iOS支持空Host，目前建议使用 空，实现目前不进行判断。
 ### <a id="token"></a>token
 授权的token，必选。使用场景参考[user_id](#user_id)
 
+### <a id="username"></a>username
+用户名称，必选。用来再合并的时候给予提示，由于调用者并不知道是否会合并，因此该选项必须有
+
 ### <a id="identity_id"></a>identity_id (Optional)
 用来标示更改的身份信息，不是每个调用都有，一般用于Profile的更新或者添加Identity，可选。
 [^Index](#index)
 
 ## <a id="Sample"></a>Sample
-* 纯URL
+* 纯路径
 <table>
   <tr>
     <th>URL</th>
@@ -182,7 +186,7 @@ iOS支持空Host，目前建议使用 空，实现目前不进行判断。
 
 打开用user_id为233，用token登陆/合并后，跳转到100233的Cross界面：
 
-    exfe:///!100233?user_id=233&?token=b049787660161c912407e6b3a0de42647d515858592b54a1e1741e08a116e49a
+    exfe:///!100233?user_id=233&username=moew&token=b049787660161c912407e6b3a0de42647d515858592b54a1e1741e08a116e49a
     
 [^Index](#index)
 
