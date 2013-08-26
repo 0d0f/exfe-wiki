@@ -18,7 +18,7 @@
     * "badge" 未读消息数量
 * path
 
-    路径，参考[iOS URL schema](ios_url_scheme.html)
+    路径，参考[iOS URL scheme](ios_url_scheme.html)
     
 
 ## Push Message Format (deprecated)
