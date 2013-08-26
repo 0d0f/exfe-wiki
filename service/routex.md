@@ -188,7 +188,7 @@
             [
                 <route object with tag breadcrumbs, id is user identity id>,
                 {
-                    "id": "user_id@exfe",
+                    "id": "user_id.breadcrumbs",
                     "type": "route",
                     "created_at": 0,
                     "created_by": "",
@@ -216,7 +216,7 @@
         Response:
 
             {
-                "id": "user_id@exfe",
+                "id": "user_id.breadcrumbs",
                 "type": "route",
                 "created_at": 0,
                 "created_by": "",
@@ -240,7 +240,7 @@
         Response:
 
             {
-                "id": "user_id@exfe",
+                "id": "user_id.breadcrumbs",
                 "type": "route",
                 "created_at": 0,
                 "created_by": "",
@@ -282,7 +282,7 @@
         Request Data:
 
             {
-                "id": "id",
+                "id": "nnnn.location",
                 "type": "location",
                 "created_at": nnn,
                 "created_by": "uid",
@@ -299,7 +299,7 @@
         or
 
             {
-                "id": "id",
+                "id": "nnnn.route",
                 "type": "route",
                 "created_at": 0,
                 "created_by": "id@provider",
@@ -360,7 +360,7 @@
 
             [
                 {
-                    "id": "id",
+                    "id": "nnnn.location",
                     "type": "location",
                     "created_at": nnn,
                     "created_by": "uid",
@@ -374,7 +374,7 @@
                     "lat": y.yyy,
                 },
                 {
-                    "id": "id",
+                    "id": "nnnn.route",
                     "type": "route",
                     "created_at": 0,
                     "created_by": "id@provider",
@@ -427,7 +427,7 @@
     Response:
 
         {
-            "id": "user_id@exfe",
+            "id": "user_id.breadcrumbs",
             "type": "route",
             "created_at": 0,
             "created_by": "",
@@ -442,7 +442,7 @@
             ]
         }
         {
-            "id": "id",
+            "id": "nnnn.location",
             "type": "location",
             "created_at": nnn,
             "created_by": "uid",
@@ -460,7 +460,7 @@
             "action": "init_end" // 之前为流建立前全量的历史数据，之后为更新数据
         }
         {
-            "id": "id",
+            "id": "nnnn.route",
             "type": "route",
             "created_at": 0,
             "created_by": "id@provider",
@@ -481,3 +481,34 @@
             "id": "id",
             "type": "route",
         } // 表示删除对应id的mark。
+        {
+            "id": "user_id.breadcrumbs",
+            "action": "save",  // user的route信息，如果action带有save标志，表示需要保存到历史记录里
+            "type": "route",
+            "created_at": 0,
+            "created_by": "",
+            "updated_at": 0,
+            "updated_by": "",
+            "tags": ["breadcrumbs"],
+            "title": "Title",
+            "description": "Description",
+            "color": "rrggbbaa",
+            "positions": [
+                {"t": yyyy, "gps": []}, // 最新
+            ]
+        }
+        {
+            "id": "user_id.breadcrumbs",
+            "type": "route",
+            "created_at": 0,
+            "created_by": "",
+            "updated_at": 0,
+            "updated_by": "",
+            "tags": ["breadcrumbs"],
+            "title": "Title",
+            "description": "Description",
+            "color": "rrggbbaa",
+            "positions": [
+                {"t": yyyy, "gps": []}, // 最新
+            ]
+        }
