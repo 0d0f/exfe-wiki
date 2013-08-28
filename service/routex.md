@@ -115,7 +115,7 @@
 
         Request Data:
 
-            {"save_breadcrumbs": true, "after_in_seconds": 7200},
+            {"save_breadcrumbs": true, "after_in_seconds": 3600},
 
         or
 
@@ -127,7 +127,7 @@
 
         Request Data:
 
-            {"save_breadcrumbs": true, "after_in_seconds": 7200},
+            {"save_breadcrumbs": true, "after_in_seconds": 3600},
 
         or
 
@@ -188,12 +188,9 @@
             [
                 <route object with tag breadcrumbs, id is user identity id>,
                 {
-                    "id": "user_id.breadcrumbs",
+                    "id": "breadcrumbs.user_id",
                     "type": "route",
-                    "created_at": 0,
-                    "created_by": "",
                     "updated_at": 0,
-                    "updated_by": "",
                     "tags": ["breadcrumbs"],
                     "title": "Title",
                     "description": "Description",
@@ -216,12 +213,9 @@
         Response:
 
             {
-                "id": "user_id.breadcrumbs",
+                "id": "breadcrumbs.user_id",
                 "type": "route",
-                "created_at": 0,
-                "created_by": "",
                 "updated_at": 0,
-                "updated_by": "",
                 "tags": ["breadcrumbs"],
                 "title": "Title",
                 "description": "Description",
@@ -240,12 +234,9 @@
         Response:
 
             {
-                "id": "user_id.breadcrumbs",
+                "id": "breadcrumbs.user_id",
                 "type": "route",
-                "created_at": 0,
-                "created_by": "",
                 "updated_at": 0,
-                "updated_by": "",
                 "tags": ["breadcrumbs"],
                 "title": "Title",
                 "description": "Description",
@@ -282,7 +273,7 @@
         Request Data:
 
             {
-                "id": "nnnn.location",
+                "id": "location.nnnn",
                 "type": "location",
                 "created_at": nnn,
                 "created_by": "uid",
@@ -299,7 +290,7 @@
         or
 
             {
-                "id": "nnnn.route",
+                "id": "route.nnnn",
                 "type": "route",
                 "created_at": 0,
                 "created_by": "id@provider",
@@ -360,7 +351,7 @@
 
             [
                 {
-                    "id": "nnnn.location",
+                    "id": "location.nnnn",
                     "type": "location",
                     "created_at": nnn,
                     "created_by": "uid",
@@ -374,7 +365,7 @@
                     "lat": y.yyy,
                 },
                 {
-                    "id": "nnnn.route",
+                    "id": "route.nnnn",
                     "type": "route",
                     "created_at": 0,
                     "created_by": "id@provider",
@@ -427,7 +418,7 @@
     Response:
 
         {
-            "id": "user_id.breadcrumbs",
+            "id": "breadcrumbs.nnnn",
             "type": "route",
             "created_at": 0,
             "created_by": "",
@@ -442,7 +433,7 @@
             ]
         }
         {
-            "id": "nnnn.location",
+            "id": "location.nnnn",
             "type": "location",
             "created_at": nnn,
             "created_by": "uid",
@@ -460,7 +451,12 @@
             "action": "init_end" // 之前为流建立前全量的历史数据，之后为更新数据
         }
         {
-            "id": "nnnn.route",
+            "type": "command",
+            "action": "close_after",
+            "args": [3600], // 该streaming将在3600秒后关闭。如果有修改窗口的动作，此命令会随时更新最新的窗口时间。
+        }
+        {
+            "id": "route.nnnn",
             "type": "route",
             "created_at": 0,
             "created_by": "id@provider",
@@ -482,7 +478,7 @@
             "type": "route",
         } // 表示删除对应id的mark。
         {
-            "id": "user_id.breadcrumbs",
+            "id": "breadcrumbs.user_id",
             "action": "save",  // user的route信息，如果action带有save标志，表示需要保存到历史记录里
             "type": "route",
             "created_at": 0,
@@ -498,7 +494,7 @@
             ]
         }
         {
-            "id": "user_id.breadcrumbs",
+            "id": "breadcrumbs.user_id",
             "type": "route",
             "created_at": 0,
             "created_by": "",
