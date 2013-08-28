@@ -479,7 +479,7 @@
         } // 表示删除对应id的mark。
         {
             "id": "breadcrumbs.user_id",
-            "action": "save",  // user的route信息，如果action带有save标志，表示需要保存到历史记录里
+            "action": "save_to_history",  // user的route信息，如果action带有save_to_history标志，表示需要保存到历史记录里
             "type": "route",
             "created_at": 0,
             "created_by": "",
