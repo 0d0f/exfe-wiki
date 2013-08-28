@@ -115,7 +115,7 @@
 
         Request Data:
 
-            {"save_breadcrumbs": true, "after_in_seconds": 7200},
+            {"save_breadcrumbs": true, "after_in_seconds": 3600},
 
         or
 
@@ -127,7 +127,7 @@
 
         Request Data:
 
-            {"save_breadcrumbs": true, "after_in_seconds": 7200},
+            {"save_breadcrumbs": true, "after_in_seconds": 3600},
 
         or
 
@@ -188,12 +188,9 @@
             [
                 <route object with tag breadcrumbs, id is user identity id>,
                 {
-                    "id": "user_id.breadcrumbs",
+                    "id": "breadcrumbs.user_id",
                     "type": "route",
-                    "created_at": 0,
-                    "created_by": "",
                     "updated_at": 0,
-                    "updated_by": "",
                     "tags": ["breadcrumbs"],
                     "title": "Title",
                     "description": "Description",
@@ -216,12 +213,9 @@
         Response:
 
             {
-                "id": "user_id.breadcrumbs",
+                "id": "breadcrumbs.user_id",
                 "type": "route",
-                "created_at": 0,
-                "created_by": "",
                 "updated_at": 0,
-                "updated_by": "",
                 "tags": ["breadcrumbs"],
                 "title": "Title",
                 "description": "Description",
@@ -240,12 +234,9 @@
         Response:
 
             {
-                "id": "user_id.breadcrumbs",
+                "id": "breadcrumbs.user_id",
                 "type": "route",
-                "created_at": 0,
-                "created_by": "",
                 "updated_at": 0,
-                "updated_by": "",
                 "tags": ["breadcrumbs"],
                 "title": "Title",
                 "description": "Description",
@@ -282,7 +273,7 @@
         Request Data:
 
             {
-                "id": "nnnn.location",
+                "id": "location.nnnn",
                 "type": "location",
                 "created_at": nnn,
                 "created_by": "uid",
@@ -299,7 +290,7 @@
         or
 
             {
-                "id": "nnnn.route",
+                "id": "route.nnnn",
                 "type": "route",
                 "created_at": 0,
                 "created_by": "id@provider",
@@ -360,7 +351,7 @@
 
             [
                 {
-                    "id": "nnnn.location",
+                    "id": "location.nnnn",
                     "type": "location",
                     "created_at": nnn,
                     "created_by": "uid",
@@ -374,7 +365,7 @@
                     "lat": y.yyy,
                 },
                 {
-                    "id": "nnnn.route",
+                    "id": "route.nnnn",
                     "type": "route",
                     "created_at": 0,
                     "created_by": "id@provider",
@@ -396,7 +387,7 @@
 
     给用户发送push，通知用户登录routex。identity_id是external_username@provider的形式。
 
-    POST http://domain/v3/routex/notification/crosses/:cross_id/:identity_id?token=xxxxxx
+    POST http://domain/v3/routex/notification/crosses/:cross_id?id=external_username@provider&token=xxxxxx
 
     No Request Data.
 
@@ -422,12 +413,14 @@
 
     获得关于某个 cross 的 route_x 更新的所有通知。第一次连接后，会下发cross对应的当前所有breadcrumbs和geomarks的信息。对于route对象，每次下发对象最多含有100个position信息，多于100个position会拆成几次分别下发，id相同，updated at相同。如果updated at不同但id相同的route，需要覆盖之前的同id route内容。对于tag为breadcrumbs的route对象，只包含对应用户最新所在点的信息。
 
-    POST http://domain/v3/routex/crosses/:cross_id?_method=WATCH&coordinate=(earth|mars)&token=xxxxxx
+    force_window_open如果带有此参数，则会自动将窗口延时。如果此参数为force_window_open=nnnn，则自动将窗口延时nnnn秒。
+
+    POST http://domain/v3/routex/crosses/:cross_id?_method=WATCH&coordinate=(earth|mars)&token=xxxxxx&force_window_open
 
     Response:
 
         {
-            "id": "user_id.breadcrumbs",
+            "id": "breadcrumbs.nnnn",
             "type": "route",
             "created_at": 0,
             "created_by": "",
@@ -442,7 +435,7 @@
             ]
         }
         {
-            "id": "nnnn.location",
+            "id": "location.nnnn",
             "type": "location",
             "created_at": nnn,
             "created_by": "uid",
@@ -460,7 +453,12 @@
             "action": "init_end" // 之前为流建立前全量的历史数据，之后为更新数据
         }
         {
-            "id": "nnnn.route",
+            "type": "command",
+            "action": "close_after",
+            "args": [3600], // 该streaming将在3600秒后关闭。如果有修改窗口的动作，此命令会随时更新最新的窗口时间。
+        }
+        {
+            "id": "route.nnnn",
             "type": "route",
             "created_at": 0,
             "created_by": "id@provider",
@@ -482,8 +480,8 @@
             "type": "route",
         } // 表示删除对应id的mark。
         {
-            "id": "user_id.breadcrumbs",
-            "action": "save",  // user的route信息，如果action带有save标志，表示需要保存到历史记录里
+            "id": "breadcrumbs.user_id",
+            "action": "save_to_history",  // user的route信息，如果action带有save_to_history标志，表示需要保存到历史记录里
             "type": "route",
             "created_at": 0,
             "created_by": "",
@@ -498,7 +496,7 @@
             ]
         }
         {
-            "id": "user_id.breadcrumbs",
+            "id": "breadcrumbs.user_id",
             "type": "route",
             "created_at": 0,
             "created_by": "",

@@ -101,3 +101,12 @@
                "state" : [str:published | draft]
             }
         }
+
+
+## Routex Widget
+
+        #!javascript
+        {
+            "my_status" : true | false | null,
+            "type" : "routex",
+        }
