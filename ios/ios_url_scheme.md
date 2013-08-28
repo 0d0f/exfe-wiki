@@ -131,7 +131,7 @@ iOS支持空Host，目前建议使用 空，实现目前不进行判断。
 授权的token，必选。使用场景参考[user_id](#user_id)
 
 ### <a id="username"></a>username
-用户名称，必选。用来再合并的时候给予提示，由于调用者并不知道是否会合并，因此该选项必须有
+用户名称，必选。用来在合并的时候给予提示，由于调用者并不知道是否会合并，因此该选项必须有
 
 ### <a id="identity_id"></a>identity_id (Optional)
 用来标示更改的身份信息，不是每个调用都有，一般用于Profile的更新或者添加Identity，可选。
