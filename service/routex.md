@@ -396,7 +396,7 @@
 
     给用户发送push，通知用户登录routex。identity_id是external_username@provider的形式。
 
-    POST http://domain/v3/routex/notification/crosses/:cross_id/:identity_id?token=xxxxxx
+    POST http://domain/v3/routex/notification/crosses/:cross_id?id=external_username@provider&token=xxxxxx
 
     No Request Data.
 
