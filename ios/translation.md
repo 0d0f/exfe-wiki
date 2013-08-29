@@ -3,6 +3,7 @@
 * [Tool](#tool)
 	* [Localization Manager](#manager)
 	* [Pseudo Translation Tool](#pseudo)
+	* [Template](#template)
 	* [Plurals](#plurals)
 * [Steps](#steps)
     * [1 Find display NSString](#step_1)
@@ -14,7 +15,9 @@
 
 ##<a id="tool"></a>Tool
 ###<a id="manager"></a>Localization Manager
-[Localization Manager](http://www.loc-suite.org/localization-manager/)
+* [Localization Manager](http://www.loc-suite.org/localization-manager/) ✓
+* [Linguan](http://www.cocoanetics.com/apps/linguan/)
+
 ###<a id="pseudo"></a>Pseudo Translation Tool
 #### Reference
 [http://www.ibabbleon.com/iphone_app_localization.html] <br />
@@ -44,8 +47,16 @@
 ####Bug for Pseudo
 "Thanks for using" = "Ŧħȧƞķş ƒǿř ŭşīƞɠ";<br />
 "Thanks for using " " = "Ŧħȧƞķş ƒǿř ŭşīƞɠ ";
+###<a id="template"></a>Template
+* [CocoaTemplateEngine](https://github.com/xhan/CocoaTemplateEngine) ✓
+* [GRMustache](https://github.com/groue/GRMustache)
+
 ###<a id="plurals"></a>Plurals
-* https://github.com/Smartling/ios-i18n
+* https://github.com/Smartling/ios-i18n ✓
+	
+	[Adopting the Smartling iOS Plurals Library](http://support.smartling.com/entries/23420757-Adopting-the-Smartling-iOS-Plurals-Library)
+	
+	We need a new tool for genstrings:[genstrings2](http://www.cocoanetics.com/2012/01/genstrings2/) [DTLocalizableStringScanner](https://github.com/Cocoanetics/DTLocalizableStringScanner) 
 * https://github.com/junjie/JJPluralForm
 * https://github.com/mattt/TTTLocalizedPluralString
 
@@ -55,9 +66,10 @@
 
 * 包含空格的大多数都是句子或者词组，一般用来显示
 
-RegEx
-
     \@"\w+ \w+
+* 包含单个单词，大写开头
+
+    @"[A-Z]\w*"
 
 
 ### <a id="step_2"></a>2. Edit
