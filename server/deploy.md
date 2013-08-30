@@ -97,9 +97,9 @@
         #!bash
         # add-apt-repository ppa:ondrej/php5
         # apt-get update
-        # apt-get install php5-cli php5-cgi php5-curl php5-mysqlnd php5-gd php5-intl php5-dev
+        # apt-get install php5-fpm php5-cli php5-curl php5-mysqlnd php5-gd php5-intl php5-dev
 
-### /etc/php5/cgi/php.ini
+### /etc/php5/fpm/php.ini
 
         date.timezone = 'UTC'
         # magic_quotes_gpc = Off
@@ -123,14 +123,8 @@
         # make
         # make install
         # cp rpm/redis.ini /etc/php5/mods-available/
-        # ln -s /etc/php5/mods-available/redis.ini /etc/php5/cgi/conf.d/20-redis.ini
+        # ln -s /etc/php5/mods-available/redis.ini /etc/php5/fpm/conf.d/20-redis.ini
         # ln -s /etc/php5/mods-available/redis.ini /etc/php5/cli/conf.d/20-redis.ini
-
-
-## Install lighttpd
-
-        #!bash
-        # apt-get install lighttpd
 
 
 ## deploy codes
@@ -203,6 +197,154 @@
         # update-rc.d exfe_bot defaults
         # update-rc.d exfe_queue defaults
         # update-rc.d exfe_service defaults
+
+## Install Nginx
+
+        #!bash
+        # add-apt-repository ppa:nginx-openresty/stable
+        # apt-get update
+        # apt-get install nginx-openresty
+
+
+### /etc/nginx/site-enable/exfe
+
+        server {
+            listen [::]:80 default_server;
+
+            ssl on;
+            ssl_certificate cert.pem;
+            ssl_certificate_key cert.key;
+        
+            ssl_session_timeout 5m;
+        
+            ssl_protocols SSLv3 TLSv1;
+            ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv3:+EXP;
+            ssl_prefer_server_ciphers on;
+
+            server_name 0d0f.com api.0d0f.com;
+            root /exfe/exfeweb;
+            index index.php;
+            access_log /var/log/nginx/exfe-access.log;
+            error_log /var/log/nginx/exfe-error.log;
+
+            gzip             on;
+            gzip_min_length  1000;
+            gzip_proxied     any;
+            gzip_types       "application/x-javascript" "application/javascript" "application/json" "text/css" "text/plain";
+
+            error_page 404 /index.php?_route=/error/404;
+            error_page 500 /views/error/500.html;
+
+            access_by_lua '
+                local args = ngx.req.get_uri_args()
+                local token = args["token"]
+                if token == "" then
+                    token = args["t"]
+                end
+                -- ngx.log(ngx.ERR, "token: ", token)
+                if not token or token == "" then
+                    return
+                end
+
+                local mysql = require "resty.mysql"
+                local db, err = mysql:new()
+                if not db then
+                    ngx.log(ngx.ERR, "failed to instantiate db: ", err)
+                    return
+                end
+                db:set_timeout(1000)
+
+                local ok, err, errno, sqlstate = db:connect{
+                    host = "127.0.0.1",
+                    port = 3306,
+                    database = "exfe_services",
+                    user = "root",
+                    password = "",
+                    max_packet_size = 1024 * 1024 }
+                if not ok then
+                    ngx.log(ngx.ERR, "failed to connect: ", err, ": ", errno, " ", sqlstate)
+                    return
+                end
+                local s = "SELECT `scopes`, `user_id`, `client`, `expires_at`, `touched_at`, `data` FROM `tokens` WHERE `key`=\\""..token.."\\" LIMIT 1"
+                -- ngx.log(ngx.ERR, "sql: ", s)
+                local res, err, errno, sqlstate = db:query(s)
+                if not res then
+                    ngx.log(ngx.ERR, "bad result: ", err, ": ", errno, ": ", sqlstate, ".")
+                    return
+                end
+                -- local cjson = require "cjson"
+                -- ngx.log(ngx.ERR, "token data: ", cjson.encode(res))
+                if #res == 0 then
+                    return
+                end
+                res = res[1]
+                ngx.req.set_header("Exfe-Auth-Version", "1")
+                ngx.req.set_header("Exfe-Auth-Scopes", res["scopes"])
+                ngx.req.set_header("Exfe-Auth-User-Id", res["user_id"])
+                ngx.req.set_header("Exfe-Auth-Client", res["client"])
+                ngx.req.set_header("Exfe-Auth-Expires-At", res["expires_at"])
+                ngx.req.set_header("Exfe-Auth-Touched-At", res["touched_at"])
+                ngx.req.set_header("Exfe-Auth-Data", res["data"])
+            ';
+
+            location /v3/routex/_inner {
+                return 404;
+            }
+            location /v3/routex {
+                proxy_pass http://127.0.0.1:23333;
+                proxy_buffering off;
+                proxy_cache off;
+                break;
+            }
+            location ~ \.php$ {
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_index index.php;
+                include fastcgi_params;
+                break;
+            }
+
+            add_header Cache-Control "public, must-revalidate";
+
+            location /static {
+                expires 1y;
+                break;
+            }
+            location /eimgs {
+                expires 1y;
+                break;
+            }
+            location / {
+                rewrite ^/404$ /index.php?_route=/error/404;
+                rewrite ^/500$ /views/error/500.html;
+                rewrite ^.*(/?.*)$ /index.php$1;
+                rewrite ^.*$ /index.php;
+            }
+        }
+
+        server {
+            listen [::]:80;
+            server_name img.0d0f.com;
+            root /exfe/upload;
+
+            add_header Access-Control-Allow-Origin "http://0d0f.com";
+            add_header Access-Control-Allow-Credentials "true";
+            add_header Cache-Control "public, must-revalidate";
+            expires 1y;
+        }
+
+        server {
+            listen [::]:80;
+            server_name www.0d0f.com;
+            return 301 http://0d0f.com$request_uri;
+        }
+
+
+## Install lighttpd
+
+        #!bash
+        # apt-get install lighttpd
+
 
 ### /etc/lighttpd/lighttpd.conf
 
