@@ -18,7 +18,7 @@
 
             {
                 "to": {...}, // recipient对象，要发送给的recipient
-                "join": {...}, // identity对象，谁加入了cross
+                "invitee": {...}, // identity对象，谁加入了cross
                 "by": {...}, // identity对象，被谁加入的cross
                 "cross_id": nnn // cross id，加入者所在的cross的id
             }
@@ -33,7 +33,7 @@
 
             {
                 "to": {...}, // recipient对象，要发送给的recipient
-                "invite": {...} // identity对象，被邀请的人
+                "invitee": {...} // identity对象，被邀请的人
                 "by": {...}, // identity对象，邀请触发者
                 "cross_id": {...}, // cross对象，被发送者所在cross
             }
