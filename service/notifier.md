@@ -32,9 +32,10 @@
         POST内容：
 
             {
-                "to": {...}, // recipient 对象，要发送给的 recipient
-                "cross": {...}, // cross 对象，被发送者所在 cross
-                "by": {...}, // identity 对象，邀请触发者
+                "to": {...}, // recipient对象，要发送给的recipient
+                "invite": {...} // identity对象，被邀请的人
+                "by": {...}, // identity对象，邀请触发者
+                "cross_id": {...}, // cross对象，被发送者所在cross
             }
  
     - 摘要
