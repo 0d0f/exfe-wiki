@@ -8,6 +8,21 @@
 
  - cross相关服务
 
+    - 加入
+
+        接口地址：
+
+            http://127.0.0.1:23333/v3/notifier/cross/join
+
+        POST内容：
+
+            {
+                "to": {...}, // recipient对象，要发送给的recipient
+                "join": {...}, // identity对象，谁加入了cross
+                "by": {...}, // identity对象，被谁加入的cross
+                "cross_id": nnn // cross id，加入者所在的cross的id
+            }
+
     - 邀请
 
         接口地址：
