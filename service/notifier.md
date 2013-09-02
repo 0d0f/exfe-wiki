@@ -37,6 +37,21 @@
                 "by": {...}, // identity对象，邀请触发者
                 "cross_id": {...}, // cross对象，被发送者所在cross
             }
+
+    -预览 
+
+        接口地址：
+
+            http://127.0.0.1:23333/v3/notifier/cross/preview
+
+        POST内容：
+
+            {
+                "to": {...}, // recipient对象，要发送给的recipient
+                "invitee": {...} // identity对象，被邀请的人
+                "by": {...}, // identity对象，邀请触发者
+                "cross_id": {...}, // cross对象，被发送者所在cross
+            }
  
     - 摘要
 
