@@ -4,37 +4,36 @@
 ###Check out Repo
 
     #!bash
-    git clone git@git.0d0f.com:exfeiosv2
+    $ git clone git@git.0d0f.com:exfeiosv2
     
 默认库位置，项目库名字exfeiosv2
 ###Init submodules
 
     #!bash
-    cd exfeiosv2/
-    git submodule update --init --recursive
+    $ cd exfeiosv2/
+    $ git submodule update --init --recursive
     
 初始化子模块要加上递归开关
 ## Shell
 ### make
     
     #!bash
-    ./make.sh 0d0f|pilot
+    $ ./make.sh 0d0f|pilot
     
 包含了2个脚本
-build.sh
-和
-publish.sh
-目前没有做出错检查，也就是说，如果build过程失败，publish会把上一个版本的内容上传，因此要确保能够正确Build，或者清空临时文件夹builds/下面的ipa。
+
+* build.sh
+* publish.sh
 
 ### build
 
     #!bash
-    ./build.sh -p 0d0f|pilot|exfe
+    $ ./build.sh -p 0d0f|pilot|exfe
     
 ### publish
 
     #!bash
-    ./publish.sh 0d0f|pilot|exfe
+    $ ./publish.sh 0d0f|pilot|exfe
     
 ## 发布位置
 网页入口 [app.0d0f.com](http://app.0d0f.com/)

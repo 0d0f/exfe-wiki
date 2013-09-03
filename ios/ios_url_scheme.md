@@ -77,7 +77,7 @@ iOS支持空Host，目前建议使用 空，实现目前不进行判断。
 
 [^Index](#index)
 
-### <a id="routex"></a>Routex（草案）
+### <a id="routex"></a>Routex
 直接打开CrossID为%CROSS_ID%的Cross Routex界面
 
     /!%CROSS_ID%/routex
@@ -190,42 +190,4 @@ iOS支持空Host，目前建议使用 空，实现目前不进行判断。
     
 [^Index](#index)
 
-<hr />
-<hr />
-
-##Index (Deprecated)   
-* [Cross](#cross_2)
-* [Cross List](#crosses_2)
-* [Profile](#profile_2)
-* [Identity (NOT Implemented)](#identity_2)
-   
-## Parameters
-### user_id
-用来标示登陆的用户信息，必选。
-### token
-授权的token，必选。
-### identity_id (Optional)
-用来标示更改的身份信息，不是每个调用都有，一般用于Profile的更新或者添加Identity。
-
-##Schema
-### <a id="cross_2"></a>Cross
-exfe://crosses/%CROSS_ID%
-直接打开CrossID为%CROSS_ID%的Cross Detail界面
-
-### <a id="crosses_2"></a>Cross List
-exfe://crosses
-直接打开Cross List界面
-
-### <a id="profile_2"></a>Profile
-exfe://profile
-直接打开Profile界面
-草稿：
-exfe://profile/username/edit
-exfe://profile/IDENTITY_ID/edit
-exfe://profile/password/change
-exfe://profile/password/reset
-
-### <a id="identity_2"></a>Identity (NOT Implemented)
-exfe://Identity/IDENTITY_ID
-添加Identity（未完成）
 

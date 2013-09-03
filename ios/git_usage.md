@@ -134,7 +134,7 @@ Git创建Develop分支的命令：
     *.swp
     *.out
 
-### \<GIR_PROJECT_ROOT\>/.gitignore
+### &lt;GIR_PROJECT_ROOT>/.gitignore
 
     # Xcode
     build/*

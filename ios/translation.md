@@ -45,12 +45,22 @@
 	$ rm *.po
 
 ####Bug for Pseudo
-尾部包含空格的会出bug，诸如
 
-"Thanks for using " = "Ŧħȧƞķş ƒǿř ŭşīƞɠ";<br />
-"Thanks for using " " = "Ŧħȧƞķş ƒǿř ŭşīƞɠ ";
-特征：查找
-" " = "
+    // 错误: 特征 key尾部包含空格 比如 查找 " " = "
+    "EXFE " " = "ḖẊƑḖ ";
+    // 修正: 去掉重复的空格和双引号
+    "EXFE " = "ḖẊƑḖ";
+
+    // 错误: 特征 key包含双引号 比如 查找 "" ＝ 或者 ＝ ""
+    ""%@"" = ""%@"";
+    // 修正: key的双引号转义
+    "\"%@\"" = "\"%@\"";
+    
+    // 错误: 特征 key包含双引号 查找 一行多于4个双引号
+    "Sorry, something is technically wrong in the "cloud", we’re fixing it up." = "Şǿřřẏ, şǿḿḗŧħīƞɠ īş ŧḗƈħƞīƈȧŀŀẏ ẇřǿƞɠ īƞ ŧħḗ "ƈŀǿŭḓ", ẇḗ’řḗ ƒīẋīƞɠ īŧ ŭƥ.";
+    // 修正: key的双引号转义
+    "Sorry, something is technically wrong in the \"cloud\", we’re fixing it up." = "Şǿřřẏ, şǿḿḗŧħīƞɠ īş ŧḗƈħƞīƈȧŀŀẏ ẇřǿƞɠ īƞ ŧħḗ \"ƈŀǿŭḓ\", ẇḗ’řḗ ƒīẋīƞɠ īŧ ŭƥ.";
+    
 ###<a id="template"></a>Template
 * [CocoaTemplateEngine](https://github.com/xhan/CocoaTemplateEngine) ✓
 * [GRMustache](https://github.com/groue/GRMustache)

@@ -1,14 +1,14 @@
 # Log Tool
 选用RKLog (包含在RestKit里面)作为我们的Log系统。
 ##使用方式
-将NSLog换成诸如RKLogInfo()即可。
+将NSLog(…)换成诸如RKLogInfo(…)即可。
 
     #import <RestKit/RestKit.h>
     
     // NSLog
-    NSLog(@"This is log by Apple.");
+    NSLog(@"This is log by %@.", @"Apple");
     // RKLog
-    RKLogInfo(@"This is log by RKLog.");
+    RKLogInfo(@"This is log by %@.", @"RKLog");
 
 ##日志分级
 分为6级
@@ -73,7 +73,7 @@ RestKit定义了如下模块
 
 App本身可以直接指定输出等级
 
-    RKLogSetAppLoggingLevel(RKLogLevelDefault); //App模块按照默认等级输入Log
+    RKLogSetAppLoggingLevel(RKLogLevelDefault); //App模块按照默认等级输出Log
 
 模块名字支持统配
 
