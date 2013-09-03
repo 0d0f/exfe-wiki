@@ -384,6 +384,25 @@
         }
 
 
+## Check Wechat Following
+* endpoint: /v3/bus/checkwechatfollowing
+* GET args:
+    - external_id: [str:external_id]
+* returns:
+    - 200: following: [bol]
+    - 400: bad_request
+    - 500
+* example:
+
+        #!base
+        http api.leask.0d0f.com/v3/bus/CheckwechatFollowing?external_id=onrOgjiSR2kTBaJISb32-z8cpbzA@gh_8c4c8d9d14a7
+        {
+            "data": {
+                "following": true
+            }
+        }
+
+
 ## Send Wechat Message
 * endpoint: /v3/bus/sendWechatMessage
 * POST args:
