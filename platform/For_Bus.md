@@ -384,6 +384,25 @@
         }
 
 
+## Check Wechat Following
+* endpoint: /v3/bus/checkwechatfollowing
+* GET args:
+    - external_id: [str:external_id]
+* returns:
+    - 200: following: [bol]
+    - 400: bad_request
+    - 500
+* example:
+
+        #!base
+        http api.leask.0d0f.com/v3/bus/CheckwechatFollowing?external_id=onrOgjiSR2kTBaJISb32-z8cpbzA@gh_8c4c8d9d14a7
+        {
+            "data": {
+                "following": true
+            }
+        }
+
+
 ## Send Wechat Message
 * endpoint: /v3/bus/sendWechatMessage
 * POST args:
@@ -416,7 +435,7 @@
                 }
             }
 
-    - user_location_request: {{identity.name.DATA}}在活点地图“{{cross.title.DATA}}”中请求更新您的位置。请打开“查看”菜单项更新。
+    - user_location_request: {{identity.name.DATA}}请您更新位置：{{cross.title.DATA}}\n点“查看”菜单开启这张地图将自动更新您的位置。
 
         data参数：
 
@@ -424,6 +443,23 @@
             {
                 "identity": {
                     "name": "abc"
+                },
+                "cross": {
+                    "title" : "喵~"
+                }
+            }
+
+    - x_join: {{identity.name.DATA}}通过{{by_identity.name.DATA}}的链接开启了活点地图：{{cross.title.DATA}}
+
+        data参数：
+
+            #!javascript
+            {
+                "identity": {
+                    "name": "abc"
+                },
+                "by_identity": {
+                    "name": "def"
                 },
                 "cross": {
                     "title" : "喵~"
