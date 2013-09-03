@@ -15,7 +15,7 @@
 
 ##<a id="tool"></a>Tool
 ###<a id="manager"></a>Localization Manager
-* [Localization Manager](http://www.loc-suite.org/localization-manager/) ✓
+* [Localization Suite](http://www.loc-suite.org/localization-manager/) ✓
 * [Linguan](http://www.cocoanetics.com/apps/linguan/)
 
 ###<a id="pseudo"></a>Pseudo Translation Tool
@@ -39,14 +39,18 @@
 	$ podebug --rewrite=unicode en.po en_rewritten.po
 	processing 1 files...
 	[###########################################] 100%
-	$ po2prop en_rewritten.po EXFE/zh-Hans.lproj/Localizable.strings -t EXFE/en.lproj/Localizable.strings 
+	$ po2prop en_rewritten.po EXFE/zh-Hant.lproj/Localizable.strings -t EXFE/en.lproj/Localizable.strings 
 	processing 1 files...
 	[###########################################] 100%
 	$ rm *.po
 
 ####Bug for Pseudo
-"Thanks for using" = "Ŧħȧƞķş ƒǿř ŭşīƞɠ";<br />
+尾部包含空格的会出bug，诸如
+
+"Thanks for using " = "Ŧħȧƞķş ƒǿř ŭşīƞɠ";<br />
 "Thanks for using " " = "Ŧħȧƞķş ƒǿř ŭşīƞɠ ";
+特征：查找
+" " = "
 ###<a id="template"></a>Template
 * [CocoaTemplateEngine](https://github.com/xhan/CocoaTemplateEngine) ✓
 * [GRMustache](https://github.com/groue/GRMustache)
@@ -95,8 +99,14 @@ Tips:
 * 增量追加 －a (不建议使用)
 * 使用版本工具对比
 * -s 可以自定义替换的关键词，比如 -s MyLocalString 则搜索MyLocalString和MyLocalStringFromTable，而不是NSLocalizedString和NSLocalizedStringFromTable
+* 目前无法支持复数方案
 
 ### <a id="step_4"></a>4. Translate
+
+* Download [Localization Suite](http://www.loc-suite.org/pub/stable/Localization%20Suite.tbz). There are three apps in the suite: Localization Manager, Localizer and Localization Dictionary.
+* Open shuady.ldb by Localization Manager
+* Select the language to edit.
+
 [^Index](#index)
 ## <a id="misc"></a>Misc 
 ### Pending files to translate
