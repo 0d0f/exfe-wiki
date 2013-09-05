@@ -85,11 +85,8 @@ Web Front-End Route
 
 ### Go to app
 
-    # Open the app
+    # 强制更新本地 `user-token`，打开 app。
     /toapp
-
-    # Re-auth
-    /toapp?reauth
 
 
 ### invalid
