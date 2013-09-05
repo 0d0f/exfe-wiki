@@ -91,6 +91,10 @@ Web Front-End Route
     # 强制更新本地`user-token`
     /toapp?authenticate
 
+### Wechat
+
+    # routex about
+    /wechat/aboutroutex
 
 ### invalid
 
