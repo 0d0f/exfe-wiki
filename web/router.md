@@ -85,8 +85,11 @@ Web Front-End Route
 
 ### Go to app
 
-    # 强制更新本地 `user-token`，并且打开 app。
+    # 打开app
     /toapp
+
+    # 强制更新本地`user-token`
+    /toapp?authenticate
 
 
 ### invalid
