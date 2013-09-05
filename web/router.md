@@ -83,6 +83,14 @@ Web Front-End Route
 
     ...
 
+### Go to app
+
+    # Open the app
+    /toapp
+
+    # Re-auth
+    /toapp?reauth
+
 
 ### invalid
 
