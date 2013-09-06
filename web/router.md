@@ -85,16 +85,20 @@ Web Front-End Route
 
 ### Go to app
 
+
     # 打开app
     /toapp
 
     # 强制更新本地`user-token`
     /toapp?authenticate
 
+
 ### Wechat
 
-    # routex about
+
+    # about routex
     /wechat/aboutroutex
+
 
 ### invalid
 
