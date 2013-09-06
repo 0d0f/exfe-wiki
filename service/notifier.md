@@ -33,7 +33,6 @@
 
             {
                 "to": {...}, // recipient对象，要发送给的recipient
-                "invitee": {...} // identity对象，被邀请的人
                 "by": {...}, // identity对象，邀请触发者
                 "cross_id": {...}, // cross对象，被发送者所在cross
             }
@@ -48,11 +47,10 @@
 
             {
                 "to": {...}, // recipient对象，要发送给的recipient
-                "invitee": {...} // identity对象，被邀请的人
                 "by": {...}, // identity对象，邀请触发者
                 "cross_id": {...}, // cross对象，被发送者所在cross
             }
- 
+
     - 摘要
 
         接口地址：
@@ -67,6 +65,21 @@
                 "updated_at": "YYYY-MM-DD HH:MM:SS" // cross 更新的时间
             }, {...}, ... // 同上
             ]
+
+    - 更新：邀请
+    
+        接口地址：
+
+            http://127.0.0.1:23333/v3/notifier/cross/update_invitation
+
+        POST内容：
+
+            {
+                "to": {...}, // recipient 对象，要发送给的 recipient
+                "invitees": [...], // identity对象数组，被邀请的人
+                "by": {...}, // identity对象，邀请触发者
+                "cross_id": nnn // 所在cross的id
+            }
 
     - 更新
     
