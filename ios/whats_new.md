@@ -1,6 +1,17 @@
 # 更改列表
 
-## Latest
+## Version 2.2.0
+### Publish Date: 2013/9/7
+
+### Feature
+
+* 添加活点地图
+* 添加后台上报地理位置支持
+
+### 
+
+## Version 2.1.6
+
 ### 功能/Feature
 
 * 删除通知身份
