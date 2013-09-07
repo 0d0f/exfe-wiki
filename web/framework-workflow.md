@@ -15,7 +15,7 @@ domain/!:cross\_id/:widget?xcode=xxxx&via=identity
     a. 根据URL判断不需加载·X·页面框架的话，加载对应功能页面框架。
 1. 若在微信WebKit中则调用OAuth。返回成功进行下列判断，失败显示首页并提示授权失败。
     a. 如果OAuth返回的user\_token与本地的不同user，需合并OAuth的user身份。不符合条件或合并失败更新本地token为前者。
-    a. 如果下发isSmith将OAuth的user加进·X·，成功则加载页面。
+    a. 如果下发isSmith将OAuth的user加进·X·，成功则加载页面，失败则加载受邀页面。
     a. 如果下发user\_token则加载页面，此时如果下发的与OAuth的user不同，需合并下发user的身份。
     a. 如果下发x\_token与OAuth的user相同，以OAuth的user加载页面。
     a. 以OAuth的user调用getCross，返回200立刻加载页面。
