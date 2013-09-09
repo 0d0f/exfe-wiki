@@ -9,19 +9,23 @@
 
 Git创建Develop分支的命令：
 
-    git checkout -b develop master
+    # 从master创建dev分支
+    git checkout -b dev master
+    # 将本地分支推送到origin
+    git push origin dev:dev
+    # 绑定本地和服务器上的对应分支
+    git branch --set-upstream dev origin/dev
 
 切换develop分支
 
-    git checkout develop
+    git checkout dev
 
 将develop的结果合并到master （no-ff）
 
     # 切换到Master分支
     git checkout master
     # 对Develop分支进行合并
-    git merge --no-ff develop
-
+    git merge --no-ff dev
 
 ### 临时分支
 其他临时分支前缀 根据情况对应
@@ -34,12 +38,19 @@ Git创建Develop分支的命令：
 创建一个功能分支：
 
     #!bash
-    git checkout -b feature-x develop
+    git checkout -b feature-x dev
+
+共享分支到上游服务器（可选）
+
+    # 将本地分支推送到origin
+    git push origin feature-x:feature-x
+    # 绑定本地和服务器上的对应分支
+    git branch --set-upstream feature-x origin/feature-x
 
 开发完成后，将功能分支合并到develop分支：
 
     #!bash
-    git checkout develop
+    git checkout dev
     git merge --no-ff feature-x
 
 删除feature分支：
@@ -47,57 +58,68 @@ Git创建Develop分支的命令：
     #!bash
     git branch -d feature-x
     
-
 #### 预发布（release）分支
 创建一个预发布分支：
 
     #!bash
-    git checkout -b release-1.2 develop
+    git checkout -b release-a.b.c dev
+
+共享分支到上游服务器（可选）
+
+    # 将本地分支推送到origin
+    git push origin release-a.b.c:release-a.b.c
+    # 绑定本地和服务器上的对应分支
+    git branch --set-upstream release-a.b.c origin/release-a.b.c
 
 确认没有问题后，合并到master分支：
 
     #!bash
     git checkout master
-    git merge --no-ff release-1.2
+    git merge --no-ff release-a.b.c
     # 对合并生成的新节点，做一个标签
-    git tag -a 1.2
+    git tag -a a.b.c
     
 再合并到develop分支：
 
     #!bash
-    git checkout develop
-    git merge --no-ff release-1.2
+    git checkout dev
+    git merge --no-ff release-a.b.c
 
 最后，删除预发布分支：
 
     #!bash
-    git branch -d release-1.2
-
+    git branch -d release-a.b.c
 
 #### 修补bug（fixbug）分支
 创建一个修补bug分支：
 
     #!bash
-    git checkout -b fixbug-0.1 master
+    git checkout -b fixbug-### master
+    
+共享分支到上游服务器（可选）
+
+    # 将本地分支推送到origin
+    git push origin fixbug-###:fixbug-###
+    # 绑定本地和服务器上的对应分支
+    git branch --set-upstream fixbug-### origin/fixbug-###
 
 修补结束后，合并到master分支：
 
     #!bash
     git checkout master
-    git merge --no-ff fixbug-0.1
+    git merge --no-ff fixbug-###
     git tag -a 0.1.1
 
 再合并到develop分支：
 
     #!bash
-    git checkout develop
-    git merge --no-ff fixbug-0.1
+    git checkout dev
+    git merge --no-ff fixbug-###
 
 最后，删除"修补bug分支"：
 
     #!bash
-    git branch -d fixbug-0.1
-
+    git branch -d fixbug-###
 
 ## Git配置建议
 ### ~/.gitconfig
