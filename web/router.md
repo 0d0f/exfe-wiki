@@ -118,6 +118,14 @@ Web Front-End Route
     /500
 
 
+### Debug Mode
+
+    # enable debug
+    ?debug=(on|true)
+
+    # disable debug
+    ?debug=(off|false)
+
 ## Links
 * [Old Routes](https://docs.google.com/a/exfe.com/document/d/1oIaFPUDBgrGyQ1wHXxv3bOAzqVL2K3Xpc3FjDKRLh40/)
 * [URI scheme](http://en.wikipedia.org/wiki/URI_scheme)
