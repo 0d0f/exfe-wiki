@@ -61,6 +61,26 @@
 
 ## 接口规划
 
+ - identity更新
+
+    此接口提交一个最新的identity对象，会送到所有此identity参与的routex的streaming。
+
+    POST http://domain/v3/routex/_inner/update_identity
+
+    Request Data:
+
+        {...} // identity对象
+
+ - exfee更新
+
+    此接口提交一个identity对象对exfee的操作，会送到与此exfee相关的routex的streaming。
+
+    POST http://domain/v3/routex/_inner/update_exfee?action=join/remove
+
+    Request Data:
+
+        {...} // identity对象
+
  - 获取某个cross_id是否曾经开启过routex
 
     此接口提交一个cross_id的列表，返回对应的cross是否开启过routex服务，如果开启过服务，返回routex最后的更新时间。
@@ -188,13 +208,13 @@
             [
                 <route object with tag breadcrumbs, id is user identity id>,
                 {
-                    "id": "breadcrumbs.user_id",
+                    "id": "breadcrumbs.window_id",
                     "type": "route",
-                    "updated_at": 0,
+                    "created_at": nnnn,
+                    "created_by": "user_id@exfe",
+                    "updated_at": nnn,
+                    "updated_by": "user_id@exfe",
                     "tags": ["breadcrumbs"],
-                    "title": "Title",
-                    "description": "Description",
-                    "color": "rrggbbaa",
                     "positions": [
                         {"t": yyyy, "gps": []}, // 最新
                         ...
@@ -210,22 +230,26 @@
 
         每次最多只返回最新的100个positions，如果要请求更多的数据，可以指定after_timestamp参数，表示从after_timestamp时间开始再往更老的时间取最多100个数据。
 
+        用户的breadcrumbs会分窗口下发多条路径。
+
         Response:
 
-            {
-                "id": "breadcrumbs.user_id",
-                "type": "route",
-                "updated_at": 0,
-                "tags": ["breadcrumbs"],
-                "title": "Title",
-                "description": "Description",
-                "color": "rrggbbaa",
-                "positions": [
-                    {"t": yyyy, "gps": []}, // 最新
-                    ...
-                    {"t": yyyy, "gps": []}, // 最老
-                ]
-            }
+            [
+                {
+                    "id": "breadcrumbs.window_id",
+                    "type": "route",
+                    "created_at": nnnn,
+                    "created_by": "user_id@exfe",
+                    "updated_at": nnn,
+                    "updated_by": "user_id@exfe",
+                    "tags": ["breadcrumbs"],
+                    "positions": [
+                        {"t": yyyy, "gps": []}, // 最新
+                        ...
+                        {"t": yyyy, "gps": []}, // 最老
+                    ]
+                }
+            ]
 
      - 获得某个用户的 breadcrumbs 信息 内部使用
 
@@ -234,15 +258,17 @@
         Response:
 
             {
-                "id": "breadcrumbs.user_id",
+                "id": "breadcrumbs.window_id",
                 "type": "route",
-                "updated_at": 0,
+                "created_at": nnnn,
+                "created_by": "user_id@exfe",
+                "updated_at": nnn,
+                "updated_by": "user_id@exfe",
                 "tags": ["breadcrumbs"],
-                "title": "Title",
-                "description": "Description",
-                "color": "rrggbbaa",
                 "positions": [
-                    {"t": yyyy, "gps": []} // 最新
+                    {"t": yyyy, "gps": []}, // 最新
+                    ...
+                    {"t": yyyy, "gps": []}, // 最老
                 ]
             }
 
@@ -420,18 +446,17 @@
     Response:
 
         {
-            "id": "breadcrumbs.nnnn",
+            "id": "breadcrumbs.window_id",
             "type": "route",
-            "created_at": 0,
-            "created_by": "",
-            "updated_at": 0,
-            "updated_by": "",
+            "created_at": nnnn,
+            "created_by": "user_id@exfe",
+            "updated_at": nnn,
+            "updated_by": "user_id@exfe",
             "tags": ["breadcrumbs"],
-            "title": "Title",
-            "description": "Description",
-            "color": "rrggbbaa",
             "positions": [
                 {"t": yyyy, "gps": []}, // 最新
+                ...
+                {"t": yyyy, "gps": []}, // 最老
             ]
         }
         {
@@ -480,33 +505,31 @@
             "type": "route",
         } // 表示删除对应id的mark。
         {
-            "id": "breadcrumbs.user_id",
+            "id": "breadcrumbs.window_id",
             "action": "save_to_history",  // user的route信息，如果action带有save_to_history标志，表示需要保存到历史记录里
             "type": "route",
-            "created_at": 0,
-            "created_by": "",
-            "updated_at": 0,
-            "updated_by": "",
+            "created_at": nnnn,
+            "created_by": "user_id@exfe",
+            "updated_at": nnn,
+            "updated_by": "user_id@exfe",
             "tags": ["breadcrumbs"],
-            "title": "Title",
-            "description": "Description",
-            "color": "rrggbbaa",
             "positions": [
                 {"t": yyyy, "gps": []}, // 最新
+                ...
+                {"t": yyyy, "gps": []}, // 最老
             ]
         }
         {
-            "id": "breadcrumbs.user_id",
+            "id": "breadcrumbs.window_id",
             "type": "route",
-            "created_at": 0,
-            "created_by": "",
-            "updated_at": 0,
-            "updated_by": "",
+            "created_at": nnnn,
+            "created_by": "user_id@exfe",
+            "updated_at": nnn,
+            "updated_by": "user_id@exfe",
             "tags": ["breadcrumbs"],
-            "title": "Title",
-            "description": "Description",
-            "color": "rrggbbaa",
             "positions": [
                 {"t": yyyy, "gps": []}, // 最新
+                ...
+                {"t": yyyy, "gps": []}, // 最老
             ]
         }
