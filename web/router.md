@@ -118,7 +118,7 @@ Web Front-End Route
     /500
 
 
-## Debug Mode
+### Debug Mode
 
     # enable debug
     ?debug=(on|true)
