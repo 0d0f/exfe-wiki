@@ -120,11 +120,11 @@ Web Front-End Route
 
 ## Debug Mode
 
-  # enable debug
-  ?debug=(on|true)
+    # enable debug
+    ?debug=(on|true)
 
-  # disable debug
-  ?debug=(off|false)
+    # disable debug
+    ?debug=(off|false)
 
 ## Links
 * [Old Routes](https://docs.google.com/a/exfe.com/document/d/1oIaFPUDBgrGyQ1wHXxv3bOAzqVL2K3Xpc3FjDKRLh40/)
