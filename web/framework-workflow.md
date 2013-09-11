@@ -8,13 +8,13 @@ domain/!:cross\_id/:widget?xcode=xxxx&via=identity
 1. URL解析失败显示首页并提示无效链接，结束。    // 首页DOM在framework中
 1. 显示“鉴权中”
 1. 本地已存user\_token
-    a. 如果下发isSmith将OAuth的user加进·X·，成功则加载页面。 // 服务器user\_token更新逻辑做好之前，跳过此步。
+    a. 如果下发isSmith将user加进·X·，成功则加载页面。 // 服务器user\_token更新逻辑做好之前，跳过此步。
     a. 如果下发user\_token则加载页面，此时如果下发的与本地的user相同，更新本地为前者，否则需合并下发user的身份。
     a. 如果下发x\_token与本地的user相同，以user加载页面。
     a. 以本地user调用getCross，返回200立刻加载页面。
     a. 根据URL判断不需加载·X·页面框架的话，加载对应功能页面框架。
 1. 若在微信WebKit中则调用OAuth。返回成功进行下列判断，失败显示首页并提示授权失败。
-    a. 如果OAuth返回的user\_token与本地的不同user，需合并OAuth的user身份。不符合条件或合并失败更新本地token为前者。
+    a. 如果OAuth返回的user\_token与本地的不同user，则立刻合并OAuth的user身份。不符合条件或合并失败更新本地token为前者。
     a. 如果下发isSmith将OAuth的user加进·X·，成功则加载页面，失败则加载受邀页面。
     a. 如果下发user\_token则加载页面，此时如果下发的与OAuth的user不同，需合并下发user的身份。
     a. 如果下发x\_token与OAuth的user相同，以OAuth的user加载页面。
@@ -27,7 +27,7 @@ domain/!:cross\_id/:widget?xcode=xxxx&via=identity
 
 
 ### 加载页面
-1. 探测App（不跳AppStore）。
+1. 探测App（不跳AppStore），跳转成功后再切换回页面继续执行。
 1. 显示“加载中”
 1. 根据URL和参数加载·X· widget页面（及其数据）或加载受邀页面。若加载失败显示首页并提示服务器错，结束。
 1. 若需要合并身份，网页版提示合并，移动版直接合并。
