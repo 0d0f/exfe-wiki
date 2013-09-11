@@ -533,3 +533,9 @@
                 {"t": yyyy, "gps": []}, // 最老
             ]
         }
+        {
+            "id": nnn,
+            "type": "identity",
+            "action": "update", // update为更新，join为一个identity加入routex，remove为移出routex
+            ...
+        }
