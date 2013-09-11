@@ -1,6 +1,19 @@
 # 更改列表
+<hr></hr>
 
-## Latest
+## Version 2.2.0
+### Publish Date: 2013/9/7
+
+### 功能/Feature
+
+* 添加活点地图
+* 添加后台上报地理位置支持
+* 界面支持URL跳转* 汉化，支持中文* 加入微信SDK和微信Provider的支持* Profile头像图片支持PNG，JPG系数是0.6### 错误修正/Fix bugs* 修复地图点击当前选中的点crash### 整理代码和重构* Push数据解析结构调整* 重写刷新Cross List的时间戳控制机制* 调整Cross/Exfee相关操作的调用方式和回调处理，支持重试* 调整Cross Frame和Tab Widget之间的关系* 合并Merge Identity为1步，调整Merge后的拉数据顺序* 将数据获取和拉取网络数据统一到Model上的接口。* 最低部署版本升级到6.0* 更换Log系统为RKLog
+
+<hr></hr>
+
+## Version 2.1.6
+
 ### 功能/Feature
 
 * 删除通知身份
