@@ -75,7 +75,7 @@
 
     此接口提交一个identity对象对exfee的操作，会送到与此exfee相关的routex的streaming。
 
-    POST http://domain/v3/routex/_inner/update_exfee?action=join/remove
+    POST http://domain/v3/routex/_inner/update_exfee?action=join/remove&cross_id=nnnn
 
     Request Data:
 
