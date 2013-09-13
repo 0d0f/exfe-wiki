@@ -73,13 +73,13 @@
 
  - exfee更新
 
-    此接口提交一个identity对象对exfee的操作，会送到与此exfee相关的routex的streaming。
+    此接口提交一个invitation对象对exfee的操作，会送到与此exfee相关的routex的streaming。
 
     POST http://domain/v3/routex/_inner/update_exfee?action=join/remove&cross_id=nnnn
 
     Request Data:
 
-        {...} // identity对象
+        {...} // invitation对象
 
  - 获取某个cross_id是否曾经开启过routex
 
