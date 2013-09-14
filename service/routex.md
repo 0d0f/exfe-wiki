@@ -118,7 +118,7 @@
         Response:
 
             {
-                "in_window:" true/false/null,
+                "in_window": true/false/null,
                 "current_breadcrumb": [
                     {
                         "id": "breadcrumbs.window_id",
