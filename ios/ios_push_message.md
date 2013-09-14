@@ -10,12 +10,16 @@
 	        "badge":4,
 	        "sound":"default"
 	    },
+	    "url":"exfe://zz/!100120"
 	    "path":"/!100120"
 	}
 
 
 * aps
     * "badge" 未读消息数量
-* path
+* url
+	
+	url，用来区分服务器和控制界面跳转的，参考[iOS URL scheme](ios_url_scheme.html)。
+* path (deprecated)
 
     路径，参考[iOS URL scheme](ios_url_scheme.html)

@@ -47,13 +47,19 @@ Git创建Develop分支的命令：
     # 绑定本地和服务器上的对应分支
     git branch --set-upstream feature-x origin/feature-x
 
-开发完成后，将功能分支合并到develop分支：
+将功能分支合并回develop分支：
 
     #!bash
     git checkout dev
     git merge --no-ff feature-x
 
-删除feature分支：
+将develop的进度合并到功能分支：
+
+    #!bash
+    git checkout feature-x
+    git merge --no-ff dev
+
+开发完成后，删除feature分支：
 
     #!bash
     git branch -d feature-x
@@ -130,17 +136,26 @@ Git创建Develop分支的命令：
     	email = <user@email>
     [alias]
     	co = checkout
-    	ci = commit
-    	st = status
-    	br = branch
-    	pl = pull
-    	ps = push
-    	sm = submodule
-    	df = diff
-    	dfc = diff --cached
-    	oneline = log --pretty=oneline --since='2 days ago'
-    	onelog = log -p -1
-    	tree = log --graph --oneline
+        newbr = checkout -b
+        go = checkout
+        godev = checkout dev
+        gomaster = checkout master
+        ci = commit -v
+        st = status
+        br = branch
+        ps = push
+        sm = submodule
+        mg = merge --no-ff
+        mgnoff = merge --no-ff
+        mgff = merge
+        df = diff
+        dfc = diff --cached
+        oneline = log --pretty=oneline --since='2 days ago'
+        onelog = log -p -1
+        tree = log --graph --oneline
+        unstage = reset HEAD --
+        update = pull -v
+        last = log -1 HEAD
     [color]
     	status = auto
     	branch = auto
