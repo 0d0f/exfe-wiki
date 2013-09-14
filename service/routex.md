@@ -118,7 +118,7 @@
         Response:
 
             {
-                "in_window:" true/false, // 如果没有in_window字段，表示用户没有进入过此cross
+                "in_window:" true/false/null,
                 "current_breadcrumb": [
                     {
                         "id": "breadcrumbs.window_id",
