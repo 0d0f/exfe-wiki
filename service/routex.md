@@ -117,15 +117,38 @@
 
         Response:
 
-            true
-
-        or
-
-            false
-
-        or
-
-            null
+            {
+                "in_window:" true/false, // 如果没有in_window字段，表示用户没有进入过此cross
+                "current_breadcrumb": [
+                    {
+                        "id": "breadcrumbs.window_id",
+                        "type": "route",
+                        "created_at": nnnn,
+                        "created_by": "user_id@exfe",
+                        "updated_at": nnn,
+                        "updated_by": "user_id@exfe",
+                        "tags": ["breadcrumbs"],
+                        "positions": [
+                            {"t": yyyy, "gps": []}, // 最新
+                            ...
+                            {"t": yyyy, "gps": []}, // 最老
+                        ]
+                    },
+                    {
+                        "id": "breadcrumbs.window_id",
+                        "type": "route",
+                        "created_at": nnnn,
+                        "created_by": "user_id@exfe",
+                        "updated_at": nnn,
+                        "updated_by": "user_id@exfe",
+                        "tags": ["breadcrumbs"],
+                        "positions": [
+                            {"t": yyyy, "gps": []}, // 最新
+                            ...
+                            {"t": yyyy, "gps": []}, // 最老
+                        ]
+                    }
+                ]
 
      - 提交用户可以更新的cross（内部接口）
 
