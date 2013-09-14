@@ -130,8 +130,6 @@
                         "tags": ["breadcrumbs"],
                         "positions": [
                             {"t": yyyy, "gps": []}, // 最新
-                            ...
-                            {"t": yyyy, "gps": []}, // 最老
                         ]
                     },
                     {
@@ -144,11 +142,10 @@
                         "tags": ["breadcrumbs"],
                         "positions": [
                             {"t": yyyy, "gps": []}, // 最新
-                            ...
-                            {"t": yyyy, "gps": []}, // 最老
                         ]
                     }
                 ]
+            }
 
      - 提交用户可以更新的cross（内部接口）
 
