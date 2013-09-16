@@ -37,14 +37,22 @@
 ## <a id="scheme"></a>Scheme
 目前注册的Scheme是exfe://，测试版本则使用black://(0d0f 黑盒)和panda://(pilot Panda)。
 
+考虑到将来需要弃用exfe，因此在未来某个时间会切换到使用shuady，并有一段过渡期，在过渡期内两者同时使用，因此目前代码解析上对此不做限定和依赖。
+
     exfe://abc/
     black://abc/
     panda://abc/
+    
+    shuady://abc/
 
 ## <a id="host"></a>Host
-iOS支持空Host，目前建议使用 空，实现目前不进行判断。
+iOS支持空Host，需要支持服务器的区分，cn表示国内服务器，zz和com表示全球服务器（默认服务器），空白视为默认服务器。
 
-    exfe:///
+目前假设host部分不包含"."，如果包含"."，则留作未来扩展，比如最右侧的点之后来表示服务器，但目前不作处理。
+
+    exfe://zz/
+    
+    shuady://cn/
 
 ##<a id="path"></a>Path
 ### <a id="crosses"></a>Cross List
@@ -141,43 +149,53 @@ iOS支持空Host，目前建议使用 空，实现目前不进行判断。
 * 纯路径
 <table>
   <tr>
-    <th>URL</th>
+    <th>URL for world wide</th>
+    <th>URL for cn</th>
     <th>跳转到</th>
   </tr>
   <tr>
-    <td>exfe://</td>
+    <td>exfe://zz</td>
+    <td>shuady://cn</td>
     <td>当前界面</td>
   </tr>
   <tr>
-    <td>exfe:///</td>
+    <td>exfe://zz/</td>
+    <td>shuady://cn/</td>
     <td>Cross List界面</td>
   </tr>
   <tr>
-    <td>exfe:///profile</td>
+    <td>exfe://zz/profile</td>
+    <td>shuady://cn/profile</td>
     <td>User Profile界面</td>
   </tr>
   <tr>
-    <td>exfe:///gather</td>
+    <td>exfe://zz/gather</td>
+    <td>shuady://cn/gather</td>
     <td>Gather界面</td>
   </tr>
   <tr>
-    <td>exfe:///!100233</td>
+    <td>exfe://zz/!100233</td>
+    <td>shuady://cn/!100233</td>
     <td>Cross界面，这个Cross的id是100233</td>
   </tr>
   <tr>
-    <td>exfe:///!100233/cross</td>
+    <td>exfe://zz/!100233/cross</td>
+    <td>shuady://cn/!100233/cross</td>
     <td>Cross界面的cross Widget(默认)，这个Cross的id是100233</td>
   </tr>
   <tr>
-    <td>exfe:///!100233/exfee</td>
+    <td>exfe://zz/!100233/exfee</td>
+    <td>shuady://cn/!100233/exfee</td>
     <td>Cross界面的exfee Widget，这个Cross的id是100233</td>
   </tr>
   <tr>
-    <td>exfe:///!100233/conversation</td>
+    <td>exfe://zz/!100233/conversation</td>
+    <td>shuady://cn/!100233/conversation</td>
     <td>Cross界面的conversation Widget，这个Cross的id是100233</td>
   </tr>
   <tr>
-    <td>exfe:///!100233/&lt;WIDGET_NAME></td>
+    <td>exfe://zz/!100233/&lt;WIDGET_NAME></td>
+    <td>shuady://cn/!100233/&lt;WIDGET_NAME></td>
     <td>Cross界面的&lt;WIDGET_NAME> Widget，这个Cross的id是100233，如果&lt;WIDGET_NAME>不认识，则进入默认界面，同exfe:///!100233</td>
   </tr>
 </table>
@@ -186,7 +204,7 @@ iOS支持空Host，目前建议使用 空，实现目前不进行判断。
 
 打开用user_id为233，用token登陆/合并后，跳转到100233的Cross界面：
 
-    exfe:///!100233?user_id=233&username=moew&token=b049787660161c912407e6b3a0de42647d515858592b54a1e1741e08a116e49a
+    exfe://zz/!100233?user_id=233&username=moew&token=b049787660161c912407e6b3a0de42647d515858592b54a1e1741e08a116e49a
     
 [^Index](#index)
 
