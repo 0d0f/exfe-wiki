@@ -119,7 +119,7 @@
 
             {
                 "in_window": true/false/null,
-                "current_breadcrumb": [
+                "objects": [
                     {
                         "id": "breadcrumbs.window_id",
                         "type": "route",
@@ -142,6 +142,37 @@
                         "tags": ["breadcrumbs"],
                         "positions": [
                             {"t": yyyy, "gps": []}, // 最新
+                        ]
+                    },
+                    {
+                        "id": "location.nnnn",
+                        "type": "location",
+                        "created_at": nnn,
+                        "created_by": "uid",
+                        "updated_at": nnn,
+                        "updated_by": "uid",
+                        "tags": ["place", "park"],
+                        "icon": "http://...",
+                        "title": "Title",
+                        "description": "Description",
+                        "lng": x.xxx,
+                        "lat": y.yyy,
+                    },
+                    {
+                        "id": "route.nnnn",
+                        "type": "route",
+                        "created_at": 0,
+                        "created_by": "id@provider",
+                        "updated_at": 0,
+                        "updated_by": "id@provider",
+                        "tags": ["breadcrumbs", "geomarks"],
+                        "title": "Title",
+                        "description": "Description",
+                        "color": "rrggbbaa",
+                        "positions": [
+                            {"t": yyyy, "gps": []}, // 最新
+                            ...
+                            {"t": yyyy, "gps": []}, // 最老
                         ]
                     }
                 ]
