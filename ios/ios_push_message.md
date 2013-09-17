@@ -20,6 +20,7 @@
 * url
 	
 	url，用来区分服务器和控制界面跳转的，参考[iOS URL scheme](ios_url_scheme.html)。
+
 * path (deprecated)
 
     路径，参考[iOS URL scheme](ios_url_scheme.html)
