@@ -1,6 +1,26 @@
 # 更改列表
 <hr></hr>
 
+## Version 2.2.1
+### Publish Date: 2013/9/??
+
+### 功能/Feature
+* 支持切换服务器(全球／中国)
+* 更新TabBar
+
+### 错误修正/Fix bugs
+* 修正相对时间翻译
+* 修正残留未翻译
+* 汉化rome
+* 调整Verification Account的文本样式
+
+### 整理代码和重构
+* Push跳转字段解析更新，支持区分服务器
+* URL跳转支持自动选择服务器登陆
+* 增加Shuady和所有Target对应的Test目标
+
+<hr></hr>
+
 ## Version 2.2.0
 ### Publish Date: 2013/9/7
 
