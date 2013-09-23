@@ -103,6 +103,20 @@
         }
 
 
+## Widget
+
+        #!javascript
+        {
+            "id"         : [int],
+            "cross_id"   : [int],
+            "created_by" : [int:idengity_id],
+            "updated_by" : [int:idengity_id],
+            "created_at" : [str:date],
+            "updated_at" : [str:date],
+            "type"       : [str]
+        }
+
+
 ## Routex Widget
 
         #!javascript
