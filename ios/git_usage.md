@@ -7,7 +7,7 @@
 * Master 主版本发布 对应线上
 * Develop 开发支线，我们命名简写为dev 对应黑盒
 
-Git创建Develop分支的命令：
+Git创建Develop分支的命令：（只需要第一次）
 
     # 从master创建dev分支
     git checkout -b dev master
@@ -16,11 +16,15 @@ Git创建Develop分支的命令：
     # 绑定本地和服务器上的对应分支
     git branch --set-upstream dev origin/dev
 
-切换develop分支
+将服务器上已经创建的Develop分支拉到本地：
+
+    git checkout -b dev origin/dev
+
+切换到本地Develop分支：
 
     git checkout dev
 
-将develop的结果合并到master （no-ff）
+将Develop的结果合并到master （no-ff）
 
     # 切换到Master分支
     git checkout master

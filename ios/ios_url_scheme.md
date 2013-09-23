@@ -4,7 +4,7 @@
 
 举例：
 
-    exfe:///?user_id=233&username=moew&token=b049787660161c912407e6b3a0de42647d515858592b54a1e1741e08a116e49a
+    exfe://cn/?user_id=233&username=moew&token=b049787660161c912407e6b3a0de42647d515858592b54a1e1741e08a116e49a
 
 根据URL的结构，分成Scheme host path parameters 4部分单独定义。
 
@@ -46,9 +46,9 @@
     shuady://abc/
 
 ## <a id="host"></a>Host
-iOS支持空Host，需要支持服务器的区分，cn表示国内服务器，zz和com表示全球服务器（默认服务器），空白视为默认服务器。
+由于增加了国内服务器，我们需要支持服务器的区分，选择2字母国家代码[ISO 3166-1](http://www.iso.org/iso/country_names_and_code_elements)表示。cn表示国内服务器的配置信息，zz表示全球服务器的配置信息。iOS支持空Host，视为默认服务器(cn)。
 
-目前假设host部分不包含"."，如果包含"."，则留作未来扩展，比如最右侧的点之后来表示服务器，但目前不作处理。
+目前假设host部分不包含"."，如果包含"."，则提取最右侧的顶级域名TLD来鉴别。由于ccTLD也使用了2个字母表示国别，因此和上述逻辑统一：比如shuady.cn shuady.com.cn 提取得到cn。特别的对于gLTD的处理，比如shuady.com得到的是com，将com视为zz的别名。
 
     exfe://zz/
     
