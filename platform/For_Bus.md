@@ -150,9 +150,9 @@
 
             #!javascript
             {
-                cross_id: [int],
-                cross: [object:cross],
-                by_identity: [object:identity]
+                "cross_id": [int],
+                "cross": [object:cross],
+                "by_identity": [object:identity]
             }
 
 * POST args OPTION B:
@@ -160,9 +160,26 @@
 
             #!javascript
             {
-                exfee_id: [int],
-                cross: [object:cross],
-                by_identity: [object:identity]
+                "exfee_id": [int],
+                "cross": [object:cross],
+                "by_identity": [object:identity]
+            }
+
+* POST args OPTION C: // update widgets
+
+    - BODY:
+
+            #!javascript
+            {
+                "cross_id": [int],
+                "cross": {
+                    "widgets" : [
+                        {
+                            "type" : "routex",
+                        }
+                    ]
+                },
+                "by_identity": [object:identity]
             }
 
 * returns
