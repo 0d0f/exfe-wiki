@@ -182,6 +182,23 @@
                 "by_identity": [object:identity]
             }
 
+* POST args OPTION D: // update widgets
+
+    - BODY:
+
+            #!javascript
+            {
+                "exfee_id": [int],
+                "cross": {
+                    "widgets" : [
+                        {
+                            "type" : "routex",
+                        }
+                    ]
+                },
+                "by_identity": [object:identity]
+            }
+
 * returns
     - 200:
         * data
