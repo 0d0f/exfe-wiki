@@ -23,6 +23,7 @@
 	* [Conversation](#conversation)
 	* [Exfee](#exfee)
 	* [routex](#routex)
+	* [Cross's Default Widget](#x_widget)
 	* [Gather](#gather)
 	* [Profile](#profile)
 	* [Identity](#identity)
@@ -67,7 +68,7 @@
 ### <a id="cross"></a>Cross
 直接打开CrossID为%CROSS_ID%的Cross Detail界面
 
-    /!%CROSS_ID%
+    /!%CROSS_ID%/cross
 
 [^Index](#index)
 
@@ -89,6 +90,13 @@
 直接打开CrossID为%CROSS_ID%的Cross Routex界面
 
     /!%CROSS_ID%/routex
+
+[^Index](#index)
+
+### <a id="x_widget"></a>Cross Default Widget
+直接打开CrossID为%CROSS_ID%的默认Widget界面，多数情况是Cross Detail或者RouteX
+
+	/!%CROSS_ID%
 
 [^Index](#index)
 
@@ -176,12 +184,12 @@
   <tr>
     <td>exfe://zz/!100233</td>
     <td>shuady://cn/!100233</td>
-    <td>Cross界面，这个Cross的id是100233</td>
+    <td>Cross的默认Widget界面，这个Cross的id是100233，一般默认界面是Cross，有时候会是RouteX</td>
   </tr>
   <tr>
     <td>exfe://zz/!100233/cross</td>
     <td>shuady://cn/!100233/cross</td>
-    <td>Cross界面的cross Widget(默认)，这个Cross的id是100233</td>
+    <td>Cross界面的cross Widget，这个Cross的id是100233</td>
   </tr>
   <tr>
     <td>exfe://zz/!100233/exfee</td>
@@ -192,6 +200,11 @@
     <td>exfe://zz/!100233/conversation</td>
     <td>shuady://cn/!100233/conversation</td>
     <td>Cross界面的conversation Widget，这个Cross的id是100233</td>
+  </tr>
+  <tr>
+    <td>exfe://zz/!100233/routex</td>
+    <td>shuady://cn/!100233/routex</td>
+    <td>Cross界面的routex Widget，这个Cross的id是100233</td>
   </tr>
   <tr>
     <td>exfe://zz/!100233/&lt;WIDGET_NAME></td>
